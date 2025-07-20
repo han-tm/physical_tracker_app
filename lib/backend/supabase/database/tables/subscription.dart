@@ -27,6 +27,6 @@ class SubscriptionRow extends SupabaseDataRow {
   set expirationDate(DateTime? value) =>
       setField<DateTime>('expiration_date', value);
 
-  String? get planId => getField<String>('plan_id');
-  set planId(String? value) => setField<String>('plan_id', value);
+  int? get planId => getField<int>('plan_id');
+  set planId(int? value) => setField<int>('plan_id', value);
 }

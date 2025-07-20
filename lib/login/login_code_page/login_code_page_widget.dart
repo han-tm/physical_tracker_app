@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '/auth/firebase_auth/auth_util.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -34,6 +36,8 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
   late LoginCodePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  bool codeSending = false;
 
   @override
   void initState() {
@@ -90,59 +94,37 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 16.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                           child: Text(
                             'Введите код подтверждения из СМС, отправленного на ${widget!.phone}',
                             textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
+                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                   font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
+                                  color: FlutterFlowTheme.of(context).secondaryText,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 16.0, 0.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                           child: PinCodeTextField(
                             autoDisposeControllers: false,
                             appContext: context,
                             length: 6,
-                            textStyle:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      font: GoogleFonts.unbounded(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontStyle,
-                                    ),
+                            textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
+                                  font: GoogleFonts.unbounded(
+                                    fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                ),
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             enableActiveFill: true,
                             autoFocus: true,
@@ -150,8 +132,7 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                             enablePinAutofill: false,
                             errorTextSpace: 16.0,
                             showCursor: true,
-                            cursorColor:
-                                FlutterFlowTheme.of(context).primaryText,
+                            cursorColor: FlutterFlowTheme.of(context).primaryText,
                             obscureText: false,
                             hintCharacter: '-',
                             keyboardType: TextInputType.number,
@@ -166,12 +147,12 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                                 topRight: Radius.circular(16.0),
                               ),
                               shape: PinCodeFieldShape.box,
-                              activeColor: FlutterFlowTheme.of(context).primary,
+                              activeColor: Colors.transparent,
                               inactiveColor: Color(0x00E0E3E7),
-                              selectedColor:
-                                  FlutterFlowTheme.of(context).primary,
-                              activeFillColor: Color(0xFF794201),
+                              selectedColor: FlutterFlowTheme.of(context).primary,
+                              activeFillColor: Color(0xFF1A191D),
                               inactiveFillColor: Color(0xFF1A191D),
+                              selectedFillColor: FlutterFlowTheme.of(context).primary.withValues(alpha: 0.12)
                             ),
                             controller: _model.pinCodeController,
                             onChanged: (_) {},
@@ -181,14 +162,12 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                               if (smsCodeVal == null || smsCodeVal.isEmpty) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content:
-                                        Text('Enter SMS verification code.'),
+                                    content: Text('Enter SMS verification code.'),
                                   ),
                                 );
                                 return;
                               }
-                              final phoneVerifiedUser =
-                                  await authManager.verifySmsCode(
+                              final phoneVerifiedUser = await authManager.verifySmsCode(
                                 context: context,
                                 smsCode: smsCodeVal,
                               );
@@ -196,21 +175,17 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth(
-                                  RouterPageWidget.routeName, context.mounted);
+                              context.goNamedAuth(RouterPageWidget.routeName, context.mounted);
                             },
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: _model.pinCodeControllerValidator
-                                .asValidator(context),
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: _model.pinCodeControllerValidator.asValidator(context),
                           ),
                         ),
                         if (!_model.allowSendAgain)
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 8.0, 24.0, 0.0),
+                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
                               child: Wrap(
                                 spacing: 0.0,
                                 runSpacing: 0.0,
@@ -223,97 +198,57 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                                 children: [
                                   Text(
                                     'Выслать код повторно через:',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: FlutterFlowTheme.of(context).secondaryText,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 0.0, 0.0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(100.0),
+                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                        borderRadius: BorderRadius.circular(100.0),
                                         border: Border.all(
                                           color: Color(0xFFFDAF20),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            13.0, 8.0, 13.0, 8.0),
+                                        padding: EdgeInsetsDirectional.fromSTEB(13.0, 8.0, 13.0, 8.0),
                                         child: FlutterFlowTimer(
-                                          initialTime:
-                                              _model.timerInitialTimeMs,
-                                          getDisplayTime: (value) =>
-                                              StopWatchTimer.getDisplayTime(
+                                          initialTime: _model.timerInitialTimeMs,
+                                          getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
                                             value,
                                             hours: false,
                                             milliSecond: false,
                                           ),
                                           controller: _model.timerController,
-                                          updateStateInterval:
-                                              Duration(milliseconds: 1000),
-                                          onChanged: (value, displayTime,
-                                              shouldUpdate) {
+                                          updateStateInterval: Duration(milliseconds: 1000),
+                                          onChanged: (value, displayTime, shouldUpdate) {
                                             _model.timerMilliseconds = value;
                                             _model.timerValue = displayTime;
-                                            if (shouldUpdate)
-                                              safeSetState(() {});
+                                            if (shouldUpdate) safeSetState(() {});
                                           },
                                           onEnded: () async {
                                             _model.allowSendAgain = true;
                                             safeSetState(() {});
                                           },
                                           textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
+                                          style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                 font: GoogleFonts.unbounded(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineSmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineSmall
-                                                          .fontStyle,
+                                                  fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                                                  fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
                                                 ),
                                                 fontSize: 13.0,
                                                 letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .fontStyle,
+                                                fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                                                fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
                                               ),
                                         ),
                                       ),
@@ -327,8 +262,7 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 8.0, 24.0, 0.0),
+                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
                               child: Wrap(
                                 spacing: 0.0,
                                 runSpacing: 0.0,
@@ -341,92 +275,76 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                                 children: [
                                   Text(
                                     'Не получили СМС-код?',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: FlutterFlowTheme.of(context).secondaryText,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 0.0, 0.0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        _model.allowSendAgain = false;
-                                        safeSetState(() {});
-                                        _model.timerController.timer
-                                            .setPresetTime(
-                                                mSec: 6000, add: false);
-                                        _model.timerController.onResetTimer();
+                                        setState(() {
+                                          codeSending = true;
+                                        });
 
-                                        _model.timerController.onStartTimer();
+                                        final phoneNumberVal = widget.phone!;
+
+                                        await authManager.beginPhoneAuth(
+                                          context: context,
+                                          phoneNumber: phoneNumberVal,
+                                          onCodeSent: (context) async {
+                                            _model.allowSendAgain = false;
+                                            safeSetState(() {});
+                                            _model.timerController.timer.setPresetTime(mSec: 6000, add: false);
+                                            _model.timerController.onResetTimer();
+
+                                            _model.timerController.onStartTimer();
+                                          },
+                                        );
+
+                                        setState(() {
+                                          codeSending = false;
+                                        });
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(100.0),
+                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                          borderRadius: BorderRadius.circular(100.0),
                                           border: Border.all(
                                             color: Color(0xFFFDAF20),
                                           ),
                                         ),
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  13.0, 8.0, 13.0, 8.0),
-                                          child: Text(
+                                          padding: EdgeInsetsDirectional.fromSTEB(13.0, 8.0, 13.0, 8.0),
+                                          child: codeSending
+                                              ? Container(
+                                            margin: EdgeInsets.only(left: 35, right: 35),
+                                            width: 20,height: 20,
+                                            child: CircularProgressIndicator(
+                                              color: FlutterFlowTheme.of(context).primaryText,
+                                            ),
+                                          )
+                                              :Text(
                                             'Отправить',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                   font: GoogleFonts.unbounded(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
+                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
+                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                 ),
                                           ),
                                         ),

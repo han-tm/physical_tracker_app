@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
@@ -140,7 +142,7 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
+                              child: SvgPicture.asset(
                                 'assets/images/media_photo.svg',
                                 width: 64.0,
                                 height: 64.0,
@@ -239,7 +241,7 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
+                              child: SvgPicture.asset(
                                 'assets/images/media_gallery.svg',
                                 width: 64.0,
                                 height: 64.0,

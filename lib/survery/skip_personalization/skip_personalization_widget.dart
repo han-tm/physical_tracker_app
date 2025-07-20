@@ -12,8 +12,7 @@ class SkipPersonalizationWidget extends StatefulWidget {
   const SkipPersonalizationWidget({super.key});
 
   @override
-  State<SkipPersonalizationWidget> createState() =>
-      _SkipPersonalizationWidgetState();
+  State<SkipPersonalizationWidget> createState() => _SkipPersonalizationWidgetState();
 }
 
 class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
@@ -62,13 +61,11 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.unbounded(
                         fontWeight: FontWeight.w600,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
               ),
               Padding(
@@ -78,19 +75,14 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .fontWeight,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                         color: FlutterFlowTheme.of(context).secondaryText,
                         fontSize: 13.0,
                         letterSpacing: 0.0,
-                        fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                 ),
               ),
@@ -122,23 +114,18 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 11.0, 0.0, 11.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 11.0, 0.0, 11.0),
                       child: Text(
                         'Да, пропустить',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.unbounded(
                                 fontWeight: FontWeight.bold,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                               color: FlutterFlowTheme.of(context).error,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                             ),
                       ),
                     ),
@@ -152,19 +139,7 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    await showDialog(
-                      context: context,
-                      builder: (dialogContext) {
-                        return Dialog(
-                          elevation: 0,
-                          insetPadding: EdgeInsets.zero,
-                          backgroundColor: Colors.transparent,
-                          alignment: AlignmentDirectional(0.0, 0.0)
-                              .resolve(Directionality.of(context)),
-                          child: SkipPersonalizationWidget(),
-                        );
-                      },
-                    );
+                    Navigator.pop(context);
                   },
                   child: Container(
                     width: double.infinity,
@@ -174,26 +149,19 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 11.0, 0.0, 11.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 11.0, 0.0, 11.0),
                         child: Text(
                           'Отмена',
                           textAlign: TextAlign.end,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                 font: GoogleFonts.inter(
                                   fontWeight: FontWeight.normal,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.normal,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                         ),
                       ),

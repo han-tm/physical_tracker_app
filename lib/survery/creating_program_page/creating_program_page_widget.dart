@@ -1,15 +1,12 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
+import 'creating_program_page_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'creating_program_page_model.dart';
-export 'creating_program_page_model.dart';
 
 class CreatingProgramPageWidget extends StatefulWidget {
   const CreatingProgramPageWidget({super.key});
@@ -18,175 +15,144 @@ class CreatingProgramPageWidget extends StatefulWidget {
   static String routePath = '/creatingProgramPage';
 
   @override
-  State<CreatingProgramPageWidget> createState() =>
-      _CreatingProgramPageWidgetState();
+  State<CreatingProgramPageWidget> createState() => _CreatingProgramPageWidgetState();
 }
 
 class _CreatingProgramPageWidgetState extends State<CreatingProgramPageWidget> {
   late CreatingProgramPageModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CreatingProgramPageModel());
+    _startProgress();
+  }
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 5000));
+  void _startProgress() {
+    final totalDuration = Duration(seconds: 4 + (DateTime.now().millisecondsSinceEpoch % 3)); // 4-6 секунд
+    final steps = 20;
+    final interval = totalDuration.inMilliseconds ~/ steps;
 
-      context.pushNamed(SignInStartPageWidget.routeName);
+    int currentStep = 0;
+
+    Future.doWhile(() async {
+      await Future.delayed(Duration(milliseconds: interval));
+
+      setState(() {
+        final randomDelta = 0.02 + (0.08 * (DateTime.now().millisecond % 100) / 100); // 2% - 10%
+        _model.progress = (_model.progress + randomDelta).clamp(0.0, 1.0);
+      });
+
+      currentStep++;
+
+      if (currentStep >= steps || _model.progress >= 1.0) {
+        await Future.delayed(const Duration(milliseconds: 500));
+        if (mounted) {
+          var result = context.pushNamed(SignInStartPageWidget.routeName);
+          print("asd____${result}");
+        }
+        return false;
+      }
+
+      return true;
     });
   }
 
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    var scaff = GestureDetector(
       onTap: () {
-        FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
-          top: true,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(),
-            child: Stack(
-              children: [
-                Opacity(
-                  opacity: 0.3,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: Image.asset(
-                      'assets/images/69195f7063809f0f218c8e7cd7bf4f6febe78fc5.jpg',
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+          child: Stack(
+            children: [
+              Opacity(
+                opacity: 0.3,
+                child: Image.asset(
+                  'assets/images/69195f7063809f0f218c8e7cd7bf4f6febe78fc5.jpg',
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.cover,
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
-                        child: Text(
-                          'Создаём вашу программу!',
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.unbounded(
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                        child: CircularPercentIndicator(
-                          percent: 0.5,
-                          radius: 87.5,
-                          lineWidth: 15.0,
-                          animation: true,
-                          animateFromLastPercent: true,
-                          progressColor: FlutterFlowTheme.of(context).primary,
-                          backgroundColor: Color(0x0EFFFFFF),
-                          center: Text(
-                            '50%',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                              font: GoogleFonts.unbounded(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .fontStyle,
-                              ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .fontStyle,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.white,
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 50.0,
-                                )
-                              ],
-                            ),
+              ),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        'Создаём вашу программу!',
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.unbounded(
+                            fontWeight: FontWeight.bold,
                           ),
-                          startAngle: 0.0,
+                          fontSize: 16.0,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 16.0, 20.0, 0.0),
-                        child: Text(
-                          'Подбираем оптимальные упражнения под ваши параметры и цели',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                font: GoogleFonts.unbounded(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 13.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: CircularPercentIndicator(
+                        percent: _model.progress,
+                        radius: 87.5,
+                        lineWidth: 15.0,
+                        animation: true,
+                        animateFromLastPercent: true,
+                        progressColor: FlutterFlowTheme.of(context).primary,
+                        backgroundColor: const Color(0x0EFFFFFF),
+                        center: Text(
+                          '${(_model.progress * 100).toInt()}%',
+                          style: FlutterFlowTheme.of(context).headlineSmall.override(
+                            font: GoogleFonts.unbounded(),
+                            shadows: const [
+                              Shadow(
+                                color: Colors.white,
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 50.0,
+                              )
+                            ],
+                          ),
+                        ),
+                        startAngle: 0.0,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0, left: 20.0, right: 20.0),
+                      child: Text(
+                        'Подбираем оптимальные упражнения под ваши параметры и цели',
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.unbounded(),
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          fontSize: 13.0,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
+    );
+
+    return PopScope(
+      canPop: false,
+      child: scaff,
     );
   }
 }

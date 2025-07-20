@@ -1,3 +1,5 @@
+import '../subscriptionPlanTile.dart';
+import '../subscription_confirm_view/subscription_confirm_view_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/general_button_widget.dart';
@@ -69,7 +71,8 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                 updateCallback: () => safeSetState(() {}),
                 child: GeneralNavBar01Widget(
                   title: 'Подписка',
-                  hideBack: widget!.fromReg,
+                  // hideBack: widget!.fromReg,
+                  hideBack: false,
                 ),
               ),
               Expanded(
@@ -84,66 +87,44 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Выберите свой план',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                       font: GoogleFonts.unbounded(
                                         fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                       fontSize: 24.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 8.0, 0.0, 0.0),
+                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Получите максимальную пользу от тренировок с нашими планами подписки',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
+                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                         font: GoogleFonts.unbounded(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                        color: FlutterFlowTheme.of(context).secondaryText,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                 ),
                               ),
                               FutureBuilder<List<SubscriptionPlanRow>>(
                                 future: SubscriptionPlanTable().queryRows(
-                                  queryFn: (q) =>
-                                      q.order('type', ascending: true),
+                                  queryFn: (q) => q.order('type', ascending: true),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -153,18 +134,14 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                         width: 50.0,
                                         height: 50.0,
                                         child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
+                                          valueColor: AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context).primary,
                                           ),
                                         ),
                                       ),
                                     );
                                   }
-                                  List<SubscriptionPlanRow>
-                                      listViewSubscriptionPlanRowList =
-                                      snapshot.data!;
+                                  List<SubscriptionPlanRow> listViewSubscriptionPlanRowList = snapshot.data!;
 
                                   return ListView.separated(
                                     padding: EdgeInsets.fromLTRB(
@@ -176,309 +153,64 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                     primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        listViewSubscriptionPlanRowList.length,
-                                    separatorBuilder: (_, __) =>
-                                        SizedBox(height: 8.0),
+                                    itemCount: listViewSubscriptionPlanRowList.length,
+                                    separatorBuilder: (_, __) => SizedBox(height: 8.0),
                                     itemBuilder: (context, listViewIndex) {
-                                      final listViewSubscriptionPlanRow =
-                                          listViewSubscriptionPlanRowList[
-                                              listViewIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          _model.planSelected =
-                                              listViewSubscriptionPlanRow;
+                                      final listViewSubscriptionPlanRow = listViewSubscriptionPlanRowList[listViewIndex];
+
+                                      final List<dynamic> features = listViewSubscriptionPlanRow.features is String
+                                          ? jsonDecode(listViewSubscriptionPlanRow.features!)
+                                          : (listViewSubscriptionPlanRow.features ?? []);
+
+                                      return SubscriptionPlanTile(
+                                        plan: listViewSubscriptionPlanRow,
+                                        selected: _model.planSelected?.id == listViewSubscriptionPlanRow.id,
+                                        onTap: () {
+                                          _model.planSelected = listViewSubscriptionPlanRow;
                                           safeSetState(() {});
                                         },
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(16.0),
-                                            border: Border.all(
-                                              color: _model.planSelected?.id ==
-                                                      listViewSubscriptionPlanRow
-                                                          .id
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .primary
-                                                  : Color(0xFF302E36),
-                                              width: 1.0,
-                                            ),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.all(12.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(0.0),
-                                                      bottomRight:
-                                                          Radius.circular(0.0),
-                                                      topLeft:
-                                                          Radius.circular(0.0),
-                                                      topRight:
-                                                          Radius.circular(0.0),
-                                                    ),
-                                                  ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        4.0,
-                                                                        0.0),
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              child: SvgPicture
-                                                                  .asset(
-                                                                'assets/images/subscr_icon01.svg',
-                                                                width: 16.0,
-                                                                height: 16.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                listViewSubscriptionPlanRow
-                                                                    .title,
-                                                                '-',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .unbounded(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            '${listViewSubscriptionPlanRow.price?.toString()} ₽/мес',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .unbounded(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: functions
-                                                                      .textToColor(
-                                                                          listViewSubscriptionPlanRow
-                                                                              .color!),
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          listViewSubscriptionPlanRow
-                                                              .description,
-                                                          '-',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      13.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      ),
-                                                      Container(
-                                                        width: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: functions
-                                                              .textToColor(
-                                                                  listViewSubscriptionPlanRow
-                                                                      .color!),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
-                                                          border: Border.all(
-                                                            color: functions
-                                                                .textToColor(
-                                                                    listViewSubscriptionPlanRow
-                                                                        .color!),
-                                                          ),
-                                                        ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(
-                                                                          13.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .asset(
-                                                                      'assets/images/Check_Circle.svg',
-                                                                      width:
-                                                                          12.0,
-                                                                      height:
-                                                                          12.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            9.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child: Text(
-                                                                      'Hello World',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.inter(
-                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                            fontSize:
-                                                                                13.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
                                       );
                                     },
                                   );
                                 },
                               ),
+                              Text(
+                                'О подписке',
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                  font: GoogleFonts.unbounded(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                  ),
+                                  fontSize: 13,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                child: Text(
+                                  'Подписка автоматически продлевается в конце оплаченного периода. Вы можете отменить автопродление в любое время в настройках аккаунта.\nОтмена подписки не приведёт к возврату средств за текущий оплаченный период, но вы сможете пользоваться всеми функциями до его окончания.',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight:
+                                      FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                    letterSpacing: 0.0,
+                                    fontWeight:
+                                    FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
-                      ]
-                          .addToStart(SizedBox(height: 16.0))
-                          .addToEnd(SizedBox(height: 24.0)),
+                      ].addToStart(SizedBox(height: 16.0)).addToEnd(SizedBox(height: 24.0)),
                     ),
                   ),
                 ),
@@ -489,35 +221,23 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: RichText(
                         textScaler: MediaQuery.of(context).textScaler,
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Продолжая, вы соглашаюсь с ',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
+                              text: 'Продолжая, вы соглашаюсь с ',
+                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                    color: FlutterFlowTheme.of(context).secondaryText,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
                             ),
                             TextSpan(
@@ -542,8 +262,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                             TextSpan(
                               text: ' и ',
                               style: GoogleFonts.inter(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: FlutterFlowTheme.of(context).secondaryText,
                               ),
                             ),
                             TextSpan(
@@ -566,24 +285,15 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                 },
                             )
                           ],
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.unbounded(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                font: GoogleFonts.unbounded(
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -593,61 +303,47 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                       updateCallback: () => safeSetState(() {}),
                       child: GeneralButtonWidget(
                         title: 'Оплатить',
-                        isActive: false,
+                        isActive: _model.planSelected!=null,
                         onTap: () async {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Нет платежного шлюза'),
-                                    content:
-                                        Text('Оплата произойдет мнгновенно'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('Отмена'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('Продолжить'),
-                                      ),
-                                    ],
-                                  );
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            barrierColor: Color(0x2B000000),
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
                                 },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            await SubscriptionTable().insert({
-                              'created_at':
-                                  supaSerialize<DateTime>(getCurrentTimestamp),
-                              'user_id': currentUserReference?.id,
-                              'expiration_date': supaSerialize<DateTime>(
-                                  functions.timeAddMonth(getCurrentTimestamp)),
-                              'plan_id': _model.planSelected?.id?.toString(),
-                            });
-                          }
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: SubscriptionConfirmViewWidget(
+                                    plan: _model.planSelected!,
+                                  ),
+                                ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
                         },
                       ),
                     ),
-                    if (widget!.fromReg)
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                        child: wrapWithModel(
-                          model: _model.generalButtonModel2,
-                          updateCallback: () => safeSetState(() {}),
-                          child: GeneralButtonWidget(
-                            title: 'Пропустить',
-                            isActive: true,
-                            backbgoundColor: Colors.transparent,
-                            borderColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                            onTap: () async {},
-                          ),
-                        ),
-                      ),
+                    // if (widget!.fromReg)
+                    //   Padding(
+                    //     padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    //     child: wrapWithModel(
+                    //       model: _model.generalButtonModel2,
+                    //       updateCallback: () => safeSetState(() {}),
+                    //       child: GeneralButtonWidget(
+                    //         title: 'Пропустить',
+                    //         isActive: true,
+                    //         backbgoundColor: Colors.transparent,
+                    //         borderColor: FlutterFlowTheme.of(context).secondaryText,
+                    //         onTap: () async {},
+                    //       ),
+                    //     ),
+                    //   ),
                   ],
                 ),
               ),

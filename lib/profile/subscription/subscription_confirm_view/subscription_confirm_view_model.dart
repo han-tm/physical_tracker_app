@@ -1,26 +1,20 @@
+import '/backend/supabase/supabase.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/survery/skip_personalization/skip_personalization_widget.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'survey03_page_widget.dart' show Survey03PageWidget;
+import 'subscription_confirm_view_widget.dart'
+    show SubscriptionConfirmViewWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class Survey03PageModel extends FlutterFlowModel<Survey03PageWidget> {
-  ///  Local state fields for this page.
+class SubscriptionConfirmViewModel
+    extends FlutterFlowModel<SubscriptionConfirmViewWidget> {
+  ///  State fields for stateful widgets in this component.
 
-  double? weight;
-
-  late FixedExtentScrollController scrollController;
-
-  ///  State fields for stateful widgets in this page.
-
-  // State field(s) for Slider widget.
-  double? sliderValue;
   // Model for generalButton component.
   late GeneralButtonModel generalButtonModel;
 

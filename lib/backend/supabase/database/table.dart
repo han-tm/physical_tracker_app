@@ -4,7 +4,7 @@ abstract class SupabaseTable<T extends SupabaseDataRow> {
   String get tableName;
   T createRow(Map<String, dynamic> data);
 
-  PostgrestFilterBuilder _select() => SupaFlow.client.from(tableName).select();
+  PostgrestFilterBuilder _select() => AppSupabase.instance.client.from(tableName).select();
 
   Future<List<T>> queryRows({
     required PostgrestTransformBuilder Function(PostgrestFilterBuilder) queryFn,
@@ -26,7 +26,7 @@ abstract class SupabaseTable<T extends SupabaseDataRow> {
           .catchError((e) => print('Error querying row: $e'))
           .then((r) => [if (r != null) createRow(r)]);
 
-  Future<T> insert(Map<String, dynamic> data) => SupaFlow.client
+  Future<T> insert(Map<String, dynamic> data) => AppSupabase.instance.client
       .from(tableName)
       .insert(data)
       .select()
@@ -40,7 +40,7 @@ abstract class SupabaseTable<T extends SupabaseDataRow> {
         matchingRows,
     bool returnRows = false,
   }) async {
-    final update = matchingRows(SupaFlow.client.from(tableName).update(data));
+    final update = matchingRows(AppSupabase.instance.client.from(tableName).update(data));
     if (!returnRows) {
       await update;
       return [];
@@ -53,7 +53,7 @@ abstract class SupabaseTable<T extends SupabaseDataRow> {
         matchingRows,
     bool returnRows = false,
   }) async {
-    final delete = matchingRows(SupaFlow.client.from(tableName).delete());
+    final delete = matchingRows(AppSupabase.instance.client.from(tableName).delete());
     if (!returnRows) {
       await delete;
       return [];

@@ -16,7 +16,12 @@ import 'package:provider/provider.dart';
 class Survey05PageModel extends FlutterFlowModel<Survey05PageWidget> {
   ///  Local state fields for this page.
 
-  double? height;
+  double? shoulderGirth;   // Обхват плечевого пояса
+  double? chestGirth;      // Обхват груди
+  double? waistGirth;      // Обхват талии
+  double? abdomenGirth;    // Обхват живота
+  double? thighGirth;      // Обхват бедра (одна нога)
+  double? hipsGirth;       // Обхват ягодиц
 
   ///  State fields for stateful widgets in this page.
 

@@ -1,3 +1,4 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,8 @@ void main() async {
 
   await initFirebase();
 
-  await SupaFlow.initialize();
+  // await SupaFlow.initialize();
+  await AppSupabase.instance.init();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
@@ -132,6 +134,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
+  // String _currentPageName = 'RouterPage';
   String _currentPageName = 'RouterPage';
   late Widget? _currentPage;
 
@@ -145,7 +148,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'RouterPage': RouterPageWidget(),
+      // 'RouterPage': RouterPageWidget(),
       'WorkoutsPage': WorkoutsPageWidget(),
       'JournalPage': JournalPageWidget(),
       'FoodPage': FoodPageWidget(),
@@ -176,70 +179,90 @@ class _NavBarPageState extends State<NavBarPage> {
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
+            // BottomNavigationBarItem(
+            //   icon: Icon(
+            //     Icons.spoke_outlined,
+            //     size: 24.0,
+            //   ),
+            //   label: 'Router',
+            //   tooltip: '',
+            // ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.spoke_outlined,
-                size: 24.0,
+              icon: SvgPicture.asset(
+                'assets/images/menu00_uns.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
-              label: 'Router',
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.work_outline,
-                size: 24.0,
-              ),
-              activeIcon: Icon(
-                Icons.work_outlined,
-                size: 24.0,
+              activeIcon: SvgPicture.asset(
+                'assets/images/menu00.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
               label: 'Тренировки',
               tooltip: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.join_left,
-                size: 24.0,
+              icon: SvgPicture.asset(
+                'assets/images/menu01_uns.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
-              activeIcon: Icon(
-                Icons.join_full,
-                size: 24.0,
+              activeIcon: SvgPicture.asset(
+                'assets/images/menu01.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
               label: 'Дневник',
               tooltip: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.food_bank_outlined,
-                size: 24.0,
+              icon: SvgPicture.asset(
+                'assets/images/menu02_uns.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
-              activeIcon: Icon(
-                Icons.food_bank,
-                size: 24.0,
+              activeIcon: SvgPicture.asset(
+                'assets/images/menu02.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
               label: 'Питание',
               tooltip: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.lan_outlined,
-                size: 24.0,
+              icon: SvgPicture.asset(
+                'assets/images/menu03_uns.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
-              activeIcon: Icon(
-                Icons.lan_sharp,
-                size: 24.0,
+              activeIcon: SvgPicture.asset(
+                'assets/images/menu03.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
               label: 'Обучение',
               tooltip: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_outlined,
-                size: 24.0,
+              icon: SvgPicture.asset(
+                'assets/images/menu04_uns.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
-              activeIcon: Icon(
-                Icons.person_rounded,
-                size: 24.0,
+              activeIcon: SvgPicture.asset(
+                'assets/images/menu04.svg',
+                width: 24.0,
+                height: 24.0,
+                fit: BoxFit.cover,
               ),
               label: 'Профиль',
               tooltip: '',

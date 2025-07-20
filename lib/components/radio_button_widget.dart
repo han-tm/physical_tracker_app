@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
@@ -49,7 +51,7 @@ class _RadioButtonWidgetState extends State<RadioButtonWidget> {
         if (!widget!.checked)
           ClipRRect(
             borderRadius: BorderRadius.circular(0.0),
-            child: Image.asset(
+            child: SvgPicture.asset(
               'assets/images/radio_unselected.svg',
               width: 20.0,
               height: 20.0,
@@ -59,7 +61,7 @@ class _RadioButtonWidgetState extends State<RadioButtonWidget> {
         if (widget!.checked)
           ClipRRect(
             borderRadius: BorderRadius.circular(0.0),
-            child: Image.asset(
+            child: SvgPicture.asset(
               'assets/images/radio_selected.svg',
               width: 20.0,
               height: 20.0,

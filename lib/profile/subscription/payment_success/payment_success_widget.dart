@@ -113,9 +113,19 @@ class _PaymentSuccessWidgetState extends State<PaymentSuccessWidget> {
                 updateCallback: () => safeSetState(() {}),
                 child: GeneralButtonWidget(
                   title: 'Продолжить',
-                  isActive: false,
+                  isActive: true,
                   onTap: () async {
-                    context.goNamed(RouterPageWidget.routeName);
+                    // context.goNamed(
+                    //   ProfilePageWidget.routeName,
+                    //   extra: <String, dynamic>{
+                    //     kTransitionInfoKey: TransitionInfo(
+                    //       hasTransition: true,
+                    //       transitionType: PageTransitionType.fade,
+                    //       duration: Duration(milliseconds: 0),
+                    //     ),
+                    //   },
+                    // );
+                    Navigator.of(context).pop();
                   },
                 ),
               ),

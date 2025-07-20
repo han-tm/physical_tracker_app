@@ -1,3 +1,7 @@
+import 'package:flutter_svg/svg.dart';
+
+import '../../userData/PreRegistrationData.dart';
+import '../../userData/PreRegistrationStorage.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/general_button_widget.dart';
@@ -70,36 +74,34 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/images/back_button.svg',
-                          width: 40.0,
-                          height: 40.0,
-                          fit: BoxFit.cover,
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: SvgPicture.asset(
+                            'assets/images/back_button.svg',
+                            width: 40.0,
+                            height: 40.0,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Text(
                             'Шаг 5/6',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
+                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                   font: GoogleFonts.unbounded(
                                     fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                           ),
                         ),
@@ -119,13 +121,11 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
+                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                   child: GestureDetector(
                                     onTap: () {
                                       FocusScope.of(dialogContext).unfocus();
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
+                                      FocusManager.instance.primaryFocus?.unfocus();
                                     },
                                     child: SkipPersonalizationWidget(),
                                   ),
@@ -135,39 +135,26 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              color: FlutterFlowTheme.of(context).secondaryBackground,
                               borderRadius: BorderRadius.circular(100.0),
                               border: Border.all(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: FlutterFlowTheme.of(context).secondaryText,
                                 width: 1.0,
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 5.0, 8.0, 5.0),
+                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                               child: Text(
                                 'Пропустить',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                       font: GoogleFonts.unbounded(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                       fontSize: 11.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
                               ),
                             ),
@@ -183,8 +170,7 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
                   width: double.infinity,
                   decoration: BoxDecoration(),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -193,393 +179,225 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
                         children: [
                           Text(
                             'Замеры тела',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
+                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                   font: GoogleFonts.unbounded(
                                     fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 4.0, 0.0, 32.0),
+                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 32.0),
                             child: Text(
                               'Эти данные помогут нам лучше отслеживать ваш прогресс и составить оптимальную программу. Замеры и фото делаются на голодный желудок.',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
+                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                    color: FlutterFlowTheme.of(context).secondaryText,
                                     fontSize: 13.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
                             ),
                           ),
-                          Expanded(
-                            child: FutureBuilder<List<BodyMeasureRow>>(
-                              future: BodyMeasureTable().queryRows(
-                                queryFn: (q) => q.gtOrNull(
-                                  'type',
-                                  2,
-                                ),
+                          FutureBuilder<List<BodyMeasureRow>>(
+                            future: BodyMeasureTable().queryRows(
+                              queryFn: (q) => q.gtOrNull(
+                                'type',
+                                2,
                               ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              // print("asdasd____________${snapshot.stackTrace}");
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
                                       ),
                                     ),
-                                  );
-                                }
-                                List<BodyMeasureRow>
-                                    containerBodyMeasureRowList =
-                                    snapshot.data!;
+                                  ),
+                                );
+                              }
+                              List<BodyMeasureRow> containerBodyMeasureRowList = snapshot.data!;
 
-                                return Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final measures =
-                                          containerBodyMeasureRowList.toList();
+                              return Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(),
+                                child: Builder(
+                                  builder: (context) {
+                                    final measures = containerBodyMeasureRowList.toList();
 
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: List.generate(measures.length,
-                                            (measuresIndex) {
-                                          final measuresItem =
-                                              measures[measuresIndex];
-                                          return InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: List.generate(measures.length, (measuresIndex) {
+                                        final measuresItem = measures[measuresIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              final initialValue = _getValueForType(measuresItem.type!);
+
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
+                                                backgroundColor: Colors.transparent,
                                                 enableDrag: false,
                                                 context: context,
                                                 builder: (context) {
                                                   return GestureDetector(
                                                     onTap: () {
-                                                      FocusScope.of(context)
-                                                          .unfocus();
-                                                      FocusManager
-                                                          .instance.primaryFocus
-                                                          ?.unfocus();
+                                                      FocusScope.of(context).unfocus();
                                                     },
                                                     child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child:
-                                                          MeasureAddViewWidget(
-                                                        measureRow:
-                                                            measuresItem,
-                                                        userBodyMeasure:
-                                                            FFAppState()
-                                                                .UserBodyMeasures
-                                                                .where((e) =>
-                                                                    e.type ==
-                                                                    measuresItem
-                                                                        .type)
-                                                                .toList()
-                                                                .firstOrNull!,
-                                                        onValueSave:
-                                                            (value) async {
-                                                          if (FFAppState()
-                                                                  .UserBodyMeasures
-                                                                  .where((e) =>
-                                                                      e.type ==
-                                                                      measuresItem
-                                                                          .type)
-                                                                  .toList()
-                                                                  .length >
-                                                              0) {
-                                                            FFAppState()
-                                                                .updateUserBodyMeasuresAtIndex(
-                                                              measuresIndex,
-                                                              (e) => e
-                                                                ..value = value,
-                                                            );
-                                                            safeSetState(() {});
-                                                          } else {
-                                                            FFAppState()
-                                                                .addToUserBodyMeasures(
-                                                                    UserBodyMeasureStruct(
-                                                              type: measuresItem
-                                                                  .type,
-                                                              value: value,
-                                                            ));
-                                                            safeSetState(() {});
+                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                      child: MeasureAddViewWidget(
+                                                        measureRow: measuresItem,
+                                                        initialValue: initialValue,
+                                                        onValueSave: (value) async {
+                                                          switch (measuresItem.type) {
+                                                            case 3:
+                                                              _model.shoulderGirth = value;
+                                                              break;
+                                                            case 4:
+                                                              _model.chestGirth = value;
+                                                              break;
+                                                            case 5:
+                                                              _model.waistGirth = value;
+                                                              break;
+                                                            case 6:
+                                                              _model.abdomenGirth = value;
+                                                              break;
+                                                            case 7:
+                                                              _model.thighGirth = value;
+                                                              break;
+                                                            case 8:
+                                                              _model.hipsGirth = value;
+                                                              break;
                                                           }
+                                                          safeSetState(() {});
                                                         },
                                                       ),
                                                     ),
                                                   );
                                                 },
-                                              ).then((value) =>
-                                                  safeSetState(() {}));
+                                              );
                                             },
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 48.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                borderRadius:
-                                                    BorderRadius.circular(16.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        12.0, 0.0, 12.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            measuresItem.name,
-                                                            '-',
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 48.0,
+                                            decoration: BoxDecoration(
+                                              color: FlutterFlowTheme.of(context).secondary,
+                                              borderRadius: BorderRadius.circular(16.0),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          measuresItem.name,
+                                                          '-',
+                                                        ),
+                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                          font: GoogleFonts.inter(
+                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                         ),
                                                       ),
                                                     ),
-                                                    if (FFAppState()
-                                                            .UserBodyMeasures
-                                                            .where((e) =>
-                                                                e.type ==
-                                                                measuresItem
-                                                                    .type)
-                                                            .toList()
-                                                            .length ==
-                                                        0)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            measuresItem.name,
+                                                  ),
+                                                  Builder(
+                                                    builder: (context) {
+                                                      final value = _getValueForType(measuresItem.type!);
+                                                      if (value == null) {
+                                                        return Padding(
+                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                          child: Text(
                                                             '-',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
+                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                              font: GoogleFonts.inter(
+                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
-                                                        ),
-                                                      ),
-                                                    if (FFAppState()
-                                                            .UserBodyMeasures
-                                                            .where((e) =>
-                                                                e.type ==
-                                                                measuresItem
-                                                                    .type)
-                                                            .toList()
-                                                            .length >
-                                                        0)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0x20E27B00),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        50.0),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8.0,
-                                                                        4.0,
-                                                                        8.0,
-                                                                        4.0),
-                                                            child: Text(
-                                                              '${valueOrDefault<String>(
-                                                                FFAppState()
-                                                                    .UserBodyMeasures
-                                                                    .where((e) =>
-                                                                        e.type ==
-                                                                        measuresItem
-                                                                            .type)
-                                                                    .toList()
-                                                                    .firstOrNull
-                                                                    ?.value
-                                                                    ?.toString(),
-                                                                '-',
-                                                              )} см',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .unbounded(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
+                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                              letterSpacing: 0.0,
+                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: Image.asset(
-                                                        'assets/images/arrow_right.svg',
-                                                        width: 18.0,
-                                                        height: 18.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
+                                                        );
+                                                      } else {
+                                                        return Padding(
+                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                          child: Container(
+                                                            decoration: BoxDecoration(
+                                                              color: const Color(0x20E27B00),
+                                                              borderRadius: BorderRadius.circular(50.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                                              child: Text(
+                                                                '${value % 1 == 0 ? value.toInt().toString() : value.toStringAsFixed(1)} см',
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                  font: GoogleFonts.unbounded(
+                                                                    fontWeight: FontWeight.w600,
+                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(context).primary,
+                                                                  fontSize: 12.0,
+                                                                  letterSpacing: 0.0,
+                                                                  fontWeight: FontWeight.w600,
+                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                    },
+                                                  ),
+                                                  ClipRRect(
+                                                    borderRadius: BorderRadius.circular(8.0),
+                                                    child: SvgPicture.asset(
+                                                      'assets/images/arrow_right.svg',
+                                                      width: 18.0,
+                                                      height: 18.0,
+                                                      fit: BoxFit.cover,
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                          );
-                                        }).divide(SizedBox(height: 16.0)),
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
-                            ),
+                                          ),
+                                        );
+                                      }).divide(const SizedBox(height: 16.0)),
+                                    );
+                                  },
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -594,9 +412,27 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
                   updateCallback: () => safeSetState(() {}),
                   child: GeneralButtonWidget(
                     title: 'Далее',
-                    isActive: FFAppState().UserBodyMeasures.length == 8,
+                    isActive: _model.shoulderGirth != null &&
+                        _model.chestGirth != null &&
+                        _model.waistGirth != null &&
+                        _model.abdomenGirth != null &&
+                        _model.thighGirth != null &&
+                        _model.hipsGirth != null,
                     onTap: () async {
-                      context.pushNamed(Survey05PageWidget.routeName);
+                      final existingData = await PreRegistrationStorage.load() ?? PreRegistrationData();
+
+                      final updatedData = existingData.copyWith(
+                        shoulders: _model.shoulderGirth,
+                        chest: _model.chestGirth,
+                        waist: _model.waistGirth,
+                        belly: _model.abdomenGirth,
+                        thigh: _model.thighGirth,
+                        hips: _model.hipsGirth,
+                      );
+
+                      await PreRegistrationStorage.save(updatedData);
+
+                      context.pushNamed(Survey06PageWidget.routeName);
                     },
                   ),
                 ),
@@ -606,5 +442,17 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
         ),
       ),
     );
+  }
+
+  double? _getValueForType(int type) {
+    switch (type) {
+      case 3: return _model.shoulderGirth;
+      case 4: return _model.chestGirth;
+      case 5: return _model.waistGirth;
+      case 6: return _model.abdomenGirth;
+      case 7: return _model.thighGirth;
+      case 8: return _model.hipsGirth;
+      default: return null;
+    }
   }
 }

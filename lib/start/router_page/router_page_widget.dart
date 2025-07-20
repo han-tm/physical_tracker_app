@@ -1,3 +1,9 @@
+import 'package:boom_client/auth/firebase_auth/auth_util.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../backend/supabase/supabase.dart';
+import '../../testPage.dart';
+import '../../testVideoUpload.dart';
 import '/auth/base_auth_user_provider.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -34,10 +40,24 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      // FFAppState().regCompleted = false;
+      // await SupaFlow.initialize();
+      // await AppSupabase.instance.client.removeAllChannels();
+
+
       await Future.delayed(const Duration(milliseconds: 500));
       if (FFAppState().obboardingShown) {
         if (FFAppState().surveyShown) {
           if (loggedIn) {
+            // await SupaFlow.initialize();
+            // final user = FirebaseAuth.instance.currentUser;
+            // final token = await user?.getIdToken();
+            //
+            // if (token != null) {
+            //   await AppSupabase.instance.client.auth.setInitialSession(token);
+            // }
+            await AppSupabase.instance.updateAuthClient();
+
             if (FFAppState().regCompleted) {
               context.goNamed(
                 WorkoutsPageWidget.routeName,
@@ -97,6 +117,20 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
           },
         );
       }
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => CreatingProgramPageWidget(),
+      //     // fullscreenDialog: true
+      //   ),
+      // );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => VideoUploadTestPage(),
+      //     // fullscreenDialog: true
+      //   ),
+      // );
     });
   }
 

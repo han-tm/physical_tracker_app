@@ -23,5 +23,5 @@ Color textToColor(String text) {
 }
 
 DateTime timeAddMonth(DateTime date) {
-  return date.add(Duration(days: 30));
+  return DateTime(date.year, date.month + 1, date.day);
 }

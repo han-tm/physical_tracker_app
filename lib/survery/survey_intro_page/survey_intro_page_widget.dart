@@ -1,3 +1,5 @@
+import 'package:flutter_svg/flutter_svg.dart';
+
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -79,7 +81,7 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
+                                child: SvgPicture.asset(
                                   'assets/images/4emwm_.svg',
                                   width: 40.0,
                                   height: 40.0,
@@ -87,63 +89,36 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 8.0, 0.0, 0.0),
+                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Давай подберём тебе программу',
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
+                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                         font: GoogleFonts.unbounded(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                         fontSize: 28.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 8.0, 0.0, 0.0),
+                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Пройди короткий опрос, чтобы мы создали идеальную программу тренировок\nдля твоих целей',
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
+                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                         font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                        color: FlutterFlowTheme.of(context).secondaryText,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                 ),
                               ),
@@ -159,14 +134,13 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                     child: wrapWithModel(
                       model: _model.generalButtonModel1,
                       updateCallback: () => safeSetState(() {}),
                       child: GeneralButtonWidget(
                         title: 'Пройти опрос',
-                        isActive: false,
+                        isActive: true,
                         onTap: () async {
                           context.pushNamed(Survey01PageWidget.routeName);
                         },
@@ -174,14 +148,13 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                     child: wrapWithModel(
                       model: _model.generalButtonModel2,
                       updateCallback: () => safeSetState(() {}),
                       child: GeneralButtonWidget(
                         title: 'Пропустить',
-                        isActive: false,
+                        isActive: true,
                         backbgoundColor: Colors.transparent,
                         borderColor: Color(0xFF302E36),
                         onTap: () async {

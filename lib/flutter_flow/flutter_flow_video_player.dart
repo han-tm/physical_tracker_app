@@ -214,7 +214,12 @@ class _FlutterFlowVideoPlayerState extends State<FlutterFlowVideoPlayer>
                           ),
                         ),
                         const SizedBox(height: 20),
-                        const Text('Loading'),
+                        Text(
+                            'Загрузка видео...',
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryText
+                          ),
+                        ),
                       ],
                     ),
         ),

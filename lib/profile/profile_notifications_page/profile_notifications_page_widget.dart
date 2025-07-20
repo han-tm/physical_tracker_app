@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -82,7 +84,7 @@ class _ProfileNotificationsPageWidgetState
                               8.0, 0.0, 0.0, 0.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
+                            child: SvgPicture.asset(
                               'assets/images/back_button.svg',
                               width: 40.0,
                               height: 40.0,
@@ -128,7 +130,7 @@ class _ProfileNotificationsPageWidgetState
                         alignment: AlignmentDirectional(-1.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
+                          child: SvgPicture.asset(
                             'assets/images/notif_settings.svg',
                             width: 40.0,
                             height: 40.0,

@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -40,7 +42,7 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    var scaff = GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
@@ -78,7 +80,7 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
+                        child: SvgPicture.asset(
                           'assets/images/startReg_icon.svg',
                           width: 40.0,
                           height: 40.0,
@@ -176,6 +178,8 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                             borderColor: Color(0xFF302E36),
                             onTap: () async {
                               context.safePop();
+                              context.safePop();
+                              // Navigator.of(context).pop({"back": true});
                             },
                           ),
                         ),
@@ -188,6 +192,11 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
           ),
         ),
       ),
+    );
+
+    return PopScope(
+      canPop: false,
+      child: scaff,
     );
   }
 }

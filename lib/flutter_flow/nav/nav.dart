@@ -88,23 +88,35 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) =>
           appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
       routes: [
+        // FFRoute(
+        //   name: '_initialize',
+        //   path: '/',
+        //   builder: (context, _) =>
+        //       appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+        // ),
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+          builder: (context, _) => RouterPageWidget(),
         ),
         FFRoute(
           name: StartPageWidget.routeName,
           path: StartPageWidget.routePath,
           builder: (context, params) => StartPageWidget(),
         ),
+        // FFRoute(
+        //   name: RouterPageWidget.routeName,
+        //   path: RouterPageWidget.routePath,
+        //   builder: (context, params) => params.isEmpty
+        //       // ? NavBarPage(initialPage: 'RouterPage')
+        //       // : RouterPageWidget(),
+        //       ? NavBarPage(initialPage: 'WorkoutsPage')
+        //       : RouterPageWidget(),
+        // ),
         FFRoute(
           name: RouterPageWidget.routeName,
           path: RouterPageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'RouterPage')
-              : RouterPageWidget(),
+          builder: (context, params) => RouterPageWidget(),
         ),
         FFRoute(
           name: OnboardingPageWidget.routeName,

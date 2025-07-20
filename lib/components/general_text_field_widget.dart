@@ -17,6 +17,7 @@ class GeneralTextFieldWidget extends StatefulWidget {
     required this.onValueEnter,
     int? maxLength,
     required this.hintText,
+    this.controller
   }) : this.maxLength = maxLength ?? 1000;
 
   final String? initialValue;
@@ -24,6 +25,7 @@ class GeneralTextFieldWidget extends StatefulWidget {
   final Future Function(String value)? onValueEnter;
   final int maxLength;
   final String? hintText;
+  final TextEditingController? controller;
 
   @override
   State<GeneralTextFieldWidget> createState() => _GeneralTextFieldWidgetState();
@@ -43,7 +45,7 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
     super.initState();
     _model = createModel(context, () => GeneralTextFieldModel());
 
-    _model.textController ??= TextEditingController(text: widget!.initialValue);
+    _model.textController ??= widget.controller ?? TextEditingController(text: widget.initialValue);
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -103,6 +105,7 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
                   autofocus: false,
                   textInputAction: TextInputAction.done,
                   obscureText: false,
+                  // initialValue: widget.initialValue ?? "",
                   decoration: InputDecoration(
                     isDense: true,
                     labelStyle:

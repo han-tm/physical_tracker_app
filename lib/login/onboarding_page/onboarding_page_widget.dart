@@ -1,11 +1,12 @@
+import 'package:flutter_svg/flutter_svg.dart';
+
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/index.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart' as smooth_page_indicator;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -62,12 +63,13 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                   child: Stack(
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                         child: PageView(
-                          controller: _model.pageViewController ??=
-                              PageController(initialPage: 0),
+                          controller: _model.pageViewController ??= PageController(initialPage: 0),
                           scrollDirection: Axis.horizontal,
+                          onPageChanged: (val) {
+                            setState(() {});
+                          },
                           children: [
                             Column(
                               mainAxisSize: MainAxisSize.max,
@@ -84,68 +86,37 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                   child: Text(
                                     'Не просто фитнес. Твой новый стиль жизни!',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.unbounded(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 8.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
                                   child: Text(
                                     'Программа, тренер, дневник, нутрициолог — всё в одном приложении',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: FlutterFlowTheme.of(context).secondaryText,
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
@@ -166,68 +137,37 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                   child: Text(
                                     'Персональные программы тренировок',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.unbounded(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 8.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
                                   child: Text(
                                     'Выбирай готовые программы или получи индивидуальный план от тренера',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: FlutterFlowTheme.of(context).secondaryText,
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
@@ -248,68 +188,37 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                   child: Text(
                                     'Дневник тренировок\nи прогресс',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.unbounded(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 8.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
                                   child: Text(
                                     'Отслеживай свои результаты и видь реальные изменения своего тела',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: FlutterFlowTheme.of(context).secondaryText,
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
@@ -330,68 +239,37 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                   child: Text(
                                     'ИИ-нутрициолог для правильного питания',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.unbounded(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 8.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
                                   child: Text(
                                     'Получи персональные рекомендации по питанию и план питания на неделю',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: FlutterFlowTheme.of(context).secondaryText,
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
@@ -412,68 +290,37 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                   child: Text(
                                     'Достигай результатов вместе с нами!',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.unbounded(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 8.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
                                   child: Text(
                                     'Начни свой путь к лучшей версии \nсебя прямо сейчас',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: FlutterFlowTheme.of(context).secondaryText,
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                   ),
                                 ),
@@ -485,11 +332,9 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, 1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 16.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                           child: smooth_page_indicator.SmoothPageIndicator(
-                            controller: _model.pageViewController ??=
-                                PageController(initialPage: 0),
+                            controller: _model.pageViewController ??= PageController(initialPage: 0),
                             count: 5,
                             axisDirection: Axis.horizontal,
                             onDotClicked: (i) async {
@@ -505,10 +350,8 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                               radius: 8.0,
                               dotWidth: 8.0,
                               dotHeight: 8.0,
-                              dotColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              activeDotColor:
-                                  FlutterFlowTheme.of(context).primary,
+                              dotColor: FlutterFlowTheme.of(context).secondaryText,
+                              activeDotColor: FlutterFlowTheme.of(context).primary,
                               paintStyle: PaintingStyle.fill,
                             ),
                           ),
@@ -524,9 +367,32 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),
                   child: GeneralButtonWidget(
-                    title:
-                        _model.pageViewCurrentIndex == 4 ? 'Начать' : 'Далее',
+                    title: _model.pageViewCurrentIndex == 4 ? 'Начать' : 'Далее',
                     isActive: true,
+                    trailing: _model.pageViewCurrentIndex != 4
+                        ? Container(
+                            child: Center(
+                              child: SvgPicture.asset(
+                                'assets/images/Round_Alt_Arrow_Right.svg',
+                                width: 16.0,
+                                height: 16.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          )
+                        : null,
+                    leading: _model.pageViewCurrentIndex == 4
+                        ? Container(
+                            child: Center(
+                              child: SvgPicture.asset(
+                                'assets/images/Running_Round.svg',
+                                width: 16.0,
+                                height: 16.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          )
+                        : null,
                     onTap: () async {
                       if (_model.pageViewCurrentIndex == 4) {
                         FFAppState().obboardingShown = true;

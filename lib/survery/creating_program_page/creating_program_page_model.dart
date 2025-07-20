@@ -10,8 +10,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 
-class CreatingProgramPageModel
-    extends FlutterFlowModel<CreatingProgramPageWidget> {
+class CreatingProgramPageModel extends FlutterFlowModel<CreatingProgramPageWidget> {
+  double progress = 0.0;
+
   @override
   void initState(BuildContext context) {}
 

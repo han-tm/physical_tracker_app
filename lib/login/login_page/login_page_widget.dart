@@ -52,7 +52,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    var scaff = GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
@@ -77,81 +77,52 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.unbounded(
                                 fontWeight: FontWeight.bold,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                             ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: Text(
                           'Начните трансформацию тела! Персональные тренировки ждут вас.',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                 font: GoogleFonts.inter(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: FlutterFlowTheme.of(context).secondaryText,
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                         ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'Номер телефона',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
+                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                    color: FlutterFlowTheme.of(context).secondaryText,
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 0.0),
+                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
@@ -167,52 +138,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     isDense: true,
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
+                                    labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                           ),
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                         ),
                                     hintText: 'Введите номер телефона',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
+                                    hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
                                           font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                           ),
                                           letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -223,69 +166,43 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                        color: FlutterFlowTheme.of(context).primary,
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
+                                        color: FlutterFlowTheme.of(context).error,
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
+                                        color: FlutterFlowTheme.of(context).error,
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     filled: true,
-                                    fillColor:
-                                        (_model.textFieldFocusNode?.hasFocus ??
-                                                false)
-                                            ? Color(0x1FE27B00)
-                                            : Color(0xFF242328),
+                                    fillColor: (_model.textFieldFocusNode?.hasFocus ?? false) ? Color(0x1FE27B00) : Color(0xFF242328),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
+                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                         font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
-                                  maxLength: 16,
-                                  maxLengthEnforcement:
-                                      MaxLengthEnforcement.enforced,
-                                  buildCounter: (context,
-                                          {required currentLength,
-                                          required isFocused,
-                                          maxLength}) =>
-                                      null,
+                                  maxLength: 18,
+                                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                                  buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
                                   keyboardType: TextInputType.number,
-                                  cursorColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  validator: _model.textControllerValidator
-                                      .asValidator(context),
+                                  cursorColor: FlutterFlowTheme.of(context).primaryText,
+                                  validator: _model.textControllerValidator.asValidator(context),
                                   inputFormatters: [_model.textFieldMask],
                                 ),
                               ),
@@ -294,31 +211,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
                         child: Text(
                           'Мы отправим вам СМС с кодом для входа в приложение',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                 font: GoogleFonts.inter(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: FlutterFlowTheme.of(context).secondaryText,
                                 fontSize: 12.0,
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                         ),
                       ),
@@ -330,35 +235,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: RichText(
                       textScaler: MediaQuery.of(context).textScaler,
                       text: TextSpan(
                         children: [
                           TextSpan(
                             text: 'Продолжая, вы соглашаюсь с ',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
+                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                   font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
+                                  color: FlutterFlowTheme.of(context).secondaryText,
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                           ),
                           TextSpan(
@@ -408,20 +301,12 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         ],
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.unbounded(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                             ),
                       ),
                       textAlign: TextAlign.center,
@@ -434,20 +319,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       updateCallback: () => safeSetState(() {}),
                       child: GeneralButtonWidget(
                         title: 'Получить код',
-                        isActive: (_model.textController.text != null &&
-                                _model.textController.text != '') &&
-                            (functions
-                                    .stringCount(_model.textController.text) ==
-                                16),
+                        isActive: (_model.textController.text != null && _model.textController.text != '') && (functions.stringCount(_model.textController.text) == 18),
                         onTap: () async {
                           final phoneNumberVal = _model.textController.text;
-                          if (phoneNumberVal == null ||
-                              phoneNumberVal.isEmpty ||
-                              !phoneNumberVal.startsWith('+')) {
+                          if (phoneNumberVal == null || phoneNumberVal.isEmpty || !phoneNumberVal.startsWith('+')) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(
-                                    'Phone Number is required and has to start with +.'),
+                                content: Text('Phone Number is required and has to start with +.'),
                               ),
                             );
                             return;
@@ -456,16 +334,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             context: context,
                             phoneNumber: phoneNumberVal,
                             onCodeSent: (context) async {
-                              context.goNamedAuth(
+                              context.pushNamed(
                                 LoginCodePageWidget.routeName,
-                                context.mounted,
+                                // context.mounted,
                                 queryParameters: {
                                   'phone': serializeParam(
                                     _model.textController.text,
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,
-                                ignoreRedirect: true,
+                                // ignoreRedirect: true,
                               );
                             },
                           );
@@ -479,6 +357,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           ),
         ),
       ),
+    );
+
+    return PopScope(
+      canPop: false,
+      child: scaff,
     );
   }
 }

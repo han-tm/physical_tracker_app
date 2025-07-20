@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
@@ -76,7 +78,7 @@ class _GeneralNavBar01WidgetState extends State<GeneralNavBar01Widget> {
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
+                    child: SvgPicture.asset(
                       'assets/images/back_button.svg',
                       width: 40.0,
                       height: 40.0,
