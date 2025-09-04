@@ -274,7 +274,7 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                                 clipBehavior: Clip.none,
                                 children: [
                                   Text(
-                                    'Не получили СМС-код?',
+                                    'Не получили СМС-код?',
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -322,14 +322,14 @@ class _LoginCodePageWidgetState extends State<LoginCodePageWidget> {
                                           color: FlutterFlowTheme.of(context).secondaryBackground,
                                           borderRadius: BorderRadius.circular(100.0),
                                           border: Border.all(
-                                            color: Color(0xFFFDAF20),
+                                            color: const Color(0xFFFDAF20),
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(13.0, 8.0, 13.0, 8.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(13.0, 8.0, 13.0, 8.0),
                                           child: codeSending
                                               ? Container(
-                                            margin: EdgeInsets.only(left: 35, right: 35),
+                                            margin: const EdgeInsets.only(left: 35, right: 35),
                                             width: 20,height: 20,
                                             child: CircularProgressIndicator(
                                               color: FlutterFlowTheme.of(context).primaryText,

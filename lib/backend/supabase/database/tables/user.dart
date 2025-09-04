@@ -31,4 +31,25 @@ class UserRow extends SupabaseDataRow {
 
   String get id => getField<String>('id')!;
   set id(String value) => setField<String>('id', value);
+
+  int? get age => getField<int>('age');
+  set age(int? value) => setField<int>('age', value);
+
+  double? get height => getField<double>('height');
+  set height(double? value) => setField<double>('height', value);
+
+  double? get weight => getField<double>('weight');
+  set weight(double? value) => setField<double>('weight', value);
+
+  bool? get notifActive => getField<bool>('notif_active');
+  set notifActive(bool? value) => setField<bool>('notif_active', value);
+
+  bool? get notifSup => getField<bool>('notif_sup');
+  set notifSup(bool? value) => setField<bool>('notif_sup', value);
+
+  bool? get notifMeasure => getField<bool>('notif_measure');
+  set notifMeasure(bool? value) => setField<bool>('notif_measure', value);
+
+  bool? get notifNews => getField<bool>('notif_news');
+  set notifNews(bool? value) => setField<bool>('notif_news', value);
 }

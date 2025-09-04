@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import '../../backend/supabase/database/tables/exercise.dart';
+import '../../backend/supabase/database/tables/training_program.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
@@ -298,7 +300,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: JournalExercisePageWidget.routeName,
           path: JournalExercisePageWidget.routePath,
-          builder: (context, params) => JournalExercisePageWidget(),
+          builder: (context, params) => JournalExercisePageWidget(
+            exercise: params.getParam<ExerciseRow>(
+              'exercise',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: WorkoutsPageWidget.routeName,
@@ -332,7 +339,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: WorkoutsExerciseProcessPageWidget.routeName,
           path: WorkoutsExerciseProcessPageWidget.routePath,
-          builder: (context, params) => WorkoutsExerciseProcessPageWidget(),
+          builder: (context, params) => WorkoutsExerciseProcessPageWidget(
+            exercises: params.getParam<ExerciseRow>(
+              'exercises',
+              ParamType.SupabaseRow,
+              isList: true,
+            ),
+            program: params.getParam<TrainingProgramRow>(
+              'program',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: WorkoutsSurveryListPageWidget.routeName,
@@ -393,7 +410,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: WorkoutsExerciseDifficultyPageWidget.routeName,
           path: WorkoutsExerciseDifficultyPageWidget.routePath,
-          builder: (context, params) => WorkoutsExerciseDifficultyPageWidget(),
+          builder: (context, params) => WorkoutsExerciseDifficultyPageWidget(
+            difficultyId: params.getParam(
+              'difficultyId',
+              ParamType.int,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

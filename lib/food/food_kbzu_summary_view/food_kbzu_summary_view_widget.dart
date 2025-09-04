@@ -1,5 +1,10 @@
+import '../food_page/food_page_widget.dart';
+import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -7,11 +12,11 @@ import 'food_kbzu_summary_view_model.dart';
 export 'food_kbzu_summary_view_model.dart';
 
 class FoodKbzuSummaryViewWidget extends StatefulWidget {
-  const FoodKbzuSummaryViewWidget({super.key});
+  final Map<String, dynamic>? kbzu;
+  const FoodKbzuSummaryViewWidget({super.key, this.kbzu});
 
   @override
-  State<FoodKbzuSummaryViewWidget> createState() =>
-      _FoodKbzuSummaryViewWidgetState();
+  State<FoodKbzuSummaryViewWidget> createState() => _FoodKbzuSummaryViewWidgetState();
 }
 
 class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
@@ -27,6 +32,8 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FoodKbzuSummaryViewModel());
+
+    _model.kbzu = widget.kbzu;
   }
 
   @override
@@ -38,6 +45,416 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+
+    final kcal = '${_model.kbzu?['kcal_target'] ?? 0}';
+    final carbs = '${_model.kbzu?['carbs_target'] ?? 0}';
+    final fats = '${_model.kbzu?['fats_target'] ?? 0}';
+    final proteins = '${_model.kbzu?['proteins_target'] ?? 0}';
+
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Color(0xFF121214),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(0.0),
+          bottomRight: Radius.circular(0.0),
+          topLeft: Radius.circular(12.0),
+          topRight: Radius.circular(12.0),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                // Container(
+                //   width: 40.0,
+                //   height: 40.0,
+                //   decoration: BoxDecoration(
+                //     color: FlutterFlowTheme.of(context).secondary,
+                //     borderRadius: BorderRadius.circular(16.0),
+                //   ),
+                //   child: InkWell(
+                //     onTap: () {
+                //       Navigator.of(context).pop();
+                //     },
+                //     child: Align(
+                //       alignment: AlignmentDirectional(0.0, 0.0),
+                //       child: Icon(
+                //         Icons.arrow_back_ios_new_sharp,
+                //         color: FlutterFlowTheme.of(context).primaryText,
+                //         size: 20.0,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                    child: Text(
+                      'Ваша норма КБЖУ',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.unbounded(
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            ),
+                            fontSize: 20.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                          ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondary,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 8.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Color(0x1EE27B00),
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 4.0, 12.0),
+                                  child: Text(
+                                    '$kcal',
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                          font: GoogleFonts.unbounded(
+                                            fontWeight: FontWeight.bold,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          fontSize: 20.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'ккал',
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context).primary,
+                                      fontSize: 13.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0x1EE27B00),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AutoSizeText(
+                                      carbs,
+                                      maxLines: 1,
+                                      minFontSize: 1.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: Color(0xFFFFD166),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                    AutoSizeText(
+                                      'углеводов (г)',
+                                      maxLines: 1,
+                                      minFontSize: 5.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: Color(0xFFFFD166),
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0x24FF6B78),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AutoSizeText(
+                                      fats,
+                                      maxLines: 1,
+                                      minFontSize: 1.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: Color(0xFFFF6B78),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                    AutoSizeText(
+                                      'жиров (г)',
+                                      maxLines: 1,
+                                      minFontSize: 5.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: Color(0xFFFF6B78),
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0x1F4DEEBD),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AutoSizeText(
+                                      proteins,
+                                      maxLines: 1,
+                                      minFontSize: 1.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: Color(0xFF4DEEBD),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                    AutoSizeText(
+                                      'белков (г)',
+                                      maxLines: 1,
+                                      minFontSize: 5.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: Color(0xFF4DEEBD),
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ].divide(SizedBox(width: 5.0)),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 12.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).secondary,
+                            borderRadius: BorderRadius.circular(100.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF4DEEBD),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(100.0),
+                                      bottomRight: Radius.circular(0.0),
+                                      topLeft: Radius.circular(100.0),
+                                      topRight: Radius.circular(0.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFFF6B78),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(0.0),
+                                      bottomRight: Radius.circular(0.0),
+                                      topLeft: Radius.circular(0.0),
+                                      topRight: Radius.circular(0.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFFFD166),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(0.0),
+                                      bottomRight: Radius.circular(100.0),
+                                      topLeft: Radius.circular(0.0),
+                                      topRight: Radius.circular(100.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                        child: Text(
+                          'Расчет основан на ваших параметрах и уровне активности. Для более точных рекомендаций воспользуйтесь ИИ-нутрициологом.',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                font: GoogleFonts.inter(
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+              child: wrapWithModel(
+                model: _model.generalButtonModel1,
+                updateCallback: () => safeSetState(() {}),
+                child: GeneralButtonWidget(
+                  title: 'Получить план питания от ИИ',
+                  isActive: true,
+                  onTap: () async {},
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              child: wrapWithModel(
+                model: _model.generalButtonModel2,
+                updateCallback: () => safeSetState(() {}),
+                child: GeneralButtonWidget(
+                  title: 'Продолжить ',
+                  isActive: true,
+                  backbgoundColor: Colors.transparent,
+                  borderColor: const Color(0xFF302E36),
+                  onTap: () async {
+                    context.goNamed(
+                      FoodPageWidget.routeName,
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

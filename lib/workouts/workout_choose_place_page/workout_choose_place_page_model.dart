@@ -6,11 +6,16 @@ import 'dart:ui';
 import 'workout_choose_place_page_widget.dart'
     show WorkoutChoosePlacePageWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class WorkoutChoosePlacePageModel
     extends FlutterFlowModel<WorkoutChoosePlacePageWidget> {
+  ///  Local state fields for this page.
+
+  int? variantSelected;
+
   ///  State fields for stateful widgets in this page.
 
   // Model for generalNavBar01 component.

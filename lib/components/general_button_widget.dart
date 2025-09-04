@@ -107,6 +107,7 @@ class GeneralButtonWidget extends StatefulWidget {
     this.borderColor = const Color(0xFFE27B00),
     this.leading,
     this.trailing,
+    this.textColor = const Color(0xFFFFFFFF),
   });
 
   final String? title;
@@ -114,6 +115,7 @@ class GeneralButtonWidget extends StatefulWidget {
   final bool isActive;
   final Color backbgoundColor;
   final Color borderColor;
+  final Color textColor;
   final Widget? leading;
   final Widget? trailing;
 
@@ -166,7 +168,7 @@ class _GeneralButtonWidgetState extends State<GeneralButtonWidget> {
                 fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
               ),
               color: widget.isActive
-                  ? Colors.white
+                  ? widget.textColor
                   : const Color(0xff696576),
               fontSize: 15.0,
               letterSpacing: 0.0,

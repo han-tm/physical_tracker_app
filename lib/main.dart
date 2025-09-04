@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
       });
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      Duration(milliseconds: 1000),
+      const Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -151,7 +151,7 @@ class _NavBarPageState extends State<NavBarPage> {
       // 'RouterPage': RouterPageWidget(),
       'WorkoutsPage': WorkoutsPageWidget(),
       'JournalPage': JournalPageWidget(),
-      'FoodPage': FoodPageWidget(),
+      'FoodPage': const FoodPageWidget(),
       'LearnPage': LearnPageWidget(),
       'ProfilePage': ProfilePageWidget(),
     };

@@ -35,4 +35,17 @@ class LessonRow extends SupabaseDataRow {
 
   String? get description => getField<String>('description');
   set description(String? value) => setField<String>('description', value);
+
+  int? get lessonGroup => getField<int>('lessonGroup');
+  set lessonGroup(int? value) => setField<int>('lessonGroup', value);
+
+  int? get duration => getField<int>('duration');
+  set duration(int? value) => setField<int>('duration', value);
+
+  String? get lessonGroupName => getField<String>('lessonGroupName');
+  set lessonGroupName(String? value) =>
+      setField<String>('lessonGroupName', value);
+
+  int? get views => getField<int>('views');
+  set views(int? value) => setField<int>('views', value);
 }

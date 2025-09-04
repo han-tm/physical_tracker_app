@@ -1,3 +1,4 @@
+import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,14 +16,18 @@ class WorkoutsSurveyBodyMeasurementsPageModel
 
   // Model for generalNavBar01 component.
   late GeneralNavBar01Model generalNavBar01Model;
+  // Model for generalButton component.
+  late GeneralButtonModel generalButtonModel;
 
   @override
   void initState(BuildContext context) {
     generalNavBar01Model = createModel(context, () => GeneralNavBar01Model());
+    generalButtonModel = createModel(context, () => GeneralButtonModel());
   }
 
   @override
   void dispose() {
     generalNavBar01Model.dispose();
+    generalButtonModel.dispose();
   }
 }

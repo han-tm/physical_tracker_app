@@ -1,12 +1,21 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:boom_client/backend/supabase/database/database.dart';
+import 'package:boom_client/flutter_flow/size_utils.dart';
+import 'package:boom_client/index.dart';
+import 'package:boom_client/profile/profile_about_view/profile_about_view_widget.dart';
 import 'package:boom_client/profile/subscription/subscriptionActiveTile.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../auth/firebase_auth/auth_util.dart';
 import '../../backend/supabase/database/tables/user.dart';
 import '../../components/general_button_widget.dart';
+import '../../flutter_flow/custom_image_view.dart';
+import '../../flutter_flow/image_constant.dart';
+import '../../flutter_flow/text_style_helper.dart';
+import '../../flutter_flow/theme_helper.dart';
 import '../../start/start_page/start_page_widget.dart';
+import '../profile_personal_data_page/profile_personal_data_page_widget.dart';
+import '../sign_out_view/sign_out_view_widget.dart';
 import '../subscription/subscription_page/subscription_page_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -58,13 +67,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: FutureBuilder<List<UserRow>>(
-            future: UserTable().querySingleRow(
-              queryFn: (q) => q.eqOrNull(
-                'fb_id',
-                currentUserUid,
-              ),
-            ),
+          child: StreamBuilder<List<UserRow>>(
+            stream: _model.containerSupabaseStream1 ??= AppSupabase.instance.client
+                .from("User")
+                .stream(primaryKey: ['id'])
+                .eqOrNull(
+              'fb_id',
+              currentUserUid,
+            )
+                .map((list) => list.map((item) => UserRow(item)).toList()),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -83,18 +94,26 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               List<UserRow> containerUserRowList = snapshot.data!;
 
               final containerUserRow = containerUserRowList.isNotEmpty ? containerUserRowList.first : null;
+              // print("asdasd________${currentUserUid}");
+              if (containerUserRow == null) {
+                return const Center(
+                 child: Text("Пользователь отсутствует",style: TextStyle(color: Colors.red),),
+                );
+              }
 
               return Container(
                 decoration: BoxDecoration(),
-                child: FutureBuilder<List<SubscriptionRow>>(
-                  future: SubscriptionTable().queryRows(
-                    queryFn: (q) => q
-                        .eqOrNull(
-                          'user_id',
-                          currentUserUid,
-                        )
-                        .order('created_at'),
-                  ),
+                child: StreamBuilder<List<SubscriptionRow>>(
+                  stream: _model.containerSupabaseStream2 ??= AppSupabase.instance.client
+                      .from("Subscription")
+                      .stream(primaryKey: ['id'])
+                      .eqOrNull(
+                    'user_id',
+                    currentUserUid,
+                  )
+                      .order('created_at')
+                      .map((list) =>
+                      list.map((item) => SubscriptionRow(item)).toList()),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -115,6 +134,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     return Container(
                       decoration: BoxDecoration(),
                       child: SingleChildScrollView(
+                        padding: EdgeInsets.only(bottom: 30),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -148,7 +168,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 // height: 130.0,
@@ -166,7 +186,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   children: [
                                     if (containerSubscriptionRowList.length == 1)
                                       Padding(
-                                        padding: EdgeInsets.all(16.0),
+                                        padding: const EdgeInsets.all(16.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -239,40 +259,82 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    await authManager.signOut();
-                                    GoRouter.of(context).clearRedirectLocation();
+                            _buildMenuItems(),
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  barrierColor: Colors.black.withOpacity(0.5),
+                                  builder: (context) => SignOutViewWidget(
+                                    onConfirm: () async {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signOut();
+                                      GoRouter.of(context).clearRedirectLocation();
 
-                                    context.goNamedAuth(StartPageWidget.routeName, context.mounted);
-                                  },
-                                  text: 'Logout',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                          font: GoogleFonts.unbounded(
-                                            fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                          ),
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                          fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(8.0),
+                                      context.goNamedAuth(StartPageWidget.routeName, context.mounted);
+                                      Navigator.pop(context);
+
+                                    },
+                                    onCancel: () => Navigator.pop(context),
                                   ),
+                                );
+                              },
+                              child: Container(
+                                height: 42,
+                                padding: const EdgeInsets.symmetric(horizontal: 24),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: FlutterFlowTheme.of(context).secondaryText, width: 1),
+                                  borderRadius: BorderRadius.circular(99),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Выйти',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
+                            // Align(
+                            //   alignment: AlignmentDirectional(0.0, 0.0),
+                            //   child: Padding(
+                            //     padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                            //     child: FFButtonWidget(
+                            //       onPressed: () async {
+                            //         GoRouter.of(context).prepareAuthEvent();
+                            //         await authManager.signOut();
+                            //         GoRouter.of(context).clearRedirectLocation();
+                            //
+                            //         context.goNamedAuth(StartPageWidget.routeName, context.mounted);
+                            //       },
+                            //       text: 'Logout',
+                            //       options: FFButtonOptions(
+                            //         height: 40.0,
+                            //         padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                            //         iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            //         color: FlutterFlowTheme.of(context).primary,
+                            //         textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                            //               font: GoogleFonts.unbounded(
+                            //                 fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                            //                 fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                            //               ),
+                            //               color: Colors.white,
+                            //               letterSpacing: 0.0,
+                            //               fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                            //               fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                            //             ),
+                            //         elevation: 0.0,
+                            //         borderRadius: BorderRadius.circular(8.0),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -282,6 +344,178 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               );
             },
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuItems() {
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        children: [
+          SizedBox(height: 16),
+          _buildMenuItem(
+            iconPath: ImageConstant.imgUsersUserId,
+            title: 'Личные данные',
+            subtitle: 'Имя, возраст, рост, вес',
+            onTap: () async {
+              print('Personal data clicked');
+              await context.pushNamed(ProfilePersonalDataPageWidget.routeName);
+            },
+          ),
+          SizedBox(height: 16),
+          _buildMenuItem(
+            iconPath: ImageConstant.imgSportsDumbbells2,
+            title: 'Уровень сложности',
+            subtitle: 'Ваш уровень сложности',
+            onTap: () {
+              print('Difficulty level clicked');
+              context.pushNamed(ProfileDifficultyPageWidget.routeName);
+            },
+          ),
+          SizedBox(height: 16),
+          _buildMenuItem(
+            iconPath: ImageConstant.imgSystemBell,
+            title: 'Уведомления',
+            subtitle: 'Список уведомлений',
+            // showBadge: true,
+            // badgeCount: '1',
+            onTap: () {
+              print('Notifications clicked');
+              context.pushNamed(ProfileNotificationsPageWidget.routeName);
+            },
+          ),
+          SizedBox(height: 16),
+          _buildMenuItem(
+            iconPath: ImageConstant.imgSystemRuler,
+            title: 'Статистика замеров',
+            subtitle: 'Ваши параметры и прогресс',
+            onTap: () {
+              print('Statistics clicked');
+              context.pushNamed(ProfileMeasurementAddPageWidget.routeName);
+            },
+          ),
+          SizedBox(height: 16),
+          _buildMenuItem(
+            iconPath: ImageConstant.imgSystemIphone,
+            title: 'О приложении',
+            subtitle: 'Версия приложения: v1.0',
+            onTap: () async {
+              print('About app clicked');
+              await showModalBottomSheet(
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              enableDrag: false,
+              context: context,
+              builder: (context) {
+                return GestureDetector(
+                  onTap: () {
+                    FocusScope.of(context).unfocus();
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  child: Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: const ProfileAboutViewWidget(),
+                  ),
+                );
+              },
+              ).then((value) => safeSetState(() {}));
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuItem({
+    required String iconPath,
+    required String title,
+    required String subtitle,
+    bool showBadge = false,
+    String? badgeCount,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: appTheme.colorFF2423,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: appTheme.colorFFE27B.withValues(alpha: .12),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: CustomImageView(
+                  imagePath: iconPath,
+                  height: 20,
+                  width: 20,
+                ),
+              ),
+            ),
+            SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                      font: GoogleFonts.unbounded(
+                        fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
+                      ),
+                      fontSize: 13.0,
+                      letterSpacing: 0.0,
+                      fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                      fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      color: appTheme.colorFF6965,
+                      height: 1.23,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (showBadge && badgeCount != null) ...[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: appTheme.colorFFFF43,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  badgeCount,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: appTheme.colorFFF2F2,
+                    height: 1.27,
+                  ),
+                ),
+              ),
+              SizedBox(width: 8),
+            ],
+            CustomImageView(
+              imagePath: ImageConstant.imgArrowright,
+              height: 16,
+              width: 16,
+            ),
+          ],
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'workouts_change_program_complete_view_widget.dart'
     show WorkoutsChangeProgramCompleteViewWidget;
 import 'package:flutter/material.dart';

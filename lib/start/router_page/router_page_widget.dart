@@ -40,7 +40,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      // FFAppState().regCompleted = false;
+      // FFAppState().regCompleted = true;
       // await SupaFlow.initialize();
       // await AppSupabase.instance.client.removeAllChannels();
 
@@ -58,7 +58,10 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
             // }
             await AppSupabase.instance.updateAuthClient();
 
-            if (FFAppState().regCompleted) {
+            final userSnapshot = await AppSupabase.instance.client.from('User').select().eq('fb_id', currentUserUid).single();
+
+            // if (FFAppState().regCompleted) {
+            if (userSnapshot["name"] != "" && userSnapshot["name"] != null) {
               context.goNamed(
                 WorkoutsPageWidget.routeName,
                 extra: <String, dynamic>{

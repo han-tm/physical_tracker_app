@@ -3,6 +3,7 @@ import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/learn/lesson_cell/lesson_cell_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,6 +48,8 @@ class _LearnGroupPageWidgetState extends State<LearnGroupPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    print('isAll: ${widget.isAll}');
+    print('group: ${widget.group}');
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -65,10 +68,111 @@ class _LearnGroupPageWidgetState extends State<LearnGroupPageWidget> {
                 updateCallback: () => safeSetState(() {}),
                 child: GeneralNavBar01Widget(
                   title: valueOrDefault<String>(
-                    widget!.isAll ? 'Все уроки' : widget!.group?.name,
+                    widget.isAll ? 'Все уроки' : widget!.group?.name,
                     '-',
                   ),
                   hideBack: false,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          child: FutureBuilder<List<LessonRow>>(
+                            // future: LessonTable().queryRows(
+                            //   queryFn: (q) => widget.isAll
+                            //       ? q.order('created_at')
+                            //       : q
+                            //           .eqOrNull(
+                            //             'lessonGroup',
+                            //             widget!.group?.id,
+                            //           )
+                            //           .order('created_at'),
+                            // ),
+                            // future: widget.isAll
+                            //     ? LessonTable().queryRows(
+                            //         queryFn: (q) => q.order('created_at'),
+                            //       )
+                            //     : LessonTable().queryRows(
+                            //         queryFn: (q) => q
+                            //             .eqOrNull(
+                            //               'lessonGroup',
+                            //               widget.group?.id,
+                            //             )
+                            //             .order('created_at'),
+                            //       ),
+                            future: LessonTable().queryRows(
+                              queryFn: (q) {
+                                if (!widget.isAll && widget.group?.id != null) {
+                                  q = q.eq('lessonGroup', widget.group!.id);
+                                }
+                                return q.order('created_at');
+                              },
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<LessonRow> gridViewLessonRowList = snapshot.data!;
+                              print("asdasdasd_____________${gridViewLessonRowList.length}");
+
+                              return GridView.builder(
+                                padding: EdgeInsets.fromLTRB(
+                                  0,
+                                  8.0,
+                                  0,
+                                  20.0,
+                                ),
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 10.0,
+                                  mainAxisSpacing: 10.0,
+                                  childAspectRatio: 1.0,
+                                ),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: gridViewLessonRowList.length,
+                                itemBuilder: (context, gridViewIndex) {
+                                  final gridViewLessonRow = gridViewLessonRowList[gridViewIndex];
+                                  return wrapWithModel(
+                                    model: _model.lessonCellModels.getModel(
+                                      gridViewLessonRow.id.toString(),
+                                      gridViewIndex,
+                                    ),
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: LessonCellWidget(
+                                      key: Key(
+                                        'Keyvs4_${gridViewLessonRow.id.toString()}',
+                                      ),
+                                      lesson: gridViewLessonRow,
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ],

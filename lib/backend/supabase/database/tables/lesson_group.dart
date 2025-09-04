@@ -19,4 +19,13 @@ class LessonGroupRow extends SupabaseDataRow {
 
   String? get name => getField<String>('name');
   set name(String? value) => setField<String>('name', value);
+
+  String? get icon => getField<String>('icon');
+  set icon(String? value) => setField<String>('icon', value);
+
+  String? get bgImage => getField<String>('bg_image');
+  set bgImage(String? value) => setField<String>('bg_image', value);
+
+  int? get lessonsNumber => getField<int>('lessons_number');
+  set lessonsNumber(int? value) => setField<int>('lessons_number', value);
 }
