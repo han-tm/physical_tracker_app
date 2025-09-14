@@ -74,7 +74,6 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
         .toList()
       ..sort();
 
-    print("asd_${days}");
 
     workoutDays = days;
     user = userSnapshot;
@@ -480,7 +479,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                       builder: (BuildContext context) {
 
                         final selectedDay = currentDate!.weekday;
-                        print("asdasdfgffffff___________${selectedDay}");
+
                         // Отфильтровываем dayExercise только из недель, загруженных в модель
                         final validWeekIds = trainingProgramWeeks.map((w) => w['id']).toSet();
 
@@ -2088,15 +2087,6 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    // List<ExerciseRow> programExercisesBuf = [];
-                    // for (var i in programExerciseObjects) {
-                    //   programExercisesBuf.add(ExerciseRow(i));
-                    // }
-                    var asd =TrainingProgramRow(programMap);
-                    print("asdasd__________${asd}");
-                    for (var i in programExerciseObjects) {
-                      print("asdasd1111__________${i}");
-                    }
 
                     await Navigator.push(
                       context,

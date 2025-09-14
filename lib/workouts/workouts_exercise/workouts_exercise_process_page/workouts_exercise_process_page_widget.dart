@@ -63,7 +63,6 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
     _stopwatch = Stopwatch()..start();
     _visitedExerciseIndexes.add(_currentIndex);
 
-    print("asd____${widget.program?.name}");
   }
 
   @override

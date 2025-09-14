@@ -82,8 +82,6 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                       ),
                     ),
                     builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      // print("asdasd____________${snapshot.stackTrace}");
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(

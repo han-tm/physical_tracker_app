@@ -216,7 +216,6 @@ class _Survey05PageWidgetState extends State<Survey05PageWidget> {
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
-                              // print("asdasd____________${snapshot.stackTrace}");
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(

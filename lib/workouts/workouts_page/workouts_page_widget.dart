@@ -1122,10 +1122,6 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                     //   programExercisesBuf.add(ExerciseRow(i));
                     // }
                     var asd =TrainingProgramRow(programMap);
-                    print("asdasd__________${asd}");
-                    for (var i in programExerciseObjects) {
-                      print("asdasd1111__________${i}");
-                    }
 
                     await Navigator.push(
                       context,

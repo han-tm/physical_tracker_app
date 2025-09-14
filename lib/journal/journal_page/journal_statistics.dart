@@ -58,7 +58,6 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
         .eq('user_id', userId);
 
     _workoutResults = List<Map<String, dynamic>>.from(response);
-    print("asd__${_workoutResults}");
     user = userSnapshot;
 
     // --- Расчёт метрик ---
@@ -76,7 +75,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
           .from('user_workout_exercise')
           .select()
           .eq('workout_result_id', workoutId);
-      print("asd_________________________________${exerciseResponse}");
+
       final exercises = List<Map<String, dynamic>>.from(exerciseResponse);
       for (var exercise in exercises) {
         // totalReps += (exercise['reps'] ?? 0);

@@ -36,7 +36,6 @@ class _UserWeightViewWidgetState extends State<UserWeightViewWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
       sliderValue = widget.initValue;
       scrollController = FixedExtentScrollController(initialItem: sliderValue!.toInt()-20);
-      print("asd____${sliderValue}");
     }));
   }
 

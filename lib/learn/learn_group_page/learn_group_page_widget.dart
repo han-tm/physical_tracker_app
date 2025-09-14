@@ -131,7 +131,7 @@ class _LearnGroupPageWidgetState extends State<LearnGroupPageWidget> {
                                 );
                               }
                               List<LessonRow> gridViewLessonRowList = snapshot.data!;
-                              print("asdasdasd_____________${gridViewLessonRowList.length}");
+
 
                               return GridView.builder(
                                 padding: EdgeInsets.fromLTRB(

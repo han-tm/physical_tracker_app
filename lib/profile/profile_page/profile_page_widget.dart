@@ -94,7 +94,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               List<UserRow> containerUserRowList = snapshot.data!;
 
               final containerUserRow = containerUserRowList.isNotEmpty ? containerUserRowList.first : null;
-              // print("asdasd________${currentUserUid}");
               if (containerUserRow == null) {
                 return const Center(
                  child: Text("Пользователь отсутствует",style: TextStyle(color: Colors.red),),

@@ -50,7 +50,6 @@ class _CreatingProgramPageWidgetState extends State<CreatingProgramPageWidget> {
         await Future.delayed(const Duration(milliseconds: 500));
         if (mounted) {
           var result = context.pushNamed(SignInStartPageWidget.routeName);
-          print("asd____${result}");
         }
         return false;
       }
