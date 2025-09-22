@@ -1,3 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:boom_client/flutter_flow/theme_helper.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../userData/PreRegistrationData.dart';
@@ -5,13 +8,10 @@ import '../../userData/PreRegistrationStorage.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'survey03_page_model.dart';
 export 'survey03_page_model.dart';
 
@@ -58,14 +58,14 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+           backgroundColor: LightCodeColors().colorFF1212,
         body: SafeArea(
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 40.0,
@@ -91,25 +91,18 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Text(
                             'Шаг 3/6',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
+                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                   font: GoogleFonts.unbounded(
                                     fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                           ),
                         ),
@@ -122,22 +115,20 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             await showDialog(
-                              barrierColor: Color(0x24000000),
+                              barrierColor: const Color(0x24000000),
                               context: context,
                               builder: (dialogContext) {
                                 return Dialog(
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
+                                  alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                   child: GestureDetector(
                                     onTap: () {
                                       FocusScope.of(dialogContext).unfocus();
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
+                                      FocusManager.instance.primaryFocus?.unfocus();
                                     },
-                                    child: SkipPersonalizationWidget(),
+                                    child: const SkipPersonalizationWidget(),
                                   ),
                                 );
                               },
@@ -145,39 +136,26 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              color: FlutterFlowTheme.of(context).secondaryBackground,
                               borderRadius: BorderRadius.circular(100.0),
                               border: Border.all(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: FlutterFlowTheme.of(context).secondaryText,
                                 width: 1.0,
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 5.0, 8.0, 5.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                               child: Text(
                                 'Пропустить',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                       font: GoogleFonts.unbounded(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                       fontSize: 11.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
                               ),
                             ),
@@ -191,10 +169,9 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -202,67 +179,71 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                       children: [
                         Text(
                           'Ваш вес',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.unbounded(
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                font: GoogleFonts.unbounded(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 4.0, 0.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'Не переживайте, данные о вашем теле хранятся только в приложении и не передаются третьим лицам.',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
+                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                   font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
+                                  color: FlutterFlowTheme.of(context).secondaryText,
                                   fontSize: 13.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                           ),
                         ),
                         Expanded(
                           child: Container(
                             width: double.infinity,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                Text(
+                                  (_model.sliderValue ?? 0).toStringAsFixed(0),
+                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                        font: GoogleFonts.unbounded(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context).primaryText,
+                                        fontSize: 34.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                      ),
+                                  // style: TextStyle(
+                                  //   fontSize: 34,
+                                  //   fontWeight: FontWeight.bold,
+                                  //   color: FlutterFlowTheme.of(context).primaryText,
+                                  // ),
+                                ),
+                                const SizedBox(height: 8),
                                 SizedBox(
-                                  height: 120,
+                                  height: 92,
                                   child: RotatedBox(
                                     quarterTurns: -1,
                                     child: ListWheelScrollView.useDelegate(
                                       controller: _model.scrollController,
-                                      itemExtent: 65,
+                                      itemExtent: 14,
                                       physics: const FixedExtentScrollPhysics(),
+                                      diameterRatio: 2.0,
                                       onSelectedItemChanged: (index) {
                                         final newValue = index + 20; // от 20 до 150 кг
                                         setState(() {
@@ -278,34 +259,23 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                                           return RotatedBox(
                                             quarterTurns: 1,
                                             child: Center(
-                                              child: Container(
-                                                height: 150,
+                                              child: SizedBox(
+                                                height: 92,
                                                 // color: Colors.red,
                                                 child: Column(
                                                   mainAxisSize: MainAxisSize.min,
-                                                  // mainAxisAlignment: MainAxisAlignment.start,
-                                                  // crossAxisAlignment: CrossAxisAlignment.start,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
-                                                    SizedBox(height: isSelected?0:15),
-                                                    Text(
-                                                      '$value',
-                                                      style: TextStyle(
-                                                        fontSize: isSelected ? 32 : 12,
-                                                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                                                        color: isSelected
-                                                            ? FlutterFlowTheme.of(context).primary
-                                                            : FlutterFlowTheme.of(context).secondaryText,
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: isSelected?4:25),
                                                     Container(
-                                                      width: 2,
-                                                      height: value % 5 == 0 ? 54 : 32,
+                                                      width: (value % 5 == 0) ? 6 : 3,
+                                                      height: value % 5 == 0 ? 68 : 40,
                                                       decoration: BoxDecoration(
                                                         color: isSelected
                                                             ? FlutterFlowTheme.of(context).primary
-                                                            : FlutterFlowTheme.of(context).secondaryText.withOpacity(0.6),
-                                                        borderRadius: BorderRadius.circular(1),
+                                                            : FlutterFlowTheme.of(context)
+                                                                .secondaryText
+                                                                .withOpacity(0.6),
+                                                        borderRadius: BorderRadius.circular(16),
                                                       ),
                                                     ),
                                                   ],
@@ -322,9 +292,10 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                                 Text(
                                   'Кг',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                                        fontSize: 16,
+                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                 ),
                               ],
                             ),
@@ -336,7 +307,7 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),
@@ -347,7 +318,6 @@ class _Survey03PageWidgetState extends State<Survey03PageWidget> {
                       final existingData = await PreRegistrationStorage.load() ?? PreRegistrationData();
                       final updatedData = existingData..weight = _model.weight;
                       await PreRegistrationStorage.save(updatedData);
-
 
                       context.pushNamed(Survey04PageWidget.routeName);
                     },

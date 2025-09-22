@@ -10,7 +10,7 @@ class NutritionprogramdayTable extends SupabaseTable<NutritionprogramdayRow> {
 }
 
 class NutritionprogramdayRow extends SupabaseDataRow {
-  NutritionprogramdayRow(Map<String, dynamic> data) : super(data);
+  NutritionprogramdayRow(super.data);
 
   @override
   SupabaseTable get table => NutritionprogramdayTable();
@@ -24,9 +24,9 @@ class NutritionprogramdayRow extends SupabaseDataRow {
   int? get dayIndex => getField<int>('day_index');
   set dayIndex(int? value) => setField<int>('day_index', value);
 
-  dynamic? get totalKbzu => getField<dynamic>('total_kbzu');
-  set totalKbzu(dynamic? value) => setField<dynamic>('total_kbzu', value);
+  dynamic get totalKbzu => getField<dynamic>('total_kbzu');
+  set totalKbzu(dynamic value) => setField<dynamic>('total_kbzu', value);
 
-  dynamic? get productList => getField<dynamic>('product_list');
-  set productList(dynamic? value) => setField<dynamic>('product_list', value);
+  dynamic get productList => getField<dynamic>('product_list');
+  set productList(dynamic value) => setField<dynamic>('product_list', value);
 }

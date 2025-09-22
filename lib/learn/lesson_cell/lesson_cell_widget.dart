@@ -2,13 +2,10 @@ import '../../flutter_flow/custom_functions.dart' as functions;
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'lesson_cell_model.dart';
 export 'lesson_cell_model.dart';
 
@@ -58,7 +55,7 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
           LearnLessonPageWidget.routeName,
           queryParameters: {
             'lesson': serializeParam(
-              widget!.lesson,
+              widget.lesson,
               ParamType.SupabaseRow,
             ),
           }.withoutNulls,
@@ -68,7 +65,7 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
         width: 264.0,
         height: 287.0,
         decoration: BoxDecoration(
-          color: Color(0xFF242328),
+          color: const Color(0xFF242328),
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Column(
@@ -76,20 +73,20 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
           children: [
             Expanded(
               child: Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Stack(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.network(
-                        widget!.lesson!.cover!,
+                        widget.lesson!.cover!,
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: SvgPicture.asset(
@@ -105,17 +102,17 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
               child: Container(
                 width: double.infinity,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget!.lesson?.name,
+                        widget.lesson?.name,
                         '-',
                       ),
                       maxLines: 2,
@@ -137,7 +134,7 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
                           future: LessonGroupTable().querySingleRow(
                             queryFn: (q) => q.eqOrNull(
                               'id',
-                              widget!.lesson?.lessonGroup,
+                              widget.lesson?.lessonGroup,
                             ),
                           ),
                           builder: (context, snapshot) {
@@ -160,7 +157,7 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
                             final containerLessonGroupRow = containerLessonGroupRowList.isNotEmpty ? containerLessonGroupRowList.first : null;
 
                             return Container(
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -174,10 +171,10 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       valueOrDefault<String>(
-                                        containerLessonGroupRow?.name,
+                                        containerLessonGroupRow.name,
                                         '-',
                                       ),
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -211,10 +208,10 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  functions.formatDuration(widget!.lesson?.duration ?? 0),
+                                  functions.formatDuration(widget.lesson?.duration ?? 0),
                                   '-',
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -232,7 +229,7 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
                             ),
                           ],
                         ),
-                      ].divide(SizedBox(height: 4.0)),
+                      ].divide(const SizedBox(height: 4.0)),
                     ),
                   ],
                 ),

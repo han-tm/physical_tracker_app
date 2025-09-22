@@ -96,7 +96,7 @@ class FFUploadedFile {
 
   String serialize() => jsonEncode({
     'name': name,
-    'bytes': bytes != null ? bytes!.toList() : null,
+    'bytes': bytes?.toList(),
     'url': url,
     'height': height,
     'width': width,

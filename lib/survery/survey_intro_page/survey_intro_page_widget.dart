@@ -3,12 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'survey_intro_page_model.dart';
 export 'survey_intro_page_model.dart';
 
@@ -71,9 +68,9 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -89,7 +86,7 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Давай подберём тебе программу',
                                   textAlign: TextAlign.center,
@@ -106,7 +103,7 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Пройди короткий опрос, чтобы мы создали идеальную программу тренировок\nдля твоих целей',
                                   textAlign: TextAlign.center,
@@ -134,7 +131,7 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                     child: wrapWithModel(
                       model: _model.generalButtonModel1,
                       updateCallback: () => safeSetState(() {}),
@@ -156,7 +153,7 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                         title: 'Пропустить',
                         isActive: true,
                         backbgoundColor: Colors.transparent,
-                        borderColor: Color(0xFF302E36),
+                        borderColor: const Color(0xFF302E36),
                         onTap: () async {
                           FFAppState().surveyShown = true;
                           safeSetState(() {});
@@ -164,7 +161,7 @@ class _SurveyIntroPageWidgetState extends State<SurveyIntroPageWidget> {
                           context.goNamed(
                             RouterPageWidget.routeName,
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
+                              kTransitionInfoKey: const TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),

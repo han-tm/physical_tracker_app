@@ -10,7 +10,7 @@ class TrainingProgramTable extends SupabaseTable<TrainingProgramRow> {
 }
 
 class TrainingProgramRow extends SupabaseDataRow {
-  TrainingProgramRow(Map<String, dynamic> data) : super(data);
+  TrainingProgramRow(super.data);
 
   @override
   SupabaseTable get table => TrainingProgramTable();

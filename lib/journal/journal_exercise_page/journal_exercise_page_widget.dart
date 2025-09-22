@@ -1,16 +1,12 @@
 import '../../backend/supabase/database/tables/exercise.dart';
-import '/backend/supabase/supabase.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/journal/journal_exercise_history_view/journal_exercise_history_view_widget.dart';
-import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'journal_exercise_page_model.dart';
 export 'journal_exercise_page_model.dart';
 
@@ -67,7 +63,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
                 child: GeneralNavBar01Widget(
-                  title: widget!.exercise!.name!,
+                  title: widget.exercise!.name!,
                   hideBack: false,
                 ),
               ),
@@ -83,7 +79,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +97,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                           BorderRadius.circular(100.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 4.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -122,16 +118,16 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primary
-                                                    : Color(0x00696576),
+                                                    : const Color(0x00696576),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         100.0),
                                               ),
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 20.0, 0.0),
                                                   child: Text(
@@ -190,16 +186,16 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primary
-                                                    : Color(0x00696576),
+                                                    : const Color(0x00696576),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         100.0),
                                               ),
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 20.0, 0.0),
                                                   child: Text(
@@ -249,7 +245,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                 ],
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Text(
                                   'Жим гантелей',
@@ -273,7 +269,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -287,13 +283,13 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           border: Border.all(
-                                            color: Color(0xFF302E36),
+                                            color: const Color(0xFF302E36),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -328,7 +324,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                     ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: AutoSizeText(
@@ -384,13 +380,13 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           border: Border.all(
-                                            color: Color(0xFF302E36),
+                                            color: const Color(0xFF302E36),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -425,7 +421,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                     ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: AutoSizeText(
@@ -481,13 +477,13 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           border: Border.all(
-                                            color: Color(0xFF302E36),
+                                            color: const Color(0xFF302E36),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -522,7 +518,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                     ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: AutoSizeText(
@@ -569,11 +565,11 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 8.0)),
+                                  ].divide(const SizedBox(width: 8.0)),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
@@ -583,7 +579,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -621,7 +617,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -643,7 +639,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -737,14 +733,14 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                             width: 24.0,
                                             height: 24.0,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF653C0B),
+                                              color: const Color(0xFF653C0B),
                                               borderRadius:
                                                   BorderRadius.circular(4.0),
                                             ),
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -830,11 +826,11 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                         ],
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 16.0)),
+                                  ].divide(const SizedBox(width: 16.0)),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Text(
                                   'История',
@@ -858,7 +854,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -872,7 +868,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -880,7 +876,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Text(
@@ -912,10 +908,10 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 8.0, 12.0, 0.0),
                                                 child: Wrap(
@@ -938,7 +934,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1000,7 +996,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1061,13 +1057,13 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Container(
                                                 width: double.infinity,
                                                 height: 1.0,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   color: Color(0xFF302E36),
                                                 ),
                                               ),
@@ -1089,7 +1085,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                           context)
                                                       .secondaryBackground,
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(12.0),
                                                     bottomRight:
@@ -1115,7 +1111,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                       backgroundColor:
                                                           Colors.transparent,
                                                       barrierColor:
-                                                          Color(0x2B000000),
+                                                          const Color(0x2B000000),
                                                       enableDrag: false,
                                                       context: context,
                                                       builder: (context) {
@@ -1134,7 +1130,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                                 .viewInsetsOf(
                                                                     context),
                                                             child:
-                                                                JournalExerciseHistoryViewWidget(),
+                                                                const JournalExerciseHistoryViewWidget(),
                                                           ),
                                                         );
                                                       },
@@ -1150,7 +1146,7 @@ class _JournalExercisePageWidgetState extends State<JournalExercisePageWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,

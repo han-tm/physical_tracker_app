@@ -1,12 +1,8 @@
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workout_payment_confirmation_view_model.dart';
 export 'workout_payment_confirmation_view_model.dart';
 
@@ -45,7 +41,7 @@ class _WorkoutPaymentConfirmationViewWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -55,7 +51,7 @@ class _WorkoutPaymentConfirmationViewWidgetState
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -77,11 +73,11 @@ class _WorkoutPaymentConfirmationViewWidgetState
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                 child: Container(
                   width: double.infinity,
                   height: 1.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF302E36),
                   ),
                 ),
@@ -147,7 +143,7 @@ class _WorkoutPaymentConfirmationViewWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                 child: Text(
                   'После оплаты вы будете перенаправлены в Telegram-чат с куратором для составления персонализированной программы.',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -168,7 +164,7 @@ class _WorkoutPaymentConfirmationViewWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),

@@ -1,18 +1,7 @@
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../userData/PreRegistrationData.dart';
-import '../../userData/PreRegistrationStorage.dart';
-import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class UserAgeViewWidget extends StatefulWidget {
   const UserAgeViewWidget({super.key, required this.initDateTime, required this.onSelect});

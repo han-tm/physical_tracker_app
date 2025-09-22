@@ -5,13 +5,10 @@ import '../../workouts/workouts_page/workouts_page_widget.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'complete_registration02_page_model.dart';
 export 'complete_registration02_page_model.dart';
 
@@ -85,326 +82,356 @@ class _CompleteRegistration02PageWidgetState extends State<CompleteRegistration0
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              const SizedBox(height: 24.0),
               Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: SvgPicture.asset(
-                        'assets/images/subscr_icon.svg',
-                        width: 40.0,
-                        height: 40.0,
-                        fit: BoxFit.cover,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: SvgPicture.asset(
+                              'assets/images/subscr_icon.svg',
+                              width: 40.0,
+                              height: 40.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
-                      child: Text(
-                        'Бесплатный период',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.unbounded(
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
+                        child: Text(
+                          'Бесплатный период',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                font: GoogleFonts.unbounded(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                                fontSize: 28.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
-                              fontSize: 28.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                            ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      child: Text(
-                        'Вы получаете бесплатный доступ на 30 дней. После этого для продолжения использования приложения необходимо оформить подписку',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                              ),
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 13.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                            ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                      child: Text(
-                        'Воспользуйтесь всеми функциями',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.unbounded(
-                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                              ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                            ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF242328),
-                          borderRadius: BorderRadius.circular(16.0),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: SvgPicture.asset(
-                                  'assets/images/ckecked_icon.svg',
-                                  width: 28.0,
-                                  height: 28.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Неограниченое количесво занятий в день',
-                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF242328),
-                          borderRadius: BorderRadius.circular(16.0),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: SvgPicture.asset(
-                                  'assets/images/ckecked_icon.svg',
-                                  width: 28.0,
-                                  height: 28.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Расчёт KБЖУ и ИИ-нутрициолог',
-                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF242328),
-                          borderRadius: BorderRadius.circular(16.0),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: SvgPicture.asset(
-                                  'assets/images/ckecked_icon.svg',
-                                  width: 28.0,
-                                  height: 28.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Возможность ведения дневника тренировок',
-                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF242328),
-                          borderRadius: BorderRadius.circular(16.0),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: SvgPicture.asset(
-                                  'assets/images/ckecked_icon.svg',
-                                  width: 28.0,
-                                  height: 28.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Доступ к расширенным рекомендациям по питанию и активности',
-                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                      child: RichText(
-                        textScaler: MediaQuery.of(context).textScaler,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: _expirationDate != null
-                                  ? 'Срок действия истекает ${DateFormat('d MMMM y', 'ru').format(_expirationDate!)}\nПродлите подписку '
-                                  : 'Срок действия подписки не определён\nПродлите подписку ',
-                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        child: Text(
+                          'Вы получаете бесплатный доступ на 30 дней. После этого для продолжения использования приложения необходимо оформить подписку',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                 font: GoogleFonts.inter(
                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
                                 color: FlutterFlowTheme.of(context).secondaryText,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'здесь',
-                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                  ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  context.pushNamed(
-                                    SubscriptionPageWidget.routeName,
-                                    queryParameters: {
-                                      'fromReg': serializeParam(
-                                        true,
-                                        ParamType.bool,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                            )
-                          ],
-                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                font: GoogleFonts.unbounded(
-                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                ),
+                                fontSize: 13.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                         ),
                       ),
-                    ),
-                  ],
+                      const Padding(
+                        padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                        child: Divider(
+                          color: Color(0xFF302E36),
+                          height: 1,
+                          thickness: 1,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                        child: Text(
+                          'Воспользуйтесь всеми функциями',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                font: GoogleFonts.unbounded(
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                                letterSpacing: 0.0,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF242328),
+                            borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: SvgPicture.asset(
+                                    'assets/images/ckecked_icon.svg',
+                                    width: 28.0,
+                                    height: 28.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Неограниченое количесво занятий в день',
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 15,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF242328),
+                            borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: SvgPicture.asset(
+                                    'assets/images/ckecked_icon.svg',
+                                    width: 28.0,
+                                    height: 28.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Расчёт KБЖУ и ИИ-нутрициолог',
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 15,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF242328),
+                            borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: SvgPicture.asset(
+                                    'assets/images/ckecked_icon.svg',
+                                    width: 28.0,
+                                    height: 28.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Возможность ведения дневника тренировок',
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 15,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF242328),
+                            borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: SvgPicture.asset(
+                                    'assets/images/ckecked_icon.svg',
+                                    width: 28.0,
+                                    height: 28.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Доступ к расширенным рекомендациям по питанию и активности',
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 15,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                            child: RichText(
+                              textScaler: MediaQuery.of(context).textScaler,
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: _expirationDate != null
+                                        ? 'Срок действия истекает ${DateFormat('d MMMM y', 'ru').format(_expirationDate!)}\nПродлите подписку '
+                                        : 'Срок действия подписки не определён\nПродлите подписку ',
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context).secondaryText,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                  ),
+                                  TextSpan(
+                                    text: 'здесь',
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        context.pushNamed(
+                                          SubscriptionPageWidget.routeName,
+                                          queryParameters: {
+                                            'fromReg': serializeParam(
+                                              true,
+                                              ParamType.bool,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                  )
+                                ],
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                      font: GoogleFonts.unbounded(
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),

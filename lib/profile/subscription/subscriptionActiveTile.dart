@@ -1,4 +1,5 @@
-import 'dart:convert';
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,9 +12,9 @@ class SubscriptionActiveTile extends StatelessWidget {
   final SubscriptionRow subscription;
 
   const SubscriptionActiveTile({
-    Key? key,
+    super.key,
     required this.subscription,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class SubscriptionActiveTile extends StatelessWidget {
           ));
         }
         final plan = snapshot.data!.isNotEmpty ? snapshot.data!.first : null;
-        if (plan == null) return SizedBox();
+        if (plan == null) return const SizedBox();
 
         final List<dynamic> features = plan.features is String
             ? jsonDecode(plan.features!)
@@ -45,7 +46,7 @@ class SubscriptionActiveTile extends StatelessWidget {
             color: FlutterFlowTheme.of(context).secondaryBackground,
             borderRadius: BorderRadius.circular(16.0),
             border: Border.all(
-              color: Color(0xff302E36),
+              color: const Color(0xff302E36),
               width: 0.2,
             ),
           ),
@@ -62,7 +63,7 @@ class SubscriptionActiveTile extends StatelessWidget {
                       height: 16,
                       fit: BoxFit.cover,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Expanded(
                       child: Text(
                         plan.title ?? '-',
@@ -86,7 +87,7 @@ class SubscriptionActiveTile extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   plan.description ?? '-',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -98,7 +99,7 @@ class SubscriptionActiveTile extends StatelessWidget {
                 if (features.isNotEmpty)
                   Container(
                     width: double.infinity,
-                    margin: EdgeInsets.only(top: 12),
+                    margin: const EdgeInsets.only(top: 12),
                     decoration: BoxDecoration(
                       color: functions.textToColor(plan.color!).withAlpha(51),
                       borderRadius: BorderRadius.circular(12.0),
@@ -124,7 +125,7 @@ class SubscriptionActiveTile extends StatelessWidget {
                                     ? FlutterFlowTheme.of(context).primary
                                     : FlutterFlowTheme.of(context).secondaryText,
                               ),
-                              SizedBox(width: 9.0),
+                              const SizedBox(width: 9.0),
                               Expanded(
                                 child: Text(
                                   title,

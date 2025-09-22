@@ -1,13 +1,9 @@
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workouts_exercise_complete_view_model.dart';
 export 'workouts_exercise_complete_view_model.dart';
 
@@ -48,7 +44,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -58,7 +54,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -72,7 +68,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Text(
                 'Отличная работа!',
                 textAlign: TextAlign.center,
@@ -89,7 +85,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 'Вы успешно завершили тренировку!',
                 textAlign: TextAlign.center,
@@ -107,7 +103,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
@@ -120,7 +116,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -168,7 +164,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -216,7 +212,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -258,7 +254,7 @@ class _WorkoutsExerciseCompleteViewWidgetState extends State<WorkoutsExerciseCom
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel,
                 updateCallback: () => safeSetState(() {}),

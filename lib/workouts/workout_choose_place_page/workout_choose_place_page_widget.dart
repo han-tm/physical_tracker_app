@@ -4,12 +4,9 @@ import 'package:boom_client/index.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workout_choose_place_page_model.dart';
 export 'workout_choose_place_page_model.dart';
 
@@ -59,7 +56,7 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Где будут тренировки?',
                   hideBack: false,
                 ),
@@ -76,13 +73,13 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                                 child: Text(
                                   'где вы хотите заниматься?',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -117,7 +114,7 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
                                       title: 'Дом+зал',
                                       subtitle: '2 дня в зале 1 дома'
                                   ),
-                                ].divide(SizedBox(height: 8.0)),
+                                ].divide(const SizedBox(height: 8.0)),
                               ),
                             ],
                           ),
@@ -128,7 +125,7 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 child: GeneralButtonWidget(
                     title: "Далее",
                     isActive: _model.variantSelected != null,
@@ -163,19 +160,19 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: _model.variantSelected == index ? Color(0x21E27B00) : FlutterFlowTheme.of(context).secondary,
+          color: _model.variantSelected == index ? const Color(0x21E27B00) : FlutterFlowTheme.of(context).secondary,
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
             color: _model.variantSelected == index ? FlutterFlowTheme.of(context).primary : Colors.transparent,
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: SvgPicture.asset(
@@ -204,7 +201,7 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
                         subtitle,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(

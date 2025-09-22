@@ -1,17 +1,8 @@
 import '/components/general_button_widget.dart';
 import '/components/radio_button_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/profile/profile_age_view/profile_age_view_widget.dart';
-import '/profile/profile_gender_view/profile_gender_view_widget.dart';
-import '/profile/profile_height_view/profile_height_view_widget.dart';
-import '/profile/profile_weight_view/profile_weight_view_widget.dart';
-import 'dart:ui';
 import 'food_kbzu_data_view_widget.dart' show FoodKbzuDataViewWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class FoodKbzuDataViewModel extends FlutterFlowModel<FoodKbzuDataViewWidget> {
   ///  Local state fields for this component.

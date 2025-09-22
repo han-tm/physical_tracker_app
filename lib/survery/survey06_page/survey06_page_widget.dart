@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:boom_client/flutter_flow/theme_helper.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -10,13 +11,10 @@ import '/components/general_button_widget.dart';
 import '/components/media_select_view_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'survey06_page_model.dart';
 export 'survey06_page_model.dart';
 
@@ -57,14 +55,14 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: LightCodeColors().colorFF1212,
         body: SafeArea(
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 40.0,
@@ -90,7 +88,7 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Text(
                             'Шаг 6/6',
                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -114,20 +112,20 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             await showDialog(
-                              barrierColor: Color(0x24000000),
+                              barrierColor: const Color(0x24000000),
                               context: context,
                               builder: (dialogContext) {
                                 return Dialog(
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                  alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                   child: GestureDetector(
                                     onTap: () {
                                       FocusScope.of(dialogContext).unfocus();
                                       FocusManager.instance.primaryFocus?.unfocus();
                                     },
-                                    child: SkipPersonalizationWidget(),
+                                    child: const SkipPersonalizationWidget(),
                                   ),
                                 );
                               },
@@ -143,7 +141,7 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                               child: Text(
                                 'Пропустить',
                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -168,9 +166,9 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -191,7 +189,7 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                                 ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 32.0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 32.0),
                             child: Text(
                               'Фотографии помогут вам отслеживать прогресс и заметить реальные изменения вашего тела. Замеры и фото делаются на голодный желудок.',
                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -209,7 +207,7 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                           ),
                           Container(
                             width: double.infinity,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,185 +215,200 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                                 Text(
                                   'Примеры фото',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.unbounded(
-                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                  ),
+                                        font: GoogleFonts.unbounded(
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                      ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Expanded(
-                                        child: Container(
-                                          width: 100.0,
-                                          height: 148.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context).secondary,
-                                            borderRadius: BorderRadius.circular(16.0),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: ClipRRect(
-                                                    borderRadius: BorderRadius.circular(8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/photo_front.png',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Фото анфас',
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 1,
-                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        child: AspectRatio(
+                                          aspectRatio: 0.73,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: FlutterFlowTheme.of(context).secondary,
+                                              borderRadius: BorderRadius.circular(16.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: ClipRRect(
+                                                      borderRadius: BorderRadius.circular(8.0),
+                                                      child: Image.asset(
+                                                        'assets/images/photo_front.png',
+                                                        fit: BoxFit.cover,
                                                       ),
-                                                      color: FlutterFlowTheme.of(context).secondaryText,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                    child: Text(
+                                                      'Фото анфас',
+                                                      textAlign: TextAlign.center,
+                                                      maxLines: 1,
+                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                            font: GoogleFonts.inter(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            ),
+                                                            color: FlutterFlowTheme.of(context).secondaryText,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
                                       Expanded(
-                                        child: Container(
-                                          width: 100.0,
-                                          height: 148.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context).secondary,
-                                            borderRadius: BorderRadius.circular(16.0),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: ClipRRect(
-                                                    borderRadius: BorderRadius.circular(8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/photo_back.png',
-                                                      height: 125.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Фото со спины',
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 1,
-                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        child: AspectRatio(
+                                          aspectRatio: 0.73,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: FlutterFlowTheme.of(context).secondary,
+                                              borderRadius: BorderRadius.circular(16.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: ClipRRect(
+                                                      borderRadius: BorderRadius.circular(8.0),
+                                                      child: Image.asset(
+                                                        'assets/images/photo_back.png',
+                                                        height: 125.0,
+                                                        fit: BoxFit.cover,
                                                       ),
-                                                      color: FlutterFlowTheme.of(context).secondaryText,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                    child: Text(
+                                                      'Фото со спины',
+                                                      textAlign: TextAlign.center,
+                                                      maxLines: 1,
+                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                            font: GoogleFonts.inter(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            ),
+                                                            color: FlutterFlowTheme.of(context).secondaryText,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
                                       Expanded(
-                                        child: Container(
-                                          width: 100.0,
-                                          height: 148.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context).secondary,
-                                            borderRadius: BorderRadius.circular(16.0),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: ClipRRect(
-                                                    borderRadius: BorderRadius.circular(8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/photo_side.png',
-                                                      height: 125.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Фото боком',
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        child: AspectRatio(
+                                          aspectRatio: 0.73,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: FlutterFlowTheme.of(context).secondary,
+                                              borderRadius: BorderRadius.circular(16.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: ClipRRect(
+                                                      borderRadius: BorderRadius.circular(8.0),
+                                                      child: Image.asset(
+                                                        'assets/images/photo_side.png',
+                                                        height: 125.0,
+                                                        fit: BoxFit.cover,
                                                       ),
-                                                      color: FlutterFlowTheme.of(context).secondaryText,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                    child: Text(
+                                                      'Фото боком',
+                                                      textAlign: TextAlign.center,
+                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                            font: GoogleFonts.inter(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            ),
+                                                            color: FlutterFlowTheme.of(context).secondaryText,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 8.0)),
+                                    ].divide(const SizedBox(width: 8.0)),
                                   ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Примеры фото',
+                                    'Загрузите ваши фото',
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                      font: GoogleFonts.unbounded(
-                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                    ),
+                                          font: GoogleFonts.unbounded(
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -430,94 +443,106 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                                                 },
                                               ).then((value) => safeSetState(() {}));
                                             },
-                                            child: Container(
-                                              width: 100.0,
-                                              height: 148.0,
-                                              decoration: BoxDecoration(
-                                                color: FlutterFlowTheme.of(context).secondary,
-                                                borderRadius: BorderRadius.circular(16.0),
-                                              ),
-                                              child: Stack(
-                                                children: [
-                                                  Align(
-                                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize: MainAxisSize.max,
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius: BorderRadius.circular(8.0),
-                                                          child: SvgPicture.asset(
-                                                            'assets/images/plus_add.svg',
-                                                            width: 48.0,
-                                                            height: 48.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                                          child: Text(
-                                                            'Фото анфас',
-                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                              font: GoogleFonts.inter(
-                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                              ),
-                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                              letterSpacing: 0.0,
-                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  if (_model.photo01 != null && (_model.photo01?.bytes?.isNotEmpty ?? false))
-                                                    Container(
-                                                      width: double.infinity,
-                                                      height: double.infinity,
-                                                      decoration: BoxDecoration(),
-                                                      child: Stack(
+                                            child: AspectRatio(
+                                              aspectRatio: 0.73,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(context).secondary,
+                                                  borderRadius: BorderRadius.circular(16.0),
+                                                ),
+                                                child: Stack(
+                                                  children: [
+                                                    Align(
+                                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                                      child: Column(
+                                                        mainAxisSize: MainAxisSize.max,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
                                                         children: [
                                                           ClipRRect(
-                                                            borderRadius: BorderRadius.circular(16.0),
-                                                            child: Image.memory(
-                                                              _model.photo01?.bytes ?? Uint8List.fromList([]),
-                                                              width: double.infinity,
-                                                              height: double.infinity,
+                                                            borderRadius: BorderRadius.circular(8.0),
+                                                            child: SvgPicture.asset(
+                                                              'assets/images/plus_add.svg',
+                                                              width: 48.0,
+                                                              height: 48.0,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
-                                                          Align(
-                                                            alignment: AlignmentDirectional(1.0, -1.0),
-                                                            child: Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
-                                                              child: InkWell(
-                                                                splashColor: Colors.transparent,
-                                                                focusColor: Colors.transparent,
-                                                                hoverColor: Colors.transparent,
-                                                                highlightColor: Colors.transparent,
-                                                                onTap: () async {
-                                                                  _model.photo01 = null;
-                                                                  safeSetState(() {});
-                                                                },
-                                                                child: ClipRRect(
-                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                  child: SvgPicture.asset(
-                                                                    'assets/images/remove_photo.svg',
-                                                                    width: 36.0,
-                                                                    height: 36.0,
-                                                                    fit: BoxFit.cover,
+                                                          Padding(
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                0.0, 8.0, 0.0, 0.0),
+                                                            child: Text(
+                                                              'Фото анфас',
+                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                    font: GoogleFonts.inter(
+                                                                      fontWeight: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                    letterSpacing: 0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
-                                                                ),
-                                                              ),
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                ],
+                                                    if (_model.photo01 != null &&
+                                                        (_model.photo01?.bytes?.isNotEmpty ?? false))
+                                                      Container(
+                                                        width: double.infinity,
+                                                        height: double.infinity,
+                                                        decoration: const BoxDecoration(),
+                                                        child: Stack(
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius: BorderRadius.circular(16.0),
+                                                              child: Image.memory(
+                                                                _model.photo01?.bytes ?? Uint8List.fromList([]),
+                                                                width: double.infinity,
+                                                                height: double.infinity,
+                                                                fit: BoxFit.cover,
+                                                              ),
+                                                            ),
+                                                            Align(
+                                                              alignment: const AlignmentDirectional(1.0, -1.0),
+                                                              child: Padding(
+                                                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                    0.0, 8.0, 8.0, 0.0),
+                                                                child: InkWell(
+                                                                  splashColor: Colors.transparent,
+                                                                  focusColor: Colors.transparent,
+                                                                  hoverColor: Colors.transparent,
+                                                                  highlightColor: Colors.transparent,
+                                                                  onTap: () async {
+                                                                    _model.photo01 = null;
+                                                                    safeSetState(() {});
+                                                                  },
+                                                                  child: ClipRRect(
+                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                    child: SvgPicture.asset(
+                                                                      'assets/images/remove_photo.svg',
+                                                                      width: 36.0,
+                                                                      height: 36.0,
+                                                                      fit: BoxFit.cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -553,94 +578,106 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                                                 },
                                               ).then((value) => safeSetState(() {}));
                                             },
-                                            child: Container(
-                                              width: 100.0,
-                                              height: 148.0,
-                                              decoration: BoxDecoration(
-                                                color: FlutterFlowTheme.of(context).secondary,
-                                                borderRadius: BorderRadius.circular(16.0),
-                                              ),
-                                              child: Stack(
-                                                children: [
-                                                  Align(
-                                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize: MainAxisSize.max,
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius: BorderRadius.circular(8.0),
-                                                          child: SvgPicture.asset(
-                                                            'assets/images/plus_add.svg',
-                                                            width: 48.0,
-                                                            height: 48.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                                          child: Text(
-                                                            'Фото со спины',
-                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                              font: GoogleFonts.inter(
-                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                              ),
-                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                              letterSpacing: 0.0,
-                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  if (_model.photo02 != null && (_model.photo02?.bytes?.isNotEmpty ?? false))
-                                                    Container(
-                                                      width: double.infinity,
-                                                      height: double.infinity,
-                                                      decoration: BoxDecoration(),
-                                                      child: Stack(
+                                            child: AspectRatio(
+                                              aspectRatio: 0.73,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(context).secondary,
+                                                  borderRadius: BorderRadius.circular(16.0),
+                                                ),
+                                                child: Stack(
+                                                  children: [
+                                                    Align(
+                                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                                      child: Column(
+                                                        mainAxisSize: MainAxisSize.max,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
                                                         children: [
                                                           ClipRRect(
-                                                            borderRadius: BorderRadius.circular(16.0),
-                                                            child: Image.memory(
-                                                              _model.photo02?.bytes ?? Uint8List.fromList([]),
-                                                              width: double.infinity,
-                                                              height: double.infinity,
+                                                            borderRadius: BorderRadius.circular(8.0),
+                                                            child: SvgPicture.asset(
+                                                              'assets/images/plus_add.svg',
+                                                              width: 48.0,
+                                                              height: 48.0,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
-                                                          Align(
-                                                            alignment: AlignmentDirectional(1.0, -1.0),
-                                                            child: Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
-                                                              child: InkWell(
-                                                                splashColor: Colors.transparent,
-                                                                focusColor: Colors.transparent,
-                                                                hoverColor: Colors.transparent,
-                                                                highlightColor: Colors.transparent,
-                                                                onTap: () async {
-                                                                  _model.photo02 = null;
-                                                                  safeSetState(() {});
-                                                                },
-                                                                child: ClipRRect(
-                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                  child: SvgPicture.asset(
-                                                                    'assets/images/remove_photo.svg',
-                                                                    width: 36.0,
-                                                                    height: 36.0,
-                                                                    fit: BoxFit.cover,
+                                                          Padding(
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                0.0, 8.0, 0.0, 0.0),
+                                                            child: Text(
+                                                              'Фото со спины',
+                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                    font: GoogleFonts.inter(
+                                                                      fontWeight: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                    letterSpacing: 0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
-                                                                ),
-                                                              ),
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                ],
+                                                    if (_model.photo02 != null &&
+                                                        (_model.photo02?.bytes?.isNotEmpty ?? false))
+                                                      Container(
+                                                        width: double.infinity,
+                                                        height: double.infinity,
+                                                        decoration: const BoxDecoration(),
+                                                        child: Stack(
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius: BorderRadius.circular(16.0),
+                                                              child: Image.memory(
+                                                                _model.photo02?.bytes ?? Uint8List.fromList([]),
+                                                                width: double.infinity,
+                                                                height: double.infinity,
+                                                                fit: BoxFit.cover,
+                                                              ),
+                                                            ),
+                                                            Align(
+                                                              alignment: const AlignmentDirectional(1.0, -1.0),
+                                                              child: Padding(
+                                                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                    0.0, 8.0, 8.0, 0.0),
+                                                                child: InkWell(
+                                                                  splashColor: Colors.transparent,
+                                                                  focusColor: Colors.transparent,
+                                                                  hoverColor: Colors.transparent,
+                                                                  highlightColor: Colors.transparent,
+                                                                  onTap: () async {
+                                                                    _model.photo02 = null;
+                                                                    safeSetState(() {});
+                                                                  },
+                                                                  child: ClipRRect(
+                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                    child: SvgPicture.asset(
+                                                                      'assets/images/remove_photo.svg',
+                                                                      width: 36.0,
+                                                                      height: 36.0,
+                                                                      fit: BoxFit.cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -676,99 +713,111 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                                                 },
                                               ).then((value) => safeSetState(() {}));
                                             },
-                                            child: Container(
-                                              width: 100.0,
-                                              height: 148.0,
-                                              decoration: BoxDecoration(
-                                                color: FlutterFlowTheme.of(context).secondary,
-                                                borderRadius: BorderRadius.circular(16.0),
-                                              ),
-                                              child: Stack(
-                                                children: [
-                                                  Align(
-                                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize: MainAxisSize.max,
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius: BorderRadius.circular(8.0),
-                                                          child: SvgPicture.asset(
-                                                            'assets/images/plus_add.svg',
-                                                            width: 48.0,
-                                                            height: 48.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                                          child: Text(
-                                                            'Фото боком',
-                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                              font: GoogleFonts.inter(
-                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                              ),
-                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                              letterSpacing: 0.0,
-                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  if (_model.photo03 != null && (_model.photo03?.bytes?.isNotEmpty ?? false))
-                                                    Container(
-                                                      width: double.infinity,
-                                                      height: double.infinity,
-                                                      decoration: BoxDecoration(),
-                                                      child: Stack(
+                                            child: AspectRatio(
+                                              aspectRatio: 0.73,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(context).secondary,
+                                                  borderRadius: BorderRadius.circular(16.0),
+                                                ),
+                                                child: Stack(
+                                                  children: [
+                                                    Align(
+                                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                                      child: Column(
+                                                        mainAxisSize: MainAxisSize.max,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
                                                         children: [
                                                           ClipRRect(
-                                                            borderRadius: BorderRadius.circular(16.0),
-                                                            child: Image.memory(
-                                                              _model.photo03?.bytes ?? Uint8List.fromList([]),
-                                                              width: double.infinity,
-                                                              height: double.infinity,
+                                                            borderRadius: BorderRadius.circular(8.0),
+                                                            child: SvgPicture.asset(
+                                                              'assets/images/plus_add.svg',
+                                                              width: 48.0,
+                                                              height: 48.0,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
-                                                          Align(
-                                                            alignment: AlignmentDirectional(1.0, -1.0),
-                                                            child: Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
-                                                              child: InkWell(
-                                                                splashColor: Colors.transparent,
-                                                                focusColor: Colors.transparent,
-                                                                hoverColor: Colors.transparent,
-                                                                highlightColor: Colors.transparent,
-                                                                onTap: () async {
-                                                                  _model.photo03 = null;
-                                                                  safeSetState(() {});
-                                                                },
-                                                                child: ClipRRect(
-                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                  child: SvgPicture.asset(
-                                                                    'assets/images/remove_photo.svg',
-                                                                    width: 36.0,
-                                                                    height: 36.0,
-                                                                    fit: BoxFit.cover,
+                                                          Padding(
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                0.0, 8.0, 0.0, 0.0),
+                                                            child: Text(
+                                                              'Фото боком',
+                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                    font: GoogleFonts.inter(
+                                                                      fontWeight: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                    letterSpacing: 0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
-                                                                ),
-                                                              ),
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                ],
+                                                    if (_model.photo03 != null &&
+                                                        (_model.photo03?.bytes?.isNotEmpty ?? false))
+                                                      Container(
+                                                        width: double.infinity,
+                                                        height: double.infinity,
+                                                        decoration: const BoxDecoration(),
+                                                        child: Stack(
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius: BorderRadius.circular(16.0),
+                                                              child: Image.memory(
+                                                                _model.photo03?.bytes ?? Uint8List.fromList([]),
+                                                                width: double.infinity,
+                                                                height: double.infinity,
+                                                                fit: BoxFit.cover,
+                                                              ),
+                                                            ),
+                                                            Align(
+                                                              alignment: const AlignmentDirectional(1.0, -1.0),
+                                                              child: Padding(
+                                                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                    0.0, 8.0, 8.0, 0.0),
+                                                                child: InkWell(
+                                                                  splashColor: Colors.transparent,
+                                                                  focusColor: Colors.transparent,
+                                                                  hoverColor: Colors.transparent,
+                                                                  highlightColor: Colors.transparent,
+                                                                  onTap: () async {
+                                                                    _model.photo03 = null;
+                                                                    safeSetState(() {});
+                                                                  },
+                                                                  child: ClipRRect(
+                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                    child: SvgPicture.asset(
+                                                                      'assets/images/remove_photo.svg',
+                                                                      width: 36.0,
+                                                                      height: 36.0,
+                                                                      fit: BoxFit.cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 8.0)),
+                                      ].divide(const SizedBox(width: 8.0)),
                                     ),
                                   ),
                                 ],
@@ -776,7 +825,7 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -798,7 +847,7 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Я согласен(на) на использование моих фото (без лица и персональных данных) в рекламных целях',
                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -826,13 +875,16 @@ class _Survey06PageWidgetState extends State<Survey06PageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),
                   child: GeneralButtonWidget(
                     title: 'Создать программу',
-                    isActive: (_model.photo01 != null && (_model.photo01?.bytes?.isNotEmpty ?? false)) && (_model.photo02 != null && (_model.photo02?.bytes?.isNotEmpty ?? false)) && (_model.photo03 != null && (_model.photo03?.bytes?.isNotEmpty ?? false)) && _model.isAgree,
+                    isActive: (_model.photo01 != null && (_model.photo01?.bytes?.isNotEmpty ?? false)) &&
+                        (_model.photo02 != null && (_model.photo02?.bytes?.isNotEmpty ?? false)) &&
+                        (_model.photo03 != null && (_model.photo03?.bytes?.isNotEmpty ?? false)) &&
+                        _model.isAgree,
                     onTap: () async {
                       final photoFront = _model.photo01;
                       final photoBack = _model.photo02;

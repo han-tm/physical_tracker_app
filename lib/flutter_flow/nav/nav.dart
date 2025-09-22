@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '../../backend/supabase/database/tables/exercise.dart';
 import '../../backend/supabase/database/tables/training_program.dart';
@@ -15,10 +13,7 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 import '/index.dart';
 
@@ -88,7 +83,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const StartPageWidget(),
       routes: [
         // FFRoute(
         //   name: '_initialize',
@@ -99,12 +94,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => RouterPageWidget(),
+          builder: (context, _) => const RouterPageWidget(),
         ),
         FFRoute(
           name: StartPageWidget.routeName,
           path: StartPageWidget.routePath,
-          builder: (context, params) => StartPageWidget(),
+          builder: (context, params) => const StartPageWidget(),
         ),
         // FFRoute(
         //   name: RouterPageWidget.routeName,
@@ -118,62 +113,62 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: RouterPageWidget.routeName,
           path: RouterPageWidget.routePath,
-          builder: (context, params) => RouterPageWidget(),
+          builder: (context, params) => const RouterPageWidget(),
         ),
         FFRoute(
           name: OnboardingPageWidget.routeName,
           path: OnboardingPageWidget.routePath,
-          builder: (context, params) => OnboardingPageWidget(),
+          builder: (context, params) => const OnboardingPageWidget(),
         ),
         FFRoute(
           name: LoginPageWidget.routeName,
           path: LoginPageWidget.routePath,
-          builder: (context, params) => LoginPageWidget(),
+          builder: (context, params) => const LoginPageWidget(),
         ),
         FFRoute(
           name: SurveyIntroPageWidget.routeName,
           path: SurveyIntroPageWidget.routePath,
-          builder: (context, params) => SurveyIntroPageWidget(),
+          builder: (context, params) => const SurveyIntroPageWidget(),
         ),
         FFRoute(
           name: Survey01PageWidget.routeName,
           path: Survey01PageWidget.routePath,
-          builder: (context, params) => Survey01PageWidget(),
+          builder: (context, params) => const Survey01PageWidget(),
         ),
         FFRoute(
           name: Survey02PageWidget.routeName,
           path: Survey02PageWidget.routePath,
-          builder: (context, params) => Survey02PageWidget(),
+          builder: (context, params) => const Survey02PageWidget(),
         ),
         FFRoute(
           name: Survey03PageWidget.routeName,
           path: Survey03PageWidget.routePath,
-          builder: (context, params) => Survey03PageWidget(),
+          builder: (context, params) => const Survey03PageWidget(),
         ),
         FFRoute(
           name: Survey04PageWidget.routeName,
           path: Survey04PageWidget.routePath,
-          builder: (context, params) => Survey04PageWidget(),
+          builder: (context, params) => const Survey04PageWidget(),
         ),
         FFRoute(
           name: Survey05PageWidget.routeName,
           path: Survey05PageWidget.routePath,
-          builder: (context, params) => Survey05PageWidget(),
+          builder: (context, params) => const Survey05PageWidget(),
         ),
         FFRoute(
           name: Survey06PageWidget.routeName,
           path: Survey06PageWidget.routePath,
-          builder: (context, params) => Survey06PageWidget(),
+          builder: (context, params) => const Survey06PageWidget(),
         ),
         FFRoute(
           name: CreatingProgramPageWidget.routeName,
           path: CreatingProgramPageWidget.routePath,
-          builder: (context, params) => CreatingProgramPageWidget(),
+          builder: (context, params) => const CreatingProgramPageWidget(),
         ),
         FFRoute(
           name: SignInStartPageWidget.routeName,
           path: SignInStartPageWidget.routePath,
-          builder: (context, params) => SignInStartPageWidget(),
+          builder: (context, params) => const SignInStartPageWidget(),
         ),
         FFRoute(
           name: LoginCodePageWidget.routeName,
@@ -181,6 +176,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LoginCodePageWidget(
             phone: params.getParam(
               'phone',
+              ParamType.String,
+            ),
+            code: params.getParam(
+              'code',
               ParamType.String,
             ),
           ),
@@ -198,12 +197,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: CompleteRegistration01PageWidget.routeName,
           path: CompleteRegistration01PageWidget.routePath,
-          builder: (context, params) => CompleteRegistration01PageWidget(),
+          builder: (context, params) => const CompleteRegistration01PageWidget(),
         ),
         FFRoute(
           name: CompleteRegistration02PageWidget.routeName,
           path: CompleteRegistration02PageWidget.routePath,
-          builder: (context, params) => CompleteRegistration02PageWidget(),
+          builder: (context, params) => const CompleteRegistration02PageWidget(),
         ),
         FFRoute(
           name: SubscriptionPageWidget.routeName,
@@ -219,40 +218,40 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: LearnPageWidget.routeName,
           path: LearnPageWidget.routePath,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'LearnPage')
-              : LearnPageWidget(),
+              ? const NavBarPage(initialPage: 'LearnPage')
+              : const LearnPageWidget(),
         ),
         FFRoute(
           name: ProfilePageWidget.routeName,
           path: ProfilePageWidget.routePath,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ProfilePage')
-              : ProfilePageWidget(),
+              ? const NavBarPage(initialPage: 'ProfilePage')
+              : const ProfilePageWidget(),
         ),
         FFRoute(
           name: ProfilePersonalDataPageWidget.routeName,
           path: ProfilePersonalDataPageWidget.routePath,
-          builder: (context, params) => ProfilePersonalDataPageWidget(),
+          builder: (context, params) => const ProfilePersonalDataPageWidget(),
         ),
         FFRoute(
           name: ProfileNotificationsPageWidget.routeName,
           path: ProfileNotificationsPageWidget.routePath,
-          builder: (context, params) => ProfileNotificationsPageWidget(),
+          builder: (context, params) => const ProfileNotificationsPageWidget(),
         ),
         FFRoute(
           name: ProfileMeasureStatisticsPageWidget.routeName,
           path: ProfileMeasureStatisticsPageWidget.routePath,
-          builder: (context, params) => ProfileMeasureStatisticsPageWidget(),
+          builder: (context, params) => const ProfileMeasureStatisticsPageWidget(),
         ),
         FFRoute(
           name: ProfileMeasurementAddPageWidget.routeName,
           path: ProfileMeasurementAddPageWidget.routePath,
-          builder: (context, params) => ProfileMeasurementAddPageWidget(),
+          builder: (context, params) => const ProfileMeasurementAddPageWidget(),
         ),
         FFRoute(
           name: ProfileDifficultyPageWidget.routeName,
           path: ProfileDifficultyPageWidget.routePath,
-          builder: (context, params) => ProfileDifficultyPageWidget(),
+          builder: (context, params) => const ProfileDifficultyPageWidget(),
         ),
         FFRoute(
           name: LearnGroupPageWidget.routeName,
@@ -282,20 +281,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: FoodPageWidget.routeName,
           path: FoodPageWidget.routePath,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'FoodPage')
-              : FoodPageWidget(),
+              ? const NavBarPage(initialPage: 'FoodPage')
+              : const FoodPageWidget(),
         ),
         FFRoute(
           name: FoodPlanPageWidget.routeName,
           path: FoodPlanPageWidget.routePath,
-          builder: (context, params) => FoodPlanPageWidget(),
+          builder: (context, params) => const FoodPlanPageWidget(),
         ),
         FFRoute(
           name: JournalPageWidget.routeName,
           path: JournalPageWidget.routePath,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'JournalPage')
-              : JournalPageWidget(),
+              ? const NavBarPage(initialPage: 'JournalPage')
+              : const JournalPageWidget(),
         ),
         FFRoute(
           name: JournalExercisePageWidget.routeName,
@@ -311,30 +310,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: WorkoutsPageWidget.routeName,
           path: WorkoutsPageWidget.routePath,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'WorkoutsPage')
-              : WorkoutsPageWidget(),
+              ? const NavBarPage(initialPage: 'WorkoutsPage')
+              : const WorkoutsPageWidget(),
         ),
         FFRoute(
           name: WorkoutsIndividualProgramPromoPageWidget.routeName,
           path: WorkoutsIndividualProgramPromoPageWidget.routePath,
           builder: (context, params) =>
-              WorkoutsIndividualProgramPromoPageWidget(),
+              const WorkoutsIndividualProgramPromoPageWidget(),
         ),
         FFRoute(
           name: WorkoutsIndividualProdramUnderPreparePageWidget.routeName,
           path: WorkoutsIndividualProdramUnderPreparePageWidget.routePath,
           builder: (context, params) =>
-              WorkoutsIndividualProdramUnderPreparePageWidget(),
+              const WorkoutsIndividualProdramUnderPreparePageWidget(),
         ),
         FFRoute(
           name: WorkoutChoosePlacePageWidget.routeName,
           path: WorkoutChoosePlacePageWidget.routePath,
-          builder: (context, params) => WorkoutChoosePlacePageWidget(),
+          builder: (context, params) => const WorkoutChoosePlacePageWidget(),
         ),
         FFRoute(
           name: WorkoutHomeInventoryPageWidget.routeName,
           path: WorkoutHomeInventoryPageWidget.routePath,
-          builder: (context, params) => WorkoutHomeInventoryPageWidget(),
+          builder: (context, params) => const WorkoutHomeInventoryPageWidget(),
         ),
         FFRoute(
           name: WorkoutsExerciseProcessPageWidget.routeName,
@@ -354,58 +353,58 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: WorkoutsSurveryListPageWidget.routeName,
           path: WorkoutsSurveryListPageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveryListPageWidget(),
+          builder: (context, params) => const WorkoutsSurveryListPageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyBodyMeasurementsPageWidget.routeName,
           path: WorkoutsSurveyBodyMeasurementsPageWidget.routePath,
           builder: (context, params) =>
-              WorkoutsSurveyBodyMeasurementsPageWidget(),
+              const WorkoutsSurveyBodyMeasurementsPageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep01PageWidget.routeName,
           path: WorkoutsSurveyStep01PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep01PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep01PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep02PageWidget.routeName,
           path: WorkoutsSurveyStep02PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep02PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep02PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep03PageWidget.routeName,
           path: WorkoutsSurveyStep03PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep03PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep03PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep04PageWidget.routeName,
           path: WorkoutsSurveyStep04PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep04PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep04PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep05PageWidget.routeName,
           path: WorkoutsSurveyStep05PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep05PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep05PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep06PageWidget.routeName,
           path: WorkoutsSurveyStep06PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep06PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep06PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep07PageWidget.routeName,
           path: WorkoutsSurveyStep07PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep07PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep07PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep08PageWidget.routeName,
           path: WorkoutsSurveyStep08PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep08PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep08PageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep09PageWidget.routeName,
           path: WorkoutsSurveyStep09PageWidget.routePath,
-          builder: (context, params) => WorkoutsSurveyStep09PageWidget(),
+          builder: (context, params) => const WorkoutsSurveyStep09PageWidget(),
         ),
         FFRoute(
           name: WorkoutsExerciseDifficultyPageWidget.routeName,
@@ -656,7 +655,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

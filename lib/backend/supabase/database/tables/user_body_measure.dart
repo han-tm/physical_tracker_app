@@ -10,7 +10,7 @@ class UserBodyMeasureTable extends SupabaseTable<UserBodyMeasureRow> {
 }
 
 class UserBodyMeasureRow extends SupabaseDataRow {
-  UserBodyMeasureRow(Map<String, dynamic> data) : super(data);
+  UserBodyMeasureRow(super.data);
 
   @override
   SupabaseTable get table => UserBodyMeasureTable();

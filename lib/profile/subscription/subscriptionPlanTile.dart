@@ -12,11 +12,11 @@ class SubscriptionPlanTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const SubscriptionPlanTile({
-    Key? key,
+    super.key,
     required this.plan,
     required this.selected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class SubscriptionPlanTile extends StatelessWidget {
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(
-            color: selected ? FlutterFlowTheme.of(context).primary : Color(0xFF302E36),
+            color: selected ? FlutterFlowTheme.of(context).primary : const Color(0xFF302E36),
             width: 1.0,
           ),
         ),
@@ -83,7 +83,7 @@ class SubscriptionPlanTile extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Text(
                 plan.description ?? '-',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -95,7 +95,7 @@ class SubscriptionPlanTile extends StatelessWidget {
               if (features.isNotEmpty)
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 12),
+                  margin: const EdgeInsets.only(top: 12),
                   decoration: BoxDecoration(
                     color: functions.textToColor(plan.color!).withAlpha(51),
                     borderRadius: BorderRadius.circular(12.0),
@@ -121,7 +121,7 @@ class SubscriptionPlanTile extends StatelessWidget {
                                   ? FlutterFlowTheme.of(context).primary
                                   : FlutterFlowTheme.of(context).secondaryText,
                             ),
-                            SizedBox(width: 9.0),
+                            const SizedBox(width: 9.0),
                             Expanded(
                               child: Text(
                                 title,

@@ -11,7 +11,7 @@ class TrainingProgramWeekDayTable
 }
 
 class TrainingProgramWeekDayRow extends SupabaseDataRow {
-  TrainingProgramWeekDayRow(Map<String, dynamic> data) : super(data);
+  TrainingProgramWeekDayRow(super.data);
 
   @override
   SupabaseTable get table => TrainingProgramWeekDayTable();

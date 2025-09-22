@@ -1,19 +1,12 @@
 import 'package:boom_client/auth/firebase_auth/auth_util.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../backend/supabase/supabase.dart';
-import '../../testPage.dart';
-import '../../testVideoUpload.dart';
-import '/auth/base_auth_user_provider.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'router_page_model.dart';
 export 'router_page_model.dart';
@@ -56,7 +49,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
             // if (token != null) {
             //   await AppSupabase.instance.client.auth.setInitialSession(token);
             // }
-            await AppSupabase.instance.updateAuthClient();
+            // await AppSupabase.instance.updateAuthClient();
 
             final userSnapshot = await AppSupabase.instance.client.from('User').select().eq('fb_id', currentUserUid).single();
 
@@ -65,7 +58,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
               context.goNamed(
                 WorkoutsPageWidget.routeName,
                 extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
+                  kTransitionInfoKey: const TransitionInfo(
                     hasTransition: true,
                     transitionType: PageTransitionType.fade,
                     duration: Duration(milliseconds: 0),
@@ -76,7 +69,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
               context.goNamed(
                 CompleteRegistration01PageWidget.routeName,
                 extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
+                  kTransitionInfoKey: const TransitionInfo(
                     hasTransition: true,
                     transitionType: PageTransitionType.fade,
                     duration: Duration(milliseconds: 0),
@@ -88,7 +81,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
             context.goNamed(
               LoginPageWidget.routeName,
               extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
+                kTransitionInfoKey: const TransitionInfo(
                   hasTransition: true,
                   transitionType: PageTransitionType.fade,
                   duration: Duration(milliseconds: 0),
@@ -100,7 +93,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
           context.goNamed(
             SurveyIntroPageWidget.routeName,
             extra: <String, dynamic>{
-              kTransitionInfoKey: TransitionInfo(
+              kTransitionInfoKey: const TransitionInfo(
                 hasTransition: true,
                 transitionType: PageTransitionType.fade,
                 duration: Duration(milliseconds: 0),
@@ -112,7 +105,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
         context.goNamed(
           OnboardingPageWidget.routeName,
           extra: <String, dynamic>{
-            kTransitionInfoKey: TransitionInfo(
+            kTransitionInfoKey: const TransitionInfo(
               hasTransition: true,
               transitionType: PageTransitionType.fade,
               duration: Duration(milliseconds: 0),
@@ -156,7 +149,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
+        body: const SafeArea(
           top: true,
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
@@ -164,7 +157,7 @@ class _RouterPageWidgetState extends State<RouterPageWidget> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 40.0,
                   height: 40.0,
                   child: custom_widgets.LoadingIndiacator(

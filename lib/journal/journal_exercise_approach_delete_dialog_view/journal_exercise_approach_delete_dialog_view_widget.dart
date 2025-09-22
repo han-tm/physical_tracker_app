@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'journal_exercise_approach_delete_dialog_view_model.dart';
 export 'journal_exercise_approach_delete_dialog_view_model.dart';
 
@@ -48,21 +45,21 @@ class _JournalExerciseApproachDeleteDialogViewWidgetState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Container(
         width: double.infinity,
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 270.0,
         ),
         decoration: BoxDecoration(
-          color: Color(0xFF1A191D),
+          color: const Color(0xFF1A191D),
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
               child: Text(
                 'Удалить подход?',
                 textAlign: TextAlign.center,
@@ -81,7 +78,7 @@ class _JournalExerciseApproachDeleteDialogViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
               child: Text(
                 'Вы уверены, что хотите удалить этот подход?',
                 textAlign: TextAlign.center,
@@ -102,11 +99,11 @@ class _JournalExerciseApproachDeleteDialogViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 height: 1.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF302E36),
                 ),
               ),
@@ -127,7 +124,7 @@ class _JournalExerciseApproachDeleteDialogViewWidgetState
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     'Удалить',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -150,7 +147,7 @@ class _JournalExerciseApproachDeleteDialogViewWidgetState
             Container(
               width: double.infinity,
               height: 1.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF302E36),
               ),
             ),
@@ -169,7 +166,7 @@ class _JournalExerciseApproachDeleteDialogViewWidgetState
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     'Отмена',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(

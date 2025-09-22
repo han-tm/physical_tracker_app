@@ -1,9 +1,9 @@
+import 'package:cloud_functions/cloud_functions.dart';
+
 import '/auth/firebase_auth/auth_util.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:provider/provider.dart';
 import 'login_page_model.dart';
 export 'login_page_model.dart';
 
@@ -50,6 +49,63 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     super.dispose();
   }
 
+  String sanitizePhoneNumber(String phone) {
+    return phone.replaceAll(RegExp(r'\D'), '');
+  }
+
+  bool loading = false;
+  String? errorMessage;
+
+  Future<void> sendCode() async {
+    final phone = sanitizePhoneNumber(_model.textController.text);
+    print('send code phone: $phone');
+
+    setState(() {
+      loading = true;
+      errorMessage = null;
+    });
+    final ff = FirebaseFunctions.instance;
+
+    try {
+      final HttpsCallable callable = ff.httpsCallable('sendCodeDev', options: HttpsCallableOptions());
+      final Map<String, String> dataToSend = {'phone': phone};
+      print('Data being sent to Firebase Function: $dataToSend');
+      final HttpsCallableResult result = await callable.call(dataToSend);
+      print('Result: ${result.data}');
+      final code = result.data['code'];
+      setState(() {
+        loading = false;
+      });
+      if (mounted) {
+        context.pushNamed(
+          LoginCodePageWidget.routeName,
+          queryParameters: {
+            'phone': serializeParam(phone, ParamType.String),
+            'code': serializeParam(code, ParamType.String),
+          }.withoutNulls,
+        );
+      }
+    } on FirebaseFunctionsException catch (e) {
+      print('Firebase Functions Error: ${e.code} - ${e.message} - ${e.details}');
+      String message = e.message == 'Failed to send code due to an internal server error.'
+          ? 'Произошла ошибка при отправке кода'
+          : e.message == 'Wait before requesting another code.'
+              ? 'Подождите, прежде чем запрашивать другой код'
+              : e.message ?? e.code;
+
+      setState(() {
+        loading = false;
+        errorMessage = message;
+      });
+    } catch (e) {
+      print('Error {sendCode}: $e');
+      setState(() {
+        loading = false;
+        errorMessage = e.toString();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var scaff = GestureDetector(
@@ -59,7 +115,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: const Color(0xFF121214),
         body: SafeArea(
           top: true,
           child: Column(
@@ -67,7 +123,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +142,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: Text(
                           'Начните трансформацию тела! Персональные тренировки ждут вас.',
                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -102,7 +158,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,15 +178,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                              child: Container(
+                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                              child: SizedBox(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.textController,
                                   focusNode: _model.textFieldFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.textController',
-                                    Duration(milliseconds: 100),
+                                    const Duration(milliseconds: 100),
                                     () => safeSetState(() {}),
                                   ),
                                   autofocus: false,
@@ -158,7 +214,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -186,7 +242,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     filled: true,
-                                    fillColor: (_model.textFieldFocusNode?.hasFocus ?? false) ? Color(0x1FE27B00) : Color(0xFF242328),
+                                    fillColor: (_model.textFieldFocusNode?.hasFocus ?? false)
+                                        ? const Color(0x1FE27B00)
+                                        : const Color(0xFF242328),
                                   ),
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                         font: GoogleFonts.inter(
@@ -199,7 +257,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       ),
                                   maxLength: 18,
                                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                                  buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
+                                  buildCounter: (context, {required currentLength, required isFocused, maxLength}) =>
+                                      null,
                                   keyboardType: TextInputType.number,
                                   cursorColor: FlutterFlowTheme.of(context).primaryText,
                                   validator: _model.textControllerValidator.asValidator(context),
@@ -211,7 +270,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
                         child: Text(
                           'Мы отправим вам СМС с кодом для входа в приложение',
                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -235,7 +294,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: RichText(
                       textScaler: MediaQuery.of(context).textScaler,
                       text: TextSpan(
@@ -313,40 +372,42 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: wrapWithModel(
                       model: _model.generalButtonModel,
                       updateCallback: () => safeSetState(() {}),
                       child: GeneralButtonWidget(
                         title: 'Получить код',
-                        isActive: (_model.textController.text != null && _model.textController.text != '') && (functions.stringCount(_model.textController.text) == 18),
+                        isActive: (_model.textController.text != '') &&
+                            (functions.stringCount(_model.textController.text) == 18),
                         onTap: () async {
                           final phoneNumberVal = _model.textController.text;
-                          if (phoneNumberVal == null || phoneNumberVal.isEmpty || !phoneNumberVal.startsWith('+')) {
+                          if (phoneNumberVal.isEmpty || !phoneNumberVal.startsWith('+')) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content: Text('Phone Number is required and has to start with +.'),
                               ),
                             );
                             return;
                           }
-                          await authManager.beginPhoneAuth(
-                            context: context,
-                            phoneNumber: phoneNumberVal,
-                            onCodeSent: (context) async {
-                              context.pushNamed(
-                                LoginCodePageWidget.routeName,
-                                // context.mounted,
-                                queryParameters: {
-                                  'phone': serializeParam(
-                                    _model.textController.text,
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                                // ignoreRedirect: true,
-                              );
-                            },
-                          );
+                          await sendCode();
+                          // await authManager.beginPhoneAuth(
+                          //   context: context,
+                          //   phoneNumber: phoneNumberVal,
+                          //   onCodeSent: (context) async {
+                          //     context.pushNamed(
+                          //       LoginCodePageWidget.routeName,
+                          //       // context.mounted,
+                          //       queryParameters: {
+                          //         'phone': serializeParam(
+                          //           _model.textController.text,
+                          //           ParamType.String,
+                          //         ),
+                          //       }.withoutNulls,
+                          //       // ignoreRedirect: true,
+                          //     );
+                          //   },
+                          // );
                         },
                       ),
                     ),

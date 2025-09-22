@@ -1,11 +1,8 @@
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'food_pro_subscription_view_model.dart';
 export 'food_pro_subscription_view_model.dart';
 
@@ -44,7 +41,7 @@ class _FoodProSubscriptionViewWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -54,13 +51,13 @@ class _FoodProSubscriptionViewWidgetState
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
               child: Text(
                 'PRO подписка',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -109,7 +106,7 @@ class _FoodProSubscriptionViewWidgetState
                   ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Container(
                 width: 100.0,
                 height: 100.0,
@@ -122,7 +119,7 @@ class _FoodProSubscriptionViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Text(
                 'О подписке',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -156,7 +153,7 @@ class _FoodProSubscriptionViewWidgetState
                   ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel,
                 updateCallback: () => safeSetState(() {}),

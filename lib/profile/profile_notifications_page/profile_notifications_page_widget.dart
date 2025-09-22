@@ -6,12 +6,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/profile/profile_notifications_settings_view/profile_notifications_settings_view_widget.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_notifications_page_model.dart';
 export 'profile_notifications_page_model.dart';
 
@@ -85,7 +82,7 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
               List<NotificationRow> containerNotificationRowList = snapshot.data!;
 
               return Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -113,7 +110,7 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: SvgPicture.asset(
@@ -128,7 +125,7 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                               child: Text(
                                 'Уведомления',
                                 textAlign: TextAlign.center,
@@ -155,7 +152,7 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
-                                barrierColor: Color(0x2A000000),
+                                barrierColor: const Color(0x2A000000),
                                 enableDrag: false,
                                 context: context,
                                 builder: (context) {
@@ -166,7 +163,7 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                                     },
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: ProfileNotificationsSettingsViewWidget(),
+                                      child: const ProfileNotificationsSettingsViewWidget(),
                                     ),
                                   );
                                 },
@@ -179,7 +176,7 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: SvgPicture.asset(
@@ -199,18 +196,18 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                       child: Container(
                         width: double.infinity,
                         height: 100.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Builder(
                           builder: (context) {
                             final notifications = containerNotificationRowList.toList();
                             if (notifications.isEmpty) {
-                              return Center(
+                              return const Center(
                                 child: ProfileNotificationNoDataViewWidget(),
                               );
                             }
 
                             return ListView.separated(
-                              padding: EdgeInsets.fromLTRB(
+                              padding: const EdgeInsets.fromLTRB(
                                 0,
                                 16.0,
                                 0,
@@ -219,19 +216,19 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: notifications.length,
-                              separatorBuilder: (_, __) => SizedBox(height: 8.0),
+                              separatorBuilder: (_, __) => const SizedBox(height: 8.0),
                               itemBuilder: (context, notificationsIndex) {
                                 final notificationsItem = notifications[notificationsIndex];
                                 return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF1A191D),
+                                      color: const Color(0xFF1A191D),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: const EdgeInsets.all(16.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -253,7 +250,7 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                                                 ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
                                                 notificationsItem.body,
@@ -273,9 +270,9 @@ class _ProfileNotificationsPageWidgetState extends State<ProfileNotificationsPag
                                             ),
                                           ),
                                           Align(
-                                            alignment: AlignmentDirectional(1.0, 0.0),
+                                            alignment: const AlignmentDirectional(1.0, 0.0),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
                                                   dateTimeFormat(

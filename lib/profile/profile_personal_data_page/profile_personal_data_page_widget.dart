@@ -256,14 +256,12 @@
 //   }
 // }
 
-import 'dart:io';
+
 import 'package:boom_client/backend/supabase/database/database.dart';
-import 'package:boom_client/backend/supabase/database/tables/user.dart';
 import 'package:boom_client/components/general_button_widget.dart';
 import 'package:boom_client/profile/profile_age_view/profile_age_view_widget.dart';
 import 'package:boom_client/profile/profile_height_view/profile_height_view_widget.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../auth/firebase_auth/auth_util.dart';
 import '../profile_weight_view/profile_weight_view_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -337,12 +335,12 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
     final picked = await picker.pickImage(source: ImageSource.gallery);
     if (picked == null) return;
 
-    final file = File(picked.path);
+    // final file = File(picked.path);
     final filename = '${currentUserUid}_${DateTime.now().millisecondsSinceEpoch}.jpg';
 
     final storage = Supabase.instance.client.storage;
     final bucket = storage.from('boom-bucket');
-    final res = await bucket.upload('avatars/$filename', file);
+    // final res = await bucket.upload('avatars/$filename', file);
 
     final publicUrl = bucket.getPublicUrl('avatars/$filename');
     setState(() {
@@ -370,7 +368,7 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
         top: true,
         child: Column(
           children: [
-            GeneralNavBar01Widget(title: 'Личные данные', hideBack: false),
+            const GeneralNavBar01Widget(title: 'Личные данные', hideBack: false),
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
@@ -398,7 +396,7 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
                     const SizedBox(height: 12),
                     _buildStaticButton('Вес', weight?.toString() ?? '-', 'Кг'),
                     const SizedBox(height: 24),
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: OutlinedButton.icon(
                         onPressed: () {},
@@ -474,7 +472,7 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
             await showModalBottomSheet(
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
-              barrierColor: Color(0x1F000000),
+              barrierColor: const Color(0x1F000000),
               enableDrag: false,
               context: context,
               builder: (context) {
@@ -487,7 +485,7 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
                     padding: MediaQuery.viewInsetsOf(context),
                     child: title == "Возраст"
                         ? ProfileAgeViewWidget(
-                            initDateTime: DateTime.now().subtract(Duration(days: 365 * 10)),
+                            initDateTime: DateTime.now().subtract(const Duration(days: 365 * 10)),
                             onSelect: (value) async {
                               await UserTable().update(
                                 data: {

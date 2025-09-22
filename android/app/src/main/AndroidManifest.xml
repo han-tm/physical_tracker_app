@@ -7,11 +7,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" tools:replace="android:maxSdkVersion"/>
 
     <application
-        android:label="Boom"
+        android:label="ЯBoom"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
-
+        <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@mipmap/ic_stat_notification_icon" />
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"

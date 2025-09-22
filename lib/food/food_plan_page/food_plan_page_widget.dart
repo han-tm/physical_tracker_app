@@ -1,19 +1,15 @@
 import 'package:boom_client/auth/firebase_auth/auth_util.dart';
 import 'package:boom_client/flutter_flow/custom_functions.dart';
-import 'package:flutter/rendering.dart';
 
 import '../../backend/supabase/supabase.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/food/food_plan_food_list_view/food_plan_food_list_view_widget.dart';
 import '/food/food_plan_food_recipe_view/food_plan_food_recipe_view_widget.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'food_plan_page_model.dart';
 export 'food_plan_page_model.dart';
 
@@ -131,7 +127,6 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
     () async {
       // Получаем текущего пользователя
       final uUid = currentUserUid;
-      if (uUid == null) return;
       final response = await AppSupabase.instance.client.from('nutrition_program').select('id').eq('user_id', uUid).order('created_at', ascending: false).limit(1).maybeSingle();
 
       if (response != null) {
@@ -181,7 +176,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'План питания',
                   hideBack: false,
                 ),
@@ -189,19 +184,19 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -211,7 +206,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
-                                      barrierColor: Color(0x2D000000),
+                                      barrierColor: const Color(0x2D000000),
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {
@@ -222,7 +217,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                                           },
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(context),
-                                            child: FoodPlanFoodListViewWidget(),
+                                            child: const FoodPlanFoodListViewWidget(),
                                           ),
                                         );
                                       },
@@ -235,12 +230,12 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(8.0),
                                               child: SvgPicture.asset(
@@ -270,7 +265,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
                                                     'Список продуктов на (7 дней)',
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -358,7 +353,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                                 ],
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
                                 child: Builder(
                                   builder: (context) {
                                     final daysList = _model.days.toList();
@@ -406,17 +401,17 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                                               ),
                                             ),
                                           );
-                                        }).divide(SizedBox(width: 4.0)),
+                                        }).divide(const SizedBox(width: 4.0)),
                                       ),
                                     );
                                   },
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       // color: FlutterFlowTheme.of(context).secondary,
                                       // borderRadius: BorderRadius.circular(12.0),
                                       ),
@@ -472,7 +467,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
               child: Text(
                 capitalize(meal['type'] ?? 'Приём пищи'),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -488,7 +483,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 12),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 12),
               child: Wrap(
                 spacing: 8,
                 runSpacing: 0,
@@ -570,7 +565,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -578,11 +573,11 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                  padding: const EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
                   child: Row(
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: SvgPicture.asset(
@@ -632,7 +627,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
             Container(
               width: double.infinity,
               height: 1,
-              color: Color(0xFF302E36),
+              color: const Color(0xFF302E36),
             ),
             InkWell(
               splashColor: Colors.transparent,
@@ -643,7 +638,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                 await showModalBottomSheet(
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,
-                  barrierColor: Color(0x43000000),
+                  barrierColor: const Color(0x43000000),
                   enableDrag: false,
                   context: context,
                   builder: (context) {
@@ -671,7 +666,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
               child: Container(
                 width: double.infinity,
                 height: 48,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -686,7 +681,7 @@ class _FoodPlanPageWidgetState extends State<FoodPlanPageWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
                       child: Text(
                         'Рецепт',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(

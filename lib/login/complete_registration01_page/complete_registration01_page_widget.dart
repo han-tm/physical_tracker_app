@@ -1,23 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../backend/supabase/database/database.dart';
-import '../../flutter_flow/upload_data.dart';
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/components/general_button_widget.dart';
 import '/components/general_text_field_widget.dart';
 import '/components/media_select_view_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'complete_registration01_page_model.dart';
 export 'complete_registration01_page_model.dart';
 
@@ -47,12 +41,12 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
     _model = createModel(context, () => CompleteRegistration01PageModel());
 
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      final token = await FirebaseAuth.instance.currentUser?.getIdToken();
-      final uid = FirebaseAuth.instance.currentUser?.uid;
-      final tokenSupabse = await AppSupabase.instance.client.accessToken?.call();
-      print('Firebase token: $token');
-      print('Firebase UID: $uid');
-      print('Supabase token: $tokenSupabse');
+      // final token = await FirebaseAuth.instance.currentUser?.getIdToken();
+      // final uid = FirebaseAuth.instance.currentUser?.uid;
+      // final tokenSupabse = await AppSupabase.instance.client.accessToken?.call();
+      // print('Firebase token: $token');
+      // print('Firebase UID: $uid');
+      // print('Supabase token: $tokenSupabse');
 
       _loadUserData();
 
@@ -109,9 +103,10 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
         body: SafeArea(
           top: true,
           child: _isLoading
-              ? Center(child: CircularProgressIndicator(
-            color: FlutterFlowTheme.of(context).primary,
-          ))
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ))
               : Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -129,7 +124,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(16.0),
+                                    padding: const EdgeInsets.all(16.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -137,11 +132,11 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                           width: 40.0,
                                           height: 40.0,
                                           decoration: BoxDecoration(
-                                            color: Color(0xFF242328),
+                                            color: const Color(0xFF242328),
                                             borderRadius: BorderRadius.circular(16.0),
                                           ),
                                           child: Align(
-                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                            alignment: const AlignmentDirectional(0.0, 0.0),
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(8.0),
                                               child: SvgPicture.asset(
@@ -155,7 +150,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                         ),
                                         Expanded(
                                           child: Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(9.0, 0.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(9.0, 0.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,17 +169,20 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
                                                     'Добавьте информацию о себе',
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                           font: GoogleFonts.inter(
-                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                           ),
                                                           color: FlutterFlowTheme.of(context).secondaryText,
                                                           letterSpacing: 0.0,
-                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                         ),
                                                   ),
@@ -198,7 +196,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                   ),
                                   Builder(
                                     builder: (context) => Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -208,7 +206,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
-                                            barrierColor: Color(0x1F000000),
+                                            barrierColor: const Color(0x1F000000),
                                             enableDrag: false,
                                             context: context,
                                             builder: (context) {
@@ -220,7 +218,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                                 child: Padding(
                                                   padding: MediaQuery.viewInsetsOf(context),
                                                   child: MediaSelectViewWidget(
-                                                    onMediaSelect: (media) async {
+                                                    onMediaSelect: (media) {
                                                       _model.image = media;
                                                       safeSetState(() {});
                                                     },
@@ -263,7 +261,8 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                                 ),
                                               Align(
                                                 alignment: Alignment.bottomRight,
-                                                child: SvgPicture.asset('assets/images/edit_icon.svg', width: 24, height: 24),
+                                                child: SvgPicture.asset('assets/images/edit_icon.svg',
+                                                    width: 24, height: 24),
                                               ),
                                               // Container(
                                               //   width: double.infinity,
@@ -299,7 +298,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                               //     ),
                                               //   ),
                                               Align(
-                                                alignment: AlignmentDirectional(1.0, 1.0),
+                                                alignment: const AlignmentDirectional(1.0, 1.0),
                                                 child: ClipRRect(
                                                   borderRadius: BorderRadius.circular(8.0),
                                                   child: SvgPicture.asset(
@@ -317,7 +316,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                     child: wrapWithModel(
                                       model: _model.generalTextFieldModel,
                                       updateCallback: () => safeSetState(() {}),
@@ -338,7 +337,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: wrapWithModel(
                                 model: _model.generalButtonModel,
                                 updateCallback: () => safeSetState(() {}),
@@ -357,8 +356,11 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                     //     // .withHeaders({'Prefer': 'return=minimal'})   // ← ничего не возвращать
                                     //     // .debug()                            // главное — получить CURL
                                     //     .execute();
+                                    final name = _model.name?.trim();
 
-                                    if (_model.name == null || _model.name!.isEmpty) return;
+                                    if (name == null || name.isEmpty) return;
+
+                                     FocusManager.instance.primaryFocus?.unfocus();
 
                                     final supabase = AppSupabase.instance.client;
                                     final fbId = currentUserUid;
@@ -370,16 +372,16 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                       final fileName = 'user_avatars/$fbId.jpg';
                                       try {
                                         await supabase.storage.from('boom-bucket').uploadBinary(
-                                          fileName,
-                                          _model.image!.bytes!,
-                                          fileOptions: FileOptions(
-                                            contentType: 'image/jpeg',
-                                            upsert: true,
-                                            metadata: {
-                                              'owner': currentUserUid,
-                                            },
-                                          ),
-                                        );
+                                              fileName,
+                                              _model.image!.bytes!,
+                                              fileOptions: FileOptions(
+                                                contentType: 'image/jpeg',
+                                                upsert: true,
+                                                metadata: {
+                                                  'owner': currentUserUid,
+                                                },
+                                              ),
+                                            );
                                         final baseUrl = supabase.storage.from('boom-bucket').getPublicUrl(fileName);
                                         publicImageUrl = '$baseUrl?t=${DateTime.now().millisecondsSinceEpoch}';
                                       } catch (e) {
@@ -390,16 +392,14 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                     }
 
                                     var dataToSave = {
-                                      'fb_id': fbId,
-                                      'name': _model.name,
-                                      'image': publicImageUrl ?? '',
-                                      'phone_number': currentUserDocument?.phoneNumber,
+                                      'name': name,
+                                      'image': publicImageUrl,
                                     };
-                                    print("dataToSave: ${dataToSave}");
+                                    print("dataToSave: $dataToSave");
 
                                     // Добавление или обновление записи в таблице User
                                     try {
-                                      await supabase.from('User').upsert(dataToSave, onConflict: 'fb_id');
+                                      await supabase.from('User').update(dataToSave).eq('fb_id', fbId);
                                     } catch (e) {
                                       print('Ошибка сохранения в Supabase: $e');
                                       ScaffoldMessenger.of(context).showSnackBar(
@@ -409,9 +409,6 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                     }
 
                                     try {
-                                      final supabase = AppSupabase.instance.client;
-                                      final fbId = currentUserUid;
-
                                       // 1. Получаем последний план
                                       final plans = await supabase
                                           .from('SubscriptionPlan')
@@ -423,7 +420,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                       if (plans == null) {
                                         print('Нет доступных планов.');
                                         ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(content: Text('Не удалось найти тарифный план.')),
+                                          const SnackBar(content: Text('Не удалось найти тарифный план.')),
                                         );
                                         return;
                                       }
@@ -431,7 +428,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                       final planId = plans['type'] as int;
 
                                       // 2. Создаём подписку
-                                      final expirationDate = DateTime.now().add(Duration(days: 30));
+                                      final expirationDate = DateTime.now().add(const Duration(days: 30));
                                       await supabase.from('Subscription').insert({
                                         'user_id': fbId,
                                         'plan_id': planId,

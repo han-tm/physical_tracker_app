@@ -1,18 +1,8 @@
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../userData/PreRegistrationData.dart';
-import '../../userData/PreRegistrationStorage.dart';
-import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class UserWeightViewWidget extends StatefulWidget {
   const UserWeightViewWidget({super.key, required this.initValue, required this.onSelect});
@@ -49,7 +39,7 @@ class _UserWeightViewWidgetState extends State<UserWeightViewWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -79,7 +69,7 @@ class _UserWeightViewWidgetState extends State<UserWeightViewWidget> {
                     return RotatedBox(
                       quarterTurns: 1,
                       child: Center(
-                        child: Container(
+                        child: SizedBox(
                           height: 150,
                           // color: Colors.red,
                           child: Column(

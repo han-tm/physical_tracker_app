@@ -1,20 +1,14 @@
 import '../subscriptionPlanTile.dart';
 import '../subscription_confirm_view/subscription_confirm_view_widget.dart';
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'subscription_page_model.dart';
 export 'subscription_page_model.dart';
 
@@ -22,7 +16,7 @@ class SubscriptionPageWidget extends StatefulWidget {
   const SubscriptionPageWidget({
     super.key,
     bool? fromReg,
-  }) : this.fromReg = fromReg ?? false;
+  }) : fromReg = fromReg ?? false;
 
   final bool fromReg;
 
@@ -69,7 +63,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Подписка',
                   // hideBack: widget!.fromReg,
                   hideBack: false,
@@ -87,7 +81,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +100,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Получите максимальную пользу от тренировок с нашими планами подписки',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -144,7 +138,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                   List<SubscriptionPlanRow> listViewSubscriptionPlanRowList = snapshot.data!;
 
                                   return ListView.separated(
-                                    padding: EdgeInsets.fromLTRB(
+                                    padding: const EdgeInsets.fromLTRB(
                                       0,
                                       16.0,
                                       0,
@@ -154,13 +148,13 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     itemCount: listViewSubscriptionPlanRowList.length,
-                                    separatorBuilder: (_, __) => SizedBox(height: 8.0),
+                                    separatorBuilder: (_, __) => const SizedBox(height: 8.0),
                                     itemBuilder: (context, listViewIndex) {
                                       final listViewSubscriptionPlanRow = listViewSubscriptionPlanRowList[listViewIndex];
 
-                                      final List<dynamic> features = listViewSubscriptionPlanRow.features is String
-                                          ? jsonDecode(listViewSubscriptionPlanRow.features!)
-                                          : (listViewSubscriptionPlanRow.features ?? []);
+                                      // final List<dynamic> features = listViewSubscriptionPlanRow.features is String
+                                      //     ? jsonDecode(listViewSubscriptionPlanRow.features!)
+                                      //     : (listViewSubscriptionPlanRow.features ?? []);
 
                                       return SubscriptionPlanTile(
                                         plan: listViewSubscriptionPlanRow,
@@ -188,7 +182,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                 child: Text(
                                   'Подписка автоматически продлевается в конце оплаченного периода. Вы можете отменить автопродление в любое время в настройках аккаунта.\nОтмена подписки не приведёт к возврату средств за текущий оплаченный период, но вы сможете пользоваться всеми функциями до его окончания.',
                                   textAlign: TextAlign.start,
@@ -210,18 +204,18 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                             ],
                           ),
                         ),
-                      ].addToStart(SizedBox(height: 16.0)).addToEnd(SizedBox(height: 24.0)),
+                      ].addToStart(const SizedBox(height: 16.0)).addToEnd(const SizedBox(height: 24.0)),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: RichText(
                         textScaler: MediaQuery.of(context).textScaler,
                         text: TextSpan(
@@ -308,7 +302,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
-                            barrierColor: Color(0x2B000000),
+                            barrierColor: const Color(0x2B000000),
                             enableDrag: false,
                             context: context,
                             builder: (context) {

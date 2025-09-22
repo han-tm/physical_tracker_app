@@ -15,7 +15,7 @@ import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../workouts/workouts_exercise/workouts_exercise_process_page/workouts_exercise_process_page_widget.dart';
 
 class JournalCalendarWidget extends StatefulWidget {
-  const JournalCalendarWidget();
+  const JournalCalendarWidget({super.key});
 
   @override
   State<JournalCalendarWidget> createState() => _JournalCalendarWidgetState();
@@ -167,20 +167,20 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
             ),
           )
         : Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondary,
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -444,7 +444,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                             //   locale: "ru",
                             // ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -519,12 +519,12 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
 
 
                         return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -546,7 +546,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                 child: ListView(
                                   padding: const EdgeInsets.all(16),
                                   shrinkWrap: true,
@@ -558,7 +558,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                           (p) => p['id'] == entry.key,
                                       orElse: () => <String, dynamic>{},
                                     );
-                                    if (programMap.isEmpty) return SizedBox.shrink();
+                                    if (programMap.isEmpty) return const SizedBox.shrink();
 
                                     final programExercises = entry.value;
 
@@ -1011,7 +1011,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                     ),
                   //MARK: Выполненные тренировки (Динамический блок)
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -1035,7 +1035,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                             borderRadius: BorderRadius.circular(100.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
                             child: Text(
                               dateTimeFormat(
                                 "d MMM",
@@ -1065,28 +1065,28 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                   //MARK: Блок с тренировками которые выполнены (статический пример)
                   else
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                 borderRadius: BorderRadius.circular(12.0),
                                 border: Border.all(
-                                  color: Color(0xFF302E36),
+                                  color: const Color(0xFF302E36),
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(0.0),
                                         child: SvgPicture.asset(
@@ -1099,7 +1099,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                     ),
                                     //MARK: Нет записей о тренировках в выбранный день
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 16.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 16.0),
                                       child: Text(
                                         'На этот день нет записей о тренировках',
                                         textAlign: TextAlign.center,
@@ -1490,7 +1490,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                         ],
                       ),
                     ),
-                ].addToEnd(SizedBox(height: 50.0)),
+                ].addToEnd(const SizedBox(height: 50.0)),
               ),
             ),
           );
@@ -1498,14 +1498,14 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
 
   Widget renderWorkoutDone(Map<String, dynamic>? completedWorkoutResult) {
     print('Программа: ${completedWorkoutResult!['program_id']}');
-    print('Время: ${completedWorkoutResult!['duration']} сек');
-    print('Калории: ${completedWorkoutResult!['calories']} ккал');
+    print('Время: ${completedWorkoutResult['duration']} сек');
+    print('Калории: ${completedWorkoutResult['calories']} ккал');
     for (var i in completedWorkoutExercises) {
-      print('зав: ${i}');
+      print('зав: $i');
     }
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -1513,12 +1513,12 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -1584,7 +1584,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
-                                    color: Color(0xFF36CF77),
+                                    color: const Color(0xFF36CF77),
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -1599,11 +1599,11 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                 child: Container(
                   width: double.infinity,
                   height: 1.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF302E36),
                   ),
                 ),
@@ -1671,11 +1671,11 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
-                                          color: Color(0x21FFCE49),
+                                          color: const Color(0x21FFCE49),
                                           borderRadius: BorderRadius.circular(100.0),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
                                           child: Text(
                                             '${containerExerciseRow?.approach}х${containerExerciseRow?.repetitions}',
                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1683,7 +1683,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                               ),
-                                              color: Color(0xFFFFCE49),
+                                              color: const Color(0xFFFFCE49),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1694,11 +1694,11 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                       ),
                                       Container(
                                         decoration: BoxDecoration(
-                                          color: Color(0x21FFCE49),
+                                          color: const Color(0x21FFCE49),
                                           borderRadius: BorderRadius.circular(100.0),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
                                           child: Text(
                                             '${containerExerciseRow?.weight} кг',
                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1706,7 +1706,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                               ),
-                                              color: Color(0xFFFFCE49),
+                                              color: const Color(0xFFFFCE49),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1715,7 +1715,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 8.0)),
+                                    ].divide(const SizedBox(width: 8.0)),
                                   ),
                                 ],
                               ),
@@ -1724,7 +1724,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                         );
                       },
                     ),
-                  ].divide(SizedBox(height: 8.0)),
+                  ].divide(const SizedBox(height: 8.0)),
                 ),
               ),
               // Padding(
@@ -1814,12 +1814,12 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
     DateTime? newSelectedDay, [
     DateTime? newSelectedEnd,
   ]) {
-    final newRange = newSelectedDay == null
-        ? null
-        : DateTimeRange(
-            start: newSelectedDay.startOfDay,
-            end: newSelectedEnd ?? newSelectedDay.endOfDay,
-          );
+    // final newRange = newSelectedDay == null
+    //     ? null
+    //     : DateTimeRange(
+    //         start: newSelectedDay.startOfDay,
+    //         end: newSelectedEnd ?? newSelectedDay.endOfDay,
+    //       );
     setState(() {
       currentDate = newSelectedDay ?? currentDate;
       // Очистить старые данные о завершенной тренировке
@@ -1835,7 +1835,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
 
     // Форматируем дату начала и конца дня
     final dayStart = DateTime(date.year, date.month, date.day);
-    final dayEnd = dayStart.add(Duration(days: 1));
+    final dayEnd = dayStart.add(const Duration(days: 1));
 
     final resultResponse = await AppSupabase.instance.client.from('user_workout_result').select().eq('user_id', userId).gte('completed_at', dayStart.toIso8601String()).lt('completed_at', dayEnd.toIso8601String()).maybeSingle();
 
@@ -1902,7 +1902,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -1922,9 +1922,9 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                           child: Wrap(
                             spacing: 4.0,
                             runSpacing: 4.0,
@@ -1939,7 +1939,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: SvgPicture.asset(
@@ -1981,17 +1981,17 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                 child: Container(
                   width: double.infinity,
                   height: 1.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF302E36),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -2002,10 +2002,10 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                             (e) => e['id'] == exerciseEntry['exercise'],
                         orElse: () => <String, dynamic>{},
                       );
-                      if (exercise.isEmpty) return SizedBox.shrink();
+                      if (exercise.isEmpty) return const SizedBox.shrink();
 
                       return Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -2013,11 +2013,11 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                               width: 32.0,
                               height: 32.0,
                               decoration: BoxDecoration(
-                                color: Color(0xFF1A191D),
+                                color: const Color(0xFF1A191D),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '${index+1}',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2036,7 +2036,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -2075,12 +2075,12 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                           ],
                         ),
                       );
-                    }).toList(),
-                  ].divide(SizedBox(height: 8.0)),
+                    }),
+                  ].divide(const SizedBox(height: 8.0)),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -2130,7 +2130,7 @@ class _JournalCalendarWidgetState extends State<JournalCalendarWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(0.0),
                             child: SvgPicture.asset(

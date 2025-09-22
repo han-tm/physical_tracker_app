@@ -2,11 +2,8 @@ import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workouts_survey_body_measurements_page_model.dart';
 export 'workouts_survey_body_measurements_page_model.dart';
 
@@ -59,7 +56,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Замеры тела',
                   hideBack: false,
                 ),
@@ -67,13 +64,13 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -89,7 +86,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -140,7 +137,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x21E27B00),
+                                                    color: const Color(0x21E27B00),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             100.0),
@@ -153,7 +150,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 4.0,
                                                                 12.0, 4.0),
                                                     child: Text(
@@ -191,7 +188,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 0.0, 0.0),
                                                   child: Icon(
@@ -224,7 +221,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -275,7 +272,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x21E27B00),
+                                                    color: const Color(0x21E27B00),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             100.0),
@@ -288,7 +285,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 4.0,
                                                                 12.0, 4.0),
                                                     child: Text(
@@ -326,7 +323,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 0.0, 0.0),
                                                   child: Icon(
@@ -359,7 +356,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -410,7 +407,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x21E27B00),
+                                                    color: const Color(0x21E27B00),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             100.0),
@@ -423,7 +420,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 4.0,
                                                                 12.0, 4.0),
                                                     child: Text(
@@ -461,7 +458,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 0.0, 0.0),
                                                   child: Icon(
@@ -494,7 +491,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -545,7 +542,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x21E27B00),
+                                                    color: const Color(0x21E27B00),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             100.0),
@@ -558,7 +555,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 4.0,
                                                                 12.0, 4.0),
                                                     child: Text(
@@ -596,7 +593,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 0.0, 0.0),
                                                   child: Icon(
@@ -629,7 +626,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -680,7 +677,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x21E27B00),
+                                                    color: const Color(0x21E27B00),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             100.0),
@@ -693,7 +690,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 4.0,
                                                                 12.0, 4.0),
                                                     child: Text(
@@ -731,7 +728,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 0.0, 0.0),
                                                   child: Icon(
@@ -764,7 +761,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -815,7 +812,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x21E27B00),
+                                                    color: const Color(0x21E27B00),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             100.0),
@@ -828,7 +825,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 4.0,
                                                                 12.0, 4.0),
                                                     child: Text(
@@ -866,7 +863,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 0.0, 0.0),
                                                   child: Icon(
@@ -890,7 +887,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                             ],
                           ),
@@ -901,7 +898,7 @@ class _WorkoutsSurveyBodyMeasurementsPageWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),

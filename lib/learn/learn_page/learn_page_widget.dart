@@ -1,15 +1,12 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/learn/lesson_cell/lesson_cell_widget.dart';
-import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'learn_page_model.dart';
 export 'learn_page_model.dart';
 
@@ -62,7 +59,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                   child: Text(
                     'Обучение',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -89,13 +86,13 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -126,7 +123,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
 
                                       return GridView.builder(
                                         padding: EdgeInsets.zero,
-                                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
                                           crossAxisSpacing: 9.0,
                                           mainAxisSpacing: 9.0,
@@ -186,7 +183,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                     children: [
                                                       if (gridViewLessonGroupRow.icon != null)
                                                         Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 0.0),
+                                                          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 0.0),
                                                           child: ClipRRect(
                                                             borderRadius: BorderRadius.circular(0.0),
                                                             child: Image.network(
@@ -217,7 +214,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                         ),
                                                       ),
                                                       Padding(
-                                                        padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 0.0),
+                                                        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 0.0),
                                                         child: Text(
                                                           functions.getExperienceString(gridViewLessonGroupRow.lessonsNumber!, 'урок', 'урока', 'уроков', false),
                                                           maxLines: 1,
@@ -246,7 +243,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                 child: Text(
                                   'Новые уроки',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -262,7 +259,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: FutureBuilder<List<LessonRow>>(
                                   future: LessonTable().queryRows(
                                     queryFn: (q) => q.order('created_at'),
@@ -309,7 +306,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                             width: 264.0,
                                             height: 287.0,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF242328),
+                                              color: const Color(0xFF242328),
                                               borderRadius: BorderRadius.circular(16.0),
                                             ),
                                             child: Column(
@@ -317,7 +314,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                               children: [
                                                 Expanded(
                                                   child: Container(
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: Stack(
                                                       children: [
                                                         ClipRRect(
@@ -330,7 +327,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                           ),
                                                         ),
                                                         Align(
-                                                          alignment: AlignmentDirectional(0.0, 0.0),
+                                                          alignment: const AlignmentDirectional(0.0, 0.0),
                                                           child: ClipRRect(
                                                             borderRadius: BorderRadius.circular(8.0),
                                                             child: SvgPicture.asset(
@@ -346,23 +343,23 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize: MainAxisSize.max,
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                           child: Container(
                                                             decoration: BoxDecoration(
-                                                              color: Color(0x20E27B00),
+                                                              color: const Color(0x20E27B00),
                                                               borderRadius: BorderRadius.circular(50.0),
                                                             ),
                                                             child: Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
                                                               child: Text(
                                                                 'Новое',
                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -399,9 +396,9 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                         ),
                                                         Container(
                                                           height: 42.0,
-                                                          decoration: BoxDecoration(),
+                                                          decoration: const BoxDecoration(),
                                                           child: Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                             child: Text(
                                                               valueOrDefault<String>(
                                                                 rowLessonRow.description,
@@ -452,7 +449,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                                 final containerLessonGroupRow = containerLessonGroupRowList.isNotEmpty ? containerLessonGroupRowList.first : null;
 
                                                                 return Container(
-                                                                  decoration: BoxDecoration(),
+                                                                  decoration: const BoxDecoration(),
                                                                   child: Row(
                                                                     mainAxisSize: MainAxisSize.max,
                                                                     children: [
@@ -466,7 +463,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                         child: Text(
                                                                           valueOrDefault<String>(
                                                                             rowLessonRow.lessonGroupName,
@@ -503,7 +500,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                  padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                   child: Text(
                                                                     valueOrDefault<String>(
                                                                       functions.formatDuration(rowLessonRow.duration ?? 0),
@@ -534,13 +531,13 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                             ),
                                           ),
                                         );
-                                      }).divide(SizedBox(width: 8.0)).addToStart(SizedBox(width: 16.0)).addToEnd(SizedBox(width: 16.0)),
+                                      }).divide(const SizedBox(width: 8.0)).addToStart(const SizedBox(width: 16.0)).addToEnd(const SizedBox(width: 16.0)),
                                     );
                                   },
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                 child: Text(
                                   'Популярные уроки',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -556,10 +553,10 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: FutureBuilder<List<LessonRow>>(
                                     future: LessonTable().queryRows(
                                       queryFn: (q) => q.order('views'),
@@ -583,7 +580,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
 
                                       return GridView.builder(
                                         padding: EdgeInsets.zero,
-                                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
                                           crossAxisSpacing: 9.0,
                                           mainAxisSpacing: 9.0,

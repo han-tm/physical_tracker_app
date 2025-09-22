@@ -2,12 +2,8 @@ import '/backend/supabase/supabase.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/learn/lesson_cell/lesson_cell_widget.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'learn_group_page_model.dart';
 export 'learn_group_page_model.dart';
 
@@ -16,7 +12,7 @@ class LearnGroupPageWidget extends StatefulWidget {
     super.key,
     required this.group,
     bool? isAll,
-  }) : this.isAll = isAll ?? false;
+  }) : isAll = isAll ?? false;
 
   final LessonGroupRow? group;
   final bool isAll;
@@ -68,7 +64,7 @@ class _LearnGroupPageWidgetState extends State<LearnGroupPageWidget> {
                 updateCallback: () => safeSetState(() {}),
                 child: GeneralNavBar01Widget(
                   title: valueOrDefault<String>(
-                    widget.isAll ? 'Все уроки' : widget!.group?.name,
+                    widget.isAll ? 'Все уроки' : widget.group?.name,
                     '-',
                   ),
                   hideBack: false,
@@ -77,13 +73,13 @@ class _LearnGroupPageWidgetState extends State<LearnGroupPageWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: FutureBuilder<List<LessonRow>>(
                             // future: LessonTable().queryRows(
                             //   queryFn: (q) => widget.isAll
@@ -134,13 +130,13 @@ class _LearnGroupPageWidgetState extends State<LearnGroupPageWidget> {
 
 
                               return GridView.builder(
-                                padding: EdgeInsets.fromLTRB(
+                                padding: const EdgeInsets.fromLTRB(
                                   0,
                                   8.0,
                                   0,
                                   20.0,
                                 ),
-                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10.0,
                                   mainAxisSpacing: 10.0,

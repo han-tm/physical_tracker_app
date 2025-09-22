@@ -1,9 +1,7 @@
 import 'package:boom_client/backend/supabase/database/database.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../auth/firebase_auth/auth_util.dart';
-import '../../backend/supabase/database/tables/subscription.dart';
 import '../../profile/subscription/subscription_page/subscription_page_widget.dart';
 import '../food_ai_nutritionist_view/food_ai_nutritionist_view_widget.dart';
 import '../food_kbzu_data_view/food_kbzu_data_view_widget.dart';
@@ -11,13 +9,10 @@ import '../food_plan_page/food_plan_page_widget.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'food_page_model.dart';
 export 'food_page_model.dart';
 
@@ -142,7 +137,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                                   child: Text(
                                     'Питание',
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -160,14 +155,14 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                               ),
                               if (!_model.showIndividualPlanPromo)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0x22E27B00),
+                                      color: const Color(0x22E27B00),
                                       borderRadius: BorderRadius.circular(100.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -181,7 +176,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Про',
                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -208,20 +203,20 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                         Expanded(
                           child: Container(
                             width: double.infinity,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         // MARK: План не составлен
                                         if (!_model.showIndividualPlanPromo && !_model.hasPlan)
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                                             child: Container(
                                               width: double.infinity,
                                               decoration: BoxDecoration(
@@ -236,7 +231,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                 borderRadius: BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 32.0, 16.0, 32.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 32.0, 16.0, 32.0),
                                                 child: Column(
                                                   mainAxisSize: MainAxisSize.max,
                                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -252,13 +247,13 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                             width: 32.0,
                                                             height: 32.0,
                                                             fit: BoxFit.cover,
-                                                            alignment: Alignment(0.0, 0.0),
+                                                            alignment: const Alignment(0.0, 0.0),
                                                           ),
                                                         ),
                                                       ],
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                       child: Text(
                                                         'План питания не составлен',
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -273,7 +268,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                       child: Text(
                                                         'Составьте персональный план питания с помощью ИИ-нутрициолога',
                                                         textAlign: TextAlign.center,
@@ -290,7 +285,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                       child: wrapWithModel(
                                                         model: _model.generalButtonModel1,
                                                         updateCallback: () => safeSetState(() {}),
@@ -301,7 +296,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                             await showModalBottomSheet(
                                                               isScrollControlled: true,
                                                               backgroundColor: Colors.transparent,
-                                                              barrierColor: Color(0x24000000),
+                                                              barrierColor: const Color(0x24000000),
                                                               enableDrag: false,
                                                               context: context,
                                                               builder: (context) {
@@ -312,7 +307,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                   },
                                                                   child: Padding(
                                                                     padding: MediaQuery.viewInsetsOf(context),
-                                                                    child: FoodAiNutritionistViewWidget(),
+                                                                    child: const FoodAiNutritionistViewWidget(),
                                                                   ),
                                                                 );
                                                               },
@@ -344,7 +339,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                 borderRadius: BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(16.0, 32.0, 16.0, 32.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 32.0, 16.0, 32.0),
                                                 child: Column(
                                                   mainAxisSize: MainAxisSize.max,
                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -354,14 +349,14 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                       children: [
                                                         Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                           child: Container(
                                                             decoration: BoxDecoration(
-                                                              color: Color(0x1EF2F2F3),
+                                                              color: const Color(0x1EF2F2F3),
                                                               borderRadius: BorderRadius.circular(100.0),
                                                             ),
                                                             child: Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
                                                               child: Row(
                                                                 mainAxisSize: MainAxisSize.max,
                                                                 children: [
@@ -375,7 +370,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                    padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                     child: Text(
                                                                       'Про',
                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -422,7 +417,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                       ],
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                       child: Text(
                                                         'ИИ-нутрициолог',
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -438,7 +433,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                       child: Text(
                                                         'Получите персональные рекомендации по питанию и планы на каждый день',
                                                         textAlign: TextAlign.start,
@@ -455,11 +450,11 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                       child: Container(
                                                         width: 180.0,
                                                         height: 30.0,
-                                                        decoration: BoxDecoration(),
+                                                        decoration: const BoxDecoration(),
                                                         child: wrapWithModel(
                                                           model: _model.generalButtonModel2,
                                                           updateCallback: () => safeSetState(() {}),
@@ -506,7 +501,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                   borderRadius: BorderRadius.circular(12.0),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                                                   child: Row(
                                                     mainAxisSize: MainAxisSize.max,
                                                     children: [
@@ -541,7 +536,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                   ),
                                                             ),
                                                             Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                               child: Text(
                                                                 'Ваш персональный план питания',
                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -584,7 +579,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius: BorderRadius.circular(8.0),
                                                       child: SvgPicture.asset(
@@ -596,7 +591,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 10.0, 0.0),
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 10.0, 0.0),
                                                     child: Text(
                                                       'Рекомендации по КБЖУ',
                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -611,7 +606,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                     child: Text(
                                                       'Удобный и быстрый способ следить за своим  питанием',
                                                       textAlign: TextAlign.center,
@@ -628,13 +623,13 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 48.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme.of(context).primary,
-                                                        borderRadius: BorderRadius.only(
+                                                        borderRadius: const BorderRadius.only(
                                                           bottomLeft: Radius.circular(12.0),
                                                           bottomRight: Radius.circular(12.0),
                                                           topLeft: Radius.circular(0.0),
@@ -650,7 +645,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                           await showModalBottomSheet(
                                                             isScrollControlled: true,
                                                             backgroundColor: Colors.transparent,
-                                                            barrierColor: Color(0x35000000),
+                                                            barrierColor: const Color(0x35000000),
                                                             enableDrag: false,
                                                             context: context,
                                                             builder: (context) {
@@ -661,7 +656,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                 },
                                                                 child: Padding(
                                                                   padding: MediaQuery.viewInsetsOf(context),
-                                                                  child: FoodKbzuDataViewWidget(),
+                                                                  child: const FoodKbzuDataViewWidget(),
                                                                 ),
                                                               );
                                                             },
@@ -683,7 +678,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                               ),
                                                             ),
                                                             Padding(
-                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                               child: Text(
                                                                 'Рассчитать КБЖУ',
                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -708,7 +703,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                             ),
                                           ),
                                         Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                                           child: Container(
                                             width: double.infinity,
                                             decoration: BoxDecoration(
@@ -759,7 +754,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                     await showModalBottomSheet(
                                                                       isScrollControlled: true,
                                                                       backgroundColor: Colors.transparent,
-                                                                      barrierColor: Color(0x35000000),
+                                                                      barrierColor: const Color(0x35000000),
                                                                       enableDrag: false,
                                                                       context: context,
                                                                       builder: (context) {
@@ -770,7 +765,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                           },
                                                                           child: Padding(
                                                                             padding: MediaQuery.viewInsetsOf(context),
-                                                                            child: FoodKbzuDataViewWidget(),
+                                                                            child: const FoodKbzuDataViewWidget(),
                                                                           ),
                                                                         );
                                                                       },
@@ -782,7 +777,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                     mainAxisSize: MainAxisSize.max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                         child: Icon(
                                                                           Icons.mode_edit_outline_outlined,
                                                                           color: FlutterFlowTheme.of(context).primary,
@@ -810,17 +805,17 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                                                             child: Container(
                                                               width: double.infinity,
                                                               height: 1.0,
-                                                              decoration: BoxDecoration(
+                                                              decoration: const BoxDecoration(
                                                                 color: Color(0xFF302E36),
                                                               ),
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 0.0),
                                                             child: Row(
                                                               mainAxisSize: MainAxisSize.max,
                                                               children: [
@@ -860,11 +855,11 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
                                                             child: Container(
                                                               width: double.infinity,
                                                               decoration: BoxDecoration(
-                                                                color: Color(0x1EE27B00),
+                                                                color: const Color(0x1EE27B00),
                                                                 borderRadius: BorderRadius.circular(12.0),
                                                               ),
                                                               child: Row(
@@ -872,9 +867,9 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                 children: [
                                                                   Align(
-                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                                                     child: Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 4.0, 12.0),
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 4.0, 12.0),
                                                                       child: Text(
                                                                         kcal,
                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -910,7 +905,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
                                                             child: Row(
                                                               mainAxisSize: MainAxisSize.max,
                                                               children: [
@@ -918,11 +913,11 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                   child: Container(
                                                                     width: double.infinity,
                                                                     decoration: BoxDecoration(
-                                                                      color: Color(0x1EE27B00),
+                                                                      color: const Color(0x1EE27B00),
                                                                       borderRadius: BorderRadius.circular(12.0),
                                                                     ),
                                                                     child: Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
                                                                       child: Column(
                                                                         mainAxisSize: MainAxisSize.max,
                                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -936,7 +931,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                                     fontWeight: FontWeight.w600,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
-                                                                                  color: Color(0xFFFFD166),
+                                                                                  color: const Color(0xFFFFD166),
                                                                                   fontSize: 13.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w600,
@@ -952,7 +947,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
-                                                                                  color: Color(0xFFFFD166),
+                                                                                  color: const Color(0xFFFFD166),
                                                                                   fontSize: 12.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -968,11 +963,11 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                   child: Container(
                                                                     width: double.infinity,
                                                                     decoration: BoxDecoration(
-                                                                      color: Color(0x24FF6B78),
+                                                                      color: const Color(0x24FF6B78),
                                                                       borderRadius: BorderRadius.circular(12.0),
                                                                     ),
                                                                     child: Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
                                                                       child: Column(
                                                                         mainAxisSize: MainAxisSize.max,
                                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -986,7 +981,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                                     fontWeight: FontWeight.w600,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
-                                                                                  color: Color(0xFFFF6B78),
+                                                                                  color: const Color(0xFFFF6B78),
                                                                                   fontSize: 13.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w600,
@@ -1002,7 +997,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
-                                                                                  color: Color(0xFFFF6B78),
+                                                                                  color: const Color(0xFFFF6B78),
                                                                                   fontSize: 12.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1018,11 +1013,11 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                   child: Container(
                                                                     width: double.infinity,
                                                                     decoration: BoxDecoration(
-                                                                      color: Color(0x1F4DEEBD),
+                                                                      color: const Color(0x1F4DEEBD),
                                                                       borderRadius: BorderRadius.circular(12.0),
                                                                     ),
                                                                     child: Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
                                                                       child: Column(
                                                                         mainAxisSize: MainAxisSize.max,
                                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1036,7 +1031,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                                     fontWeight: FontWeight.w600,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
-                                                                                  color: Color(0xFF4DEEBD),
+                                                                                  color: const Color(0xFF4DEEBD),
                                                                                   fontSize: 13.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w600,
@@ -1052,7 +1047,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
-                                                                                  color: Color(0xFF4DEEBD),
+                                                                                  color: const Color(0xFF4DEEBD),
                                                                                   fontSize: 12.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1064,7 +1059,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ].divide(SizedBox(width: 5.0)),
+                                                              ].divide(const SizedBox(width: 5.0)),
                                                             ),
                                                           ),
                                                         ],

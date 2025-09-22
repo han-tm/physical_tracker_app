@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
-import '/flutter_flow/flutter_flow_util.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 export 'database/database.dart';
 export 'storage/storage.dart';
 
-String _kSupabaseUrl = 'https://htzzhxdaafndqnpvxjnu.supabase.co';
-String _kSupabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0enpoeGRhYWZuZHFucHZ4am51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE4ODc0MDEsImV4cCI6MjA2NzQ2MzQwMX0.aAcmCwA5ND1CimYOKBay6GDUWKzYf_HE1Lxobmtvig0';
+String _kSupabaseUrl = 'https://5674737-vg91324.twc1.net';
+String _kSupabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNjQxNzY5MjAwLCJleHAiOjE3OTk1MzU2MDB9.soiKBwoCab3nkvoIMa_3Yn7ttwZ2RLDPljqMC5fslWE';
 
 // class SupaFlow {
 //   SupaFlow._();

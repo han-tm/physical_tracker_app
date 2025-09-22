@@ -10,7 +10,7 @@ class SubscriptionPlanTable extends SupabaseTable<SubscriptionPlanRow> {
 }
 
 class SubscriptionPlanRow extends SupabaseDataRow {
-  SubscriptionPlanRow(Map<String, dynamic> data) : super(data);
+  SubscriptionPlanRow(super.data);
 
   @override
   SupabaseTable get table => SubscriptionPlanTable();
@@ -27,8 +27,8 @@ class SubscriptionPlanRow extends SupabaseDataRow {
   String? get description => getField<String>('description');
   set description(String? value) => setField<String>('description', value);
 
-  dynamic? get features => getField<dynamic>('features');
-  set features(dynamic? value) => setField<dynamic>('features', value);
+  dynamic get features => getField<dynamic>('features');
+  set features(dynamic value) => setField<dynamic>('features', value);
 
   int? get type => getField<int>('type');
   set type(int? value) => setField<int>('type', value);

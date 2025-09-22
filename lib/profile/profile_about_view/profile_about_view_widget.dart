@@ -1,12 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_about_view_model.dart';
 export 'profile_about_view_model.dart';
 
@@ -43,7 +40,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -53,7 +50,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,25 +71,25 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 height: 1.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF302E36),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFF242328),
+                  color: const Color(0xFF242328),
                   borderRadius: BorderRadius.circular(16.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -107,7 +104,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                       ),
                       Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: Text(
                           'BOOM',
                           style:
@@ -129,7 +126,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                       ),
                       Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Версия 1.0',
                           style: FlutterFlowTheme.of(context)
@@ -157,7 +154,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                       ),
                       Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           '© 2025 BOOM \nВсе права защищены.',
                           textAlign: TextAlign.center,
@@ -190,11 +187,11 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFF242328),
+                  color: const Color(0xFF242328),
                   borderRadius: BorderRadius.circular(16.0),
                 ),
                 child: Column(
@@ -219,9 +216,9 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                       child: Container(
                         width: double.infinity,
                         height: 60.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -237,7 +234,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Условия использования',
@@ -279,7 +276,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                         width: double.infinity,
                         height: 1.0,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF2F2F3),
+                          color: const Color(0xFFF2F2F3),
                           borderRadius: BorderRadius.circular(0.0),
                         ),
                       ),
@@ -303,9 +300,9 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                       child: Container(
                         width: double.infinity,
                         height: 60.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -321,7 +318,7 @@ class _ProfileAboutViewWidgetState extends State<ProfileAboutViewWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Политика конфиденциальности',

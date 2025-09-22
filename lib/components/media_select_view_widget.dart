@@ -3,10 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'media_select_view_model.dart';
 export 'media_select_view_model.dart';
 
@@ -16,7 +14,7 @@ class MediaSelectViewWidget extends StatefulWidget {
     required this.onMediaSelect,
   });
 
-  final Future Function(FFUploadedFile media)? onMediaSelect;
+  final Function(FFUploadedFile media)? onMediaSelect;
 
   @override
   State<MediaSelectViewWidget> createState() => _MediaSelectViewWidgetState();
@@ -48,7 +46,7 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -58,7 +56,7 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,17 +66,15 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     font: GoogleFonts.unbounded(
                       fontWeight: FontWeight.bold,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.bold,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                   ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -93,10 +89,8 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           multiImage: false,
                         );
                         if (selectedMedia != null &&
-                            selectedMedia.every((m) =>
-                                validateFileFormat(m.storagePath, context))) {
-                          safeSetState(() =>
-                              _model.isDataUploading_uploadDataCamera = true);
+                            selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                          safeSetState(() => _model.isDataUploading_uploadDataCamera = true);
                           var selectedUploadedFiles = <FFUploadedFile>[];
 
                           try {
@@ -112,22 +106,22 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           } finally {
                             _model.isDataUploading_uploadDataCamera = false;
                           }
-                          if (selectedUploadedFiles.length ==
-                              selectedMedia.length) {
+                          if (selectedUploadedFiles.length == selectedMedia.length) {
                             safeSetState(() {
-                              _model.uploadedLocalFile_uploadDataCamera =
-                                  selectedUploadedFiles.first;
+                              _model.uploadedLocalFile_uploadDataCamera = selectedUploadedFiles.first;
                             });
                           } else {
                             safeSetState(() {});
                             return;
                           }
-                        }
 
-                        await widget.onMediaSelect?.call(
-                          _model.uploadedLocalFile_uploadDataCamera,
-                        );
-                        Navigator.pop(context);
+                          if (mounted) {
+                            widget.onMediaSelect?.call(
+                              _model.uploadedLocalFile_uploadDataCamera,
+                            );
+                            Navigator.pop(context);
+                          }
+                        }
                       },
                       child: Container(
                         width: 100.0,
@@ -150,28 +144,17 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 'Камера',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                       font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
                               ),
                             ),
@@ -192,10 +175,8 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           multiImage: false,
                         );
                         if (selectedMedia != null &&
-                            selectedMedia.every((m) =>
-                                validateFileFormat(m.storagePath, context))) {
-                          safeSetState(() =>
-                              _model.isDataUploading_uploadDataGallery = true);
+                            selectedMedia.every((m) => validateFileFormat(m.storagePath, context))) {
+                          safeSetState(() => _model.isDataUploading_uploadDataGallery = true);
                           var selectedUploadedFiles = <FFUploadedFile>[];
 
                           try {
@@ -211,22 +192,22 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           } finally {
                             _model.isDataUploading_uploadDataGallery = false;
                           }
-                          if (selectedUploadedFiles.length ==
-                              selectedMedia.length) {
+                          if (selectedUploadedFiles.length == selectedMedia.length) {
                             safeSetState(() {
-                              _model.uploadedLocalFile_uploadDataGallery =
-                                  selectedUploadedFiles.first;
+                              _model.uploadedLocalFile_uploadDataGallery = selectedUploadedFiles.first;
                             });
                           } else {
                             safeSetState(() {});
                             return;
                           }
-                        }
 
-                        await widget.onMediaSelect?.call(
-                          _model.uploadedLocalFile_uploadDataGallery,
-                        );
-                        Navigator.pop(context);
+                          if (mounted) {
+                             widget.onMediaSelect?.call(
+                              _model.uploadedLocalFile_uploadDataGallery,
+                            );
+                            Navigator.pop(context);
+                          }
+                        }
                       },
                       child: Container(
                         width: 100.0,
@@ -249,28 +230,17 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 'Галерея',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                       font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
                               ),
                             ),
@@ -279,7 +249,7 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                       ),
                     ),
                   ),
-                ].divide(SizedBox(width: 8.0)),
+                ].divide(const SizedBox(width: 8.0)),
               ),
             ),
           ],

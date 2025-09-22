@@ -1,11 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'general_text_field_model.dart';
 export 'general_text_field_model.dart';
 
@@ -18,7 +16,7 @@ class GeneralTextFieldWidget extends StatefulWidget {
     int? maxLength,
     required this.hintText,
     this.controller
-  }) : this.maxLength = maxLength ?? 1000;
+  }) : maxLength = maxLength ?? 1000;
 
   final String? initialValue;
   final String? title;
@@ -67,7 +65,7 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
           children: [
             Text(
               valueOrDefault<String>(
-                widget!.title,
+                widget.title,
                 '-',
               ),
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -87,15 +85,15 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
                   ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-              child: Container(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+              child: SizedBox(
                 width: double.infinity,
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
                   onChanged: (_) => EasyDebounce.debounce(
                     '_model.textController',
-                    Duration(milliseconds: 100),
+                    const Duration(milliseconds: 100),
                     () async {
                       await widget.onValueEnter?.call(
                         _model.textController.text,
@@ -126,7 +124,7 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
                                   .labelMedium
                                   .fontStyle,
                             ),
-                    hintText: widget!.hintText,
+                    hintText: widget.hintText,
                     hintStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
                               font: GoogleFonts.inter(
@@ -146,7 +144,7 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
                                   .fontStyle,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
@@ -175,9 +173,9 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
                     ),
                     filled: true,
                     fillColor: (_model.textFieldFocusNode?.hasFocus ?? false)
-                        ? Color(0x1FE27B00)
-                        : Color(0xFF242328),
-                    hoverColor: Color(0xFFEB0000),
+                        ? const Color(0x1FE27B00)
+                        : const Color(0xFF242328),
+                    hoverColor: const Color(0xFFEB0000),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
@@ -193,7 +191,7 @@ class _GeneralTextFieldWidgetState extends State<GeneralTextFieldWidget> {
                         fontStyle:
                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
-                  maxLength: widget!.maxLength,
+                  maxLength: widget.maxLength,
                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
                   buildCounter: (context,
                           {required currentLength,

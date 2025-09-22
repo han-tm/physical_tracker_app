@@ -9,7 +9,7 @@ class BodyMeasureTable extends SupabaseTable<BodyMeasureRow> {
 }
 
 class BodyMeasureRow extends SupabaseDataRow {
-  BodyMeasureRow(Map<String, dynamic> data) : super(data);
+  BodyMeasureRow(super.data);
 
   @override
   SupabaseTable get table => BodyMeasureTable();

@@ -1,29 +1,22 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:boom_client/backend/supabase/database/database.dart';
-import 'package:boom_client/flutter_flow/size_utils.dart';
 import 'package:boom_client/index.dart';
 import 'package:boom_client/profile/profile_about_view/profile_about_view_widget.dart';
 import 'package:boom_client/profile/subscription/subscriptionActiveTile.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../auth/firebase_auth/auth_util.dart';
-import '../../backend/supabase/database/tables/user.dart';
 import '../../components/general_button_widget.dart';
 import '../../flutter_flow/custom_image_view.dart';
 import '../../flutter_flow/image_constant.dart';
-import '../../flutter_flow/text_style_helper.dart';
 import '../../flutter_flow/theme_helper.dart';
-import '../../start/start_page/start_page_widget.dart';
-import '../profile_personal_data_page/profile_personal_data_page_widget.dart';
 import '../sign_out_view/sign_out_view_widget.dart';
-import '../subscription/subscription_page/subscription_page_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_page_model.dart';
 export 'profile_page_model.dart';
 
@@ -101,7 +94,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               }
 
               return Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: StreamBuilder<List<SubscriptionRow>>(
                   stream: _model.containerSupabaseStream2 ??= AppSupabase.instance.client
                       .from("Subscription")
@@ -131,26 +124,26 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     List<SubscriptionRow> containerSubscriptionRowList = snapshot.data!;
 
                     return Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: SingleChildScrollView(
-                        padding: EdgeInsets.only(bottom: 30),
+                        padding: const EdgeInsets.only(bottom: 30),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(48.0),
                               child: Image.network(
-                                containerUserRow!.image!,
+                                containerUserRow.image!,
                                 width: 96.0,
                                 height: 96.0,
                                 fit: BoxFit.cover,
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  containerUserRow?.name,
+                                  containerUserRow.name,
                                   '-',
                                 ),
                                 textAlign: TextAlign.center,
@@ -225,15 +218,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                               child: GeneralButtonWidget(
                                                 title: 'Оформить',
                                                 isActive: true,
-                                                leading: Container(
-                                                  child: Center(
-                                                    child: SvgPicture.asset(
-                                                      'assets/images/Star_Shine.svg',
-                                                      width: 16.0,
-                                                      height: 16.0,
-                                                      fit: BoxFit.cover,
-                                                      color: Colors.white,
-                                                    ),
+                                                leading: Center(
+                                                  child: SvgPicture.asset(
+                                                    'assets/images/Star_Shine.svg',
+                                                    width: 16.0,
+                                                    height: 16.0,
+                                                    fit: BoxFit.cover,
+                                                    color: Colors.white,
                                                   ),
                                                 ),
                                                 onTap: () async {
@@ -350,10 +341,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
 
   Widget _buildMenuItems() {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _buildMenuItem(
             iconPath: ImageConstant.imgUsersUserId,
             title: 'Личные данные',
@@ -363,7 +354,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               await context.pushNamed(ProfilePersonalDataPageWidget.routeName);
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _buildMenuItem(
             iconPath: ImageConstant.imgSportsDumbbells2,
             title: 'Уровень сложности',
@@ -373,7 +364,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               context.pushNamed(ProfileDifficultyPageWidget.routeName);
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _buildMenuItem(
             iconPath: ImageConstant.imgSystemBell,
             title: 'Уведомления',
@@ -385,7 +376,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               context.pushNamed(ProfileNotificationsPageWidget.routeName);
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _buildMenuItem(
             iconPath: ImageConstant.imgSystemRuler,
             title: 'Статистика замеров',
@@ -395,7 +386,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               context.pushNamed(ProfileMeasurementAddPageWidget.routeName);
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _buildMenuItem(
             iconPath: ImageConstant.imgSystemIphone,
             title: 'О приложении',
@@ -438,7 +429,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: appTheme.colorFF2423,
           borderRadius: BorderRadius.circular(16),
@@ -460,7 +451,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -492,7 +483,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
             ),
             if (showBadge && badgeCount != null) ...[
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: appTheme.colorFFFF43,
                   borderRadius: BorderRadius.circular(8),
@@ -507,7 +498,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   ),
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
             ],
             CustomImageView(
               imagePath: ImageConstant.imgArrowright,

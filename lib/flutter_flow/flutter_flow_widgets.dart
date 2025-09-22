@@ -406,9 +406,9 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
         : null;
 
     final ButtonStyle style = ButtonStyle(
-      shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
+      shape: WidgetStateProperty.resolveWith<OutlinedBorder>(
             (states) {
-          final side = states.contains(MaterialState.hovered) &&
+          final side = states.contains(WidgetState.hovered) &&
               widget.options.hoverBorderSide != null
               ? widget.options.hoverBorderSide!
               : widget.options.borderSide ?? BorderSide.none;
@@ -420,50 +420,50 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
           );
         },
       ),
-      foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+      foregroundColor: WidgetStateProperty.resolveWith<Color?>(
             (states) {
-          if (states.contains(MaterialState.disabled)) {
+          if (states.contains(WidgetState.disabled)) {
             return widget.options.disabledTextColor;
           }
-          if (states.contains(MaterialState.hovered)) {
+          if (states.contains(WidgetState.hovered)) {
             return widget.options.hoverTextColor;
           }
           return widget.options.textStyle?.color ?? Colors.white;
         },
       ),
-      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+      backgroundColor: WidgetStateProperty.resolveWith<Color?>(
             (states) {
-          if (states.contains(MaterialState.disabled)) {
+          if (states.contains(WidgetState.disabled)) {
             return widget.options.disabledColor;
           }
-          if (states.contains(MaterialState.hovered)) {
+          if (states.contains(WidgetState.hovered)) {
             return widget.options.hoverColor;
           }
           return widget.options.color;
         },
       ),
-      overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
-        if (states.contains(MaterialState.pressed)) {
+      overlayColor: WidgetStateProperty.resolveWith<Color?>((states) {
+        if (states.contains(WidgetState.pressed)) {
           return widget.options.splashColor;
         }
         return widget.options.hoverColor == null ? null : Colors.transparent;
       }),
-      padding: MaterialStateProperty.all(widget.options.padding ??
+      padding: WidgetStateProperty.all(widget.options.padding ??
           const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0)),
-      elevation: MaterialStateProperty.resolveWith<double?>(
+      elevation: WidgetStateProperty.resolveWith<double?>(
             (states) {
-          if (states.contains(MaterialState.hovered)) {
+          if (states.contains(WidgetState.hovered)) {
             return widget.options.hoverElevation;
           }
           return widget.options.elevation ?? 2.0;
         },
       ),
-      iconColor: MaterialStateProperty.resolveWith<Color?>(
+      iconColor: WidgetStateProperty.resolveWith<Color?>(
             (states) {
-          if (states.contains(MaterialState.disabled)) {
+          if (states.contains(WidgetState.disabled)) {
             return widget.options.disabledTextColor;
           }
-          if (states.contains(MaterialState.hovered)) {
+          if (states.contains(WidgetState.hovered)) {
             return widget.options.hoverTextColor;
           }
           return widget.options.iconColor;
@@ -568,13 +568,13 @@ extension _WithoutColorExtension on TextStyle {
   );
 }
 
-double? _getTextWidth(String? text, TextStyle? style, int maxLines) =>
-    text != null
-        ? (TextPainter(
-      text: TextSpan(text: text, style: style),
-      textDirection: TextDirection.ltr,
-      maxLines: maxLines,
-    )..layout())
-        .size
-        .width
-        : null;
+// double? _getTextWidth(String? text, TextStyle? style, int maxLines) =>
+//     text != null
+//         ? (TextPainter(
+//       text: TextSpan(text: text, style: style),
+//       textDirection: TextDirection.ltr,
+//       maxLines: maxLines,
+//     )..layout())
+//         .size
+//         .width
+//         : null;

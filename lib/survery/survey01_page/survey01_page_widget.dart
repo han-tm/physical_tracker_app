@@ -1,3 +1,4 @@
+import 'package:boom_client/flutter_flow/theme_helper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../userData/PreRegistrationData.dart';
@@ -6,11 +7,9 @@ import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'survey01_page_model.dart';
 export 'survey01_page_model.dart';
 
@@ -51,14 +50,14 @@ class _Survey01PageWidgetState extends State<Survey01PageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: LightCodeColors().colorFF1212,
         body: SafeArea(
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 40.0,
@@ -84,7 +83,7 @@ class _Survey01PageWidgetState extends State<Survey01PageWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Text(
                             'Шаг 1/6',
                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -108,20 +107,20 @@ class _Survey01PageWidgetState extends State<Survey01PageWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             await showDialog(
-                              barrierColor: Color(0x24000000),
+                              barrierColor: const Color(0x24000000),
                               context: context,
                               builder: (dialogContext) {
                                 return Dialog(
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                  alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                   child: GestureDetector(
                                     onTap: () {
                                       FocusScope.of(dialogContext).unfocus();
                                       FocusManager.instance.primaryFocus?.unfocus();
                                     },
-                                    child: SkipPersonalizationWidget(),
+                                    child: const SkipPersonalizationWidget(),
                                   ),
                                 );
                               },
@@ -137,7 +136,7 @@ class _Survey01PageWidgetState extends State<Survey01PageWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                               child: Text(
                                 'Пропустить',
                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -162,122 +161,163 @@ class _Survey01PageWidgetState extends State<Survey01PageWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                _model.gender = 0;
-                                safeSetState(() {});
-                              },
-                              child: Container(
-                                width: 140.0,
-                                height: 140.0,
-                                decoration: BoxDecoration(
-                                  color: _model.gender == 0 ? FlutterFlowTheme.of(context).primary : Color(0xFF242328),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/male_icon.svg',
-                                        width: 48.0,
-                                        height: 48.0,
-                                        fit: BoxFit.cover,
-                                      ),
+                            Text(
+                              'Расскажи о себе',
+                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.unbounded(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Мужчина',
-                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                              font: GoogleFonts.inter(
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                  ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                              child: Text(
+                                'Чтобы подобрать программу упражнений, укажите ваш пол.',
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                      fontSize: 13.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  _model.gender = 0;
+                                  safeSetState(() {});
+                                },
+                                child: Container(
+                                  width: 140.0,
+                                  height: 140.0,
+                                  decoration: BoxDecoration(
+                                    color: _model.gender == 0
+                                        ? FlutterFlowTheme.of(context).primary
+                                        : const Color(0xFF242328),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/male_icon.svg',
+                                          width: 48.0,
+                                          height: 48.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Мужчина',
+                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                ),
+                                                color: _model.gender == 0
+                                                    ? FlutterFlowTheme.of(context).primaryText
+                                                    : FlutterFlowTheme.of(context).secondaryText,
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                               ),
-                                              color: _model.gender==0
-                                                  ?FlutterFlowTheme.of(context).primaryText
-                                                  :FlutterFlowTheme.of(context).secondaryText,
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                _model.gender = 1;
-                                safeSetState(() {});
-                              },
-                              child: Container(
-                                width: 140.0,
-                                height: 140.0,
-                                decoration: BoxDecoration(
-                                  color: _model.gender == 1 ? FlutterFlowTheme.of(context).primary : Color(0xFF242328),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/female_icon.svg',
-                                        width: 48.0,
-                                        height: 48.0,
-                                        fit: BoxFit.cover,
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  _model.gender = 1;
+                                  safeSetState(() {});
+                                },
+                                child: Container(
+                                  width: 140.0,
+                                  height: 140.0,
+                                  decoration: BoxDecoration(
+                                    color: _model.gender == 1
+                                        ? FlutterFlowTheme.of(context).primary
+                                        : const Color(0xFF242328),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/female_icon.svg',
+                                          width: 48.0,
+                                          height: 48.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Девушка',
-                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                              font: GoogleFonts.inter(
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Девушка',
+                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                ),
+                                                color: _model.gender == 1
+                                                    ? FlutterFlowTheme.of(context).primaryText
+                                                    : FlutterFlowTheme.of(context).secondaryText,
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                               ),
-                                              color: _model.gender==1
-                                                  ?FlutterFlowTheme.of(context).primaryText
-                                                  :FlutterFlowTheme.of(context).secondaryText,
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ].divide(SizedBox(width: 16.0)),
+                            ].divide(const SizedBox(width: 16.0)),
+                          ),
                         ),
                       ],
                     ),
@@ -285,7 +325,7 @@ class _Survey01PageWidgetState extends State<Survey01PageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),

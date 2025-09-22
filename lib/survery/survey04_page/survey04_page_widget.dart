@@ -1,3 +1,4 @@
+import 'package:boom_client/flutter_flow/theme_helper.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../userData/PreRegistrationData.dart';
@@ -5,13 +6,10 @@ import '../../userData/PreRegistrationStorage.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'survey04_page_model.dart';
 export 'survey04_page_model.dart';
 
@@ -38,7 +36,6 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
     _model.sliderValue = 150;
     _model.height = 150;
 
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -58,14 +55,14 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+   backgroundColor: LightCodeColors().colorFF1212,
         body: SafeArea(
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 40.0,
@@ -91,7 +88,7 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Text(
                             'Шаг 4/6',
                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -115,20 +112,20 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             await showDialog(
-                              barrierColor: Color(0x24000000),
+                              barrierColor: const Color(0x24000000),
                               context: context,
                               builder: (dialogContext) {
                                 return Dialog(
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                  alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                   child: GestureDetector(
                                     onTap: () {
                                       FocusScope.of(dialogContext).unfocus();
                                       FocusManager.instance.primaryFocus?.unfocus();
                                     },
-                                    child: SkipPersonalizationWidget(),
+                                    child: const SkipPersonalizationWidget(),
                                   ),
                                 );
                               },
@@ -144,7 +141,7 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 5.0, 8.0, 5.0),
                               child: Text(
                                 'Пропустить',
                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -169,9 +166,9 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -191,7 +188,7 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                               ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'Не переживайте, данные о вашем теле хранятся только в приложении и не передаются третьим лицам.',
                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -219,16 +216,19 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                                   Container(
                                     width: 50,
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height: 300,
                                     width: 100,
                                     child: ListWheelScrollView.useDelegate(
                                       itemExtent: 40,
-                                      diameterRatio: 1.1,
-                                      perspective: 0.002,
+                                      diameterRatio: 1.3,
+                                      perspective: 0.005,
+                                      overAndUnderCenterOpacity: 1,
+                                     
                                       physics: const FixedExtentScrollPhysics(),
                                       // Устанавливаем начальный индекс на 150 - 100 = 50
-                                      controller: FixedExtentScrollController(initialItem: (_model.sliderValue?.toInt() ?? 150) - 100),
+                                      controller: FixedExtentScrollController(
+                                          initialItem: (_model.sliderValue?.toInt() ?? 150) - 100),
                                       onSelectedItemChanged: (index) {
                                         final newValue = index + 100;
                                         setState(() {
@@ -244,20 +244,32 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                                           return Center(
                                             child: Text(
                                               '$value',
-                                              style: TextStyle(
-                                                fontSize: isSelected ? 34 : 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: isSelected
-                                                    ? FlutterFlowTheme.of(context).primary
-                                                    : FlutterFlowTheme.of(context).secondaryText.withOpacity(0.8),
-                                              ),
+                                              // style: TextStyle(
+                                              //   fontSize: 34,
+                                              //   fontWeight: FontWeight.bold,
+                                              //   color: isSelected
+                                              //       ? FlutterFlowTheme.of(context).primary
+                                              //       : FlutterFlowTheme.of(context).secondaryText.withOpacity(0.8),
+                                              // ),
+                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                    font: GoogleFonts.unbounded(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                    ),
+                                                    color: isSelected
+                                                        ? FlutterFlowTheme.of(context).primary
+                                                        : FlutterFlowTheme.of(context).secondaryText.withOpacity(0.95),
+                                                    fontSize: isSelected ? 34 : 32.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                           );
                                         },
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  const SizedBox(
                                     width: 50,
                                     child: Text(
                                       'см',
@@ -279,7 +291,7 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),
@@ -290,7 +302,6 @@ class _Survey04PageWidgetState extends State<Survey04PageWidget> {
                       final existingData = await PreRegistrationStorage.load() ?? PreRegistrationData();
                       final updatedData = existingData..height = _model.height;
                       await PreRegistrationStorage.save(updatedData);
-
 
                       context.pushNamed(Survey05PageWidget.routeName);
                     },

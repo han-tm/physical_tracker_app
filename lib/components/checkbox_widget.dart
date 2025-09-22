@@ -1,11 +1,7 @@
 import 'package:flutter_svg/svg.dart';
 
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'checkbox_model.dart';
 export 'checkbox_model.dart';
 
@@ -13,7 +9,7 @@ class CheckboxWidget extends StatefulWidget {
   const CheckboxWidget({
     super.key,
     bool? checked,
-  }) : this.checked = checked ?? false;
+  }) : checked = checked ?? false;
 
   final bool checked;
 
@@ -48,7 +44,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-        if (!widget!.checked)
+        if (!widget.checked)
           ClipRRect(
             borderRadius: BorderRadius.circular(0.0),
             child: SvgPicture.asset(
@@ -58,7 +54,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
               fit: BoxFit.cover,
             ),
           ),
-        if (widget!.checked)
+        if (widget.checked)
           ClipRRect(
             borderRadius: BorderRadius.circular(0.0),
             child: SvgPicture.asset(

@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_measure_statistics_no_data_view_model.dart';
 export 'profile_measure_statistics_no_data_view_model.dart';
 
@@ -43,9 +40,9 @@ class _ProfileMeasureStatisticsNoDataViewWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -59,7 +56,7 @@ class _ProfileMeasureStatisticsNoDataViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 'Ваш путь к идеальной форме начинается здесь!',
                 textAlign: TextAlign.center,
@@ -78,7 +75,7 @@ class _ProfileMeasureStatisticsNoDataViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
               child: Text(
                 'Добавьте свои первые замеры и начните следить за своими изменениями',
                 textAlign: TextAlign.center,

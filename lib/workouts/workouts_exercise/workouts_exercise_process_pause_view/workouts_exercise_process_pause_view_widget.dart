@@ -1,13 +1,9 @@
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workouts_exercise_process_pause_view_model.dart';
 export 'workouts_exercise_process_pause_view_model.dart';
 
@@ -45,7 +41,7 @@ class _WorkoutsExerciseProcessPauseViewWidgetState extends State<WorkoutsExercis
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -55,14 +51,14 @@ class _WorkoutsExerciseProcessPauseViewWidgetState extends State<WorkoutsExercis
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
+              alignment: const AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                 child: Text(
                   'Тренировка на паузе',
                   textAlign: TextAlign.center,
@@ -80,7 +76,7 @@ class _WorkoutsExerciseProcessPauseViewWidgetState extends State<WorkoutsExercis
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -96,7 +92,7 @@ class _WorkoutsExerciseProcessPauseViewWidgetState extends State<WorkoutsExercis
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -110,7 +106,7 @@ class _WorkoutsExerciseProcessPauseViewWidgetState extends State<WorkoutsExercis
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Ваша тренировка приостановлена. Вы можете продолжить или завершить тренировку.',
                           textAlign: TextAlign.center,
@@ -132,7 +128,7 @@ class _WorkoutsExerciseProcessPauseViewWidgetState extends State<WorkoutsExercis
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel1,
                 updateCallback: () => safeSetState(() {}),
@@ -146,7 +142,7 @@ class _WorkoutsExerciseProcessPauseViewWidgetState extends State<WorkoutsExercis
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel2,
                 updateCallback: () => safeSetState(() {}),

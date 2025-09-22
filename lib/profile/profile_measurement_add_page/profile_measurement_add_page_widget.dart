@@ -8,14 +8,11 @@ import '/components/general_nav_bar01_widget.dart';
 import '/components/media_select_view_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/profile/profile_measurement_successfully_added_page/profile_measurement_successfully_added_page_widget.dart';
 import '/profile/profile_weight_view/profile_weight_view_widget.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_measurement_add_page_model.dart';
 export 'profile_measurement_add_page_model.dart';
 
@@ -65,7 +62,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Добавление замеров',
                   hideBack: false,
                 ),
@@ -73,7 +70,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: FutureBuilder<List<BodyMeasureRow>>(
                     future: BodyMeasureTable().queryRows(
                       queryFn: (q) => q.gtOrNull(
@@ -102,7 +99,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -145,13 +142,13 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                         borderRadius: BorderRadius.circular(16.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                 child: Text(
                                                   'Вес',
                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -168,7 +165,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                             ),
                                             if (_model.weight == null)
                                               Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                 child: Text(
                                                   '-',
                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -185,14 +182,14 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                               ),
                                             if (_model.weight != null)
                                               Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x20E27B00),
+                                                    color: const Color(0x20E27B00),
                                                     borderRadius: BorderRadius.circular(50.0),
                                                   ),
                                                   child: Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
                                                     child: Text(
                                                       '${formatNumber(
                                                         _model.weight,
@@ -298,13 +295,13 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                 borderRadius: BorderRadius.circular(16.0),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     Expanded(
                                                       child: Padding(
-                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                         child: Text(
                                                           valueOrDefault<String>(
                                                             measuresItem.name,
@@ -1018,10 +1015,10 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                   //   ),
                                   // ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1039,7 +1036,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -1084,7 +1081,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                       child: Stack(
                                                         children: [
                                                           Align(
-                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                            alignment: const AlignmentDirectional(0.0, 0.0),
                                                             child: Column(
                                                               mainAxisSize: MainAxisSize.max,
                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1099,7 +1096,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                   child: Text(
                                                                     'Фото анфас',
                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1121,7 +1118,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                             Container(
                                                               width: double.infinity,
                                                               height: double.infinity,
-                                                              decoration: BoxDecoration(),
+                                                              decoration: const BoxDecoration(),
                                                               child: Stack(
                                                                 children: [
                                                                   ClipRRect(
@@ -1134,9 +1131,9 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment: AlignmentDirectional(1.0, -1.0),
+                                                                    alignment: const AlignmentDirectional(1.0, -1.0),
                                                                     child: Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
                                                                       child: InkWell(
                                                                         splashColor: Colors.transparent,
                                                                         focusColor: Colors.transparent,
@@ -1207,7 +1204,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                       child: Stack(
                                                         children: [
                                                           Align(
-                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                            alignment: const AlignmentDirectional(0.0, 0.0),
                                                             child: Column(
                                                               mainAxisSize: MainAxisSize.max,
                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1222,7 +1219,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                   child: Text(
                                                                     'Фото со спины',
                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1244,7 +1241,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                             Container(
                                                               width: double.infinity,
                                                               height: double.infinity,
-                                                              decoration: BoxDecoration(),
+                                                              decoration: const BoxDecoration(),
                                                               child: Stack(
                                                                 children: [
                                                                   ClipRRect(
@@ -1257,9 +1254,9 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment: AlignmentDirectional(1.0, -1.0),
+                                                                    alignment: const AlignmentDirectional(1.0, -1.0),
                                                                     child: Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
                                                                       child: InkWell(
                                                                         splashColor: Colors.transparent,
                                                                         focusColor: Colors.transparent,
@@ -1330,7 +1327,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                       child: Stack(
                                                         children: [
                                                           Align(
-                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                            alignment: const AlignmentDirectional(0.0, 0.0),
                                                             child: Column(
                                                               mainAxisSize: MainAxisSize.max,
                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1345,7 +1342,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                   child: Text(
                                                                     'Фото боком',
                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1367,7 +1364,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                             Container(
                                                               width: double.infinity,
                                                               height: double.infinity,
-                                                              decoration: BoxDecoration(),
+                                                              decoration: const BoxDecoration(),
                                                               child: Stack(
                                                                 children: [
                                                                   ClipRRect(
@@ -1380,9 +1377,9 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment: AlignmentDirectional(1.0, -1.0),
+                                                                    alignment: const AlignmentDirectional(1.0, -1.0),
                                                                     child: Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
                                                                       child: InkWell(
                                                                         splashColor: Colors.transparent,
                                                                         focusColor: Colors.transparent,
@@ -1412,14 +1409,14 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(SizedBox(width: 8.0)),
+                                              ].divide(const SizedBox(width: 8.0)),
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                             ),
                           ],
@@ -1430,7 +1427,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),
@@ -1551,7 +1548,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
-                        barrierColor: Color(0x2D000000),
+                        barrierColor: const Color(0x2D000000),
                         enableDrag: false,
                         isDismissible: false,
                         context: context,
@@ -1563,7 +1560,7 @@ class _ProfileMeasurementAddPageWidgetState extends State<ProfileMeasurementAddP
                             },
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: ProfileMeasurementSuccessfullyAddedPageWidget(),
+                              child: const ProfileMeasurementSuccessfullyAddedPageWidget(),
                             ),
                           );
                         },

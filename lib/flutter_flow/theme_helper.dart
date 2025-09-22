@@ -9,18 +9,18 @@ ThemeData get theme => ThemeHelper().themeData();
 // ignore_for_file: must_be_immutable
 class ThemeHelper {
   // A map of custom color themes supported by the app
-  Map<String, LightCodeColors> _supportedCustomColor = {
+  final Map<String, LightCodeColors> _supportedCustomColor = {
     'lightCode': LightCodeColors()
   };
 
   // A map of color schemes supported by the app
-  Map<String, ColorScheme> _supportedColorScheme = {
+  final Map<String, ColorScheme> _supportedColorScheme = {
     'lightCode': ColorSchemes.lightCodeColorScheme
   };
 
-  /// Changes the app theme to [_newTheme].
-  void changeTheme(String _newTheme) {
-    _appTheme = _newTheme;
+  /// Changes the app theme to [newTheme].
+  void changeTheme(String newTheme) {
+    _appTheme = newTheme;
   }
 
   /// Returns the lightCode colors for the current theme.
@@ -46,25 +46,25 @@ class ThemeHelper {
 }
 
 class ColorSchemes {
-  static final lightCodeColorScheme = ColorScheme.light();
+  static const lightCodeColorScheme = ColorScheme.light();
 }
 
 class LightCodeColors {
   // App Colors
-  Color get white => Color(0xFFFFFFFF);
+  Color get white => const Color(0xFFFFFFFF);
 
   // Additional Colors
   Color get transparentCustom => Colors.transparent;
   Color get greyCustom => Colors.grey;
-  Color get colorFF1212 => Color(0xFF121214);
-  Color get colorFFF2F2 => Color(0xFFF2F2F3);
-  Color get colorFF2423 => Color(0xFF242328);
-  Color get colorFF302E => Color(0xFF302E36);
-  Color get color66FFFF => Color(0x66FFFFFF);
-  Color get colorFFE27B => Color(0xFFE27B00);
-  Color get colorFF6965 => Color(0xFF696576);
-  Color get colorFFFF43 => Color(0xFFFF4354);
-  Color get colorFF0A0C => Color(0xFF0A0C0F);
+  Color get colorFF1212 => const Color(0xFF121214);
+  Color get colorFFF2F2 => const Color(0xFFF2F2F3);
+  Color get colorFF2423 => const Color(0xFF242328);
+  Color get colorFF302E => const Color(0xFF302E36);
+  Color get color66FFFF => const Color(0x66FFFFFF);
+  Color get colorFFE27B => const Color(0xFFE27B00);
+  Color get colorFF6965 => const Color(0xFF696576);
+  Color get colorFFFF43 => const Color(0xFFFF4354);
+  Color get colorFF0A0C => const Color(0xFF0A0C0F);
 
   // Color Shades - Each shade has its own dedicated constant
   Color get grey200 => Colors.grey.shade200;

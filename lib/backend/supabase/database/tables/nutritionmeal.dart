@@ -10,7 +10,7 @@ class NutritionmealTable extends SupabaseTable<NutritionmealRow> {
 }
 
 class NutritionmealRow extends SupabaseDataRow {
-  NutritionmealRow(Map<String, dynamic> data) : super(data);
+  NutritionmealRow(super.data);
 
   @override
   SupabaseTable get table => NutritionmealTable();
@@ -30,12 +30,12 @@ class NutritionmealRow extends SupabaseDataRow {
   String? get dishName => getField<String>('dish_name');
   set dishName(String? value) => setField<String>('dish_name', value);
 
-  dynamic? get ingredients => getField<dynamic>('ingredients');
-  set ingredients(dynamic? value) => setField<dynamic>('ingredients', value);
+  dynamic get ingredients => getField<dynamic>('ingredients');
+  set ingredients(dynamic value) => setField<dynamic>('ingredients', value);
 
   String? get recipe => getField<String>('recipe');
   set recipe(String? value) => setField<String>('recipe', value);
 
-  dynamic? get kbzu => getField<dynamic>('kbzu');
-  set kbzu(dynamic? value) => setField<dynamic>('kbzu', value);
+  dynamic get kbzu => getField<dynamic>('kbzu');
+  set kbzu(dynamic value) => setField<dynamic>('kbzu', value);
 }

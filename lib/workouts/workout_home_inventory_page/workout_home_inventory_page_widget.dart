@@ -3,12 +3,8 @@ import '/components/general_nav_bar01_widget.dart';
 import '/components/radio_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workout_home_inventory_page_model.dart';
 export 'workout_home_inventory_page_model.dart';
 
@@ -60,7 +56,7 @@ class _WorkoutHomeInventoryPageWidgetState
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Дома',
                   hideBack: false,
                 ),
@@ -76,7 +72,7 @@ class _WorkoutHomeInventoryPageWidgetState
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +102,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -141,7 +137,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
@@ -159,7 +155,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -188,7 +184,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -293,7 +289,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -322,7 +318,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -427,7 +423,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -456,7 +452,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -561,7 +557,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -590,7 +586,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -695,7 +691,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -724,7 +720,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -837,7 +833,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -872,7 +868,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
@@ -890,7 +886,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -918,7 +914,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -961,7 +957,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -989,7 +985,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -1032,7 +1028,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -1060,7 +1056,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -1103,7 +1099,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                              padding: const EdgeInsets.all(12.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -1131,7 +1127,7 @@ class _WorkoutHomeInventoryPageWidgetState
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -1187,7 +1183,7 @@ class _WorkoutHomeInventoryPageWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),

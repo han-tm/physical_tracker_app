@@ -1,12 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'journal_exercise_history_view_model.dart';
 export 'journal_exercise_history_view_model.dart';
 
@@ -45,7 +42,7 @@ class _JournalExerciseHistoryViewWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -55,7 +52,7 @@ class _JournalExerciseHistoryViewWidgetState
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -77,17 +74,17 @@ class _JournalExerciseHistoryViewWidgetState
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                 child: Container(
                   width: double.infinity,
                   height: 1.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF302E36),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -99,12 +96,12 @@ class _JournalExerciseHistoryViewWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF302E36),
+                            color: const Color(0xFF302E36),
                             width: 1.0,
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -130,7 +127,7 @@ class _JournalExerciseHistoryViewWidgetState
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: AutoSizeText(
                                   'Подхода',
@@ -175,12 +172,12 @@ class _JournalExerciseHistoryViewWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF302E36),
+                            color: const Color(0xFF302E36),
                             width: 1.0,
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -206,7 +203,7 @@ class _JournalExerciseHistoryViewWidgetState
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: AutoSizeText(
                                   'вес',
@@ -251,12 +248,12 @@ class _JournalExerciseHistoryViewWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF302E36),
+                            color: const Color(0xFF302E36),
                             width: 1.0,
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -282,7 +279,7 @@ class _JournalExerciseHistoryViewWidgetState
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: AutoSizeText(
                                   'Общее время ',
@@ -319,11 +316,11 @@ class _JournalExerciseHistoryViewWidgetState
                         ),
                       ),
                     ),
-                  ].divide(SizedBox(width: 8.0)),
+                  ].divide(const SizedBox(width: 8.0)),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 8.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 8.0),
                 child: Text(
                   'Основные группы мышц',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -347,7 +344,7 @@ class _JournalExerciseHistoryViewWidgetState
                 ),
                 child: GridView(
                   padding: EdgeInsets.zero,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 9.0,
                     mainAxisSpacing: 9.0,
@@ -369,7 +366,7 @@ class _JournalExerciseHistoryViewWidgetState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 8.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(0.0),
@@ -382,7 +379,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Грудные',
@@ -409,15 +406,15 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 4.0, 0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0x2136CF77),
+                                color: const Color(0x2136CF77),
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 4.0),
                                 child: AutoSizeText(
                                   '+10% за месяц',
@@ -433,7 +430,7 @@ class _JournalExerciseHistoryViewWidgetState
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF36CF77),
+                                        color: const Color(0xFF36CF77),
                                         fontSize: 11.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -446,7 +443,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Макс: 40 кг',
@@ -488,7 +485,7 @@ class _JournalExerciseHistoryViewWidgetState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 8.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(0.0),
@@ -501,7 +498,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Спина',
@@ -528,15 +525,15 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 4.0, 0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0x2136CF77),
+                                color: const Color(0x2136CF77),
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 4.0),
                                 child: AutoSizeText(
                                   '+10% за месяц',
@@ -552,7 +549,7 @@ class _JournalExerciseHistoryViewWidgetState
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF36CF77),
+                                        color: const Color(0xFF36CF77),
                                         fontSize: 11.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -565,7 +562,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Макс: 40 кг',
@@ -607,7 +604,7 @@ class _JournalExerciseHistoryViewWidgetState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 8.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(0.0),
@@ -620,7 +617,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Руки',
@@ -647,15 +644,15 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 4.0, 0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0x2136CF77),
+                                color: const Color(0x2136CF77),
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 4.0),
                                 child: AutoSizeText(
                                   '+5% за месяц',
@@ -671,7 +668,7 @@ class _JournalExerciseHistoryViewWidgetState
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF36CF77),
+                                        color: const Color(0xFF36CF77),
                                         fontSize: 11.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -684,7 +681,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Макс: 40 кг',
@@ -726,7 +723,7 @@ class _JournalExerciseHistoryViewWidgetState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 8.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(0.0),
@@ -739,7 +736,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Грудные',
@@ -766,15 +763,15 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 4.0, 0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0x2136CF77),
+                                color: const Color(0x2136CF77),
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 4.0),
                                 child: AutoSizeText(
                                   '+10% за месяц',
@@ -790,7 +787,7 @@ class _JournalExerciseHistoryViewWidgetState
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF36CF77),
+                                        color: const Color(0xFF36CF77),
                                         fontSize: 11.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -803,7 +800,7 @@ class _JournalExerciseHistoryViewWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: AutoSizeText(
                               'Макс: 40 кг',

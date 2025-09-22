@@ -4,16 +4,12 @@ import '/components/general_button_widget.dart';
 import '/components/radio_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/profile/profile_age_view/profile_age_view_widget.dart';
 import '/profile/profile_gender_view/profile_gender_view_widget.dart';
 import '/profile/profile_height_view/profile_height_view_widget.dart';
 import '/profile/profile_weight_view/profile_weight_view_widget.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'food_kbzu_data_view_model.dart';
 export 'food_kbzu_data_view_model.dart';
@@ -51,7 +47,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -61,7 +57,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -81,7 +77,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -108,7 +104,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -118,7 +114,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
-                                      barrierColor: Color(0x23000000),
+                                      barrierColor: const Color(0x23000000),
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {
@@ -139,11 +135,11 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     width: double.infinity,
                                     height: 44.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF242328),
+                                      color: const Color(0xFF242328),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -200,7 +196,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                               child: Container(
                                                 width: 20.0,
                                                 height: 20.0,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Icon(
                                                   Icons.close,
                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -237,7 +233,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -247,7 +243,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
-                                      barrierColor: Color(0x23000000),
+                                      barrierColor: const Color(0x23000000),
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {
@@ -268,11 +264,11 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     width: double.infinity,
                                     height: 44.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF242328),
+                                      color: const Color(0xFF242328),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -346,7 +342,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                               child: Container(
                                                 width: 20.0,
                                                 height: 20.0,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Icon(
                                                   Icons.close,
                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -363,7 +359,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                             ],
                           ),
                         ),
-                      ].divide(SizedBox(width: 9.0)),
+                      ].divide(const SizedBox(width: 9.0)),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
@@ -388,7 +384,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -398,7 +394,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
-                                      barrierColor: Color(0x23000000),
+                                      barrierColor: const Color(0x23000000),
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {
@@ -419,11 +415,11 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     width: double.infinity,
                                     height: 44.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF242328),
+                                      color: const Color(0xFF242328),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -497,7 +493,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                               child: Container(
                                                 width: 20.0,
                                                 height: 20.0,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Icon(
                                                   Icons.close,
                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -544,7 +540,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
-                                      barrierColor: Color(0x23000000),
+                                      barrierColor: const Color(0x23000000),
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {
@@ -565,11 +561,11 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                     width: double.infinity,
                                     height: 44.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF242328),
+                                      color: const Color(0xFF242328),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -643,7 +639,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                                               child: Container(
                                                 width: 20.0,
                                                 height: 20.0,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Icon(
                                                   Icons.close,
                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -660,13 +656,13 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                             ],
                           ),
                         ),
-                      ].divide(SizedBox(width: 9.0)),
+                      ].divide(const SizedBox(width: 9.0)),
                     ),
-                  ].divide(SizedBox(height: 8.0)),
+                  ].divide(const SizedBox(height: 8.0)),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -684,13 +680,13 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF302E36),
+                            color: const Color(0xFF302E36),
                             width: 1.0,
                           ),
                         ),
@@ -709,14 +705,14 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                               child: Container(
                                 width: double.infinity,
                                 height: 44.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                         child: wrapWithModel(
                                           model: _model.radioButtonModel1,
                                           updateCallback: () => safeSetState(() {}),
@@ -748,7 +744,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                             Container(
                               width: double.infinity,
                               height: 1.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF302E36),
                               ),
                             ),
@@ -764,14 +760,14 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                               child: Container(
                                 width: double.infinity,
                                 height: 44.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                         child: wrapWithModel(
                                           model: _model.radioButtonModel2,
                                           updateCallback: () => safeSetState(() {}),
@@ -803,7 +799,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                             Container(
                               width: double.infinity,
                               height: 1.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF302E36),
                               ),
                             ),
@@ -819,14 +815,14 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                               child: Container(
                                 width: double.infinity,
                                 height: 44.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                         child: wrapWithModel(
                                           model: _model.radioButtonModel3,
                                           updateCallback: () => safeSetState(() {}),
@@ -858,7 +854,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                             Container(
                               width: double.infinity,
                               height: 1.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF302E36),
                               ),
                             ),
@@ -874,14 +870,14 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                               child: Container(
                                 width: double.infinity,
                                 height: 44.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                         child: wrapWithModel(
                                           model: _model.radioButtonModel4,
                                           updateCallback: () => safeSetState(() {}),
@@ -918,7 +914,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -936,13 +932,13 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF302E36),
+                            color: const Color(0xFF302E36),
                             width: 1.0,
                           ),
                         ),
@@ -961,14 +957,14 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                               child: Container(
                                 width: double.infinity,
                                 height: 44.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                         child: wrapWithModel(
                                           model: _model.radioButtonModel5,
                                           updateCallback: () => safeSetState(() {}),
@@ -1000,7 +996,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                             Container(
                               width: double.infinity,
                               height: 1.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF302E36),
                               ),
                             ),
@@ -1016,14 +1012,14 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                               child: Container(
                                 width: double.infinity,
                                 height: 44.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                         child: wrapWithModel(
                                           model: _model.radioButtonModel6,
                                           updateCallback: () => safeSetState(() {}),
@@ -1055,7 +1051,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                             Container(
                               width: double.infinity,
                               height: 1.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF302E36),
                               ),
                             ),
@@ -1071,14 +1067,14 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                               child: Container(
                                 width: double.infinity,
                                 height: 44.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                         child: wrapWithModel(
                                           model: _model.radioButtonModel7,
                                           updateCallback: () => safeSetState(() {}),
@@ -1115,7 +1111,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),
@@ -1197,7 +1193,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
-                          barrierColor: Color(0x3C000000),
+                          barrierColor: const Color(0x3C000000),
                           enableDrag: false,
                           isDismissible: false,
                           context: context,

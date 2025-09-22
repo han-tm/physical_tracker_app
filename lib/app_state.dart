@@ -1,7 +1,8 @@
+// ignore_for_file: non_constant_identifier_names, unnecessary_getters_setters
+
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import 'backend/supabase/supabase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -21,8 +22,7 @@ class FFAppState extends ChangeNotifier {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
-      _obboardingShown =
-          prefs.getBool('ff_obboardingShown') ?? _obboardingShown;
+      _obboardingShown = prefs.getBool('ff_obboardingShown') ?? _obboardingShown;
     });
     _safeInit(() {
       _surveyShown = prefs.getBool('ff_surveyShown') ?? _surveyShown;
@@ -32,8 +32,7 @@ class FFAppState extends ChangeNotifier {
               .getStringList('ff_UserBodyMeasures')
               ?.map((x) {
                 try {
-                  return UserBodyMeasureStruct.fromSerializableMap(
-                      jsonDecode(x));
+                  return UserBodyMeasureStruct.fromSerializableMap(jsonDecode(x));
                 } catch (e) {
                   print("Can't decode persisted data type. Error: $e.");
                   return null;
@@ -73,26 +72,22 @@ class FFAppState extends ChangeNotifier {
   List<UserBodyMeasureStruct> get UserBodyMeasures => _UserBodyMeasures;
   set UserBodyMeasures(List<UserBodyMeasureStruct> value) {
     _UserBodyMeasures = value;
-    prefs.setStringList(
-        'ff_UserBodyMeasures', value.map((x) => x.serialize()).toList());
+    prefs.setStringList('ff_UserBodyMeasures', value.map((x) => x.serialize()).toList());
   }
 
   void addToUserBodyMeasures(UserBodyMeasureStruct value) {
     UserBodyMeasures.add(value);
-    prefs.setStringList('ff_UserBodyMeasures',
-        _UserBodyMeasures.map((x) => x.serialize()).toList());
+    prefs.setStringList('ff_UserBodyMeasures', _UserBodyMeasures.map((x) => x.serialize()).toList());
   }
 
   void removeFromUserBodyMeasures(UserBodyMeasureStruct value) {
     UserBodyMeasures.remove(value);
-    prefs.setStringList('ff_UserBodyMeasures',
-        _UserBodyMeasures.map((x) => x.serialize()).toList());
+    prefs.setStringList('ff_UserBodyMeasures', _UserBodyMeasures.map((x) => x.serialize()).toList());
   }
 
   void removeAtIndexFromUserBodyMeasures(int index) {
     UserBodyMeasures.removeAt(index);
-    prefs.setStringList('ff_UserBodyMeasures',
-        _UserBodyMeasures.map((x) => x.serialize()).toList());
+    prefs.setStringList('ff_UserBodyMeasures', _UserBodyMeasures.map((x) => x.serialize()).toList());
   }
 
   void updateUserBodyMeasuresAtIndex(
@@ -100,14 +95,12 @@ class FFAppState extends ChangeNotifier {
     UserBodyMeasureStruct Function(UserBodyMeasureStruct) updateFn,
   ) {
     UserBodyMeasures[index] = updateFn(_UserBodyMeasures[index]);
-    prefs.setStringList('ff_UserBodyMeasures',
-        _UserBodyMeasures.map((x) => x.serialize()).toList());
+    prefs.setStringList('ff_UserBodyMeasures', _UserBodyMeasures.map((x) => x.serialize()).toList());
   }
 
   void insertAtIndexInUserBodyMeasures(int index, UserBodyMeasureStruct value) {
     UserBodyMeasures.insert(index, value);
-    prefs.setStringList('ff_UserBodyMeasures',
-        _UserBodyMeasures.map((x) => x.serialize()).toList());
+    prefs.setStringList('ff_UserBodyMeasures', _UserBodyMeasures.map((x) => x.serialize()).toList());
   }
 
   bool _regCompleted = false;
@@ -115,6 +108,52 @@ class FFAppState extends ChangeNotifier {
   set regCompleted(bool value) {
     _regCompleted = value;
     prefs.setBool('ff_regCompleted', value);
+  }
+
+  double? _shoulderGirth;
+  double? get shoulderGirth => _shoulderGirth;
+  set shoulderGirth(double? value) {
+    _shoulderGirth = value;
+  }
+
+  double? _chestGirth;
+  double? get chestGirth => _chestGirth;
+  set chestGirth(double? value) {
+    _chestGirth = value;
+  }
+
+  double? _waistGirth;
+  double? get waistGirth => _waistGirth;
+  set waistGirth(double? value) {
+    _waistGirth = value;
+  }
+
+  double? _abdomenGirth;
+  double? get abdomenGirth => _abdomenGirth;
+  set abdomenGirth(double? value) {
+    _abdomenGirth = value;
+  }
+
+  double? _thighGirth;
+  double? get thighGirth => _thighGirth;
+  set thighGirth(double? value) {
+    _thighGirth = value;
+  }
+
+  double? _hipsGirth;
+  double? get hipsGirth => _hipsGirth;
+  set hipsGirth(double? value) {
+    _hipsGirth = value;
+  }
+
+  void clearBodyMeasures() {
+    _hipsGirth = null;
+    _thighGirth = null;
+    _abdomenGirth = null;
+    _waistGirth = null;
+    _chestGirth = null;
+    _shoulderGirth = null;
+    notifyListeners();
   }
 }
 
@@ -124,8 +163,8 @@ void _safeInit(Function() initializeField) {
   } catch (_) {}
 }
 
-Future _safeInitAsync(Function() initializeField) async {
-  try {
-    await initializeField();
-  } catch (_) {}
-}
+// Future _safeInitAsync(Function() initializeField) async {
+//   try {
+//     await initializeField();
+//   } catch (_) {}
+// }

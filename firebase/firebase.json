@@ -6,7 +6,8 @@
   "functions": [
     {
       "source": "functions",
-      "codebase": "functions"
+      "codebase": "functions",
+      "runtime": "nodejs20"
     }
   ],
   "storage": {

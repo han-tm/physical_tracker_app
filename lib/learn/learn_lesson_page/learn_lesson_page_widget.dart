@@ -3,12 +3,9 @@ import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'learn_lesson_page_model.dart';
 export 'learn_lesson_page_model.dart';
 
@@ -63,7 +60,7 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Просмотр урока',
                   hideBack: false,
                 ),
@@ -73,7 +70,7 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                   future: LessonTable().querySingleRow(
                     queryFn: (q) => q.eqOrNull(
                       'id',
-                      widget!.lesson?.id,
+                      widget.lesson?.id,
                     ),
                   ),
                   builder: (context, snapshot) {
@@ -99,14 +96,14 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
 
                     return Container(
                       width: double.infinity,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: FlutterFlowVideoPlayer(
                                 path: containerLessonRow!.video!,
@@ -120,11 +117,11 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  containerLessonRow?.name,
+                                  containerLessonRow.name,
                                   '-',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -146,7 +143,7 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 8.0, 16.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -157,7 +154,7 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                                     future: LessonGroupTable().querySingleRow(
                                       queryFn: (q) => q.eqOrNull(
                                         'id',
-                                        containerLessonRow?.lessonGroup,
+                                        containerLessonRow.lessonGroup,
                                       ),
                                     ),
                                     builder: (context, snapshot) {
@@ -189,13 +186,13 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
 
                                       return Container(
                                         decoration: BoxDecoration(
-                                          color: Color(0x21E27B00),
+                                          color: const Color(0x21E27B00),
                                           borderRadius:
                                           BorderRadius.circular(100.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               8.0, 3.0, 8.0, 3.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -212,13 +209,13 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                     4.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   valueOrDefault<String>(
                                                     containerLessonGroupRow
-                                                        ?.name,
+                                                        .name,
                                                     '-',
                                                   ),
                                                   style: FlutterFlowTheme.of(
@@ -263,12 +260,12 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF242328),
+                                      color: const Color(0xFF242328),
                                       borderRadius:
                                       BorderRadius.circular(100.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 3.0, 8.0, 3.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -285,11 +282,11 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 4.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
-                                                containerLessonRow?.duration
+                                                containerLessonRow.duration
                                                     ?.toString(),
                                                 '-',
                                               ),
@@ -335,7 +332,7 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 17.0, 16.0, 0.0),
                               child: Text(
                                 'Описание видео',
@@ -357,19 +354,19 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 8.0, 16.0, 16.0),
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12.0),
                                   border: Border.all(
-                                    color: Color(0xFF302E36),
+                                    color: const Color(0xFF302E36),
                                     width: 1.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.all(12.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
@@ -377,7 +374,7 @@ class _LearnLessonPageWidgetState extends State<LearnLessonPageWidget> {
                                     children: [
                                       Text(
                                         valueOrDefault<String>(
-                                          containerLessonRow?.description,
+                                          containerLessonRow.description,
                                           '-',
                                         ),
                                         style: FlutterFlowTheme.of(context)

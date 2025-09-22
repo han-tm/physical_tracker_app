@@ -10,7 +10,7 @@ class TrainingProgramWeekTable extends SupabaseTable<TrainingProgramWeekRow> {
 }
 
 class TrainingProgramWeekRow extends SupabaseDataRow {
-  TrainingProgramWeekRow(Map<String, dynamic> data) : super(data);
+  TrainingProgramWeekRow(super.data);
 
   @override
   SupabaseTable get table => TrainingProgramWeekTable();

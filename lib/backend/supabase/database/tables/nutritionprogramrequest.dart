@@ -11,7 +11,7 @@ class NutritionprogramrequestTable
 }
 
 class NutritionprogramrequestRow extends SupabaseDataRow {
-  NutritionprogramrequestRow(Map<String, dynamic> data) : super(data);
+  NutritionprogramrequestRow(super.data);
 
   @override
   SupabaseTable get table => NutritionprogramrequestTable();

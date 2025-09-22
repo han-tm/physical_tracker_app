@@ -1,12 +1,11 @@
+import '../../index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
+
 import 'creating_program_page_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:provider/provider.dart';
 
 class CreatingProgramPageWidget extends StatefulWidget {
   const CreatingProgramPageWidget({super.key});
@@ -31,7 +30,7 @@ class _CreatingProgramPageWidgetState extends State<CreatingProgramPageWidget> {
 
   void _startProgress() {
     final totalDuration = Duration(seconds: 4 + (DateTime.now().millisecondsSinceEpoch % 3)); // 4-6 секунд
-    final steps = 20;
+    const steps = 20;
     final interval = totalDuration.inMilliseconds ~/ steps;
 
     int currentStep = 0;
@@ -49,7 +48,8 @@ class _CreatingProgramPageWidgetState extends State<CreatingProgramPageWidget> {
       if (currentStep >= steps || _model.progress >= 1.0) {
         await Future.delayed(const Duration(milliseconds: 500));
         if (mounted) {
-          var result = context.pushNamed(SignInStartPageWidget.routeName);
+          print('ready');
+          context.pushReplacementNamed(SignInStartPageWidget.routeName);
         }
         return false;
       }
@@ -95,11 +95,11 @@ class _CreatingProgramPageWidgetState extends State<CreatingProgramPageWidget> {
                         'Создаём вашу программу!',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.unbounded(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          fontSize: 16.0,
-                        ),
+                              font: GoogleFonts.unbounded(
+                                fontWeight: FontWeight.bold,
+                              ),
+                              fontSize: 16.0,
+                            ),
                       ),
                     ),
                     Padding(
@@ -134,10 +134,10 @@ class _CreatingProgramPageWidgetState extends State<CreatingProgramPageWidget> {
                         'Подбираем оптимальные упражнения под ваши параметры и цели',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.unbounded(),
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          fontSize: 13.0,
-                        ),
+                              font: GoogleFonts.unbounded(),
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              fontSize: 13.0,
+                            ),
                       ),
                     ),
                   ],

@@ -2,11 +2,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_notification_no_data_view_model.dart';
 export 'profile_notification_no_data_view_model.dart';
 
@@ -44,7 +41,7 @@ class _ProfileNotificationNoDataViewWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -58,7 +55,7 @@ class _ProfileNotificationNoDataViewWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: Text(
               'Уведомления пусты',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -76,7 +73,7 @@ class _ProfileNotificationNoDataViewWidgetState
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
             child: Text(
               'Здесь будут отображаться важные уведомления  о ваших объявлениях, новых предложениях  и активности в приложении',
               textAlign: TextAlign.center,

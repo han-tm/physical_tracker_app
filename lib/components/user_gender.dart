@@ -1,18 +1,9 @@
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../userData/PreRegistrationData.dart';
-import '../../userData/PreRegistrationStorage.dart';
-import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
-import '/index.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class UserGenderViewWidget extends StatefulWidget {
   const UserGenderViewWidget({super.key, required this.initValue, required this.onSelect});
@@ -45,9 +36,9 @@ class _UserGenderViewWidgetState extends State<UserGenderViewWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -73,7 +64,7 @@ class _UserGenderViewWidgetState extends State<UserGenderViewWidget> {
                     width: 140.0,
                     height: 140.0,
                     decoration: BoxDecoration(
-                      color: gender == 0 ? FlutterFlowTheme.of(context).primary : Color(0xFF242328),
+                      color: gender == 0 ? FlutterFlowTheme.of(context).primary : const Color(0xFF242328),
                       shape: BoxShape.circle,
                     ),
                     child: Column(
@@ -90,7 +81,7 @@ class _UserGenderViewWidgetState extends State<UserGenderViewWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'Мужчина',
                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -128,7 +119,7 @@ class _UserGenderViewWidgetState extends State<UserGenderViewWidget> {
                     width: 140.0,
                     height: 140.0,
                     decoration: BoxDecoration(
-                      color: gender == 1 ? FlutterFlowTheme.of(context).primary : Color(0xFF242328),
+                      color: gender == 1 ? FlutterFlowTheme.of(context).primary : const Color(0xFF242328),
                       shape: BoxShape.circle,
                     ),
                     child: Column(
@@ -145,7 +136,7 @@ class _UserGenderViewWidgetState extends State<UserGenderViewWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'Девушка',
                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -167,7 +158,7 @@ class _UserGenderViewWidgetState extends State<UserGenderViewWidget> {
                     ),
                   ),
                 ),
-              ].divide(SizedBox(width: 16.0)),
+              ].divide(const SizedBox(width: 16.0)),
             ),
           ],
         ),

@@ -6,12 +6,9 @@ import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_difficulty_page_model.dart';
 export 'profile_difficulty_page_model.dart';
 
@@ -67,7 +64,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Уровень сложности',
                   hideBack: false,
                 ),
@@ -89,7 +86,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,18 +125,18 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                       ),
                                     if (_model.individualProgramIsActive)
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(16.0),
                                             border: Border.all(
-                                              color: Color(0xFF302E36),
+                                              color: const Color(0xFF302E36),
                                               width: 1.0,
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 24.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 24.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -153,7 +150,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                   child: Text(
                                                     't.me/Programm_d/hrrrfgv',
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -169,7 +166,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                   child: wrapWithModel(
                                                     model: _model.generalButtonModel1,
                                                     updateCallback: () => safeSetState(() {}),
@@ -194,7 +191,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                         ),
                                       ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -209,7 +206,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                           borderRadius: BorderRadius.circular(16.0),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(12.0),
+                                          padding: const EdgeInsets.all(12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,7 +215,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius: BorderRadius.circular(0.0),
                                                       child: SvgPicture.asset(
@@ -260,7 +257,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                 ],
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Программа, составленная специально под ваши цели и возможности',
                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -276,11 +273,11 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: double.infinity,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x40E27B00),
+                                                    color: const Color(0x40E27B00),
                                                     borderRadius: BorderRadius.circular(16.0),
                                                     border: Border.all(
                                                       color: FlutterFlowTheme.of(context).primary,
@@ -288,7 +285,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                     ),
                                                   ),
                                                   child: Padding(
-                                                    padding: EdgeInsets.all(12.0),
+                                                    padding: const EdgeInsets.all(12.0),
                                                     child: Column(
                                                       mainAxisSize: MainAxisSize.max,
                                                       children: [
@@ -306,7 +303,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                             ),
                                                             Expanded(
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                 child: Text(
                                                                   'Индивидуальный план тренировок \nна 12 недель',
                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -337,7 +334,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                             ),
                                                             Expanded(
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                 child: Text(
                                                                   'Учёт ваших целей, возможностей и ограничений',
                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -368,7 +365,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                             ),
                                                             Expanded(
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                 child: Text(
                                                                   'Поддержка и консультации от куратора',
                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -399,7 +396,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                             ),
                                                             Expanded(
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                 child: Text(
                                                                   'Возможность корректировки программы',
                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -416,7 +413,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                                             ),
                                                           ],
                                                         ),
-                                                      ].divide(SizedBox(height: 4.0)),
+                                                      ].divide(const SizedBox(height: 4.0)),
                                                     ),
                                                   ),
                                                 ),
@@ -442,7 +439,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                       child: Text(
                                         'Уровень сложности:',
                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -458,7 +455,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                       // child: Row(
                                       //   mainAxisSize: MainAxisSize.max,
                                       //   children: [
@@ -818,7 +815,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
   Widget renderDifCell(Map<String, dynamic> item) {
     return Container(
       decoration: BoxDecoration(
-        color: _model.currentDifficulty == item["id"]?FlutterFlowTheme.of(context).primary.withValues(alpha: 0.12):Color(0xFF242328),
+        color: _model.currentDifficulty == item["id"]?FlutterFlowTheme.of(context).primary.withValues(alpha: 0.12):const Color(0xFF242328),
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(width: 1, color: _model.currentDifficulty == item["id"]?FlutterFlowTheme.of(context).primary:Colors.transparent)
       ),
@@ -827,7 +824,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 16.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 16.0),
             child: Text(
               item["name"],
               maxLines: 1,
@@ -847,13 +844,13 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
           Container(
             width: double.infinity,
             height: 1.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFF302E36),
             ),
           ),
           Container(
             width: double.infinity,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: InkWell(
               onTap: () async {
                 await context.pushNamed(
@@ -871,7 +868,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                 });
               },
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 17.0, 0.0, 17.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 17.0, 0.0, 17.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -886,7 +883,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Подробнее',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(

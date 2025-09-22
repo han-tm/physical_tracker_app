@@ -9,11 +9,10 @@ import '../../auth/firebase_auth/auth_util.dart';
 import '../../backend/supabase/database/tables/exercise.dart';
 import '../../backend/supabase/supabase.dart';
 import '../../components/general_button_widget.dart';
-import '../../flutter_flow/flutter_flow_calendar.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 
 class JournalStatisticsWidget extends StatefulWidget {
-  const JournalStatisticsWidget();
+  const JournalStatisticsWidget({super.key});
 
   @override
   State<JournalStatisticsWidget> createState() => _JournalStatisticsWidgetState();
@@ -133,16 +132,16 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
             ),
           )
         : Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: Container(
               width: double.infinity,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -156,7 +155,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -170,7 +169,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Пока нет данных \nдля анализа',
                                   textAlign: TextAlign.center,
@@ -187,7 +186,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                 child: Text(
                                   'Начните свою первую тренировку, чтобы отслеживать прогресс и видеть статистику',
                                   textAlign: TextAlign.center,
@@ -204,7 +203,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: GeneralButtonWidget(
                                   title: 'К тренировке',
                                   isActive: false,
@@ -229,13 +228,13 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.all(16.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                                   child: Text(
                                     'Топ упражнений',
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -254,8 +253,8 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                     final index = entry.key + 1;
                                     final ex = entry.value;
                                     return Container(
-                                      margin: EdgeInsets.only(bottom: 8.0),
-                                      padding: EdgeInsets.all(12.0),
+                                      margin: const EdgeInsets.only(bottom: 8.0),
+                                      padding: const EdgeInsets.all(12.0),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context).secondary,
                                         borderRadius: BorderRadius.circular(12.0),
@@ -294,7 +293,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                                 width: 32,
                                                 height: 32,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x20E27B00),
+                                                  color: const Color(0x20E27B00),
                                                   borderRadius: BorderRadius.circular(12.0),
                                                 ),
                                                 alignment: Alignment.center,
@@ -308,7 +307,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              SizedBox(width: 8.0),
+                                              const SizedBox(width: 8.0),
                                               Expanded(
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -344,13 +343,13 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.all(16.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                                   child: Text(
                                     'Сводка прогресса',
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -372,7 +371,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                   child: GridView(
                                     padding: EdgeInsets.zero,
                                     physics: const NeverScrollableScrollPhysics(),
-                                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       crossAxisSpacing: 9.0,
                                       mainAxisSpacing: 9.0,
@@ -394,9 +393,9 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
-                                                '${currentWeight?.toStringAsFixed(1) ?? '--'}',
+                                                currentWeight?.toStringAsFixed(1) ?? '--',
                                                 maxLines: 1,
                                                 minFontSize: 1.0,
                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -413,7 +412,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
                                                 'Текущий вес (кг)',
                                                 maxLines: 1,
@@ -475,9 +474,9 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
-                                                '${averageReps.toStringAsFixed(0)}',
+                                                averageReps.toStringAsFixed(0),
                                                 maxLines: 1,
                                                 minFontSize: 1.0,
                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -494,7 +493,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
                                                 'Среднее повторений',
                                                 maxLines: 1,
@@ -556,7 +555,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
                                                 '$totalWorkouts',
                                                 maxLines: 1,
@@ -575,7 +574,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
                                                 'Тренировок',
                                                 maxLines: 1,
@@ -637,7 +636,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
                                                 '${successRate.toStringAsFixed(0)}%',
                                                 maxLines: 1,
@@ -656,7 +655,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
                                                 'Успешность',
                                                 maxLines: 1,
@@ -742,7 +741,7 @@ class _JournalStatisticsWidgetState extends State<JournalStatisticsWidget> {
                           //     ),
                           //   ),
                           // ),
-                        ].addToEnd(SizedBox(height: 32.0)),
+                        ].addToEnd(const SizedBox(height: 32.0)),
                       ),
                     ),
                   ),

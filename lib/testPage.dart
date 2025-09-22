@@ -148,8 +148,8 @@ class EducationPage extends StatelessWidget {
                 top: 12,
                 child: Container(
                   padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFE27B00),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFE27B00),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(Icons.play_arrow, size: 24, color: Colors.white),
@@ -157,11 +157,11 @@ class EducationPage extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(12),
+          const Padding(
+            padding: EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   'Новое',
                   style: TextStyle(

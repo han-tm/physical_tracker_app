@@ -1,17 +1,9 @@
 import 'package:boom_client/journal/journal_page/journal_statistics.dart';
 
-import '/components/general_button_widget.dart';
-import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'journal_calendar.dart';
 import 'journal_page_model.dart';
 export 'journal_page_model.dart';
@@ -72,7 +64,7 @@ class _JournalPageWidgetState extends State<JournalPageWidget> {
                       borderRadius: BorderRadius.circular(100.0),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -88,13 +80,13 @@ class _JournalPageWidgetState extends State<JournalPageWidget> {
                             child: Container(
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: _model.part == 0 ? FlutterFlowTheme.of(context).primary : Color(0x00696576),
+                                color: _model.part == 0 ? FlutterFlowTheme.of(context).primary : const Color(0x00696576),
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     'Календарь',
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -125,13 +117,13 @@ class _JournalPageWidgetState extends State<JournalPageWidget> {
                             child: Container(
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: _model.part == 1 ? FlutterFlowTheme.of(context).primary : Color(0x00696576),
+                                color: _model.part == 1 ? FlutterFlowTheme.of(context).primary : const Color(0x00696576),
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     'Статистика',
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -157,14 +149,14 @@ class _JournalPageWidgetState extends State<JournalPageWidget> {
                 ],
               ),
               if (_model.part == 0)
-                Expanded(
+                const Expanded(
                   child: JournalCalendarWidget(),
                 ),
               if (_model.part == 1)
-                Expanded(
+                const Expanded(
                   child: JournalStatisticsWidget(),
                 ),
-            ].addToEnd(SizedBox(height: 32.0)),
+            ].addToEnd(const SizedBox(height: 32.0)),
           ),
         ),
       ),

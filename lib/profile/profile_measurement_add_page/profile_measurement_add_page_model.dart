@@ -1,20 +1,11 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/supabase/supabase.dart';
+// ignore_for_file: non_constant_identifier_names
+
 import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
-import '/components/media_select_view_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
-import '/profile/profile_measurement_successfully_added_page/profile_measurement_successfully_added_page_widget.dart';
-import '/profile/profile_weight_view/profile_weight_view_widget.dart';
-import 'dart:ui';
 import 'profile_measurement_add_page_widget.dart'
     show ProfileMeasurementAddPageWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ProfileMeasurementAddPageModel
     extends FlutterFlowModel<ProfileMeasurementAddPageWidget> {

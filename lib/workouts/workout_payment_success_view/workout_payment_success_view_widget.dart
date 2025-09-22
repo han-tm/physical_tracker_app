@@ -1,13 +1,9 @@
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workout_payment_success_view_model.dart';
 export 'workout_payment_success_view_model.dart';
 
@@ -48,7 +44,7 @@ class _WorkoutPaymentSuccessViewWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -58,7 +54,7 @@ class _WorkoutPaymentSuccessViewWidgetState
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -72,7 +68,7 @@ class _WorkoutPaymentSuccessViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
@@ -81,7 +77,7 @@ class _WorkoutPaymentSuccessViewWidgetState
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -105,7 +101,7 @@ class _WorkoutPaymentSuccessViewWidgetState
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Пройдите подробный опрос для составления индивидуальной программы и мы начнем ее готовить',
                           textAlign: TextAlign.center,
@@ -138,7 +134,7 @@ class _WorkoutPaymentSuccessViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Text(
                 'Когда программа будет готова, вы получите уведомление и сможете начать тренировки по индивидуальному плану.',
                 textAlign: TextAlign.center,
@@ -159,7 +155,7 @@ class _WorkoutPaymentSuccessViewWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel,
                 updateCallback: () => safeSetState(() {}),

@@ -1,12 +1,9 @@
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_difficulty_start_view_model.dart';
 export 'profile_difficulty_start_view_model.dart';
 
@@ -45,7 +42,7 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -55,7 +52,7 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -69,7 +66,7 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Text(
                 'Начать программу?',
                 textAlign: TextAlign.center,
@@ -86,7 +83,7 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
               child: Text(
                 'Вы собираетесь начать программу «Новичок». Это заменит вашу текущую программу тренировок новой.',
                 textAlign: TextAlign.center,
@@ -104,11 +101,11 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [Color(0xFFFFCE49), Color(0xFFFFCE49)],
                     stops: [0.0, 1.0],
                     begin: AlignmentDirectional(0.0, -1.0),
@@ -119,15 +116,15 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
                 child: Stack(
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Color(0xFF242328),
+                          color: const Color(0xFF242328),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +143,7 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
                                     ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                 child: Text(
                                   'Все ваши текущие тренировки будут заменены тренировками из этой программы. Ваш прогресс по предыдущей программе будет сохранен.',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -172,7 +169,7 @@ class _ProfileDifficultyStartViewWidgetState extends State<ProfileDifficultyStar
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel,
                 updateCallback: () => safeSetState(() {}),

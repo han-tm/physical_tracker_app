@@ -1,11 +1,9 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
 
@@ -13,8 +11,7 @@ import '/backend/supabase/supabase.dart';
 import 'backend/firebase/firebase_config.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'flutter_flow/nav/nav.dart';
+
 import 'index.dart';
 
 void main() async {
@@ -32,11 +29,13 @@ void main() async {
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
@@ -100,12 +99,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'BoomClient',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [Locale('ru', 'RU')],
+      locale: const Locale('ru', 'RU'),
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: false,
@@ -117,12 +117,12 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavBarPage extends StatefulWidget {
-  NavBarPage({
-    Key? key,
+  const NavBarPage({
+    super.key,
     this.initialPage,
     this.page,
     this.disableResizeToAvoidBottomInset = false,
-  }) : super(key: key);
+  });
 
   final String? initialPage;
   final Widget? page;
@@ -149,11 +149,11 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       // 'RouterPage': RouterPageWidget(),
-      'WorkoutsPage': WorkoutsPageWidget(),
-      'JournalPage': JournalPageWidget(),
+      'WorkoutsPage': const WorkoutsPageWidget(),
+      'JournalPage': const JournalPageWidget(),
       'FoodPage': const FoodPageWidget(),
-      'LearnPage': LearnPageWidget(),
-      'ProfilePage': ProfilePageWidget(),
+      'LearnPage': const LearnPageWidget(),
+      'ProfilePage': const ProfilePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -172,9 +172,9 @@ class _NavBarPageState extends State<NavBarPage> {
             _currentPage = null;
             _currentPageName = tabs.keys.toList()[i];
           }),
-          backgroundColor: Color(0xFF0B0D0F),
+          backgroundColor: const Color(0xFF0B0D0F),
           selectedItemColor: FlutterFlowTheme.of(context).primary,
-          unselectedItemColor: Color(0xFF696576),
+          unselectedItemColor: const Color(0xFF696576),
           showSelectedLabels: true,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,

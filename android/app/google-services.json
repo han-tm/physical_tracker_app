@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "805150763105",
-    "project_id": "boom-romanov",
-    "storage_bucket": "boom-romanov.firebasestorage.app"
+    "project_number": "537310402215",
+    "project_id": "yagodboom",
+    "storage_bucket": "yagodboom.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:805150763105:android:1b1d6b59d7bbec5b6b6220",
+        "mobilesdk_app_id": "1:537310402215:android:b03b0364f2a832f6b6ad82",
         "android_client_info": {
-          "package_name": "com.mycompany.boomclient"
+          "package_name": "com.yboom.app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD2Yob6Fn30tQ7SPyGMQ8C3O2gpJomShqw"
+          "current_key": "AIzaSyCKBjla_nzu1l3pi7ZvqimnOPyLhwApEcI"
         }
       ],
       "services": {

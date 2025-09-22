@@ -419,19 +419,19 @@ class _MeasureAddViewWidgetState extends State<MeasureAddViewWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               valueOrDefault<String>(
-                widget!.measureRow?.name,
+                widget.measureRow?.name,
                 '-',
               ),
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -449,7 +449,7 @@ class _MeasureAddViewWidgetState extends State<MeasureAddViewWidget> {
             ),
             if (widget.measureRow?.description != null)
               Padding(
-                padding: EdgeInsets.only(top: 4.0),
+                padding: const EdgeInsets.only(top: 4.0),
                 child: Text(
                   widget.measureRow!.description!,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -477,7 +477,7 @@ class _MeasureAddViewWidgetState extends State<MeasureAddViewWidget> {
                 ),
               ),
             Padding(
-              padding: EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 16.0),
               child: TextFormField(
                 controller: _model.textController,
                 focusNode: _model.textFieldFocusNode,
@@ -486,7 +486,7 @@ class _MeasureAddViewWidgetState extends State<MeasureAddViewWidget> {
                 inputFormatters: [LengthLimitingDecimalFormatter()],
                 onChanged: (_) => EasyDebounce.debounce(
                   '_model.textController',
-                  Duration(milliseconds: 100),
+                  const Duration(milliseconds: 100),
                       () => setState(() {}),
                 ),
                 decoration: InputDecoration(
@@ -532,7 +532,7 @@ class _MeasureAddViewWidgetState extends State<MeasureAddViewWidget> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: (_model.textFieldFocusNode?.hasFocus ?? false)
-                          ? Color(0xFFE27B00)
+                          ? const Color(0xFFE27B00)
                           : FlutterFlowTheme.of(context).secondary,
                       width: 1.0,
                     ),
@@ -561,11 +561,11 @@ class _MeasureAddViewWidgetState extends State<MeasureAddViewWidget> {
                   ),
                   filled: true,
                   fillColor: (_model.textFieldFocusNode?.hasFocus ?? false)
-                      ? Color(0x1EE27B00)
+                      ? const Color(0x1EE27B00)
                       : FlutterFlowTheme.of(context).secondary,
                   suffixIcon: Padding(
                     padding: const EdgeInsets.only(right: 8.0),
-                    child: Container(
+                    child: SizedBox(
                       width: 40, height: 40,
                       // color: Colors.red,
                       child: Center(
@@ -590,7 +590,7 @@ class _MeasureAddViewWidgetState extends State<MeasureAddViewWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 16.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel,
                 updateCallback: () => setState(() {}),

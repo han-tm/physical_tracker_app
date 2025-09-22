@@ -1,12 +1,9 @@
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workouts_survery_list_page_model.dart';
 export 'workouts_survery_list_page_model.dart';
 
@@ -58,7 +55,7 @@ class _WorkoutsSurveryListPageWidgetState
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Опрос',
                   hideBack: false,
                 ),
@@ -73,12 +70,12 @@ class _WorkoutsSurveryListPageWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 16.0),
                               child: Text(
                                 'Чем подробней вы дадите информацию, тем более детально и точно мне сделаем вам программу',
@@ -128,7 +125,7 @@ class _WorkoutsSurveryListPageWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -186,7 +183,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -242,7 +239,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -292,7 +289,7 @@ class _WorkoutsSurveryListPageWidgetState
                                             children: [
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x21E27B00),
+                                                  color: const Color(0x21E27B00),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100.0),
@@ -303,7 +300,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                                   child: Text(
@@ -339,7 +336,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -372,7 +369,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -422,7 +419,7 @@ class _WorkoutsSurveryListPageWidgetState
                                             children: [
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x21E27B00),
+                                                  color: const Color(0x21E27B00),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100.0),
@@ -433,7 +430,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                                   child: Text(
@@ -469,7 +466,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -502,7 +499,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -552,7 +549,7 @@ class _WorkoutsSurveryListPageWidgetState
                                             children: [
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x21E27B00),
+                                                  color: const Color(0x21E27B00),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100.0),
@@ -563,7 +560,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                                   child: Text(
@@ -599,7 +596,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -632,7 +629,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -682,7 +679,7 @@ class _WorkoutsSurveryListPageWidgetState
                                             children: [
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x21E27B00),
+                                                  color: const Color(0x21E27B00),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100.0),
@@ -693,7 +690,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                                   child: Text(
@@ -729,7 +726,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -762,7 +759,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -812,7 +809,7 @@ class _WorkoutsSurveryListPageWidgetState
                                             children: [
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x21E27B00),
+                                                  color: const Color(0x21E27B00),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100.0),
@@ -823,7 +820,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                                   child: Text(
@@ -859,7 +856,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -892,7 +889,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -942,7 +939,7 @@ class _WorkoutsSurveryListPageWidgetState
                                             children: [
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x21E27B00),
+                                                  color: const Color(0x21E27B00),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100.0),
@@ -953,7 +950,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                                   child: Text(
@@ -989,7 +986,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -1022,7 +1019,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1072,7 +1069,7 @@ class _WorkoutsSurveryListPageWidgetState
                                             children: [
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x21E27B00),
+                                                  color: const Color(0x21E27B00),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           100.0),
@@ -1083,7 +1080,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                                   child: Text(
@@ -1119,7 +1116,7 @@ class _WorkoutsSurveryListPageWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -1143,7 +1140,7 @@ class _WorkoutsSurveryListPageWidgetState
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(height: 16.0)),
+                              ].divide(const SizedBox(height: 16.0)),
                             ),
                           ],
                         ),

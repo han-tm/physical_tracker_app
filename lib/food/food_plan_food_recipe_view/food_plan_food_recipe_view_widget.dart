@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'food_plan_food_recipe_view_model.dart';
 export 'food_plan_food_recipe_view_model.dart';
 
@@ -49,7 +46,7 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xff1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -59,7 +56,7 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -79,7 +76,7 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,13 +94,13 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF302E36),
+                            color: const Color(0xFF302E36),
                             width: 1.0,
                           ),
                         ),
@@ -115,11 +112,11 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
                               children: widget.ingredients
                                   .map((ingredient) => Column(
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: double.infinity,
                                             height: 44.0,
                                             child: Padding(
-                                              padding: EdgeInsets.symmetric(horizontal: 12.0),
+                                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
                                               child: Row(
                                                 children: [
                                                   Expanded(
@@ -157,7 +154,7 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
                                           Container(
                                             width: double.infinity,
                                             height: 1.0,
-                                            color: Color(0xFF302E36),
+                                            color: const Color(0xFF302E36),
                                           ),
                                         ],
                                       ))
@@ -171,7 +168,7 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,7 +186,7 @@ class _FoodPlanFoodRecipeViewWidgetState extends State<FoodPlanFoodRecipeViewWid
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Text(
                         widget.instructions,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(

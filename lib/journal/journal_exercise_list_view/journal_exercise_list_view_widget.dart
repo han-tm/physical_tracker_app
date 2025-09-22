@@ -1,15 +1,11 @@
 import '../../backend/supabase/database/tables/exercise.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'journal_exercise_list_view_model.dart';
 export 'journal_exercise_list_view_model.dart';
 
@@ -50,10 +46,10 @@ class _JournalExerciseListViewWidgetState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
       child: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFF1A191D),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
@@ -63,7 +59,7 @@ class _JournalExerciseListViewWidgetState
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,15 +80,15 @@ class _JournalExerciseListViewWidgetState
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                child: SizedBox(
                   width: double.infinity,
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.textController',
-                      Duration(milliseconds: 1500),
+                      const Duration(milliseconds: 1500),
                       () => safeSetState(() {}),
                     ),
                     autofocus: false,
@@ -140,14 +136,14 @@ class _JournalExerciseListViewWidgetState
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: (_model.textFieldFocusNode?.hasFocus ?? false)
-                              ? Color(0xFFE27B00)
+                              ? const Color(0xFFE27B00)
                               : FlutterFlowTheme.of(context).secondary,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -169,12 +165,12 @@ class _JournalExerciseListViewWidgetState
                       ),
                       filled: true,
                       fillColor: (_model.textFieldFocusNode?.hasFocus ?? false)
-                          ? Color(0x1FE27B00)
+                          ? const Color(0x1FE27B00)
                           : FlutterFlowTheme.of(context).secondary,
                       prefixIcon: Icon(
                         FontAwesomeIcons.search,
                         color: (_model.textFieldFocusNode?.hasFocus ?? false)
-                            ? Color(0xFFE27B00)
+                            ? const Color(0xFFE27B00)
                             : FlutterFlowTheme.of(context).secondaryText,
                       ),
                     ),
@@ -208,7 +204,7 @@ class _JournalExerciseListViewWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: FutureBuilder<List<ExerciseRow>>(
                   future: ExerciseTable().queryRows(
                     queryFn: (q) => q.ilike(
@@ -238,7 +234,7 @@ class _JournalExerciseListViewWidgetState
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: listViewExerciseRowList.length,
-                      separatorBuilder: (_, __) => SizedBox(height: 8.0),
+                      separatorBuilder: (_, __) => const SizedBox(height: 8.0),
                       itemBuilder: (context, listViewIndex) {
                         final listViewExerciseRow =
                             listViewExerciseRowList[listViewIndex];
@@ -249,7 +245,7 @@ class _JournalExerciseListViewWidgetState
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(12.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [

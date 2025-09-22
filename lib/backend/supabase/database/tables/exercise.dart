@@ -9,7 +9,7 @@ class ExerciseTable extends SupabaseTable<ExerciseRow> {
 }
 
 class ExerciseRow extends SupabaseDataRow {
-  ExerciseRow(Map<String, dynamic> data) : super(data);
+  ExerciseRow(super.data);
 
   @override
   SupabaseTable get table => ExerciseTable();
@@ -26,8 +26,8 @@ class ExerciseRow extends SupabaseDataRow {
   String? get description => getField<String>('description');
   set description(String? value) => setField<String>('description', value);
 
-  dynamic? get muscleGroup => getField<dynamic>('muscleGroup');
-  set muscleGroup(dynamic? value) => setField<dynamic>('muscleGroup', value);
+  dynamic get muscleGroup => getField<dynamic>('muscleGroup');
+  set muscleGroup(dynamic value) => setField<dynamic>('muscleGroup', value);
 
   String? get video => getField<String>('video');
   set video(String? value) => setField<String>('video', value);
@@ -44,7 +44,7 @@ class ExerciseRow extends SupabaseDataRow {
   double? get weight => getField<double>('weight');
   set weight(double? value) => setField<double>('weight', value);
 
-  dynamic? get alternateExercise => getField<dynamic>('alternateExercise');
-  set alternateExercise(dynamic? value) =>
+  dynamic get alternateExercise => getField<dynamic>('alternateExercise');
+  set alternateExercise(dynamic value) =>
       setField<dynamic>('alternateExercise', value);
 }

@@ -1,11 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/survery/skip_personalization/skip_personalization_widget.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workouts_survey_step01_page_model.dart';
 export 'workouts_survey_step01_page_model.dart';
 
@@ -55,7 +52,7 @@ class _WorkoutsSurveyStep01PageWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 40.0,
@@ -76,7 +73,7 @@ class _WorkoutsSurveyStep01PageWidgetState
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           child: Text(
                             'Шаг 1/6',
@@ -107,14 +104,14 @@ class _WorkoutsSurveyStep01PageWidgetState
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             await showDialog(
-                              barrierColor: Color(0x24000000),
+                              barrierColor: const Color(0x24000000),
                               context: context,
                               builder: (dialogContext) {
                                 return Dialog(
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                  alignment: const AlignmentDirectional(0.0, 0.0)
                                       .resolve(Directionality.of(context)),
                                   child: GestureDetector(
                                     onTap: () {
@@ -122,7 +119,7 @@ class _WorkoutsSurveyStep01PageWidgetState
                                       FocusManager.instance.primaryFocus
                                           ?.unfocus();
                                     },
-                                    child: SkipPersonalizationWidget(),
+                                    child: const SkipPersonalizationWidget(),
                                   ),
                                 );
                               },
@@ -140,7 +137,7 @@ class _WorkoutsSurveyStep01PageWidgetState
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 5.0, 8.0, 5.0),
                               child: Text(
                                 'Пропустить',
@@ -176,20 +173,20 @@ class _WorkoutsSurveyStep01PageWidgetState
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Text(
                                   'Цель',
@@ -213,7 +210,7 @@ class _WorkoutsSurveyStep01PageWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Какого результата вы хотите достичь с помощью тренировок?',

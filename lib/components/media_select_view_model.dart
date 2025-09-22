@@ -1,11 +1,8 @@
-import '/flutter_flow/flutter_flow_theme.dart';
+// ignore_for_file: non_constant_identifier_names
+
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/upload_data.dart';
-import 'dart:ui';
 import 'media_select_view_widget.dart' show MediaSelectViewWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class MediaSelectViewModel extends FlutterFlowModel<MediaSelectViewWidget> {
   ///  State fields for stateful widgets in this component.

@@ -1,10 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'skip_personalization_model.dart';
 export 'skip_personalization_model.dart';
 
@@ -40,18 +38,19 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: double.infinity,
-        constraints: BoxConstraints(
-          maxWidth: 270.0,
-        ),
+        margin: const EdgeInsets.symmetric(horizontal: 56),
+        // constraints: const BoxConstraints(
+        //   maxWidth: 270.0,
+        // ),
         decoration: BoxDecoration(
-          color: Color(0xFF242328),
+          color: const Color(0xFF242328),
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -63,13 +62,14 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                         fontWeight: FontWeight.w600,
                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
+                      fontSize: 17,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                 child: Text(
                   'Вы уверены, что хотите пропустить опрос? Ваши ответы помогли бы нам создать программу, идеально подходящую для ваших целей и физической формы. Без них программа будет общей.',
                   textAlign: TextAlign.center,
@@ -81,10 +81,15 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                         color: FlutterFlowTheme.of(context).secondaryText,
                         fontSize: 13.0,
                         letterSpacing: 0.0,
+                        lineHeight: 1.6,
                         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                 ),
+              ),
+              const Divider(
+                color: Color(0xFF302E36),
+                height: 12,
               ),
               InkWell(
                 splashColor: Colors.transparent,
@@ -98,7 +103,7 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                   context.goNamed(
                     RouterPageWidget.routeName,
                     extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
+                      kTransitionInfoKey: const TransitionInfo(
                         hasTransition: true,
                         transitionType: PageTransitionType.fade,
                         duration: Duration(milliseconds: 0),
@@ -112,9 +117,9 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 11.0, 0.0, 11.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 11.0, 0.0, 11.0),
                       child: Text(
                         'Да, пропустить',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -147,9 +152,9 @@ class _SkipPersonalizationWidgetState extends State<SkipPersonalizationWidget> {
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 11.0, 0.0, 11.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 11.0, 0.0, 11.0),
                         child: Text(
                           'Отмена',
                           textAlign: TextAlign.end,

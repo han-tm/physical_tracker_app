@@ -2,11 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_notifications_settings_view_model.dart';
 export 'profile_notifications_settings_view_model.dart';
 
@@ -43,7 +40,7 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -53,7 +50,7 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: StreamBuilder<List<UserRow>>(
           stream: _model.containerSupabaseStream ??= AppSupabase.instance.client
               .from("User")
@@ -66,7 +63,7 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
-              return Container(
+              return SizedBox(
                 width: double.infinity,
                 height: 100,
                 child: Center(
@@ -87,7 +84,7 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
             final containerUserRow = containerUserRowList.isNotEmpty ? containerUserRowList.first : null;
 
             return Container(
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,21 +103,21 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                         ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 1.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xFF302E36),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Color(0xFF242328),
+                        color: const Color(0xFF242328),
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Column(
@@ -129,9 +126,9 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                           Container(
                             width: double.infinity,
                             height: 56.0,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -152,8 +149,8 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                   Switch.adaptive(
                                     value: _model.switchValue1 ??= containerUserRow!.notifActive ?? true,
                                     onChanged: (newValue) async {
-                                      safeSetState(() => _model.switchValue1 = newValue!);
-                                      if (newValue!) {
+                                      safeSetState(() => _model.switchValue1 = newValue);
+                                      if (newValue) {
                                         await UserTable().update(
                                           data: {
                                             'notif_active': true,
@@ -175,9 +172,9 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                         );
                                       }
                                     },
-                                    activeColor: Color(0xFF36CF77),
-                                    activeTrackColor: Color(0xFF36CF77),
-                                    inactiveTrackColor: Color(0x8EE0E3E7),
+                                    activeThumbColor: const Color(0xFF36CF77),
+                                    activeTrackColor: const Color(0xFF36CF77),
+                                    inactiveTrackColor: const Color(0x8EE0E3E7),
                                     inactiveThumbColor: FlutterFlowTheme.of(context).secondaryBackground,
                                   ),
                                 ],
@@ -187,16 +184,16 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                           Container(
                             width: double.infinity,
                             height: 1.0,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xFF302E36),
                             ),
                           ),
                           Container(
                             width: double.infinity,
                             height: 56.0,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -217,8 +214,8 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                   Switch.adaptive(
                                     value: _model.switchValue2 ??= containerUserRow!.notifSup ?? true,
                                     onChanged: (newValue) async {
-                                      safeSetState(() => _model.switchValue2 = newValue!);
-                                      if (newValue!) {
+                                      safeSetState(() => _model.switchValue2 = newValue);
+                                      if (newValue) {
                                         await UserTable().update(
                                           data: {
                                             'notif_sup': true,
@@ -240,9 +237,9 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                         );
                                       }
                                     },
-                                    activeColor: Color(0xFF36CF77),
-                                    activeTrackColor: Color(0xFF36CF77),
-                                    inactiveTrackColor: Color(0x8EE0E3E7),
+                                    activeThumbColor: const Color(0xFF36CF77),
+                                    activeTrackColor: const Color(0xFF36CF77),
+                                    inactiveTrackColor: const Color(0x8EE0E3E7),
                                     inactiveThumbColor: FlutterFlowTheme.of(context).secondaryBackground,
                                   ),
                                 ],
@@ -252,16 +249,16 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                           Container(
                             width: double.infinity,
                             height: 1.0,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xFF302E36),
                             ),
                           ),
                           Container(
                             width: double.infinity,
                             height: 56.0,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -282,8 +279,8 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                   Switch.adaptive(
                                     value: _model.switchValue3 ??= containerUserRow!.notifMeasure ?? true,
                                     onChanged: (newValue) async {
-                                      safeSetState(() => _model.switchValue3 = newValue!);
-                                      if (newValue!) {
+                                      safeSetState(() => _model.switchValue3 = newValue);
+                                      if (newValue) {
                                         await UserTable().update(
                                           data: {
                                             'notif_measure': true,
@@ -305,9 +302,9 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                         );
                                       }
                                     },
-                                    activeColor: Color(0xFF36CF77),
-                                    activeTrackColor: Color(0xFF36CF77),
-                                    inactiveTrackColor: Color(0x8EE0E3E7),
+                                    activeThumbColor: const Color(0xFF36CF77),
+                                    activeTrackColor: const Color(0xFF36CF77),
+                                    inactiveTrackColor: const Color(0x8EE0E3E7),
                                     inactiveThumbColor: FlutterFlowTheme.of(context).secondaryBackground,
                                   ),
                                 ],
@@ -317,16 +314,16 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                           Container(
                             width: double.infinity,
                             height: 1.0,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xFF302E36),
                             ),
                           ),
                           Container(
                             width: double.infinity,
                             height: 56.0,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -347,8 +344,8 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                   Switch.adaptive(
                                     value: _model.switchValue4 ??= containerUserRow!.notifNews ?? true,
                                     onChanged: (newValue) async {
-                                      safeSetState(() => _model.switchValue4 = newValue!);
-                                      if (newValue!) {
+                                      safeSetState(() => _model.switchValue4 = newValue);
+                                      if (newValue) {
                                         await UserTable().update(
                                           data: {
                                             'notif_news': true,
@@ -370,9 +367,9 @@ class _ProfileNotificationsSettingsViewWidgetState extends State<ProfileNotifica
                                         );
                                       }
                                     },
-                                    activeColor: Color(0xFF36CF77),
-                                    activeTrackColor: Color(0xFF36CF77),
-                                    inactiveTrackColor: Color(0x8EE0E3E7),
+                                    activeThumbColor: const Color(0xFF36CF77),
+                                    activeTrackColor: const Color(0xFF36CF77),
+                                    inactiveTrackColor: const Color(0x8EE0E3E7),
                                     inactiveThumbColor: FlutterFlowTheme.of(context).secondaryBackground,
                                   ),
                                 ],

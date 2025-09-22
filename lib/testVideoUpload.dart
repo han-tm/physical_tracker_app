@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:mime/mime.dart';
+// import 'package:mime/mime.dart';
 import 'package:path/path.dart' as p;
 
 import 'backend/supabase/supabase.dart';
@@ -34,20 +33,20 @@ class _VideoUploadTestPageState extends State<VideoUploadTestPage> {
     if (_selectedFile == null) return;
 
     final fileName = 'video_${DateTime.now().millisecondsSinceEpoch}${p.extension(_selectedFile!.path)}';
-    final fileBytes = await _selectedFile!.readAsBytes();
-    final mimeType = lookupMimeType(_selectedFile!.path) ?? 'video/mp4';
+    // final fileBytes = await _selectedFile!.readAsBytes();
+    // final mimeType = lookupMimeType(_selectedFile!.path) ?? 'video/mp4';
 
     setState(() => _isUploading = true);
 
     try {
       final supabase = AppSupabase.instance.client;
-      final storageResponse = await supabase.storage
-          .from('boom-bucket') // имя бакета в Supabase
-          .uploadBinary(fileName, fileBytes,
-          fileOptions: FileOptions(
-            contentType: mimeType,
-            upsert: true,
-          ));
+      // final storageResponse = await supabase.storage
+      //     .from('boom-bucket') // имя бакета в Supabase
+      //     .uploadBinary(fileName, fileBytes,
+      //     fileOptions: FileOptions(
+      //       contentType: mimeType,
+      //       upsert: true,
+      //     ));
 
       final publicUrl = supabase.storage.from('boom-bucket').getPublicUrl(fileName);
 

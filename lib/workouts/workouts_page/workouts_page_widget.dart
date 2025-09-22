@@ -7,13 +7,10 @@ import '../workouts_individual_program_promo_page/workouts_individual_program_pr
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:provider/provider.dart';
 import 'workouts_page_model.dart';
 export 'workouts_page_model.dart';
 
@@ -79,7 +76,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                         child: Text(
                           'Тренировки',
                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -139,7 +136,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                             borderRadius: BorderRadius.circular(12.0),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(12.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +145,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                   mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                       child: ClipRRect(
                                                         borderRadius: BorderRadius.circular(0.0),
                                                         child: SvgPicture.asset(
@@ -189,7 +186,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                   ],
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
                                                     'Программа, составленная специально под ваши цели и возможности',
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -205,10 +202,10 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                   child: Container(
                                                     height: 37.0,
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: wrapWithModel(
                                                       model: _model.generalButtonModel1,
                                                       updateCallback: () => safeSetState(() {}),
@@ -229,7 +226,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                         ),
                                       ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -275,7 +272,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                   },
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                      color: _model.daySelected == daysListItem ? Color(0x1EE27B00) : FlutterFlowTheme.of(context).secondary,
+                                                      color: _model.daySelected == daysListItem ? const Color(0x1EE27B00) : FlutterFlowTheme.of(context).secondary,
                                                       borderRadius: BorderRadius.circular(100.0),
                                                       border: Border.all(
                                                         color: _model.daySelected == daysListItem ? FlutterFlowTheme.of(context).primary : FlutterFlowTheme.of(context).secondaryText,
@@ -283,7 +280,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                       ),
                                                     ),
                                                     child: Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
                                                       child: Text(
                                                         'День ${daysListItem.toString()}',
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -301,7 +298,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                     ),
                                                   ),
                                                 );
-                                              }).divide(SizedBox(width: 4.0)).addToStart(SizedBox(width: 16.0)).addToEnd(SizedBox(width: 16.0)),
+                                              }).divide(const SizedBox(width: 4.0)).addToStart(const SizedBox(width: 16.0)).addToEnd(const SizedBox(width: 16.0)),
                                             ),
                                           );
                                         },
@@ -368,7 +365,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                 (p) => p['id'] == entry.key,
                                                 orElse: () => <String, dynamic>{},
                                               );
-                                              if (programMap.isEmpty) return SizedBox.shrink();
+                                              if (programMap.isEmpty) return const SizedBox.shrink();
 
                                               final programExercises = entry.value;
 
@@ -389,7 +386,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                         (e) => e['id'] == exerciseEntry['exercise'],
                                                         orElse: () => <String, dynamic>{},
                                                       );
-                                                      if (exercise == null) return SizedBox.shrink();
+                                                      if (exercise == null) return const SizedBox.shrink();
 
                                                       return Card(
                                                         child: ListTile(
@@ -405,7 +402,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                                           },
                                                         ),
                                                       );
-                                                    }).toList(),
+                                                    }),
                                                   ],
                                                 ),
                                               );
@@ -674,9 +671,9 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
@@ -694,7 +691,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: const EdgeInsets.all(16.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
@@ -708,7 +705,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Индивидуальная программа готовится',
                                               textAlign: TextAlign.center,
@@ -725,7 +722,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                                             child: CircularPercentIndicator(
                                               percent: 0.3,
                                               radius: 87.5,
@@ -733,7 +730,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                               animation: true,
                                               animateFromLastPercent: true,
                                               progressColor: FlutterFlowTheme.of(context).primary,
-                                              backgroundColor: Color(0x15FFFFFF),
+                                              backgroundColor: const Color(0x15FFFFFF),
                                               center: Text(
                                                 '30%',
                                                 style: FlutterFlowTheme.of(context).headlineSmall.override(
@@ -749,7 +746,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                                             child: Text(
                                               'Программа делается в течении 4-х дней, после того, как вы пришлете всю информацию. Вам придет уведомление о готовности и появится ссылка на телеграмм канал',
                                               textAlign: TextAlign.center,
@@ -766,7 +763,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                             child: wrapWithModel(
                                               model: _model.generalButtonModel2,
                                               updateCallback: () => safeSetState(() {}),
@@ -797,7 +794,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
   // MARK: Ячейка с упражнением
   Widget renderExercise(dynamic exercise, int index) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -805,11 +802,11 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
             width: 32.0,
             height: 32.0,
             decoration: BoxDecoration(
-              color: Color(0xFF1A191D),
+              color: const Color(0xFF1A191D),
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Text(
                 '$index',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -827,7 +824,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -881,7 +878,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
         .toList();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -889,7 +886,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -901,7 +898,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -921,9 +918,9 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                           child: Wrap(
                             spacing: 4.0,
                             runSpacing: 4.0,
@@ -938,7 +935,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: SvgPicture.asset(
@@ -1011,17 +1008,17 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                 child: Container(
                   width: double.infinity,
                   height: 1.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF302E36),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -1032,10 +1029,10 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                             (e) => e['id'] == exerciseEntry['exercise'],
                         orElse: () => <String, dynamic>{},
                       );
-                      if (exercise.isEmpty) return SizedBox.shrink();
+                      if (exercise.isEmpty) return const SizedBox.shrink();
 
                       return Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -1043,11 +1040,11 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                               width: 32.0,
                               height: 32.0,
                               decoration: BoxDecoration(
-                                color: Color(0xFF1A191D),
+                                color: const Color(0xFF1A191D),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '${index+1}',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1066,7 +1063,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1105,12 +1102,12 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                           ],
                         ),
                       );
-                    }).toList(),
-                  ].divide(SizedBox(height: 8.0)),
+                    }),
+                  ].divide(const SizedBox(height: 8.0)),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -1165,7 +1162,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(0.0),
                             child: SvgPicture.asset(

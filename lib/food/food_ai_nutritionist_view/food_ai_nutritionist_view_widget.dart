@@ -5,11 +5,8 @@ import '../../backend/supabase/database/database.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'food_ai_nutritionist_view_model.dart';
 export 'food_ai_nutritionist_view_model.dart';
 
@@ -49,7 +46,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
       child: Container(
         margin: EdgeInsets.only(top: WidgetsBinding.instance.window.padding.top),
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFF1A191D),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
@@ -79,7 +76,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                           Navigator.of(context).pop();
                         },
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Icon(
                             Icons.arrow_back_ios_new_sharp,
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -90,7 +87,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'ИИ-нутрициолог',
                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -110,12 +107,12 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -123,7 +120,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +138,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: Text(
                                   'Количество дней',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -157,7 +154,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Wrap(
                                   spacing: 8,
                                   runSpacing: 8,
@@ -185,7 +182,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: Text(
                                   'Приемов пищи в день',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -201,7 +198,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Wrap(
                                   spacing: 8,
                                   runSpacing: 8,
@@ -230,7 +227,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: Text(
                                   'Бюджет на неделю',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -246,7 +243,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 // child: Wrap(
                                 //   spacing: 8.0,
                                 //   runSpacing: 8.0,
@@ -356,7 +353,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -364,7 +361,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -383,7 +380,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Wrap(
                                   spacing: 8,
                                   runSpacing: 8,
@@ -408,7 +405,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                         }
                                       }),
                                       child: Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                         decoration: BoxDecoration(
                                           color: selected
                                               ? FlutterFlowTheme.of(context).primary.withOpacity(0.1)
@@ -440,7 +437,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -448,7 +445,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -467,7 +464,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Wrap(
                                   spacing: 8,
                                   runSpacing: 8,
@@ -482,7 +479,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                                         }
                                       }),
                                       child: Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                         decoration: BoxDecoration(
                                           color: selected
                                               ? FlutterFlowTheme.of(context).primary.withOpacity(0.1)
@@ -517,15 +514,13 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                 child: wrapWithModel(
                   model: _model.generalButtonModel,
                   updateCallback: () => safeSetState(() {}),
                   child: GeneralButtonWidget(
                     title: 'Создать план питания',
-                    isActive: _model.selectedDays != null &&
-                        _model.selectedMeals != null &&
-                        _model.selectedBudget != null,
+                    isActive: _model.selectedMeals != null,
                     onTap: () async {
                       final userId = currentUserUid;
 
@@ -546,7 +541,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
                       final now = DateTime.now();
 
                       // Добавляем дни
-                      final days = List.generate(_model.selectedDays!, (i) {
+                      final days = List.generate(_model.selectedDays, (i) {
                         final date = now.add(Duration(days: i));
                         return {
                           'program_id': programId,
@@ -710,7 +705,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
 
   Widget selectedOption(String label) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primary.withOpacity(0.1),
         borderRadius: BorderRadius.circular(100),
@@ -730,7 +725,7 @@ class _FoodAiNutritionistViewWidgetState extends State<FoodAiNutritionistViewWid
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.0),
           border: Border.all(

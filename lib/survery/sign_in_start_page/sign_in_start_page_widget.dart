@@ -3,12 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'sign_in_start_page_model.dart';
 export 'sign_in_start_page_model.dart';
 
@@ -61,11 +58,11 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
             child: Stack(
               children: [
                 Opacity(
-                  opacity: 0.1,
+                  opacity: 0.45,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
-                      'assets/images/subscr02.jpg',
+                      'assets/images/d5a51d9b14d357f9eed651066a3421a786b9a4fe.jpg',
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
@@ -73,7 +70,7 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +85,7 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 8.0, 16.0, 0.0),
                         child: Text(
                           'Войдите в приложение чтобы посмотреть результаты!',
@@ -111,7 +108,7 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 8.0, 16.0, 0.0),
                         child: Text(
                           'Войдите в приложение чтобы посмотреть свои результаты',
@@ -143,12 +140,12 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 1.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: wrapWithModel(
                           model: _model.generalButtonModel1,
@@ -158,6 +155,7 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                             isActive: true,
                             onTap: () async {
                               FFAppState().surveyShown = true;
+                              FFAppState().clearBodyMeasures();
                               safeSetState(() {});
 
                               context.goNamed(LoginPageWidget.routeName);
@@ -166,7 +164,7 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: wrapWithModel(
                           model: _model.generalButtonModel2,
@@ -175,16 +173,16 @@ class _SignInStartPageWidgetState extends State<SignInStartPageWidget> {
                             title: 'Назад',
                             isActive: true,
                             backbgoundColor: Colors.transparent,
-                            borderColor: Color(0xFF302E36),
+                            borderColor: const Color(0xFF302E36),
                             onTap: () async {
                               context.safePop();
-                              context.safePop();
+                              // context.safePop();
                               // Navigator.of(context).pop({"back": true});
                             },
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 8.0)),
+                    ].divide(const SizedBox(height: 8.0)),
                   ),
                 ),
               ],

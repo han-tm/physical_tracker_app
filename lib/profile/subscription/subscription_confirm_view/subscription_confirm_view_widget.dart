@@ -6,12 +6,10 @@ import '/backend/supabase/supabase.dart';
 import '/components/general_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'subscription_confirm_view_model.dart';
 export 'subscription_confirm_view_model.dart';
 
@@ -53,7 +51,7 @@ class _SubscriptionConfirmViewWidgetState extends State<SubscriptionConfirmViewW
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF1A191D),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
@@ -63,13 +61,13 @@ class _SubscriptionConfirmViewWidgetState extends State<SubscriptionConfirmViewW
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
               child: Text(
                 'Оплата',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -92,7 +90,7 @@ class _SubscriptionConfirmViewWidgetState extends State<SubscriptionConfirmViewW
               },
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.generalButtonModel,
                 updateCallback: () => safeSetState(() {}),
@@ -104,16 +102,16 @@ class _SubscriptionConfirmViewWidgetState extends State<SubscriptionConfirmViewW
                           context: context,
                           builder: (alertDialogContext) {
                             return AlertDialog(
-                              title: Text('Нет платежного шлюза'),
-                              content: Text('Оплата произойдет мнгновенно'),
+                              title: const Text('Нет платежного шлюза'),
+                              content: const Text('Оплата произойдет мнгновенно'),
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(alertDialogContext, false),
-                                  child: Text('Отмена'),
+                                  child: const Text('Отмена'),
                                 ),
                                 TextButton(
                                   onPressed: () => Navigator.pop(alertDialogContext, true),
-                                  child: Text('Продолжить'),
+                                  child: const Text('Продолжить'),
                                 ),
                               ],
                             );
@@ -124,14 +122,14 @@ class _SubscriptionConfirmViewWidgetState extends State<SubscriptionConfirmViewW
                       await SubscriptionTable().insert({
                         'created_at': supaSerialize<DateTime>(getCurrentTimestamp),
                         'expiration_date': supaSerialize<DateTime>(functions.timeAddMonth(getCurrentTimestamp)),
-                        'plan_id': widget!.plan?.type,
+                        'plan_id': widget.plan?.type,
                         'user_id': currentUserUid,
                       });
 
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
-                        barrierColor: Color(0x2B000000),
+                        barrierColor: const Color(0x2B000000),
                         enableDrag: false,
                         context: context,
                         builder: (context) {
@@ -142,7 +140,7 @@ class _SubscriptionConfirmViewWidgetState extends State<SubscriptionConfirmViewW
                             },
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: PaymentSuccessWidget(),
+                              child: const PaymentSuccessWidget(),
                             ),
                           );
                         },
@@ -151,7 +149,7 @@ class _SubscriptionConfirmViewWidgetState extends State<SubscriptionConfirmViewW
                       context.goNamed(
                         ProfilePageWidget.routeName,
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
+                          kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),

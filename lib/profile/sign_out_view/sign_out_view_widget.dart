@@ -41,7 +41,6 @@
 //   }
 // }
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -69,7 +68,7 @@ class SignOutViewWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
+            padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
             child: Text(
               'Выйдите\nиз аккаунта?',
               textAlign: TextAlign.center,

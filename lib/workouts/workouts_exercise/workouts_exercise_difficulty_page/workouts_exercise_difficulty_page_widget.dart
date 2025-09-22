@@ -5,12 +5,9 @@ import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'workouts_exercise_difficulty_page_model.dart';
 export 'workouts_exercise_difficulty_page_model.dart';
 
@@ -63,7 +60,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
             future: ExerciseDifficultyTable().querySingleRow(
               queryFn: (q) => q.eqOrNull(
                 'id',
-                widget!.difficultyId,
+                widget.difficultyId,
               ),
             ),
             builder: (context, snapshot) {
@@ -86,7 +83,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
               final containerExerciseDifficultyRow = containerExerciseDifficultyRowList.isNotEmpty ? containerExerciseDifficultyRowList.first : null;
 
               return Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -109,7 +106,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,14 +114,14 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(12.0),
                                       child: Image.network(
-                                        containerExerciseDifficultyRow!.cover!,
+                                        containerExerciseDifficultyRow.cover!,
                                         width: double.infinity,
                                         height: 196.0,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                       child: Text(
                                         'Описание: ',
                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -140,10 +137,10 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
-                                          containerExerciseDifficultyRow?.description,
+                                          containerExerciseDifficultyRow.description,
                                           '-',
                                         ),
                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -160,7 +157,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -171,19 +168,19 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                 borderRadius: BorderRadius.circular(12.0),
                                                 border: Border.all(
-                                                  color: Color(0xFF302E36),
+                                                  color: const Color(0xFF302E36),
                                                   width: 1.0,
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                                                 child: Column(
                                                   mainAxisSize: MainAxisSize.max,
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Text(
                                                       valueOrDefault<String>(
-                                                        containerExerciseDifficultyRow?.days?.toString(),
+                                                        containerExerciseDifficultyRow.days?.toString(),
                                                         '-',
                                                       ),
                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -198,7 +195,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                                           ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                       child: AutoSizeText(
                                                         'Дней в неделю',
                                                         maxLines: 1,
@@ -228,19 +225,19 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                 borderRadius: BorderRadius.circular(12.0),
                                                 border: Border.all(
-                                                  color: Color(0xFF302E36),
+                                                  color: const Color(0xFF302E36),
                                                   width: 1.0,
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                                                 child: Column(
                                                   mainAxisSize: MainAxisSize.max,
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Text(
                                                       valueOrDefault<String>(
-                                                        containerExerciseDifficultyRow?.weeks?.toString(),
+                                                        containerExerciseDifficultyRow.weeks?.toString(),
                                                         '-',
                                                       ),
                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -255,7 +252,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                                           ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                       child: AutoSizeText(
                                                         'Недель',
                                                         maxLines: 1,
@@ -278,11 +275,11 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                               ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 8.0)),
+                                        ].divide(const SizedBox(width: 8.0)),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                       child: Text(
                                         'Подходит для:',
                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -298,7 +295,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -310,20 +307,20 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                                         ),
                                         child: Builder(
                                           builder: (context) {
-                                            final features = containerExerciseDifficultyRow?.features?.toList() ?? [];
+                                            final features = containerExerciseDifficultyRow.features?.toList() ?? [];
 
                                             return Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: List.generate(features.length, (featuresIndex) {
                                                 final featuresItem = features[featuresIndex];
                                                 return Padding(
-                                                  padding: EdgeInsets.all(12.0),
+                                                  padding: const EdgeInsets.all(12.0),
                                                   child: Row(
                                                     mainAxisSize: MainAxisSize.max,
                                                     children: [
                                                       Expanded(
                                                         child: Padding(
-                                                          padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                          padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                           child: Text(
                                                             valueOrDefault<String>(
                                                               featuresItem.toString(),
@@ -359,7 +356,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                       child: wrapWithModel(
                         model: _model.generalButtonModel,
                         updateCallback: () => safeSetState(() {}),
@@ -369,7 +366,7 @@ class _WorkoutsExerciseDifficultyPageWidgetState extends State<WorkoutsExerciseD
                           onTap: () async {
                             await UserTable().update(
                               data: {
-                                'exerciseDifficulty': containerExerciseDifficultyRow?.id,
+                                'exerciseDifficulty': containerExerciseDifficultyRow.id,
                               },
                               matchingRows: (rows) => rows.eqOrNull(
                                 'fb_id',

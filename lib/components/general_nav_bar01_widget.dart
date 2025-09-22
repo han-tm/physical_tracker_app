@@ -2,10 +2,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'general_nav_bar01_model.dart';
 export 'general_nav_bar01_model.dart';
 
@@ -14,7 +12,7 @@ class GeneralNavBar01Widget extends StatefulWidget {
     super.key,
     required this.title,
     bool? hideBack,
-  }) : this.hideBack = hideBack ?? false;
+  }) : hideBack = hideBack ?? false;
 
   final String? title;
   final bool hideBack;
@@ -62,7 +60,7 @@ class _GeneralNavBar01WidgetState extends State<GeneralNavBar01Widget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              if (!widget!.hideBack) {
+              if (!widget.hideBack) {
                 context.safePop();
               }
             },
@@ -73,9 +71,9 @@ class _GeneralNavBar01WidgetState extends State<GeneralNavBar01Widget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Visibility(
-                visible: !widget!.hideBack,
+                visible: !widget.hideBack,
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: SvgPicture.asset(
@@ -91,10 +89,10 @@ class _GeneralNavBar01WidgetState extends State<GeneralNavBar01Widget> {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
               child: Text(
                 valueOrDefault<String>(
-                  widget!.title,
+                  widget.title,
                   '-',
                 ),
                 textAlign: TextAlign.center,

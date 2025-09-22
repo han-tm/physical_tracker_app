@@ -93,7 +93,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'general_button_model.dart';
 export 'general_button_model.dart';
 
@@ -189,7 +188,7 @@ class _GeneralButtonWidgetState extends State<GeneralButtonWidget> {
         iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         color: widget.isActive
             ? widget.backbgoundColor
-            : Color(0xff121214),
+            : const Color(0xff121214),
         elevation: 0.0,
         borderSide: BorderSide(
           color: widget.isActive

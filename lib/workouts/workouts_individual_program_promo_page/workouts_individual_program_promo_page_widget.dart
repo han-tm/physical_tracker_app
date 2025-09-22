@@ -1,23 +1,17 @@
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../auth/firebase_auth/auth_util.dart';
-import '../../backend/supabase/database/tables/subscription.dart';
 import '../../backend/supabase/supabase.dart';
-import '../../profile/subscription/payment_success/payment_success_widget.dart';
-import '../../start/router_page/router_page_widget.dart';
 import '../workout_choose_place_page/workout_choose_place_page_widget.dart';
 import '../workout_payment_success_view/workout_payment_success_view_widget.dart';
 import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:provider/provider.dart';
 import 'workouts_individual_program_promo_page_model.dart';
 export 'workouts_individual_program_promo_page_model.dart';
 
@@ -74,7 +68,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
               wrapWithModel(
                 model: _model.generalNavBar01Model,
                 updateCallback: () => safeSetState(() {}),
-                child: GeneralNavBar01Widget(
+                child: const GeneralNavBar01Widget(
                   title: 'Индивидуальная програамма',
                   hideBack: false,
                 ),
@@ -109,7 +103,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                 children: [
                                   if (_model.user != null && _model.user!["individualProgramUnderPrepare"] == true)
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -120,7 +114,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(12.0),
+                                          padding: const EdgeInsets.all(12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -131,7 +125,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                 animation: true,
                                                 animateFromLastPercent: true,
                                                 progressColor: FlutterFlowTheme.of(context).primary,
-                                                backgroundColor: Color(0x23FFFFFF),
+                                                backgroundColor: const Color(0x23FFFFFF),
                                                 center: Text(
                                                   '60%',
                                                   style: FlutterFlowTheme.of(context).headlineSmall.override(
@@ -147,7 +141,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Программа еще не готова, вам придет уведомление о готовнисти и ссылка на чат в Telegram',
                                                   textAlign: TextAlign.center,
@@ -170,7 +164,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                     ),
                                   if (_model.user != null && _model.user!["individualProgramUnderPrepare"] != true && _model.user!["individualProgramId"] != null)
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -181,7 +175,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(12.0),
+                                          padding: const EdgeInsets.all(12.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -195,7 +189,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                 child: Text(
                                                   't.me/Programm_d/hrrrfgv',
                                                   textAlign: TextAlign.center,
@@ -212,10 +206,10 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                 child: Container(
                                                   height: 40.0,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: wrapWithModel(
                                                     model: _model.generalButtonModel1,
                                                     updateCallback: () => safeSetState(() {}),
@@ -241,7 +235,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                       ),
                                     ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                                     child: Container(
                                       width: double.infinity,
                                       decoration: BoxDecoration(
@@ -256,7 +250,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                         borderRadius: BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(12.0),
+                                        padding: const EdgeInsets.all(12.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -265,7 +259,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                   child: ClipRRect(
                                                     borderRadius: BorderRadius.circular(0.0),
                                                     child: SvgPicture.asset(
@@ -306,7 +300,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'Программа, составленная специально под ваши цели и возможности',
                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -322,18 +316,18 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Container(
                                                 width: double.infinity,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x1EE27B00),
+                                                  color: const Color(0x1EE27B00),
                                                   borderRadius: BorderRadius.circular(12.0),
                                                   border: Border.all(
                                                     color: FlutterFlowTheme.of(context).primary,
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsets.all(12.0),
+                                                  padding: const EdgeInsets.all(12.0),
                                                   child: Column(
                                                     mainAxisSize: MainAxisSize.max,
                                                     children: [
@@ -341,7 +335,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -373,7 +367,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -405,7 +399,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -437,7 +431,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -476,7 +470,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                                     child: Text(
                                       'Как это работает',
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -492,7 +486,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                                     child: Container(
                                       width: double.infinity,
                                       decoration: BoxDecoration(
@@ -503,12 +497,12 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(12.0),
+                                        padding: const EdgeInsets.all(12.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -516,11 +510,11 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     width: 32.0,
                                                     height: 32.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFF1A191D),
+                                                      color: const Color(0xFF1A191D),
                                                       borderRadius: BorderRadius.circular(12.0),
                                                     ),
                                                     child: Align(
-                                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                                       child: Text(
                                                         '1',
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -539,7 +533,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   ),
                                                   Expanded(
                                                     child: Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                       child: Column(
                                                         mainAxisSize: MainAxisSize.max,
                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -579,7 +573,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -587,11 +581,11 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     width: 32.0,
                                                     height: 32.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFF1A191D),
+                                                      color: const Color(0xFF1A191D),
                                                       borderRadius: BorderRadius.circular(12.0),
                                                     ),
                                                     child: Align(
-                                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                                       child: Text(
                                                         '2',
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -610,7 +604,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   ),
                                                   Expanded(
                                                     child: Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                       child: Column(
                                                         mainAxisSize: MainAxisSize.max,
                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -650,7 +644,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -658,11 +652,11 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     width: 32.0,
                                                     height: 32.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFF1A191D),
+                                                      color: const Color(0xFF1A191D),
                                                       borderRadius: BorderRadius.circular(12.0),
                                                     ),
                                                     child: Align(
-                                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                                       child: Text(
                                                         '3',
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -681,7 +675,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   ),
                                                   Expanded(
                                                     child: Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                       child: Column(
                                                         mainAxisSize: MainAxisSize.max,
                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -721,7 +715,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -729,11 +723,11 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     width: 32.0,
                                                     height: 32.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFF1A191D),
+                                                      color: const Color(0xFF1A191D),
                                                       borderRadius: BorderRadius.circular(12.0),
                                                     ),
                                                     child: Align(
-                                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                                       child: Text(
                                                         '4',
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -752,7 +746,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   ),
                                                   Expanded(
                                                     child: Padding(
-                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                       child: Column(
                                                         mainAxisSize: MainAxisSize.max,
                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -791,13 +785,13 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                 ],
                                               ),
                                             ),
-                                          ].divide(SizedBox(height: 4.0)),
+                                          ].divide(const SizedBox(height: 4.0)),
                                         ),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                                     child: Text(
                                       'Отзывы',
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -813,7 +807,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -824,7 +818,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                             borderRadius: BorderRadius.circular(12.0),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(12.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -835,7 +829,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                       width: 32.0,
                                                       height: 32.0,
                                                       clipBehavior: Clip.antiAlias,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.asset(
@@ -845,7 +839,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     ),
                                                     Expanded(
                                                       child: Padding(
-                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: Text(
                                                           'Елена',
                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -867,7 +861,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                             ),
-                                                            color: Color(0xFF36CF77),
+                                                            color: const Color(0xFF36CF77),
                                                             letterSpacing: 0.0,
                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -876,7 +870,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   ],
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize: MainAxisSize.max,
                                                     children: [
@@ -929,7 +923,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                   child: Text(
                                                     'Отличное качество товара, быстрая доставка, все в срок. Очень довольна сотрудничеством!',
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -971,16 +965,16 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                           context: context,
                           builder: (alertDialogContext) {
                             return AlertDialog(
-                              title: Text('Нет платежного шлюза'),
-                              content: Text('Оплата произойдет мнгновенно'),
+                              title: const Text('Нет платежного шлюза'),
+                              content: const Text('Оплата произойдет мнгновенно'),
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(alertDialogContext, false),
-                                  child: Text('Отмена'),
+                                  child: const Text('Отмена'),
                                 ),
                                 TextButton(
                                   onPressed: () => Navigator.pop(alertDialogContext, true),
-                                  child: Text('Продолжить'),
+                                  child: const Text('Продолжить'),
                                 ),
                               ],
                             );
@@ -1004,7 +998,7 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                           var res = await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
-                            barrierColor: Color(0x2B000000),
+                            barrierColor: const Color(0x2B000000),
                             enableDrag: false,
                             context: context,
                             builder: (context) {

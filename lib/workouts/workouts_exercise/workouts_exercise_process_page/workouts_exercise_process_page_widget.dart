@@ -10,14 +10,10 @@ import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'workouts_exercise_process_page_model.dart';
 export 'workouts_exercise_process_page_model.dart';
 
@@ -44,7 +40,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
 
   // Stopwatch and tracking variables
   late Stopwatch _stopwatch;
-  Set<int> _visitedExerciseIndexes = {};
+  final Set<int> _visitedExerciseIndexes = {};
   int get _completedExercisesCount => _visitedExerciseIndexes.length;
 
   ExerciseRow? get currentExercise =>
@@ -114,13 +110,13 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -139,7 +135,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         '${_currentIndex + 1} из ${widget.exercises?.length ?? 0}',
                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -158,7 +154,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: Container(
                                   height: 400.0,
                                   decoration: BoxDecoration(
@@ -178,7 +174,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -189,13 +185,13 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                     var res = await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
-                                      barrierColor: Color(0x23000000),
+                                      barrierColor: const Color(0x23000000),
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {
                                         return Padding(
                                           padding: MediaQuery.viewInsetsOf(context),
-                                          child: WorkoutsExerciseProcessPauseViewWidget(),
+                                          child: const WorkoutsExerciseProcessPauseViewWidget(),
                                         );
                                       },
                                     );
@@ -236,16 +232,16 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                         var res = await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
-                                          barrierColor: Color(0x23000000),
+                                          barrierColor: const Color(0x23000000),
                                           enableDrag: false,
                                           context: context,
                                           builder: (context1) {
                                             return Padding(
                                               padding: MediaQuery.viewInsetsOf(context1),
                                               child: WorkoutsExerciseCompleteViewWidget(
-                                                calories: "${estimatedCalories} ккал",
+                                                calories: "$estimatedCalories ккал",
                                                 time: "${_stopwatch.elapsed.inMinutes.remainder(60).toString().padLeft(2, '0')}:${_stopwatch.elapsed.inSeconds.remainder(60).toString().padLeft(2, '0')}",
-                                                rounds: "${_completedExercisesCount}/${widget.exercises?.length}",
+                                                rounds: "$_completedExercisesCount/${widget.exercises?.length}",
                                               ),
                                             );
                                           },
@@ -269,7 +265,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment: MainAxisAlignment.center,
@@ -284,7 +280,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                             child: AutoSizeText(
                                               'Приостановить тренировку',
                                               maxLines: 1,
@@ -310,7 +306,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -321,12 +317,12 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                     borderRadius: BorderRadius.circular(12.0),
                                     border: Border.all(
-                                      color: Color(0xFF302E36),
+                                      color: const Color(0xFF302E36),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -345,7 +341,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                               ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                           child: AutoSizeText(
                                             'Подхода',
                                             maxLines: 1,
@@ -375,12 +371,12 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                     borderRadius: BorderRadius.circular(12.0),
                                     border: Border.all(
-                                      color: Color(0xFF302E36),
+                                      color: const Color(0xFF302E36),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -399,7 +395,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                               ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                           child: AutoSizeText(
                                             'Повторений',
                                             maxLines: 1,
@@ -429,12 +425,12 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                     borderRadius: BorderRadius.circular(12.0),
                                     border: Border.all(
-                                      color: Color(0xFF302E36),
+                                      color: const Color(0xFF302E36),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -453,7 +449,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                               ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                           child: AutoSizeText(
                                             'Вес (кг)',
                                             maxLines: 1,
@@ -476,12 +472,12 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(width: 8.0)),
+                            ].divide(const SizedBox(width: 8.0)),
                           ),
                         ),
                         Container(
                           width: double.infinity,
-                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                           child: Text(
                             currentExercise?.description ?? '-',
                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -502,7 +498,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -545,7 +541,7 @@ class _WorkoutsExerciseProcessPageWidgetState extends State<WorkoutsExerciseProc
                         ),
                       ),
                     ),
-                  ].divide(SizedBox(width: 9.0)),
+                  ].divide(const SizedBox(width: 9.0)),
                 ),
               ),
             ],
