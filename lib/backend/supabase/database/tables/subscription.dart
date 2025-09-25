@@ -29,4 +29,7 @@ class SubscriptionRow extends SupabaseDataRow {
 
   int? get planId => getField<int>('plan_id');
   set planId(int? value) => setField<int>('plan_id', value);
+
+  bool? get isTrial => getField<bool>('isTrial');
+  set isTrial(bool? value) => setField<bool>('isTrial', value);
 }

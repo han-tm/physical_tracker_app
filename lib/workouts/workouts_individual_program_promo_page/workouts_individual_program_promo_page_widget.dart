@@ -96,7 +96,6 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
                               Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,7 +130,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                         font: GoogleFonts.unbounded(
                                                           fontWeight: FontWeight.bold,
-                                                          fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(context).headlineSmall.fontStyle,
                                                         ),
                                                         fontSize: 7.0,
                                                         letterSpacing: 0.0,
@@ -147,7 +147,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                         font: GoogleFonts.inter(
-                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                         ),
                                                         color: FlutterFlowTheme.of(context).secondaryText,
@@ -162,7 +163,9 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                         ),
                                       ),
                                     ),
-                                  if (_model.user != null && _model.user!["individualProgramUnderPrepare"] != true && _model.user!["individualProgramId"] != null)
+                                  if (_model.user != null &&
+                                      _model.user!["individualProgramUnderPrepare"] != true &&
+                                      _model.user!["individualProgramId"] != null)
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                       child: Container(
@@ -195,7 +198,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                         font: GoogleFonts.inter(
-                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                         ),
                                                         color: FlutterFlowTheme.of(context).secondaryText,
@@ -276,7 +280,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                           font: GoogleFonts.unbounded(
                                                             fontWeight: FontWeight.w600,
-                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                           ),
                                                           letterSpacing: 0.0,
                                                           fontWeight: FontWeight.w600,
@@ -335,7 +340,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -351,13 +357,21 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                               'Индивидуальный план тренировок \nна 12 недель',
                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                     font: GoogleFonts.inter(
-                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                      fontWeight: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                                     fontSize: 13.0,
                                                                     letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -367,7 +381,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -383,13 +398,21 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                               'Учёт ваших целей, возможностей и ограничений',
                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                     font: GoogleFonts.inter(
-                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                      fontWeight: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                                     fontSize: 13.0,
                                                                     letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -399,7 +422,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -415,13 +439,21 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                               'Поддержка и консультации от куратора',
                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                     font: GoogleFonts.inter(
-                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                      fontWeight: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                                     fontSize: 13.0,
                                                                     letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -431,7 +463,8 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         mainAxisSize: MainAxisSize.max,
                                                         children: [
                                                           Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                0.0, 0.0, 8.0, 0.0),
                                                             child: ClipRRect(
                                                               borderRadius: BorderRadius.circular(0.0),
                                                               child: SvgPicture.asset(
@@ -447,13 +480,21 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                               'Возможность корректировки программы',
                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                     font: GoogleFonts.inter(
-                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                      fontWeight: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                                     fontSize: 13.0,
                                                                     letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -520,13 +561,15 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                               font: GoogleFonts.unbounded(
                                                                 fontWeight: FontWeight.w600,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                               color: FlutterFlowTheme.of(context).secondaryText,
                                                               fontSize: 11.0,
                                                               letterSpacing: 0.0,
                                                               fontWeight: FontWeight.w600,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -543,26 +586,36 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.unbounded(
                                                                     fontWeight: FontWeight.w600,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   fontSize: 12.0,
                                                                   letterSpacing: 0.0,
                                                                   fontWeight: FontWeight.w600,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                           Text(
                                                             'Оплатите составление индивидуальной программы тренировок',
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.inter(
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                   fontSize: 13.0,
                                                                   letterSpacing: 0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ],
@@ -591,13 +644,15 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                               font: GoogleFonts.unbounded(
                                                                 fontWeight: FontWeight.w600,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                               color: FlutterFlowTheme.of(context).secondaryText,
                                                               fontSize: 11.0,
                                                               letterSpacing: 0.0,
                                                               fontWeight: FontWeight.w600,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -614,26 +669,36 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.unbounded(
                                                                     fontWeight: FontWeight.w600,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   fontSize: 12.0,
                                                                   letterSpacing: 0.0,
                                                                   fontWeight: FontWeight.w600,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                           Text(
                                                             'После оплаты вы будете перенаправлены в Telegram-чат с куратором',
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.inter(
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                   fontSize: 13.0,
                                                                   letterSpacing: 0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ],
@@ -662,13 +727,15 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                               font: GoogleFonts.unbounded(
                                                                 fontWeight: FontWeight.w600,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                               color: FlutterFlowTheme.of(context).secondaryText,
                                                               fontSize: 11.0,
                                                               letterSpacing: 0.0,
                                                               fontWeight: FontWeight.w600,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -685,26 +752,36 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.unbounded(
                                                                     fontWeight: FontWeight.w600,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   fontSize: 12.0,
                                                                   letterSpacing: 0.0,
                                                                   fontWeight: FontWeight.w600,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                           Text(
                                                             'Куратор проанализирует ваши данные и составит индивидуальную программу',
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.inter(
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                   fontSize: 13.0,
                                                                   letterSpacing: 0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ],
@@ -733,13 +810,15 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                               font: GoogleFonts.unbounded(
                                                                 fontWeight: FontWeight.w600,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                               color: FlutterFlowTheme.of(context).secondaryText,
                                                               fontSize: 11.0,
                                                               letterSpacing: 0.0,
                                                               fontWeight: FontWeight.w600,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -756,26 +835,36 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.unbounded(
                                                                     fontWeight: FontWeight.w600,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   fontSize: 12.0,
                                                                   letterSpacing: 0.0,
                                                                   fontWeight: FontWeight.w600,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                           Text(
                                                             'Вы получите уведомление, когда индивидуальная программа будет готова',
                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                   font: GoogleFonts.inter(
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    fontWeight: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                   fontSize: 13.0,
                                                                   letterSpacing: 0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ],
@@ -839,17 +928,20 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     ),
                                                     Expanded(
                                                       child: Padding(
-                                                        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                        padding:
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: Text(
                                                           'Елена',
                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                 font: GoogleFonts.unbounded(
                                                                   fontWeight: FontWeight.w600,
-                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                                 letterSpacing: 0.0,
                                                                 fontWeight: FontWeight.w600,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -858,13 +950,17 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                       '-8 кг за 3 мес.',
                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                             font: GoogleFonts.inter(
-                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                             ),
                                                             color: const Color(0xFF36CF77),
                                                             letterSpacing: 0.0,
-                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                           ),
                                                     ),
                                                   ],
@@ -928,11 +1024,14 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                     'Отличное качество товара, быстрая доставка, все в срок. Очень довольна сотрудничеством!',
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                           font: GoogleFonts.inter(
-                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                           ),
                                                           letterSpacing: 0.0,
-                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                         ),
                                                   ),
@@ -962,40 +1061,39 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                       isActive: true,
                       onTap: () async {
                         var confirmDialogResponse = await showDialog<bool>(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: const Text('Нет платежного шлюза'),
-                              content: const Text('Оплата произойдет мнгновенно'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(alertDialogContext, false),
-                                  child: const Text('Отмена'),
-                                ),
-                                TextButton(
-                                  onPressed: () => Navigator.pop(alertDialogContext, true),
-                                  child: const Text('Продолжить'),
-                                ),
-                              ],
-                            );
-                          },
-                        ) ??
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: const Text('Нет платежного шлюза'),
+                                  content: const Text('Оплата произойдет мнгновенно'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(alertDialogContext, false),
+                                      child: const Text('Отмена'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(alertDialogContext, true),
+                                      child: const Text('Продолжить'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ) ??
                             false;
                         if (confirmDialogResponse) {
+                          // await UserTable().update(
+                          //   data: {
+                          //     'individualProgramUnderPrepare': true,
+                          //   },
+                          //   matchingRows: (rows) => rows.eqOrNull(
+                          //     'fb_id',
+                          //     currentUserUid,
+                          //   ),
+                          // );
 
-                          await UserTable().update(
-                            data: {
-                              'individualProgramUnderPrepare': true,
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'fb_id',
-                              currentUserUid,
-                            ),
-                          );
+                          // await _model.loadUserData();
 
-                          await _model.loadUserData();
-
-                          var res = await showModalBottomSheet(
+                          await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
                             barrierColor: const Color(0x2B000000),
@@ -1018,11 +1116,9 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                               );
                             },
                           );
-                          // if (res != null) {
-                          //   context.goNamed(WorkoutChoosePlacePageWidget.routeName);
-                          // }
-                          context.pushNamed(WorkoutChoosePlacePageWidget.routeName);
-
+                          if (context.mounted) {
+                            context.pushNamed(WorkoutChoosePlacePageWidget.routeName);
+                          }
                         }
                       },
                     ),

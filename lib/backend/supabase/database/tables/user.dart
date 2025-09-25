@@ -52,4 +52,10 @@ class UserRow extends SupabaseDataRow {
 
   bool? get notifNews => getField<bool>('notif_news');
   set notifNews(bool? value) => setField<bool>('notif_news', value);
+
+  int? get selectedProgram => getField<int>('selectedProgram');
+  set selectedProgram(int? value) => setField<int>('selectedProgram', value);
+
+  String? get programStartDate => getField<String?>('programStartDate');
+  set programStartDate(String? value) => setField<String?>('programStartDate', value);
 }

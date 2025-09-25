@@ -256,11 +256,13 @@
 //   }
 // }
 
+import 'dart:io';
 
 import 'package:boom_client/backend/supabase/database/database.dart';
 import 'package:boom_client/components/general_button_widget.dart';
 import 'package:boom_client/profile/profile_age_view/profile_age_view_widget.dart';
 import 'package:boom_client/profile/profile_height_view/profile_height_view_widget.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../auth/firebase_auth/auth_util.dart';
 import '../profile_weight_view/profile_weight_view_widget.dart';
@@ -328,6 +330,10 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
     setState(() {
       _hasChanges = false;
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Изменения сохранены')),
+    );
   }
 
   Future<void> _pickImage() async {
@@ -340,9 +346,11 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
 
     final storage = Supabase.instance.client.storage;
     final bucket = storage.from('boom-bucket');
-    // final res = await bucket.upload('avatars/$filename', file);
+    final res = await bucket.upload('avatars/$filename', File(picked.path));
+    print('res: $res');
 
     final publicUrl = bucket.getPublicUrl('avatars/$filename');
+    print('publicUrl: $publicUrl');
     setState(() {
       imageUrl = publicUrl;
       _hasChanges = true;
@@ -379,8 +387,15 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
                       child: CircleAvatar(
                         radius: 48,
                         backgroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
-                        backgroundColor: const Color(0xFFC4C4C4),
-                        child: imageUrl == null ? const Icon(Icons.person, size: 48, color: Color(0xFF999999)) : null,
+                        backgroundColor: const Color(0xFF242328),
+                        child: imageUrl == null
+                            ? SvgPicture.asset(
+                                'assets/images/User_Rounded.svg',
+                                width: 45,
+                                height: 45,
+                                fit: BoxFit.contain,
+                              )
+                            : null,
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -422,8 +437,9 @@ class _ProfilePersonalDataPageWidgetState extends State<ProfilePersonalDataPageW
               padding: const EdgeInsets.all(16),
               child: GeneralButtonWidget(
                 title: 'Сохранить',
-                isActive: _hasChanges,
-                onTap: _hasChanges ? _saveUser : null,
+                isActive: true,
+                // onTap: _hasChanges ? _saveUser : null,
+                onTap: _saveUser,
               ),
             ),
           ],

@@ -1,4 +1,3 @@
-
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -360,7 +359,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
 
                                     if (name == null || name.isEmpty) return;
 
-                                     FocusManager.instance.primaryFocus?.unfocus();
+                                    FocusManager.instance.primaryFocus?.unfocus();
 
                                     final supabase = AppSupabase.instance.client;
                                     final fbId = currentUserUid;
@@ -425,10 +424,10 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                         return;
                                       }
 
-                                      final planId = plans['type'] as int;
+                                      final planId = plans['id'] as int;
 
                                       // 2. Создаём подписку
-                                      final expirationDate = DateTime.now().add(const Duration(days: 30));
+                                      final expirationDate = DateTime.now().add(const Duration(days: 5));
                                       await supabase.from('Subscription').insert({
                                         'user_id': fbId,
                                         'plan_id': planId,

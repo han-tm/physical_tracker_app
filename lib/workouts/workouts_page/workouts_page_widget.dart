@@ -10,7 +10,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+
 import 'workouts_page_model.dart';
 export 'workouts_page_model.dart';
 
@@ -35,12 +35,16 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => WorkoutsPageModel());
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _model.loadUserData().then((_) => setState(() {
-        int currentWeekday = DateTime.now().weekday;
-        _model.daySelected = currentWeekday;
-            loaded = true;
-          }));
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _model.loadProgram();
+      safeSetState(() => {});
+
+      // _model.loadUserData();
+      // _model.loadUserData().then((_) => setState(() {
+      //   int currentWeekday = DateTime.now().weekday;
+      //   _model.daySelected = currentWeekday;
+      //       loaded = true;
+      //     }));
     });
   }
 
@@ -96,694 +100,1539 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                 ),
               ),
               Expanded(
-                child: !loaded
-                    ? Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
+                  child: _model.loading
+                      ? Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    : Stack(
-                        children: [
-                          if (!_model.individualProgramPreparing)
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(1.0, 0.0, 0.0, 0.0),
-                              child: SingleChildScrollView(
-                                padding: const EdgeInsets.only(bottom: 30),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    // MARK: Индивидуальная программа не приобретена
-                                    if (_model.user != null && _model.user!["individualProgramId"] == null && (_model.user!["individualProgramUnderPrepare"] == true || _model.user!["individualProgramUnderPrepare"] == null))
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context).secondary,
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              opacity: 0.2,
-                                              image: Image.asset(
-                                                'assets/images/1a2c950ebdd006be009161fbb6c5138b58253580.jpg',
-                                              ).image,
+                        )
+                      : SingleChildScrollView(
+                          padding: EdgeInsets.zero,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              // MARK: Индивидуальная программа не приобретена
+
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).secondary,
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      opacity: 0.2,
+                                      image: Image.asset(
+                                        'assets/images/1a2c950ebdd006be009161fbb6c5138b58253580.jpg',
+                                      ).image,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(0.0),
+                                                child: SvgPicture.asset(
+                                                  'assets/images/Star_Shine.svg',
+                                                  width: 16.0,
+                                                  height: 16.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
                                             ),
-                                            borderRadius: BorderRadius.circular(12.0),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize: MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                                                      child: ClipRRect(
-                                                        borderRadius: BorderRadius.circular(0.0),
-                                                        child: SvgPicture.asset(
-                                                          'assets/images/Star_Shine.svg',
-                                                          width: 16.0,
-                                                          height: 16.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                            Expanded(
+                                              child: Text(
+                                                'Индивидуальная',
+                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                      font: GoogleFonts.unbounded(
+                                                        fontWeight: FontWeight.w600,
+                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                       ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight: FontWeight.w600,
+                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                     ),
-                                                    Expanded(
-                                                      child: Text(
-                                                        'Индивидуальная',
-                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                              font: GoogleFonts.unbounded(
-                                                                fontWeight: FontWeight.w600,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                              ),
-                                                              letterSpacing: 0.0,
-                                                              fontWeight: FontWeight.w600,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      '4 990 ₽',
-                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                            font: GoogleFonts.unbounded(
-                                                              fontWeight: FontWeight.w600,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                            ),
-                                                            color: FlutterFlowTheme.of(context).primary,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight: FontWeight.w600,
-                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                          ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Программа, составленная специально под ваши цели и возможности',
-                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                          font: GoogleFonts.inter(
-                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    height: 37.0,
-                                                    decoration: const BoxDecoration(),
-                                                    child: wrapWithModel(
-                                                      model: _model.generalButtonModel1,
-                                                      updateCallback: () => safeSetState(() {}),
-                                                      child: GeneralButtonWidget(
-                                                        title: 'Подробнее',
-                                                        isActive: true,
-                                                        onTap: () async {
-                                                          await context.pushNamed(WorkoutsIndividualProgramPromoPageWidget.routeName);
-                                                          await _model.loadUserData();
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'Текущая неделя',
+                                            Text(
+                                              '4 990 ₽',
                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                     font: GoogleFonts.unbounded(
                                                       fontWeight: FontWeight.w600,
                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                     ),
-                                                    fontSize: 13.0,
+                                                    color: FlutterFlowTheme.of(context).primary,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                   ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    // MARK: Текущая неделя
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
-                                      child: Builder(
-                                        builder: (context) {
-                                          final daysList = _model.days.toList();
-
-                                          return SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: List.generate(daysList.length, (daysListIndex) {
-                                                final daysListItem = daysList[daysListIndex];
-                                                return InkWell(
-                                                  splashColor: Colors.transparent,
-                                                  focusColor: Colors.transparent,
-                                                  hoverColor: Colors.transparent,
-                                                  highlightColor: Colors.transparent,
-                                                  onTap: () async {
-                                                    _model.daySelected = daysListItem;
-                                                    safeSetState(() {});
-                                                  },
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: _model.daySelected == daysListItem ? const Color(0x1EE27B00) : FlutterFlowTheme.of(context).secondary,
-                                                      borderRadius: BorderRadius.circular(100.0),
-                                                      border: Border.all(
-                                                        color: _model.daySelected == daysListItem ? FlutterFlowTheme.of(context).primary : FlutterFlowTheme.of(context).secondaryText,
-                                                        width: 1.0,
-                                                      ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
-                                                      child: Text(
-                                                        'День ${daysListItem.toString()}',
-                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                              font: GoogleFonts.unbounded(
-                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                              ),
-                                                              color: _model.daySelected == daysListItem ? FlutterFlowTheme.of(context).primary : FlutterFlowTheme.of(context).secondaryText,
-                                                              fontSize: 11.0,
-                                                              letterSpacing: 0.0,
-                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }).divide(const SizedBox(width: 4.0)).addToStart(const SizedBox(width: 16.0)).addToEnd(const SizedBox(width: 16.0)),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                    // "MARK: Список упражнений в выбранный день
-                                    if (_model.exercises.isNotEmpty)
-                                      Builder(
-                                        builder: (BuildContext context) {
-                                          // final programStart = DateTime.parse(_model.user!["programStartDate"]);
-                                          // final now = DateTime.now();
-                                          // final currentWeek = now.difference(programStart).inDays ~/ 7 + 1;
-                                          // var exercises = _model.schedule.where((s) => s['dayofweek'] == _model.daySelected - 1 && s['difficultyid'] == _model.user!["exerciseDifficulty"] &&
-                                          //     s['weeknumber'] == currentWeek);
-
-                                          // Новый блок группировки по программам и неделям
-                                          final selectedDay = _model.daySelected;
-
-                                          // Отфильтровываем dayExercise только из недель, загруженных в модель
-                                          final validWeekIds = _model.trainingProgramWeeks.map((w) => w['id']).toSet();
-
-                                          final relevantDayExercises = _model.trainingTrainingProgramWeekDayExercises.where((item) {
-                                            final weekDayId = item['trainingProgramWeekDay'];
-                                            final weekDay = _model.trainingProgramWeekDays.firstWhere(
-                                              (w) => w['id'] == weekDayId,
-                                              orElse: () => <String, dynamic>{},
-                                            );
-                                            if (weekDay == null) return false;
-
-                                            return weekDay['day'] == selectedDay &&
-                                                validWeekIds.contains(weekDay['trainingProgramWeek']);
-                                          }).toList();
-
-                                          final Map<int, List<Map<String, dynamic>>> groupedByProgram = {};
-
-                                          for (final exerciseEntry in relevantDayExercises) {
-                                            final weekDayId = exerciseEntry['trainingProgramWeekDay'];
-                                            final weekDay = _model.trainingProgramWeekDays.firstWhere(
-                                              (w) => w['id'] == weekDayId,
-                                              orElse: () => <String, dynamic>{},
-                                            );
-                                            if (weekDay == null) continue;
-
-                                            final week = _model.trainingProgramWeeks.firstWhere(
-                                              (w) => w['id'] == weekDay['trainingProgramWeek'],
-                                              orElse: () => <String, dynamic>{},
-                                            );
-                                            if (week == null) continue;
-
-                                            final programId = int.tryParse(week['trainingProgram'].toString());
-                                            if (programId == null) continue;
-
-                                            groupedByProgram.putIfAbsent(programId, () => []).add(exerciseEntry);
-                                          }
-
-                                          return ListView(
-                                            padding: const EdgeInsets.all(16),
-                                            shrinkWrap: true,
-                                            physics: const NeverScrollableScrollPhysics(),
-                                            children: groupedByProgram.entries
-                                                .where((e) => e.value.isNotEmpty)
-                                                .map((entry) {
-                                              final programMap = _model.trainingPrograms.firstWhere(
-                                                (p) => p['id'] == entry.key,
-                                                orElse: () => <String, dynamic>{},
-                                              );
-                                              if (programMap.isEmpty) return const SizedBox.shrink();
-
-                                              final programExercises = entry.value;
-
-                                              return renderProgram(programMap, programExercises);
-
-                                              return Padding(
-                                                padding: const EdgeInsets.only(bottom: 24),
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      programMap['name'] ?? 'Программа',
-                                                      style: FlutterFlowTheme.of(context).titleLarge,
-                                                    ),
-                                                    const SizedBox(height: 8),
-                                                    ...programExercises.map((exerciseEntry) {
-                                                      final exercise = _model.exercises.firstWhere(
-                                                        (e) => e['id'] == exerciseEntry['exercise'],
-                                                        orElse: () => <String, dynamic>{},
-                                                      );
-                                                      if (exercise == null) return const SizedBox.shrink();
-
-                                                      return Card(
-                                                        child: ListTile(
-                                                          title: Text(exercise['name'] ?? "-"),
-                                                          subtitle: Text(
-                                                              '${exercise['approach']} подходов × ${exercise['repetitions']} повторений'),
-                                                          trailing: const Icon(Icons.fitness_center),
-                                                          onTap: () {
-                                                            final video = exercise['video'];
-                                                            if (video != null && video.toString().isNotEmpty) {
-                                                              launchURL(video);
-                                                            }
-                                                          },
-                                                        ),
-                                                      );
-                                                    }),
-                                                  ],
-                                                ),
-                                              );
-                                            }).toList(),
-                                          );
-                                          // return Padding(
-                                          //   padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                                          //   child: Container(
-                                          //     width: double.infinity,
-                                          //     decoration: BoxDecoration(
-                                          //       color: FlutterFlowTheme.of(context).secondary,
-                                          //       borderRadius: BorderRadius.circular(12.0),
-                                          //     ),
-                                          //     child: Padding(
-                                          //       padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                                          //       child: Column(
-                                          //         mainAxisSize: MainAxisSize.max,
-                                          //         children: [
-                                          //           Row(
-                                          //             mainAxisSize: MainAxisSize.max,
-                                          //             children: [
-                                          //               Column(
-                                          //                 mainAxisSize: MainAxisSize.max,
-                                          //                 crossAxisAlignment: CrossAxisAlignment.start,
-                                          //                 children: [
-                                          //                   // Padding(
-                                          //                   //   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
-                                          //                   //   child: Row(
-                                          //                   //     mainAxisSize: MainAxisSize.max,
-                                          //                   //     children: [
-                                          //                   //       Text(
-                                          //                   //         "asd",
-                                          //                   //         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          //                   //           font: GoogleFonts.unbounded(
-                                          //                   //             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                   //             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                   //           ),
-                                          //                   //           letterSpacing: 0.0,
-                                          //                   //           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                   //           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                   //         ),
-                                          //                   //       ),
-                                          //                   //     ],
-                                          //                   //   ),
-                                          //                   // ),
-                                          //                   Align(
-                                          //                     alignment: AlignmentDirectional(-1.0, 0.0),
-                                          //                     child: Padding(
-                                          //                       padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                          //                       child: Wrap(
-                                          //                         spacing: 4.0,
-                                          //                         runSpacing: 4.0,
-                                          //                         alignment: WrapAlignment.start,
-                                          //                         crossAxisAlignment: WrapCrossAlignment.start,
-                                          //                         direction: Axis.horizontal,
-                                          //                         runAlignment: WrapAlignment.start,
-                                          //                         verticalDirection: VerticalDirection.down,
-                                          //                         clipBehavior: Clip.none,
-                                          //                         children: [
-                                          //                           Row(
-                                          //                             mainAxisSize: MainAxisSize.min,
-                                          //                             children: [
-                                          //                               Padding(
-                                          //                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                                          //                                 child: ClipRRect(
-                                          //                                   borderRadius: BorderRadius.circular(0.0),
-                                          //                                   child: SvgPicture.asset(
-                                          //                                     'assets/images/Dumbbells.svg',
-                                          //                                     width: 14.0,
-                                          //                                     height: 14.0,
-                                          //                                     fit: BoxFit.cover,
-                                          //                                   ),
-                                          //                                 ),
-                                          //                               ),
-                                          //                               Text(
-                                          //                                 getExperienceString(
-                                          //                                     exercises.length,
-                                          //                                     "упражнение",
-                                          //                                     "упражнения",
-                                          //                                     "упражнений",
-                                          //                                     false
-                                          //                                 ),
-                                          //                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          //                                   font: GoogleFonts.inter(
-                                          //                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                                   ),
-                                          //                                   color: FlutterFlowTheme.of(context).secondaryText,
-                                          //                                   fontSize: 13.0,
-                                          //                                   letterSpacing: 0.0,
-                                          //                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                                 ),
-                                          //                               ),
-                                          //                             ],
-                                          //                           ),
-                                          //                           // Row(
-                                          //                           //   mainAxisSize: MainAxisSize.min,
-                                          //                           //   children: [
-                                          //                           //     Padding(
-                                          //                           //       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                                          //                           //       child: ClipRRect(
-                                          //                           //         borderRadius: BorderRadius.circular(0.0),
-                                          //                           //         child: SvgPicture.asset(
-                                          //                           //           'assets/images/Calendar01.svg',
-                                          //                           //           width: 14.0,
-                                          //                           //           height: 14.0,
-                                          //                           //           fit: BoxFit.cover,
-                                          //                           //         ),
-                                          //                           //       ),
-                                          //                           //     ),
-                                          //                           //     Text(
-                                          //                           //       '45 мин',
-                                          //                           //       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          //                           //         font: GoogleFonts.inter(
-                                          //                           //           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                           //           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                           //         ),
-                                          //                           //         color: FlutterFlowTheme.of(context).secondaryText,
-                                          //                           //         fontSize: 13.0,
-                                          //                           //         letterSpacing: 0.0,
-                                          //                           //         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                           //         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                           //       ),
-                                          //                           //     ),
-                                          //                           //   ],
-                                          //                           // ),
-                                          //                         ],
-                                          //                       ),
-                                          //                     ),
-                                          //                   ),
-                                          //                 ],
-                                          //               ),
-                                          //             ],
-                                          //           ),
-                                          //           Padding(
-                                          //             padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                                          //             child: Container(
-                                          //               width: double.infinity,
-                                          //               height: 1.0,
-                                          //               decoration: BoxDecoration(
-                                          //                 color: Color(0xFF302E36),
-                                          //               ),
-                                          //             ),
-                                          //           ),
-                                          //           Padding(
-                                          //             padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
-                                          //             child: Builder(
-                                          //               builder: (BuildContext context) {
-                                          //
-                                          //
-                                          //                 if (exercises.isEmpty) {
-                                          //                   return Container(
-                                          //                     // margin: EdgeInsets.only(bottom: 16),
-                                          //                     child: Text(
-                                          //                       "В этот день нет тренировок",
-                                          //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          //                         font: GoogleFonts.inter(
-                                          //                           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                         ),
-                                          //                         color: FlutterFlowTheme.of(context).secondaryText,
-                                          //                         fontSize: 14.0,
-                                          //                         letterSpacing: 0.0,
-                                          //                         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          //                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                       ),
-                                          //                     ),
-                                          //                   );
-                                          //                 }
-                                          //
-                                          //                 return ListView.builder(
-                                          //                   shrinkWrap: true,
-                                          //                   physics: NeverScrollableScrollPhysics(),
-                                          //                   itemCount: exercises.length,
-                                          //                   itemBuilder: (context, index) {
-                                          //                     final filteredSchedule = exercises.toList()..sort((a, b) => a['order'].compareTo(b['order']));
-                                          //
-                                          //                     final scheduleItem = filteredSchedule[index];
-                                          //                     print("scheduleItem_______${scheduleItem}");
-                                          //                     final exercise = _model.exercises.firstWhere(
-                                          //                           (e) => e['id'] == scheduleItem['exerciseid'],
-                                          //                       orElse: () => <String, dynamic>{},
-                                          //                     );
-                                          //
-                                          //                     if (exercise == null) return SizedBox();
-                                          //
-                                          //                     return renderExercise(exercise, index + 1);
-                                          //                   },
-                                          //                 );
-                                          //               },
-                                          //             ),
-                                          //           ),
-                                          //           if (exercises.isNotEmpty)
-                                          //             Padding(
-                                          //               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                          //               child: InkWell(
-                                          //                 splashColor: Colors.transparent,
-                                          //                 focusColor: Colors.transparent,
-                                          //                 hoverColor: Colors.transparent,
-                                          //                 highlightColor: Colors.transparent,
-                                          //                 onTap: () async {
-                                          //                   context.safePop();
-                                          //                 },
-                                          //                 child: Container(
-                                          //                   width: double.infinity,
-                                          //                   height: 42.0,
-                                          //                   decoration: BoxDecoration(
-                                          //                     color: FlutterFlowTheme.of(context).primary,
-                                          //                     borderRadius: BorderRadius.only(
-                                          //                       bottomLeft: Radius.circular(12.0),
-                                          //                       bottomRight: Radius.circular(12.0),
-                                          //                       topLeft: Radius.circular(0.0),
-                                          //                       topRight: Radius.circular(0.0),
-                                          //                     ),
-                                          //                   ),
-                                          //                   child: Row(
-                                          //                     mainAxisSize: MainAxisSize.max,
-                                          //                     mainAxisAlignment: MainAxisAlignment.center,
-                                          //                     children: [
-                                          //                       Padding(
-                                          //                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                          //                         child: ClipRRect(
-                                          //                           borderRadius: BorderRadius.circular(0.0),
-                                          //                           child: SvgPicture.asset(
-                                          //                             'assets/images/Dumbbell.svg',
-                                          //                             width: 16.0,
-                                          //                             height: 16.0,
-                                          //                             fit: BoxFit.cover,
-                                          //                           ),
-                                          //                         ),
-                                          //                       ),
-                                          //                       Text(
-                                          //                         'Начать',
-                                          //                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          //                           font: GoogleFonts.unbounded(
-                                          //                             fontWeight: FontWeight.w600,
-                                          //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                           ),
-                                          //                           letterSpacing: 0.0,
-                                          //                           fontWeight: FontWeight.w600,
-                                          //                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          //                         ),
-                                          //                       ),
-                                          //                     ],
-                                          //                   ),
-                                          //                 ),
-                                          //               ),
-                                          //             ),
-                                          //         ],
-                                          //       ),
-                                          //     ),
-                                          //   ),
-                                          // );
-                                        },
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          if (_model.individualProgramPreparing)
-                            Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                              ),
-                              child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).secondary,
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: Image.asset(
-                                          'assets/images/68c085461ec08067a99474c2c8d3aa09e898f3b2.jpg',
-                                        ).image,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context).secondary,
-                                        width: 1.0,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.circular(0.0),
-                                            child: SvgPicture.asset(
-                                              'assets/images/Calendar02.svg',
-                                              width: 32.0,
-                                              height: 32.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Индивидуальная программа готовится',
-                                              textAlign: TextAlign.center,
-                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                    font: GoogleFonts.unbounded(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                    ),
-                                                    fontSize: 17.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                  ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                                            child: CircularPercentIndicator(
-                                              percent: 0.3,
-                                              radius: 87.5,
-                                              lineWidth: 12.0,
-                                              animation: true,
-                                              animateFromLastPercent: true,
-                                              progressColor: FlutterFlowTheme.of(context).primary,
-                                              backgroundColor: const Color(0x15FFFFFF),
-                                              center: Text(
-                                                '30%',
-                                                style: FlutterFlowTheme.of(context).headlineSmall.override(
-                                                      font: GoogleFonts.unbounded(
-                                                        fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
-                                                        fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
-                                                      ),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
-                                                      fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Программа делается в течении 4-х дней, после того, как вы пришлете всю информацию. Вам придет уведомление о готовности и появится ссылка на телеграмм канал',
-                                              textAlign: TextAlign.center,
-                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                    font: GoogleFonts.inter(
-                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                    ),
-                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                    letterSpacing: 0.0,
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Программа, составленная специально под ваши цели и возможности',
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                  font: GoogleFonts.inter(
                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                   ),
-                                            ),
+                                                  color: FlutterFlowTheme.of(context).secondaryText,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                ),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                          child: Container(
+                                            height: 37.0,
+                                            decoration: const BoxDecoration(),
                                             child: wrapWithModel(
-                                              model: _model.generalButtonModel2,
+                                              model: _model.generalButtonModel1,
                                               updateCallback: () => safeSetState(() {}),
                                               child: GeneralButtonWidget(
                                                 title: 'Подробнее',
-                                                isActive: false,
-                                                onTap: () async {},
+                                                isActive: true,
+                                                onTap: () async {
+                                                  await context
+                                                      .pushNamed(WorkoutsIndividualProgramPromoPageWidget.routeName);
+                                                },
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                        ],
-                      ),
-              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        'Текущая неделя',
+                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              font: GoogleFonts.unbounded(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                              ),
+                                              fontSize: 13.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // MARK: Текущая неделя
+                              Builder(builder: (context) {
+                                // if (_model.loading) return const CircularProgressIndicator();
+                                if (_model.error != null) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(24.0),
+                                    child: Text(
+                                      _model.error!,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w400,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w400,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  );
+                                }
+                                if (_model.isEndOfProgram) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(24.0),
+                                    child: Text(
+                                      'Конец программы',
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w400,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w400,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  );
+                                }
+                                if (_model.trainingProgram == null || _model.currentProgramWeek == null) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(24.0),
+                                    child: Text(
+                                      'Программа не найдена',
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w400,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w400,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  );
+                                }
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    //week chips
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: List.generate(_model.trainingProgram!.weeks.length, (weekIndex) {
+                                          final week = _model.trainingProgram!.weeks[weekIndex];
+                                          bool selected = week == _model.weekSelected;
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if ((_model.currentProgramWeek ?? 0) < week['week_number']) {
+                                                print('нельзя выбрать будущую неделю');
+                                                return;
+                                              }
+                                              _model.weekSelected = week;
+                                              safeSetState(() {});
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: selected
+                                                    ? const Color(0x1EE27B00)
+                                                    : FlutterFlowTheme.of(context).secondary,
+                                                borderRadius: BorderRadius.circular(100.0),
+                                                border: selected
+                                                    ? Border.all(
+                                                        color: FlutterFlowTheme.of(context).primary,
+                                                        width: 1.0,
+                                                      )
+                                                    : null,
+                                              ),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
+                                                child: Text(
+                                                  'Неделя ${week['week_number']}',
+                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                        font: GoogleFonts.unbounded(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                        ),
+                                                        color: selected
+                                                            ? FlutterFlowTheme.of(context).primary
+                                                            : FlutterFlowTheme.of(context).secondaryText,
+                                                        fontSize: 13.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        })
+                                            .divide(const SizedBox(width: 4.0))
+                                            .addToStart(const SizedBox(width: 16.0))
+                                            .addToEnd(const SizedBox(width: 16.0)),
+                                      ),
+                                    ),
+
+                                    Builder(builder: (context) {
+                                      final days = (_model.weekSelected!['days'] as List)
+                                          .where((day) => day['exercises'].length > 0)
+                                          .toList();
+                                      return ListView.builder(
+                                        physics: const NeverScrollableScrollPhysics(),
+                                        padding: const EdgeInsets.all(16),
+                                        shrinkWrap: true,
+                                        itemCount: days.length,
+                                        itemBuilder: (context, index) {
+                                          final day = days[index];
+                                          return _ExerciseCard(day: day, program: _model.trainingProgram!);
+                                        },
+                                      );
+                                    }),
+                                  ],
+                                );
+                              }),
+                              // Padding(
+                              //   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
+                              //   child: Builder(
+                              //     builder: (context) {
+                              //       final daysList = _model.days.toList();
+
+                              //       return SingleChildScrollView(
+                              //         scrollDirection: Axis.horizontal,
+                              //         child: Row(
+                              //           mainAxisSize: MainAxisSize.max,
+                              //           children: List.generate(daysList.length, (daysListIndex) {
+                              //             final daysListItem = daysList[daysListIndex];
+                              //             return InkWell(
+                              //               splashColor: Colors.transparent,
+                              //               focusColor: Colors.transparent,
+                              //               hoverColor: Colors.transparent,
+                              //               highlightColor: Colors.transparent,
+                              //               onTap: () async {
+                              //                 _model.daySelected = daysListItem;
+                              //                 safeSetState(() {});
+                              //               },
+                              //               child: Container(
+                              //                 decoration: BoxDecoration(
+                              //                   color: _model.daySelected == daysListItem
+                              //                       ? const Color(0x1EE27B00)
+                              //                       : FlutterFlowTheme.of(context).secondary,
+                              //                   borderRadius: BorderRadius.circular(100.0),
+                              //                   border: Border.all(
+                              //                     color: _model.daySelected == daysListItem
+                              //                         ? FlutterFlowTheme.of(context).primary
+                              //                         : FlutterFlowTheme.of(context).secondaryText,
+                              //                     width: 1.0,
+                              //                   ),
+                              //                 ),
+                              //                 child: Padding(
+                              //                   padding: const EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
+                              //                   child: Text(
+                              //                     'День ${daysListItem.toString()}',
+                              //                     style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              //                           font: GoogleFonts.unbounded(
+                              //                             fontWeight:
+                              //                                 FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //                             fontStyle:
+                              //                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //                           ),
+                              //                           color: _model.daySelected == daysListItem
+                              //                               ? FlutterFlowTheme.of(context).primary
+                              //                               : FlutterFlowTheme.of(context).secondaryText,
+                              //                           fontSize: 11.0,
+                              //                           letterSpacing: 0.0,
+                              //                           fontWeight:
+                              //                               FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //                         ),
+                              //                   ),
+                              //                 ),
+                              //               ),
+                              //             );
+                              //           })
+                              //               .divide(const SizedBox(width: 4.0))
+                              //               .addToStart(const SizedBox(width: 16.0))
+                              //               .addToEnd(const SizedBox(width: 16.0)),
+                              //         ),
+                              //       );
+                              //     },
+                              //   ),
+                              // ),
+                              // "MARK: Список упражнений в выбранный день
+                              // if (_model.exercises.isNotEmpty)
+                              //   Builder(
+                              //     builder: (BuildContext context) {
+                              //       // final programStart = DateTime.parse(_model.user!["programStartDate"]);
+                              //       // final now = DateTime.now();
+                              //       // final currentWeek = now.difference(programStart).inDays ~/ 7 + 1;
+                              //       // var exercises = _model.schedule.where((s) => s['dayofweek'] == _model.daySelected - 1 && s['difficultyid'] == _model.user!["exerciseDifficulty"] &&
+                              //       //     s['weeknumber'] == currentWeek);
+
+                              //       // Новый блок группировки по программам и неделям
+                              //       final selectedDay = _model.daySelected;
+
+                              //       // Отфильтровываем dayExercise только из недель, загруженных в модель
+                              //       final validWeekIds = _model.trainingProgramWeeks.map((w) => w['id']).toSet();
+
+                              //       final relevantDayExercises =
+                              //           _model.trainingTrainingProgramWeekDayExercises.where((item) {
+                              //         final weekDayId = item['trainingProgramWeekDay'];
+                              //         final weekDay = _model.trainingProgramWeekDays.firstWhere(
+                              //           (w) => w['id'] == weekDayId,
+                              //           orElse: () => <String, dynamic>{},
+                              //         );
+                              //         if (weekDay == null) return false;
+
+                              //         return weekDay['day'] == selectedDay &&
+                              //             validWeekIds.contains(weekDay['trainingProgramWeek']);
+                              //       }).toList();
+
+                              //       final Map<int, List<Map<String, dynamic>>> groupedByProgram = {};
+
+                              //       for (final exerciseEntry in relevantDayExercises) {
+                              //         final weekDayId = exerciseEntry['trainingProgramWeekDay'];
+                              //         final weekDay = _model.trainingProgramWeekDays.firstWhere(
+                              //           (w) => w['id'] == weekDayId,
+                              //           orElse: () => <String, dynamic>{},
+                              //         );
+                              //         if (weekDay == null) continue;
+
+                              //         final week = _model.trainingProgramWeeks.firstWhere(
+                              //           (w) => w['id'] == weekDay['trainingProgramWeek'],
+                              //           orElse: () => <String, dynamic>{},
+                              //         );
+                              //         if (week == null) continue;
+
+                              //         final programId = int.tryParse(week['trainingProgram'].toString());
+                              //         if (programId == null) continue;
+
+                              //         groupedByProgram.putIfAbsent(programId, () => []).add(exerciseEntry);
+                              //       }
+
+                              //       return ListView(
+                              //         padding: const EdgeInsets.all(16),
+                              //         shrinkWrap: true,
+                              //         physics: const NeverScrollableScrollPhysics(),
+                              //         children:
+                              //             groupedByProgram.entries.where((e) => e.value.isNotEmpty).map((entry) {
+                              //           final programMap = _model.trainingPrograms.firstWhere(
+                              //             (p) => p['id'] == entry.key,
+                              //             orElse: () => <String, dynamic>{},
+                              //           );
+                              //           if (programMap.isEmpty) return const SizedBox.shrink();
+
+                              //           final programExercises = entry.value;
+
+                              //           return renderProgram(programMap, programExercises);
+
+                              //           return Padding(
+                              //             padding: const EdgeInsets.only(bottom: 24),
+                              //             child: Column(
+                              //               crossAxisAlignment: CrossAxisAlignment.start,
+                              //               children: [
+                              //                 Text(
+                              //                   programMap['name'] ?? 'Программа',
+                              //                   style: FlutterFlowTheme.of(context).titleLarge,
+                              //                 ),
+                              //                 const SizedBox(height: 8),
+                              //                 ...programExercises.map((exerciseEntry) {
+                              //                   final exercise = _model.exercises.firstWhere(
+                              //                     (e) => e['id'] == exerciseEntry['exercise'],
+                              //                     orElse: () => <String, dynamic>{},
+                              //                   );
+                              //                   if (exercise == null) return const SizedBox.shrink();
+
+                              //                   return Card(
+                              //                     child: ListTile(
+                              //                       title: Text(exercise['name'] ?? "-"),
+                              //                       subtitle: Text(
+                              //                           '${exercise['approach']} подходов × ${exercise['repetitions']} повторений'),
+                              //                       trailing: const Icon(Icons.fitness_center),
+                              //                       onTap: () {
+                              //                         final video = exercise['video'];
+                              //                         if (video != null && video.toString().isNotEmpty) {
+                              //                           launchURL(video);
+                              //                         }
+                              //                       },
+                              //                     ),
+                              //                   );
+                              //                 }),
+                              //               ],
+                              //             ),
+                              //           );
+                              //         }).toList(),
+                              //       );
+                              //       // return Padding(
+                              //       //   padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                              //       //   child: Container(
+                              //       //     width: double.infinity,
+                              //       //     decoration: BoxDecoration(
+                              //       //       color: FlutterFlowTheme.of(context).secondary,
+                              //       //       borderRadius: BorderRadius.circular(12.0),
+                              //       //     ),
+                              //       //     child: Padding(
+                              //       //       padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                              //       //       child: Column(
+                              //       //         mainAxisSize: MainAxisSize.max,
+                              //       //         children: [
+                              //       //           Row(
+                              //       //             mainAxisSize: MainAxisSize.max,
+                              //       //             children: [
+                              //       //               Column(
+                              //       //                 mainAxisSize: MainAxisSize.max,
+                              //       //                 crossAxisAlignment: CrossAxisAlignment.start,
+                              //       //                 children: [
+                              //       //                   // Padding(
+                              //       //                   //   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
+                              //       //                   //   child: Row(
+                              //       //                   //     mainAxisSize: MainAxisSize.max,
+                              //       //                   //     children: [
+                              //       //                   //       Text(
+                              //       //                   //         "asd",
+                              //       //                   //         style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              //       //                   //           font: GoogleFonts.unbounded(
+                              //       //                   //             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                   //             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                   //           ),
+                              //       //                   //           letterSpacing: 0.0,
+                              //       //                   //           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                   //           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                   //         ),
+                              //       //                   //       ),
+                              //       //                   //     ],
+                              //       //                   //   ),
+                              //       //                   // ),
+                              //       //                   Align(
+                              //       //                     alignment: AlignmentDirectional(-1.0, 0.0),
+                              //       //                     child: Padding(
+                              //       //                       padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                              //       //                       child: Wrap(
+                              //       //                         spacing: 4.0,
+                              //       //                         runSpacing: 4.0,
+                              //       //                         alignment: WrapAlignment.start,
+                              //       //                         crossAxisAlignment: WrapCrossAlignment.start,
+                              //       //                         direction: Axis.horizontal,
+                              //       //                         runAlignment: WrapAlignment.start,
+                              //       //                         verticalDirection: VerticalDirection.down,
+                              //       //                         clipBehavior: Clip.none,
+                              //       //                         children: [
+                              //       //                           Row(
+                              //       //                             mainAxisSize: MainAxisSize.min,
+                              //       //                             children: [
+                              //       //                               Padding(
+                              //       //                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                              //       //                                 child: ClipRRect(
+                              //       //                                   borderRadius: BorderRadius.circular(0.0),
+                              //       //                                   child: SvgPicture.asset(
+                              //       //                                     'assets/images/Dumbbells.svg',
+                              //       //                                     width: 14.0,
+                              //       //                                     height: 14.0,
+                              //       //                                     fit: BoxFit.cover,
+                              //       //                                   ),
+                              //       //                                 ),
+                              //       //                               ),
+                              //       //                               Text(
+                              //       //                                 getExperienceString(
+                              //       //                                     exercises.length,
+                              //       //                                     "упражнение",
+                              //       //                                     "упражнения",
+                              //       //                                     "упражнений",
+                              //       //                                     false
+                              //       //                                 ),
+                              //       //                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              //       //                                   font: GoogleFonts.inter(
+                              //       //                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                                   ),
+                              //       //                                   color: FlutterFlowTheme.of(context).secondaryText,
+                              //       //                                   fontSize: 13.0,
+                              //       //                                   letterSpacing: 0.0,
+                              //       //                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                                 ),
+                              //       //                               ),
+                              //       //                             ],
+                              //       //                           ),
+                              //       //                           // Row(
+                              //       //                           //   mainAxisSize: MainAxisSize.min,
+                              //       //                           //   children: [
+                              //       //                           //     Padding(
+                              //       //                           //       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                              //       //                           //       child: ClipRRect(
+                              //       //                           //         borderRadius: BorderRadius.circular(0.0),
+                              //       //                           //         child: SvgPicture.asset(
+                              //       //                           //           'assets/images/Calendar01.svg',
+                              //       //                           //           width: 14.0,
+                              //       //                           //           height: 14.0,
+                              //       //                           //           fit: BoxFit.cover,
+                              //       //                           //         ),
+                              //       //                           //       ),
+                              //       //                           //     ),
+                              //       //                           //     Text(
+                              //       //                           //       '45 мин',
+                              //       //                           //       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              //       //                           //         font: GoogleFonts.inter(
+                              //       //                           //           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                           //           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                           //         ),
+                              //       //                           //         color: FlutterFlowTheme.of(context).secondaryText,
+                              //       //                           //         fontSize: 13.0,
+                              //       //                           //         letterSpacing: 0.0,
+                              //       //                           //         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                           //         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                           //       ),
+                              //       //                           //     ),
+                              //       //                           //   ],
+                              //       //                           // ),
+                              //       //                         ],
+                              //       //                       ),
+                              //       //                     ),
+                              //       //                   ),
+                              //       //                 ],
+                              //       //               ),
+                              //       //             ],
+                              //       //           ),
+                              //       //           Padding(
+                              //       //             padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                              //       //             child: Container(
+                              //       //               width: double.infinity,
+                              //       //               height: 1.0,
+                              //       //               decoration: BoxDecoration(
+                              //       //                 color: Color(0xFF302E36),
+                              //       //               ),
+                              //       //             ),
+                              //       //           ),
+                              //       //           Padding(
+                              //       //             padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                              //       //             child: Builder(
+                              //       //               builder: (BuildContext context) {
+                              //       //
+                              //       //
+                              //       //                 if (exercises.isEmpty) {
+                              //       //                   return Container(
+                              //       //                     // margin: EdgeInsets.only(bottom: 16),
+                              //       //                     child: Text(
+                              //       //                       "В этот день нет тренировок",
+                              //       //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              //       //                         font: GoogleFonts.inter(
+                              //       //                           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                         ),
+                              //       //                         color: FlutterFlowTheme.of(context).secondaryText,
+                              //       //                         fontSize: 14.0,
+                              //       //                         letterSpacing: 0.0,
+                              //       //                         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              //       //                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                       ),
+                              //       //                     ),
+                              //       //                   );
+                              //       //                 }
+                              //       //
+                              //       //                 return ListView.builder(
+                              //       //                   shrinkWrap: true,
+                              //       //                   physics: NeverScrollableScrollPhysics(),
+                              //       //                   itemCount: exercises.length,
+                              //       //                   itemBuilder: (context, index) {
+                              //       //                     final filteredSchedule = exercises.toList()..sort((a, b) => a['order'].compareTo(b['order']));
+                              //       //
+                              //       //                     final scheduleItem = filteredSchedule[index];
+                              //       //                     print("scheduleItem_______${scheduleItem}");
+                              //       //                     final exercise = _model.exercises.firstWhere(
+                              //       //                           (e) => e['id'] == scheduleItem['exerciseid'],
+                              //       //                       orElse: () => <String, dynamic>{},
+                              //       //                     );
+                              //       //
+                              //       //                     if (exercise == null) return SizedBox();
+                              //       //
+                              //       //                     return renderExercise(exercise, index + 1);
+                              //       //                   },
+                              //       //                 );
+                              //       //               },
+                              //       //             ),
+                              //       //           ),
+                              //       //           if (exercises.isNotEmpty)
+                              //       //             Padding(
+                              //       //               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                              //       //               child: InkWell(
+                              //       //                 splashColor: Colors.transparent,
+                              //       //                 focusColor: Colors.transparent,
+                              //       //                 hoverColor: Colors.transparent,
+                              //       //                 highlightColor: Colors.transparent,
+                              //       //                 onTap: () async {
+                              //       //                   context.safePop();
+                              //       //                 },
+                              //       //                 child: Container(
+                              //       //                   width: double.infinity,
+                              //       //                   height: 42.0,
+                              //       //                   decoration: BoxDecoration(
+                              //       //                     color: FlutterFlowTheme.of(context).primary,
+                              //       //                     borderRadius: BorderRadius.only(
+                              //       //                       bottomLeft: Radius.circular(12.0),
+                              //       //                       bottomRight: Radius.circular(12.0),
+                              //       //                       topLeft: Radius.circular(0.0),
+                              //       //                       topRight: Radius.circular(0.0),
+                              //       //                     ),
+                              //       //                   ),
+                              //       //                   child: Row(
+                              //       //                     mainAxisSize: MainAxisSize.max,
+                              //       //                     mainAxisAlignment: MainAxisAlignment.center,
+                              //       //                     children: [
+                              //       //                       Padding(
+                              //       //                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                              //       //                         child: ClipRRect(
+                              //       //                           borderRadius: BorderRadius.circular(0.0),
+                              //       //                           child: SvgPicture.asset(
+                              //       //                             'assets/images/Dumbbell.svg',
+                              //       //                             width: 16.0,
+                              //       //                             height: 16.0,
+                              //       //                             fit: BoxFit.cover,
+                              //       //                           ),
+                              //       //                         ),
+                              //       //                       ),
+                              //       //                       Text(
+                              //       //                         'Начать',
+                              //       //                         style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              //       //                           font: GoogleFonts.unbounded(
+                              //       //                             fontWeight: FontWeight.w600,
+                              //       //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                           ),
+                              //       //                           letterSpacing: 0.0,
+                              //       //                           fontWeight: FontWeight.w600,
+                              //       //                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              //       //                         ),
+                              //       //                       ),
+                              //       //                     ],
+                              //       //                   ),
+                              //       //                 ),
+                              //       //               ),
+                              //       //             ),
+                              //       //         ],
+                              //       //       ),
+                              //       //     ),
+                              //       //   ),
+                              //       // );
+                              //     },
+                              //   ),
+                            ],
+                          ),
+                        )
+
+                  //  Stack(
+                  //     children: [
+                  //       if (!_model.individualProgramPreparing)
+                  //         Padding(
+                  //           padding: const EdgeInsetsDirectional.fromSTEB(1.0, 0.0, 0.0, 0.0),
+                  //           child: SingleChildScrollView(
+                  //             padding: const EdgeInsets.only(bottom: 30),
+                  //             child: Column(
+                  //               mainAxisSize: MainAxisSize.max,
+                  //               children: [
+                  //                 // MARK: Индивидуальная программа не приобретена
+                  //                 if (_model.user != null &&
+                  //                     _model.user!["individualProgramId"] == null &&
+                  //                     (_model.user!["individualProgramUnderPrepare"] == true ||
+                  //                         _model.user!["individualProgramUnderPrepare"] == null))
+                  //                   Padding(
+                  //                     padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                  //                     child: Container(
+                  //                       width: double.infinity,
+                  //                       decoration: BoxDecoration(
+                  //                         color: FlutterFlowTheme.of(context).secondary,
+                  //                         image: DecorationImage(
+                  //                           fit: BoxFit.cover,
+                  //                           opacity: 0.2,
+                  //                           image: Image.asset(
+                  //                             'assets/images/1a2c950ebdd006be009161fbb6c5138b58253580.jpg',
+                  //                           ).image,
+                  //                         ),
+                  //                         borderRadius: BorderRadius.circular(12.0),
+                  //                       ),
+                  //                       child: Padding(
+                  //                         padding: const EdgeInsets.all(12.0),
+                  //                         child: Column(
+                  //                           mainAxisSize: MainAxisSize.max,
+                  //                           crossAxisAlignment: CrossAxisAlignment.start,
+                  //                           children: [
+                  //                             Row(
+                  //                               mainAxisSize: MainAxisSize.max,
+                  //                               children: [
+                  //                                 Padding(
+                  //                                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                  //                                   child: ClipRRect(
+                  //                                     borderRadius: BorderRadius.circular(0.0),
+                  //                                     child: SvgPicture.asset(
+                  //                                       'assets/images/Star_Shine.svg',
+                  //                                       width: 16.0,
+                  //                                       height: 16.0,
+                  //                                       fit: BoxFit.cover,
+                  //                                     ),
+                  //                                   ),
+                  //                                 ),
+                  //                                 Expanded(
+                  //                                   child: Text(
+                  //                                     'Индивидуальная',
+                  //                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                                           font: GoogleFonts.unbounded(
+                  //                                             fontWeight: FontWeight.w600,
+                  //                                             fontStyle:
+                  //                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                           ),
+                  //                                           letterSpacing: 0.0,
+                  //                                           fontWeight: FontWeight.w600,
+                  //                                           fontStyle:
+                  //                                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                         ),
+                  //                                   ),
+                  //                                 ),
+                  //                                 Text(
+                  //                                   '4 990 ₽',
+                  //                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                                         font: GoogleFonts.unbounded(
+                  //                                           fontWeight: FontWeight.w600,
+                  //                                           fontStyle:
+                  //                                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                         ),
+                  //                                         color: FlutterFlowTheme.of(context).primary,
+                  //                                         letterSpacing: 0.0,
+                  //                                         fontWeight: FontWeight.w600,
+                  //                                         fontStyle:
+                  //                                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                       ),
+                  //                                 ),
+                  //                               ],
+                  //                             ),
+                  //                             Padding(
+                  //                               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                  //                               child: Text(
+                  //                                 'Программа, составленная специально под ваши цели и возможности',
+                  //                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                                       font: GoogleFonts.inter(
+                  //                                         fontWeight:
+                  //                                             FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                                         fontStyle:
+                  //                                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                       ),
+                  //                                       color: FlutterFlowTheme.of(context).secondaryText,
+                  //                                       letterSpacing: 0.0,
+                  //                                       fontWeight:
+                  //                                           FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                     ),
+                  //                               ),
+                  //                             ),
+                  //                             Padding(
+                  //                               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  //                               child: Container(
+                  //                                 height: 37.0,
+                  //                                 decoration: const BoxDecoration(),
+                  //                                 child: wrapWithModel(
+                  //                                   model: _model.generalButtonModel1,
+                  //                                   updateCallback: () => safeSetState(() {}),
+                  //                                   child: GeneralButtonWidget(
+                  //                                     title: 'Подробнее',
+                  //                                     isActive: true,
+                  //                                     onTap: () async {
+                  //                                       await context.pushNamed(
+                  //                                           WorkoutsIndividualProgramPromoPageWidget.routeName);
+                  //                                     },
+                  //                                   ),
+                  //                                 ),
+                  //                               ),
+                  //                             ),
+                  //                           ],
+                  //                         ),
+                  //                       ),
+                  //                     ),
+                  //                   ),
+                  //                 Padding(
+                  //                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  //                   child: Row(
+                  //                     mainAxisSize: MainAxisSize.max,
+                  //                     children: [
+                  //                       Expanded(
+                  //                         child: Text(
+                  //                           'Текущая неделя',
+                  //                           style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                                 font: GoogleFonts.unbounded(
+                  //                                   fontWeight: FontWeight.w600,
+                  //                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                 ),
+                  //                                 fontSize: 13.0,
+                  //                                 letterSpacing: 0.0,
+                  //                                 fontWeight: FontWeight.w600,
+                  //                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                               ),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //                 // MARK: Текущая неделя
+                  //                 Builder(builder: (context) {
+                  //                   if (_model.loading) return const CircularProgressIndicator();
+                  //                   if (_model.error != null) {
+                  //                     return Text(
+                  //                       _model.error!,
+                  //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                             font: GoogleFonts.unbounded(
+                  //                               fontWeight: FontWeight.w600,
+                  //                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                             ),
+                  //                             fontSize: 13.0,
+                  //                             letterSpacing: 0.0,
+                  //                             fontWeight: FontWeight.w600,
+                  //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                           ),
+                  //                     );
+                  //                   }
+                  //                   if (_model.isEndOfProgram) {
+                  //                     return Text(
+                  //                       'Конец программы',
+                  //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                             font: GoogleFonts.unbounded(
+                  //                               fontWeight: FontWeight.w600,
+                  //                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                             ),
+                  //                             fontSize: 13.0,
+                  //                             letterSpacing: 0.0,
+                  //                             fontWeight: FontWeight.w600,
+                  //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                           ),
+                  //                     );
+                  //                   }
+                  //                   if (_model.trainingProgram == null || _model.currentProgramWeek == null) {
+                  //                     return Text(
+                  //                       'Программа не найдена',
+                  //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                             font: GoogleFonts.unbounded(
+                  //                               fontWeight: FontWeight.w600,
+                  //                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                             ),
+                  //                             fontSize: 13.0,
+                  //                             letterSpacing: 0.0,
+                  //                             fontWeight: FontWeight.w600,
+                  //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                           ),
+                  //                     );
+                  //                   }
+                  //                   return Column(
+                  //                     children: [
+                  //                       SingleChildScrollView(
+                  //                         scrollDirection: Axis.horizontal,
+                  //                         child: Row(
+                  //                           mainAxisSize: MainAxisSize.max,
+                  //                           children:
+                  //                               List.generate(_model.trainingProgram!.weeks.length, (weekIndex) {
+                  //                             final week = _model.trainingProgram!.weeks[weekIndex];
+                  //                             bool selected = week == _model.weekSelected;
+                  //                             return InkWell(
+                  //                               splashColor: Colors.transparent,
+                  //                               focusColor: Colors.transparent,
+                  //                               hoverColor: Colors.transparent,
+                  //                               highlightColor: Colors.transparent,
+                  //                               onTap: () async {
+                  //                                 _model.weekSelected = week;
+                  //                                 safeSetState(() {});
+                  //                               },
+                  //                               child: Container(
+                  //                                 decoration: BoxDecoration(
+                  //                                   color: selected
+                  //                                       ? const Color(0x1EE27B00)
+                  //                                       : FlutterFlowTheme.of(context).secondary,
+                  //                                   borderRadius: BorderRadius.circular(100.0),
+                  //                                   border: Border.all(
+                  //                                     color: selected
+                  //                                         ? FlutterFlowTheme.of(context).primary
+                  //                                         : FlutterFlowTheme.of(context).secondaryText,
+                  //                                     width: 1.0,
+                  //                                   ),
+                  //                                 ),
+                  //                                 child: Padding(
+                  //                                   padding: const EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
+                  //                                   child: Text(
+                  //                                     'Неделя ${_model.weekSelected?['week_number']}',
+                  //                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                                           font: GoogleFonts.unbounded(
+                  //                                             fontWeight:
+                  //                                                 FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                                             fontStyle:
+                  //                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                           ),
+                  //                                           color: selected
+                  //                                               ? FlutterFlowTheme.of(context).primary
+                  //                                               : FlutterFlowTheme.of(context).secondaryText,
+                  //                                           fontSize: 11.0,
+                  //                                           letterSpacing: 0.0,
+                  //                                           fontWeight:
+                  //                                               FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                                           fontStyle:
+                  //                                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                         ),
+                  //                                   ),
+                  //                                 ),
+                  //                               ),
+                  //                             );
+                  //                           })
+                  //                                   .divide(const SizedBox(width: 4.0))
+                  //                                   .addToStart(const SizedBox(width: 16.0))
+                  //                                   .addToEnd(const SizedBox(width: 16.0)),
+                  //                         ),
+                  //                       ),
+                  //                       Text('${_model.trainingProgram!.name}',
+                  //                           style: FlutterFlowTheme.of(context).bodyMedium),
+                  //                       Text('${_model.weekSelected?['week_number']}',
+                  //                           style: FlutterFlowTheme.of(context).bodyMedium),
+                  //                       Text('${_model.weekSelected?['days']}',
+                  //                           style: FlutterFlowTheme.of(context).bodyMedium),
+                  //                     ],
+                  //                   );
+                  //                 }),
+                  //                 Padding(
+                  //                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
+                  //                   child: Builder(
+                  //                     builder: (context) {
+                  //                       final daysList = _model.days.toList();
+
+                  //                       return SingleChildScrollView(
+                  //                         scrollDirection: Axis.horizontal,
+                  //                         child: Row(
+                  //                           mainAxisSize: MainAxisSize.max,
+                  //                           children: List.generate(daysList.length, (daysListIndex) {
+                  //                             final daysListItem = daysList[daysListIndex];
+                  //                             return InkWell(
+                  //                               splashColor: Colors.transparent,
+                  //                               focusColor: Colors.transparent,
+                  //                               hoverColor: Colors.transparent,
+                  //                               highlightColor: Colors.transparent,
+                  //                               onTap: () async {
+                  //                                 _model.daySelected = daysListItem;
+                  //                                 safeSetState(() {});
+                  //                               },
+                  //                               child: Container(
+                  //                                 decoration: BoxDecoration(
+                  //                                   color: _model.daySelected == daysListItem
+                  //                                       ? const Color(0x1EE27B00)
+                  //                                       : FlutterFlowTheme.of(context).secondary,
+                  //                                   borderRadius: BorderRadius.circular(100.0),
+                  //                                   border: Border.all(
+                  //                                     color: _model.daySelected == daysListItem
+                  //                                         ? FlutterFlowTheme.of(context).primary
+                  //                                         : FlutterFlowTheme.of(context).secondaryText,
+                  //                                     width: 1.0,
+                  //                                   ),
+                  //                                 ),
+                  //                                 child: Padding(
+                  //                                   padding: const EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
+                  //                                   child: Text(
+                  //                                     'День ${daysListItem.toString()}',
+                  //                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                                           font: GoogleFonts.unbounded(
+                  //                                             fontWeight:
+                  //                                                 FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                                             fontStyle:
+                  //                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                           ),
+                  //                                           color: _model.daySelected == daysListItem
+                  //                                               ? FlutterFlowTheme.of(context).primary
+                  //                                               : FlutterFlowTheme.of(context).secondaryText,
+                  //                                           fontSize: 11.0,
+                  //                                           letterSpacing: 0.0,
+                  //                                           fontWeight:
+                  //                                               FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                                           fontStyle:
+                  //                                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                                         ),
+                  //                                   ),
+                  //                                 ),
+                  //                               ),
+                  //                             );
+                  //                           })
+                  //                               .divide(const SizedBox(width: 4.0))
+                  //                               .addToStart(const SizedBox(width: 16.0))
+                  //                               .addToEnd(const SizedBox(width: 16.0)),
+                  //                         ),
+                  //                       );
+                  //                     },
+                  //                   ),
+                  //                 ),
+                  //                 // "MARK: Список упражнений в выбранный день
+                  //                 if (_model.exercises.isNotEmpty)
+                  //                   Builder(
+                  //                     builder: (BuildContext context) {
+                  //                       // final programStart = DateTime.parse(_model.user!["programStartDate"]);
+                  //                       // final now = DateTime.now();
+                  //                       // final currentWeek = now.difference(programStart).inDays ~/ 7 + 1;
+                  //                       // var exercises = _model.schedule.where((s) => s['dayofweek'] == _model.daySelected - 1 && s['difficultyid'] == _model.user!["exerciseDifficulty"] &&
+                  //                       //     s['weeknumber'] == currentWeek);
+
+                  //                       // Новый блок группировки по программам и неделям
+                  //                       final selectedDay = _model.daySelected;
+
+                  //                       // Отфильтровываем dayExercise только из недель, загруженных в модель
+                  //                       final validWeekIds = _model.trainingProgramWeeks.map((w) => w['id']).toSet();
+
+                  //                       final relevantDayExercises =
+                  //                           _model.trainingTrainingProgramWeekDayExercises.where((item) {
+                  //                         final weekDayId = item['trainingProgramWeekDay'];
+                  //                         final weekDay = _model.trainingProgramWeekDays.firstWhere(
+                  //                           (w) => w['id'] == weekDayId,
+                  //                           orElse: () => <String, dynamic>{},
+                  //                         );
+                  //                         if (weekDay == null) return false;
+
+                  //                         return weekDay['day'] == selectedDay &&
+                  //                             validWeekIds.contains(weekDay['trainingProgramWeek']);
+                  //                       }).toList();
+
+                  //                       final Map<int, List<Map<String, dynamic>>> groupedByProgram = {};
+
+                  //                       for (final exerciseEntry in relevantDayExercises) {
+                  //                         final weekDayId = exerciseEntry['trainingProgramWeekDay'];
+                  //                         final weekDay = _model.trainingProgramWeekDays.firstWhere(
+                  //                           (w) => w['id'] == weekDayId,
+                  //                           orElse: () => <String, dynamic>{},
+                  //                         );
+                  //                         if (weekDay == null) continue;
+
+                  //                         final week = _model.trainingProgramWeeks.firstWhere(
+                  //                           (w) => w['id'] == weekDay['trainingProgramWeek'],
+                  //                           orElse: () => <String, dynamic>{},
+                  //                         );
+                  //                         if (week == null) continue;
+
+                  //                         final programId = int.tryParse(week['trainingProgram'].toString());
+                  //                         if (programId == null) continue;
+
+                  //                         groupedByProgram.putIfAbsent(programId, () => []).add(exerciseEntry);
+                  //                       }
+
+                  //                       return ListView(
+                  //                         padding: const EdgeInsets.all(16),
+                  //                         shrinkWrap: true,
+                  //                         physics: const NeverScrollableScrollPhysics(),
+                  //                         children:
+                  //                             groupedByProgram.entries.where((e) => e.value.isNotEmpty).map((entry) {
+                  //                           final programMap = _model.trainingPrograms.firstWhere(
+                  //                             (p) => p['id'] == entry.key,
+                  //                             orElse: () => <String, dynamic>{},
+                  //                           );
+                  //                           if (programMap.isEmpty) return const SizedBox.shrink();
+
+                  //                           final programExercises = entry.value;
+
+                  //                           return renderProgram(programMap, programExercises);
+
+                  //                           return Padding(
+                  //                             padding: const EdgeInsets.only(bottom: 24),
+                  //                             child: Column(
+                  //                               crossAxisAlignment: CrossAxisAlignment.start,
+                  //                               children: [
+                  //                                 Text(
+                  //                                   programMap['name'] ?? 'Программа',
+                  //                                   style: FlutterFlowTheme.of(context).titleLarge,
+                  //                                 ),
+                  //                                 const SizedBox(height: 8),
+                  //                                 ...programExercises.map((exerciseEntry) {
+                  //                                   final exercise = _model.exercises.firstWhere(
+                  //                                     (e) => e['id'] == exerciseEntry['exercise'],
+                  //                                     orElse: () => <String, dynamic>{},
+                  //                                   );
+                  //                                   if (exercise == null) return const SizedBox.shrink();
+
+                  //                                   return Card(
+                  //                                     child: ListTile(
+                  //                                       title: Text(exercise['name'] ?? "-"),
+                  //                                       subtitle: Text(
+                  //                                           '${exercise['approach']} подходов × ${exercise['repetitions']} повторений'),
+                  //                                       trailing: const Icon(Icons.fitness_center),
+                  //                                       onTap: () {
+                  //                                         final video = exercise['video'];
+                  //                                         if (video != null && video.toString().isNotEmpty) {
+                  //                                           launchURL(video);
+                  //                                         }
+                  //                                       },
+                  //                                     ),
+                  //                                   );
+                  //                                 }),
+                  //                               ],
+                  //                             ),
+                  //                           );
+                  //                         }).toList(),
+                  //                       );
+                  //                       // return Padding(
+                  //                       //   padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                  //                       //   child: Container(
+                  //                       //     width: double.infinity,
+                  //                       //     decoration: BoxDecoration(
+                  //                       //       color: FlutterFlowTheme.of(context).secondary,
+                  //                       //       borderRadius: BorderRadius.circular(12.0),
+                  //                       //     ),
+                  //                       //     child: Padding(
+                  //                       //       padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  //                       //       child: Column(
+                  //                       //         mainAxisSize: MainAxisSize.max,
+                  //                       //         children: [
+                  //                       //           Row(
+                  //                       //             mainAxisSize: MainAxisSize.max,
+                  //                       //             children: [
+                  //                       //               Column(
+                  //                       //                 mainAxisSize: MainAxisSize.max,
+                  //                       //                 crossAxisAlignment: CrossAxisAlignment.start,
+                  //                       //                 children: [
+                  //                       //                   // Padding(
+                  //                       //                   //   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
+                  //                       //                   //   child: Row(
+                  //                       //                   //     mainAxisSize: MainAxisSize.max,
+                  //                       //                   //     children: [
+                  //                       //                   //       Text(
+                  //                       //                   //         "asd",
+                  //                       //                   //         style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                       //                   //           font: GoogleFonts.unbounded(
+                  //                       //                   //             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                   //             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                   //           ),
+                  //                       //                   //           letterSpacing: 0.0,
+                  //                       //                   //           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                   //           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                   //         ),
+                  //                       //                   //       ),
+                  //                       //                   //     ],
+                  //                       //                   //   ),
+                  //                       //                   // ),
+                  //                       //                   Align(
+                  //                       //                     alignment: AlignmentDirectional(-1.0, 0.0),
+                  //                       //                     child: Padding(
+                  //                       //                       padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  //                       //                       child: Wrap(
+                  //                       //                         spacing: 4.0,
+                  //                       //                         runSpacing: 4.0,
+                  //                       //                         alignment: WrapAlignment.start,
+                  //                       //                         crossAxisAlignment: WrapCrossAlignment.start,
+                  //                       //                         direction: Axis.horizontal,
+                  //                       //                         runAlignment: WrapAlignment.start,
+                  //                       //                         verticalDirection: VerticalDirection.down,
+                  //                       //                         clipBehavior: Clip.none,
+                  //                       //                         children: [
+                  //                       //                           Row(
+                  //                       //                             mainAxisSize: MainAxisSize.min,
+                  //                       //                             children: [
+                  //                       //                               Padding(
+                  //                       //                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                  //                       //                                 child: ClipRRect(
+                  //                       //                                   borderRadius: BorderRadius.circular(0.0),
+                  //                       //                                   child: SvgPicture.asset(
+                  //                       //                                     'assets/images/Dumbbells.svg',
+                  //                       //                                     width: 14.0,
+                  //                       //                                     height: 14.0,
+                  //                       //                                     fit: BoxFit.cover,
+                  //                       //                                   ),
+                  //                       //                                 ),
+                  //                       //                               ),
+                  //                       //                               Text(
+                  //                       //                                 getExperienceString(
+                  //                       //                                     exercises.length,
+                  //                       //                                     "упражнение",
+                  //                       //                                     "упражнения",
+                  //                       //                                     "упражнений",
+                  //                       //                                     false
+                  //                       //                                 ),
+                  //                       //                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                       //                                   font: GoogleFonts.inter(
+                  //                       //                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                                   ),
+                  //                       //                                   color: FlutterFlowTheme.of(context).secondaryText,
+                  //                       //                                   fontSize: 13.0,
+                  //                       //                                   letterSpacing: 0.0,
+                  //                       //                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                                 ),
+                  //                       //                               ),
+                  //                       //                             ],
+                  //                       //                           ),
+                  //                       //                           // Row(
+                  //                       //                           //   mainAxisSize: MainAxisSize.min,
+                  //                       //                           //   children: [
+                  //                       //                           //     Padding(
+                  //                       //                           //       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                  //                       //                           //       child: ClipRRect(
+                  //                       //                           //         borderRadius: BorderRadius.circular(0.0),
+                  //                       //                           //         child: SvgPicture.asset(
+                  //                       //                           //           'assets/images/Calendar01.svg',
+                  //                       //                           //           width: 14.0,
+                  //                       //                           //           height: 14.0,
+                  //                       //                           //           fit: BoxFit.cover,
+                  //                       //                           //         ),
+                  //                       //                           //       ),
+                  //                       //                           //     ),
+                  //                       //                           //     Text(
+                  //                       //                           //       '45 мин',
+                  //                       //                           //       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                       //                           //         font: GoogleFonts.inter(
+                  //                       //                           //           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                           //           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                           //         ),
+                  //                       //                           //         color: FlutterFlowTheme.of(context).secondaryText,
+                  //                       //                           //         fontSize: 13.0,
+                  //                       //                           //         letterSpacing: 0.0,
+                  //                       //                           //         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                           //         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                           //       ),
+                  //                       //                           //     ),
+                  //                       //                           //   ],
+                  //                       //                           // ),
+                  //                       //                         ],
+                  //                       //                       ),
+                  //                       //                     ),
+                  //                       //                   ),
+                  //                       //                 ],
+                  //                       //               ),
+                  //                       //             ],
+                  //                       //           ),
+                  //                       //           Padding(
+                  //                       //             padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  //                       //             child: Container(
+                  //                       //               width: double.infinity,
+                  //                       //               height: 1.0,
+                  //                       //               decoration: BoxDecoration(
+                  //                       //                 color: Color(0xFF302E36),
+                  //                       //               ),
+                  //                       //             ),
+                  //                       //           ),
+                  //                       //           Padding(
+                  //                       //             padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                  //                       //             child: Builder(
+                  //                       //               builder: (BuildContext context) {
+                  //                       //
+                  //                       //
+                  //                       //                 if (exercises.isEmpty) {
+                  //                       //                   return Container(
+                  //                       //                     // margin: EdgeInsets.only(bottom: 16),
+                  //                       //                     child: Text(
+                  //                       //                       "В этот день нет тренировок",
+                  //                       //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                       //                         font: GoogleFonts.inter(
+                  //                       //                           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                         ),
+                  //                       //                         color: FlutterFlowTheme.of(context).secondaryText,
+                  //                       //                         fontSize: 14.0,
+                  //                       //                         letterSpacing: 0.0,
+                  //                       //                         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                       //                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                       ),
+                  //                       //                     ),
+                  //                       //                   );
+                  //                       //                 }
+                  //                       //
+                  //                       //                 return ListView.builder(
+                  //                       //                   shrinkWrap: true,
+                  //                       //                   physics: NeverScrollableScrollPhysics(),
+                  //                       //                   itemCount: exercises.length,
+                  //                       //                   itemBuilder: (context, index) {
+                  //                       //                     final filteredSchedule = exercises.toList()..sort((a, b) => a['order'].compareTo(b['order']));
+                  //                       //
+                  //                       //                     final scheduleItem = filteredSchedule[index];
+                  //                       //                     print("scheduleItem_______${scheduleItem}");
+                  //                       //                     final exercise = _model.exercises.firstWhere(
+                  //                       //                           (e) => e['id'] == scheduleItem['exerciseid'],
+                  //                       //                       orElse: () => <String, dynamic>{},
+                  //                       //                     );
+                  //                       //
+                  //                       //                     if (exercise == null) return SizedBox();
+                  //                       //
+                  //                       //                     return renderExercise(exercise, index + 1);
+                  //                       //                   },
+                  //                       //                 );
+                  //                       //               },
+                  //                       //             ),
+                  //                       //           ),
+                  //                       //           if (exercises.isNotEmpty)
+                  //                       //             Padding(
+                  //                       //               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  //                       //               child: InkWell(
+                  //                       //                 splashColor: Colors.transparent,
+                  //                       //                 focusColor: Colors.transparent,
+                  //                       //                 hoverColor: Colors.transparent,
+                  //                       //                 highlightColor: Colors.transparent,
+                  //                       //                 onTap: () async {
+                  //                       //                   context.safePop();
+                  //                       //                 },
+                  //                       //                 child: Container(
+                  //                       //                   width: double.infinity,
+                  //                       //                   height: 42.0,
+                  //                       //                   decoration: BoxDecoration(
+                  //                       //                     color: FlutterFlowTheme.of(context).primary,
+                  //                       //                     borderRadius: BorderRadius.only(
+                  //                       //                       bottomLeft: Radius.circular(12.0),
+                  //                       //                       bottomRight: Radius.circular(12.0),
+                  //                       //                       topLeft: Radius.circular(0.0),
+                  //                       //                       topRight: Radius.circular(0.0),
+                  //                       //                     ),
+                  //                       //                   ),
+                  //                       //                   child: Row(
+                  //                       //                     mainAxisSize: MainAxisSize.max,
+                  //                       //                     mainAxisAlignment: MainAxisAlignment.center,
+                  //                       //                     children: [
+                  //                       //                       Padding(
+                  //                       //                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                  //                       //                         child: ClipRRect(
+                  //                       //                           borderRadius: BorderRadius.circular(0.0),
+                  //                       //                           child: SvgPicture.asset(
+                  //                       //                             'assets/images/Dumbbell.svg',
+                  //                       //                             width: 16.0,
+                  //                       //                             height: 16.0,
+                  //                       //                             fit: BoxFit.cover,
+                  //                       //                           ),
+                  //                       //                         ),
+                  //                       //                       ),
+                  //                       //                       Text(
+                  //                       //                         'Начать',
+                  //                       //                         style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                       //                           font: GoogleFonts.unbounded(
+                  //                       //                             fontWeight: FontWeight.w600,
+                  //                       //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                           ),
+                  //                       //                           letterSpacing: 0.0,
+                  //                       //                           fontWeight: FontWeight.w600,
+                  //                       //                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                       //                         ),
+                  //                       //                       ),
+                  //                       //                     ],
+                  //                       //                   ),
+                  //                       //                 ),
+                  //                       //               ),
+                  //                       //             ),
+                  //                       //         ],
+                  //                       //       ),
+                  //                       //     ),
+                  //                       //   ),
+                  //                       // );
+                  //                     },
+                  //                   ),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //   if (_model.individualProgramPreparing)
+                  //     Container(
+                  //       width: double.infinity,
+                  //       height: double.infinity,
+                  //       decoration: BoxDecoration(
+                  //         color: FlutterFlowTheme.of(context).secondaryBackground,
+                  //       ),
+                  //       child: Align(
+                  //         alignment: const AlignmentDirectional(0.0, 0.0),
+                  //         child: Padding(
+                  //           padding: const EdgeInsets.all(16.0),
+                  //           child: Container(
+                  //             width: double.infinity,
+                  //             decoration: BoxDecoration(
+                  //               color: FlutterFlowTheme.of(context).secondary,
+                  //               image: DecorationImage(
+                  //                 fit: BoxFit.cover,
+                  //                 image: Image.asset(
+                  //                   'assets/images/68c085461ec08067a99474c2c8d3aa09e898f3b2.jpg',
+                  //                 ).image,
+                  //               ),
+                  //               borderRadius: BorderRadius.circular(12.0),
+                  //               border: Border.all(
+                  //                 color: FlutterFlowTheme.of(context).secondary,
+                  //                 width: 1.0,
+                  //               ),
+                  //             ),
+                  //             child: Padding(
+                  //               padding: const EdgeInsets.all(16.0),
+                  //               child: Column(
+                  //                 mainAxisSize: MainAxisSize.min,
+                  //                 children: [
+                  //                   ClipRRect(
+                  //                     borderRadius: BorderRadius.circular(0.0),
+                  //                     child: SvgPicture.asset(
+                  //                       'assets/images/Calendar02.svg',
+                  //                       width: 32.0,
+                  //                       height: 32.0,
+                  //                       fit: BoxFit.cover,
+                  //                     ),
+                  //                   ),
+                  //                   Padding(
+                  //                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  //                     child: Text(
+                  //                       'Индивидуальная программа готовится',
+                  //                       textAlign: TextAlign.center,
+                  //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                             font: GoogleFonts.unbounded(
+                  //                               fontWeight: FontWeight.bold,
+                  //                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                             ),
+                  //                             fontSize: 17.0,
+                  //                             letterSpacing: 0.0,
+                  //                             fontWeight: FontWeight.bold,
+                  //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                           ),
+                  //                     ),
+                  //                   ),
+                  //                   Padding(
+                  //                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  //                     child: CircularPercentIndicator(
+                  //                       percent: 0.3,
+                  //                       radius: 87.5,
+                  //                       lineWidth: 12.0,
+                  //                       animation: true,
+                  //                       animateFromLastPercent: true,
+                  //                       progressColor: FlutterFlowTheme.of(context).primary,
+                  //                       backgroundColor: const Color(0x15FFFFFF),
+                  //                       center: Text(
+                  //                         '30%',
+                  //                         style: FlutterFlowTheme.of(context).headlineSmall.override(
+                  //                               font: GoogleFonts.unbounded(
+                  //                                 fontWeight:
+                  //                                     FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                  //                                 fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
+                  //                               ),
+                  //                               letterSpacing: 0.0,
+                  //                               fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                  //                               fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
+                  //                             ),
+                  //                       ),
+                  //                     ),
+                  //                   ),
+                  //                   Padding(
+                  //                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  //                     child: Text(
+                  //                       'Программа делается в течении 4-х дней, после того, как вы пришлете всю информацию. Вам придет уведомление о готовности и появится ссылка на телеграмм канал',
+                  //                       textAlign: TextAlign.center,
+                  //                       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  //                             font: GoogleFonts.inter(
+                  //                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                             ),
+                  //                             color: FlutterFlowTheme.of(context).secondaryText,
+                  //                             letterSpacing: 0.0,
+                  //                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  //                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  //                           ),
+                  //                     ),
+                  //                   ),
+                  //                   Padding(
+                  //                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  //                     child: wrapWithModel(
+                  //                       model: _model.generalButtonModel2,
+                  //                       updateCallback: () => safeSetState(() {}),
+                  //                       child: GeneralButtonWidget(
+                  //                         title: 'Подробнее',
+                  //                         isActive: false,
+                  //                         onTap: () async {},
+                  //                       ),
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  // ],
+                  // ),
+                  ),
             ],
           ),
         ),
@@ -864,16 +1713,17 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
       ),
     );
   }
+
   Widget renderProgram(dynamic programMap, List<Map<String, dynamic>> programExercises) {
     final List<ExerciseRow> programExerciseObjects = programExercises
         .map((entry) {
-      final exercise = _model.exercises.firstWhere(
+          final exercise = _model.exercises.firstWhere(
             (e) => e['id'] == entry['exercise'],
-        orElse: () => <String, dynamic>{}, // заменили null на пустую Map
-      );
-      if (exercise.isEmpty) return null; // проверка, что не пустая
-      return ExerciseRow(exercise);
-    })
+            orElse: () => <String, dynamic>{}, // заменили null на пустую Map
+          );
+          if (exercise.isEmpty) return null; // проверка, что не пустая
+          return ExerciseRow(exercise);
+        })
         .whereType<ExerciseRow>() // удаляет null
         .toList();
 
@@ -948,12 +1798,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                   ),
                                   Text(
                                     getExperienceString(
-                                        programExercises.length,
-                                        "упражнение",
-                                        "упражнения",
-                                        "упражнений",
-                                        false
-                                    ),
+                                        programExercises.length, "упражнение", "упражнения", "упражнений", false),
                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                           font: GoogleFonts.inter(
                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1026,7 +1871,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                       final index = entry.key;
                       final exerciseEntry = entry.value;
                       final exercise = _model.exercises.firstWhere(
-                            (e) => e['id'] == exerciseEntry['exercise'],
+                        (e) => e['id'] == exerciseEntry['exercise'],
                         orElse: () => <String, dynamic>{},
                       );
                       if (exercise.isEmpty) return const SizedBox.shrink();
@@ -1046,18 +1891,18 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                               child: Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
-                                  '${index+1}',
+                                  '${index + 1}',
                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.unbounded(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                    fontSize: 11.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                  ),
+                                        font: GoogleFonts.unbounded(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                        fontSize: 11.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                      ),
                                 ),
                               ),
                             ),
@@ -1071,29 +1916,29 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                     Text(
                                       exercise['name'] ?? "-",
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                        font: GoogleFonts.unbounded(
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                        fontSize: 12.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                      ),
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
                                     ),
                                     Text(
                                       '${exercise['approach']} × ${exercise['repetitions']}',
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context).secondaryText,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                      ),
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context).secondaryText,
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -1118,15 +1963,13 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                     // for (var i in programExerciseObjects) {
                     //   programExercisesBuf.add(ExerciseRow(i));
                     // }
-                    var asd =TrainingProgramRow(programMap);
+                    // var asd = TrainingProgramRow(programMap);
 
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => WorkoutsExerciseProcessPageWidget(
-                          exercises: programExerciseObjects,
-                          program: TrainingProgramRow(programMap)
-                        ),
+                            exercises: programExerciseObjects, program: TrainingProgramRow(programMap)),
                         // fullscreenDialog: true
                       ),
                     );
@@ -1195,5 +2038,308 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
         ),
       ),
     );
+  }
+}
+
+class _ExerciseCard extends StatelessWidget {
+  final Map<String, dynamic> day;
+  final TrainingProgramRow program;
+  const _ExerciseCard({required this.day, required this.program});
+
+  @override
+  Widget build(BuildContext context) {
+    final int dayNumber = day['day_number'] ?? 1;
+    final String dayName = day['name'] ?? '';
+    final String cardName = dayName.trim().isEmpty ? getDayName(dayNumber) : dayName;
+    final List<Map<String, dynamic>> exercises = (day['exercises']).cast<Map<String, dynamic>>();
+    final int exercisesLength = exercises.length;
+    final List<int> exerciseIds = exercises.map((e) => e['exercise_id']).toList().cast<int>();
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: const Color(0xFF242328),
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+      child: FutureBuilder(
+          future: ExerciseTable().queryRows(queryFn: (q) => q.inFilter('id', exerciseIds)),
+          builder: (context, asyncSnapshot) {
+            if (asyncSnapshot.data == null) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SizedBox(
+                      width: 35,
+                      height: 35,
+                      child: CircularProgressIndicator(color: FlutterFlowTheme.of(context).primary),
+                    ),
+                  ),
+                ],
+              );
+            }
+            final exercisesRows = asyncSnapshot.data ?? [];
+
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        cardName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.unbounded(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            ),
+                      ),
+                      const SizedBox(height: 6),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Dumbbells.svg',
+                                width: 14.0,
+                                height: 14.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            getExperienceString(exercisesLength, "упражнение", "упражнения", "упражнений", false),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                  font: GoogleFonts.unbounded(
+                                    fontWeight: FontWeight.normal,
+                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal,
+                                  color: const Color(0xFF696576),
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const Divider(
+                  color: Color(0xFF302E36),
+                  height: 0,
+                  thickness: 1,
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ...exercises.map((ex) {
+                        final index = exercises.indexOf(ex);
+                        final exerciseRow = exercisesRows.firstWhere((e) => e.id == ex['exercise_id']);
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: 32.0,
+                                height: 32.0,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF1A191D),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                child: Align(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: Text(
+                                    '${index + 1}',
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                          font: GoogleFonts.unbounded(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context).secondaryText,
+                                          fontSize: 11.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        exerciseRow.name ?? '-',
+                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              font: GoogleFonts.unbounded(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                              ),
+                                              fontSize: 13.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                      ),
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        '${ex['approach']} × ${ex['repetitions']} - ${ex['weight']} кг',
+                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                              ),
+                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                              fontSize: 13.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                    ].divide(const SizedBox(height: 8.0)),
+                  ),
+                ),
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    // List<ExerciseRow> programExercisesBuf = [];
+                    // for (var i in programExerciseObjects) {
+                    //   programExercisesBuf.add(ExerciseRow(i));
+                    // }
+
+                    // await Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => WorkoutsExerciseProcessPageWidget(
+                    //       exercises: programExerciseObjects,
+                    //       program: TrainingProgramRow(programMap),
+                    //     ),
+                    //     // fullscreenDialog: true
+                    //   ),
+                    // );
+                    final sortedRows =
+                        exercises.map((ex) => exercisesRows.firstWhere((e) => e.id == ex['exercise_id'])).toList();
+                    context.pushNamed(
+                      WorkoutsExerciseProcessPageWidget.routeName,
+                      queryParameters: {
+                        'exercises': serializeParam(
+                          sortedRows,
+                          ParamType.SupabaseRow,
+                          isList: true,
+                        ),
+                        'program': serializeParam(
+                          program,
+                          ParamType.SupabaseRow,
+                        ),
+                        'day': serializeParam(
+                          jsonEncode(day),
+                          // day.toString(),
+                          ParamType.String,
+                        ),
+                      }.withoutNulls,
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 42.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primary,
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(16.0),
+                        bottomRight: Radius.circular(16.0),
+                        topLeft: Radius.circular(0.0),
+                        topRight: Radius.circular(0.0),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0.0),
+                            child: SvgPicture.asset(
+                              'assets/images/Dumbbell.svg',
+                              width: 16.0,
+                              height: 16.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          'Начать',
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                font: GoogleFonts.unbounded(
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                ),
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }),
+    );
+  }
+}
+
+String getDayName(int dayNumber) {
+  switch (dayNumber) {
+    case 1:
+      return 'Понедельник';
+    case 2:
+      return 'Вторник';
+    case 3:
+      return 'Среда';
+    case 4:
+      return 'Четверг';
+    case 5:
+      return 'Пятница';
+    case 6:
+      return 'Суббота';
+    case 7:
+      return 'Воскресенье';
+    default:
+      return 'Тренеровка';
   }
 }

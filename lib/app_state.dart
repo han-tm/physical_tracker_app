@@ -155,6 +155,105 @@ class FFAppState extends ChangeNotifier {
     _shoulderGirth = null;
     notifyListeners();
   }
+
+  // individual body measures
+  String? _traininPlace;
+  String? get traininPlace => _traininPlace;
+  set traininPlace(String? value) {
+    _traininPlace = value;
+  }
+
+  String? _inventory;
+  String? get inventory => _inventory;
+  set inventory(String? value) {
+    _inventory = value;
+  }
+
+  String? _goal;
+  String? get goal => _goal;
+  set goal(String? value) {
+    _goal = value;
+  }
+
+  String? _restrictions;
+  String? get restrictions => _restrictions;
+  set restrictions(String? value) {
+    _restrictions = value;
+  }
+
+  DateTime? _nextCycle;
+  DateTime? get nextCycle => _nextCycle;
+  set nextCycle(DateTime? value) {
+    _nextCycle = value;
+  }
+
+  String? _trainDuration;
+  String? get trainDuration => _trainDuration;
+  set trainDuration(String? value) {
+    _trainDuration = value;
+  }
+
+  String? _trainExercise;
+  String? get trainExercise => _trainExercise;
+  set trainExercise(String? value) {
+    _trainExercise = value;
+  }
+
+  String? _trainWeight;
+  String? get trainWeight => _trainWeight;
+  set trainWeight(String? value) {
+    _trainWeight = value;
+  }
+
+  String? _bodyAccent;
+  String? get bodyAccent => _bodyAccent;
+  set bodyAccent(String? value) {
+    _bodyAccent = value;
+  }
+
+  String? _bodyNotDo;
+  String? get bodyNotDo => _bodyNotDo;
+  set bodyNotDo(String? value) {
+    _bodyNotDo = value;
+  }
+
+  String? _canCountKBZU;
+  String? get canCountKBZU => _canCountKBZU;
+  set canCountKBZU(String? value) {
+    _canCountKBZU = value;
+  }
+
+  String? _photoSide;
+  String? get photoSide => _photoSide;
+  set photoSide(String? value) {
+    _photoSide = value;
+  }
+
+  String? _photoFront;
+  String? get photoFront => _photoFront;
+  set photoFront(String? value) {
+    _photoFront = value;
+  }
+
+  String? _photoBack;
+  String? get photoBack => _photoBack;
+  set photoBack(String? value) {
+    _photoBack = value;
+  }
+
+  clearIndividualBodyMeasures() {
+    _traininPlace = null;
+    _inventory = null;
+    _goal = null;
+    _restrictions = null;
+    _nextCycle = null;
+    _trainDuration = null;
+    _trainExercise = null;
+    _trainWeight = null;
+    _bodyAccent = null;
+    _bodyNotDo = null;
+    notifyListeners();
+  }
 }
 
 void _safeInit(Function() initializeField) {

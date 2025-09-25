@@ -130,11 +130,12 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
                     title: "Далее",
                     isActive: _model.variantSelected != null,
                     onTap: () async{
-                      if (_model.variantSelected == 0) {
+                      if (_model.variantSelectedIndex == 0) {
                         context.pushNamed(WorkoutHomeInventoryPageWidget.routeName);
                       }
                       else {
-                        context.pop();
+                        FFAppState().traininPlace = _model.variantSelected;
+                        context.pushNamed(WorkoutsSurveryListPageWidget.routeName);
                       }
 
                     }
@@ -154,16 +155,17 @@ class _WorkoutChoosePlacePageWidgetState extends State<WorkoutChoosePlacePageWid
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () async {
-        _model.variantSelected = index;
+        _model.variantSelected = title;
+        _model.variantSelectedIndex = index;
         safeSetState(() {});
       },
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: _model.variantSelected == index ? const Color(0x21E27B00) : FlutterFlowTheme.of(context).secondary,
+          color: _model.variantSelectedIndex == index ? const Color(0x21E27B00) : FlutterFlowTheme.of(context).secondary,
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
-            color: _model.variantSelected == index ? FlutterFlowTheme.of(context).primary : Colors.transparent,
+            color: _model.variantSelectedIndex == index ? FlutterFlowTheme.of(context).primary : Colors.transparent,
           ),
         ),
         child: Padding(

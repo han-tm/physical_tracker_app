@@ -65,9 +65,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                 .from("User")
                 .stream(primaryKey: ['id'])
                 .eqOrNull(
-              'fb_id',
-              currentUserUid,
-            )
+                  'fb_id',
+                  currentUserUid,
+                )
                 .map((list) => list.map((item) => UserRow(item)).toList()),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
@@ -84,14 +84,19 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   ),
                 );
               }
-              List<UserRow> containerUserRowList = snapshot.data!;
+              List<UserRow> containerUserRowList = snapshot.data ?? [];
 
               final containerUserRow = containerUserRowList.isNotEmpty ? containerUserRowList.first : null;
               if (containerUserRow == null) {
                 return const Center(
-                 child: Text("Пользователь отсутствует",style: TextStyle(color: Colors.red),),
+                  child: Text(
+                    "Пользователь отсутствует",
+                    style: TextStyle(color: Colors.red),
+                  ),
                 );
               }
+
+              print('User stream: ${containerUserRow.name}');
 
               return Container(
                 decoration: const BoxDecoration(),
@@ -100,12 +105,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                       .from("Subscription")
                       .stream(primaryKey: ['id'])
                       .eqOrNull(
-                    'user_id',
-                    currentUserUid,
-                  )
+                        'user_id',
+                        currentUserUid,
+                      )
                       .order('created_at')
-                      .map((list) =>
-                      list.map((item) => SubscriptionRow(item)).toList()),
+                      .map((list) => list.map((item) => SubscriptionRow(item)).toList()),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -121,24 +125,45 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                       );
                     }
-                    List<SubscriptionRow> containerSubscriptionRowList = snapshot.data!;
+
+                    List<SubscriptionRow> containerSubscriptionRowList = snapshot.data ?? [];
 
                     return Container(
                       decoration: const BoxDecoration(),
                       child: SingleChildScrollView(
-                        padding: const EdgeInsets.only(bottom: 30),
+                        padding: const EdgeInsets.only(bottom: 30, top: 30),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(48.0),
-                              child: Image.network(
-                                containerUserRow.image!,
+                            if (containerUserRow.image == null)
+                              Container(
                                 width: 96.0,
                                 height: 96.0,
-                                fit: BoxFit.cover,
+                                decoration: const BoxDecoration(
+                                  color: Color(0xFF242328),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Align(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: ClipOval(
+                                    child: SvgPicture.asset(
+                                      'assets/images/User_Rounded.svg',
+                                      width: 45,
+                                      height: 45,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            else
+                              ClipOval(
+                                child: Image.network(
+                                  containerUserRow.image!,
+                                  width: 96.0,
+                                  height: 96.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                               child: Text(
@@ -166,14 +191,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 // height: 130.0,
                                 margin: const EdgeInsets.only(top: 16),
                                 decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                    image: AssetImage('assets/images/d5a51d9b14d357f9eed651066a3421a786b9a4fe.jpg'),
-                                    fit: BoxFit.cover,
-                                    opacity: 0.5
-                                  ),
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  border: Border.all(width: 1, color: const Color(0xff302E36))
-                                ),
+                                    image: const DecorationImage(
+                                        image: AssetImage('assets/images/d5a51d9b14d357f9eed651066a3421a786b9a4fe.jpg'),
+                                        fit: BoxFit.cover,
+                                        opacity: 0.5),
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    border: Border.all(width: 1, color: const Color(0xff302E36))),
                                 child: Stack(
                                   children: [
                                     if (containerSubscriptionRowList.length == 1)
@@ -197,6 +220,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                   ),
                                             ),
+                                            const SizedBox(height: 4),
                                             AutoSizeText(
                                               'Срок бесплатного периода заканчивается через: ${_getDaysLeft(containerSubscriptionRowList[0].expirationDate)} дней',
                                               minFontSize: 7.0,
@@ -211,8 +235,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                   ),
                                             ),
+
                                             Container(
-                                              margin: const EdgeInsets.only(top: 8),
+                                              margin: const EdgeInsets.only(top: 10),
                                               height: 32,
                                               width: 180,
                                               child: GeneralButtonWidget(
@@ -263,7 +288,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
 
                                       context.goNamedAuth(StartPageWidget.routeName, context.mounted);
                                       Navigator.pop(context);
-
                                     },
                                     onCancel: () => Navigator.pop(context),
                                   ),
@@ -383,7 +407,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
             subtitle: 'Ваши параметры и прогресс',
             onTap: () {
               print('Statistics clicked');
-              context.pushNamed(ProfileMeasurementAddPageWidget.routeName);
+              context.pushNamed(ProfileMeasureStatisticsPageWidget.routeName);
             },
           ),
           const SizedBox(height: 16),
@@ -394,22 +418,22 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
             onTap: () async {
               print('About app clicked');
               await showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              enableDrag: false,
-              context: context,
-              builder: (context) {
-                return GestureDetector(
-                  onTap: () {
-                    FocusScope.of(context).unfocus();
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  },
-                  child: Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: const ProfileAboutViewWidget(),
-                  ),
-                );
-              },
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                enableDrag: false,
+                context: context,
+                builder: (context) {
+                  return GestureDetector(
+                    onTap: () {
+                      FocusScope.of(context).unfocus();
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
+                    child: Padding(
+                      padding: MediaQuery.viewInsetsOf(context),
+                      child: const ProfileAboutViewWidget(),
+                    ),
+                  );
+                },
               ).then((value) => safeSetState(() {}));
             },
           ),
@@ -459,16 +483,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   Text(
                     title,
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      font: GoogleFonts.unbounded(
-                        fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
-                        fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
-                      ),
-                      fontSize: 13.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
-                      fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
-                    ),
+                          font: GoogleFonts.unbounded(
+                            fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
+                          ),
+                          fontSize: 13.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context).headlineSmall.fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
+                        ),
                   ),
+                  const SizedBox(height: 2),
                   Text(
                     subtitle,
                     style: TextStyle(

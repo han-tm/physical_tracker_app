@@ -1,3 +1,4 @@
+import '../workout_survey/workouts_survery_list_page/workouts_survery_list_page_widget.dart';
 import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/components/radio_button_widget.dart';
@@ -15,12 +16,10 @@ class WorkoutHomeInventoryPageWidget extends StatefulWidget {
   static String routePath = '/workoutHomeInventoryPage';
 
   @override
-  State<WorkoutHomeInventoryPageWidget> createState() =>
-      _WorkoutHomeInventoryPageWidgetState();
+  State<WorkoutHomeInventoryPageWidget> createState() => _WorkoutHomeInventoryPageWidgetState();
 }
 
-class _WorkoutHomeInventoryPageWidgetState
-    extends State<WorkoutHomeInventoryPageWidget> {
+class _WorkoutHomeInventoryPageWidgetState extends State<WorkoutHomeInventoryPageWidget> {
   late WorkoutHomeInventoryPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -79,76 +78,45 @@ class _WorkoutHomeInventoryPageWidgetState
                             children: [
                               Text(
                                 'Есть ли у вас инвентарь?',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
+                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                       font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      color: FlutterFlowTheme.of(context).secondaryText,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                     ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Гантели',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                             font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                            color: FlutterFlowTheme.of(context).secondaryText,
                                             letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
+                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                          borderRadius: BorderRadius.circular(12.0),
                                           border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
+                                            color: FlutterFlowTheme.of(context).secondary,
                                           ),
                                         ),
                                         child: Column(
@@ -160,64 +128,41 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.dumbbells = 0;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel1,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel1,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.dumbbells ==
-                                                                0,
+                                                        checked: _model.dumbbells == 0,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: RichText(
-                                                          textScaler:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .textScaler,
+                                                          textScaler: MediaQuery.of(context).textScaler,
                                                           text: TextSpan(
                                                             children: [
                                                               TextSpan(
                                                                 text: '1-2 кг ',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.w600,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.w600,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
@@ -225,60 +170,38 @@ class _WorkoutHomeInventoryPageWidgetState
                                                               TextSpan(
                                                                 text:
                                                                     ' (Восстановление после травм, разминка, для пилатесса)',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.bold,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                      fontSize: 12.0,
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.bold,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
                                                               )
                                                             ],
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .unbounded(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
+                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                  font: GoogleFonts.unbounded(
+                                                                    fontWeight: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
+                                                                    fontStyle: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                                  letterSpacing: 0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -294,125 +217,79 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.dumbbells = 1;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel2,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel2,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.dumbbells ==
-                                                                1,
+                                                        checked: _model.dumbbells == 1,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: RichText(
-                                                          textScaler:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .textScaler,
+                                                          textScaler: MediaQuery.of(context).textScaler,
                                                           text: TextSpan(
                                                             children: [
                                                               TextSpan(
                                                                 text: '3-5 кг ',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.w600,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.w600,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
                                                               ),
                                                               TextSpan(
-                                                                text:
-                                                                    ' (женские тренировки: махи руками, легкие жимы)',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
+                                                                text: ' (женские тренировки: махи руками, легкие жимы)',
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.bold,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                      fontSize: 12.0,
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.bold,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
                                                               )
                                                             ],
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .unbounded(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
+                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                  font: GoogleFonts.unbounded(
+                                                                    fontWeight: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
+                                                                    fontStyle: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                                  letterSpacing: 0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -428,64 +305,41 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.dumbbells = 2;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel3,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel3,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.dumbbells ==
-                                                                2,
+                                                        checked: _model.dumbbells == 2,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: RichText(
-                                                          textScaler:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .textScaler,
+                                                          textScaler: MediaQuery.of(context).textScaler,
                                                           text: TextSpan(
                                                             children: [
                                                               TextSpan(
                                                                 text: '5-10кг ',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.w600,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.w600,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
@@ -493,60 +347,38 @@ class _WorkoutHomeInventoryPageWidgetState
                                                               TextSpan(
                                                                 text:
                                                                     '(базовые упражнения для новичков (подъемы на бицепс, жимы сидя)',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.bold,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                      fontSize: 12.0,
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.bold,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
                                                               )
                                                             ],
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .unbounded(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
+                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                  font: GoogleFonts.unbounded(
+                                                                    fontWeight: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
+                                                                    fontStyle: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                                  letterSpacing: 0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -562,64 +394,41 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.dumbbells = 3;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel4,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel4,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.dumbbells ==
-                                                                3,
+                                                        checked: _model.dumbbells == 3,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: RichText(
-                                                          textScaler:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .textScaler,
+                                                          textScaler: MediaQuery.of(context).textScaler,
                                                           text: TextSpan(
                                                             children: [
                                                               TextSpan(
                                                                 text: '10-15кг',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.w600,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.w600,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
@@ -627,60 +436,38 @@ class _WorkoutHomeInventoryPageWidgetState
                                                               TextSpan(
                                                                 text:
                                                                     ' (мужчины: бицепс/трицепс; женщины: тяги/приседы)',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.bold,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                      fontSize: 12.0,
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.bold,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
                                                               )
                                                             ],
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .unbounded(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
+                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                  font: GoogleFonts.unbounded(
+                                                                    fontWeight: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
+                                                                    fontStyle: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                                  letterSpacing: 0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -696,65 +483,41 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.dumbbells = 4;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel5,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel5,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.dumbbells ==
-                                                                4,
+                                                        checked: _model.dumbbells == 4,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: RichText(
-                                                          textScaler:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .textScaler,
+                                                          textScaler: MediaQuery.of(context).textScaler,
                                                           text: TextSpan(
                                                             children: [
                                                               TextSpan(
-                                                                text:
-                                                                    '20-30кг ',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
+                                                                text: '20-30кг ',
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.w600,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.w600,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
@@ -762,60 +525,38 @@ class _WorkoutHomeInventoryPageWidgetState
                                                               TextSpan(
                                                                 text:
                                                                     '(мужчины: жим лежа, выпады; женщины-атлеты: становая',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FontWeight.bold,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                      fontSize: 12.0,
+                                                                      letterSpacing: 0.0,
+                                                                      fontWeight: FontWeight.bold,
+                                                                      fontStyle: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
                                                               )
                                                             ],
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .unbounded(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
+                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                  font: GoogleFonts.unbounded(
+                                                                    fontWeight: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
+                                                                    fontStyle: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                                  letterSpacing: 0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -833,53 +574,33 @@ class _WorkoutHomeInventoryPageWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 16.0, 0.0, 0.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Другое',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                             font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                            color: FlutterFlowTheme.of(context).secondaryText,
                                             letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 0.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
+                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                          borderRadius: BorderRadius.circular(12.0),
                                           border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
+                                            color: FlutterFlowTheme.of(context).secondary,
                                           ),
                                         ),
                                         child: Column(
@@ -891,63 +612,40 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.others = 0;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel6,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel6,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.others == 0,
+                                                        checked: _model.others == 0,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: Text(
                                                           'Эспандеры',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                font: GoogleFonts.inter(
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
+                                                                letterSpacing: 0.0,
+                                                                fontWeight:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -962,63 +660,40 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.others = 1;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel7,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel7,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.others == 1,
+                                                        checked: _model.others == 1,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: Text(
                                                           'Скакалка',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                font: GoogleFonts.inter(
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
+                                                                letterSpacing: 0.0,
+                                                                fontWeight:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -1033,132 +708,40 @@ class _WorkoutHomeInventoryPageWidgetState
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
+                                                highlightColor: Colors.transparent,
                                                 onTap: () async {
                                                   _model.others = 2;
                                                   safeSetState(() {});
                                                 },
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  mainAxisSize: MainAxisSize.max,
                                                   children: [
                                                     wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel8,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
+                                                      model: _model.radioButtonModel8,
+                                                      updateCallback: () => safeSetState(() {}),
                                                       child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.others == 2,
+                                                        checked: _model.others == 2,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                         child: Text(
                                                           'Гимнастический мяч',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
+                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                font: GoogleFonts.inter(
+                                                                  fontWeight: FlutterFlowTheme.of(context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
+                                                                  fontStyle:
+                                                                      FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(12.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  _model.others = 3;
-                                                  safeSetState(() {});
-                                                },
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    wrapWithModel(
-                                                      model: _model
-                                                          .radioButtonModel9,
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
-                                                      child: RadioButtonWidget(
-                                                        checked:
-                                                            _model.others == 3,
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Ничего нет',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context).bodyMedium.override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
+                                                                letterSpacing: 0.0,
+                                                                fontWeight:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                fontStyle:
+                                                                    FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -1189,11 +772,9 @@ class _WorkoutHomeInventoryPageWidgetState
                   updateCallback: () => safeSetState(() {}),
                   child: GeneralButtonWidget(
                     title: 'Сохранить',
-                    isActive:
-                        (_model.dumbbells != null) && (_model.others != null),
+                    isActive: (_model.dumbbells != null) && (_model.others != null),
                     onTap: () async {
-                      context.pop();
-                      context.pop();
+                      context.pushNamed(WorkoutsSurveryListPageWidget.routeName);
                     },
                   ),
                 ),

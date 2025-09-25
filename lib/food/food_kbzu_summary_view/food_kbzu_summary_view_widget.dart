@@ -42,11 +42,27 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     final kcal = '${_model.kbzu?['kcal_target'] ?? 0}';
     final carbs = '${_model.kbzu?['carbs_target'] ?? 0}';
     final fats = '${_model.kbzu?['fats_target'] ?? 0}';
     final proteins = '${_model.kbzu?['proteins_target'] ?? 0}';
+
+    print((_model.kbzu?['proteins_target'] ?? 0.0));
+    print((_model.kbzu?['carbs_target'] ?? 0.0));
+    print((_model.kbzu?['fats_target'] ?? 0.0));
+    
+    final double proteinsDouble = ((_model.kbzu?['proteins_target'] ?? 0.0) as int).toDouble();
+    final double carbsDouble = ((_model.kbzu?['carbs_target'] ?? 0.0) as int).toDouble();
+    final double fatsDouble = ((_model.kbzu?['fats_target'] ?? 0.0) as int).toDouble();
+    final double sum = (proteinsDouble + carbsDouble + fatsDouble);
+
+    int proteinsInt = ((proteinsDouble / sum) * 100).toInt();
+    int carbsInt = ((carbsDouble / sum) * 100).toInt();
+    int fatsInt = ((fatsDouble / sum) * 100).toInt();
+
+    print("proteinsInt: $proteinsInt");
+    print("carbsInt: $carbsInt");
+    print("fatsInt: $fatsInt");
 
     return Container(
       width: double.infinity,
@@ -119,10 +135,29 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
+                      Text(
+                        'Дневная норма',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.unbounded(
+                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 13.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            ),
+                      ),
+                      const Divider(
+                        height: 24,
+                        color: Color(0xFF302E36),
+                      ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 8.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -176,135 +211,38 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
                         children: [
                           Expanded(
                             child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: const Color(0x1EE27B00),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    AutoSizeText(
-                                      carbs,
-                                      maxLines: 1,
-                                      minFontSize: 1.0,
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.unbounded(
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            color: const Color(0xFFFFD166),
-                                            fontSize: 13.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                    AutoSizeText(
-                                      'углеводов (г)',
-                                      maxLines: 1,
-                                      minFontSize: 5.0,
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            color: const Color(0xFFFFD166),
-                                            fontSize: 12.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: const Color(0x24FF6B78),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    AutoSizeText(
-                                      fats,
-                                      maxLines: 1,
-                                      minFontSize: 1.0,
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.unbounded(
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            color: const Color(0xFFFF6B78),
-                                            fontSize: 13.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                    AutoSizeText(
-                                      'жиров (г)',
-                                      maxLines: 1,
-                                      minFontSize: 5.0,
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            color: const Color(0xFFFF6B78),
-                                            fontSize: 12.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
+                              height: 64,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: const Color(0x1F4DEEBD),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 12.0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     AutoSizeText(
-                                      proteins,
+                                      '$proteins г',
                                       maxLines: 1,
                                       minFontSize: 1.0,
+                                      textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                             font: GoogleFonts.unbounded(
                                               fontWeight: FontWeight.w600,
                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                             ),
                                             color: const Color(0xFF4DEEBD),
-                                            fontSize: 13.0,
+                                            fontSize: 17.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                           ),
                                     ),
                                     AutoSizeText(
-                                      'белков (г)',
+                                      'белка',
                                       maxLines: 1,
                                       minFontSize: 5.0,
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -313,7 +251,113 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                             ),
                                             color: const Color(0xFF4DEEBD),
-                                            fontSize: 12.0,
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 64,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: const Color(0x24FF6B78),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    AutoSizeText(
+                                      '$fats г',
+                                      maxLines: 1,
+                                      minFontSize: 1.0,
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: const Color(0xFFFF6B78),
+                                            fontSize: 17.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                    AutoSizeText(
+                                      'жиров',
+                                      maxLines: 1,
+                                      minFontSize: 5.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: const Color(0xFFFF6B78),
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 64,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: const Color(0x1EE27B00),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    AutoSizeText(
+                                      '$carbs г',
+                                      maxLines: 1,
+                                      minFontSize: 1.0,
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.unbounded(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: const Color(0xFFFFD166),
+                                            fontSize: 17.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                    AutoSizeText(
+                                      'углеводов',
+                                      maxLines: 1,
+                                      minFontSize: 5.0,
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                            ),
+                                            color: const Color(0xFFFFD166),
+                                            fontSize: 13.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -339,10 +383,8 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
-                                flex: 1,
+                                flex: proteinsInt,
                                 child: Container(
-                                  width: 100.0,
-                                  height: 100.0,
                                   decoration: const BoxDecoration(
                                     color: Color(0xFF4DEEBD),
                                     borderRadius: BorderRadius.only(
@@ -355,10 +397,8 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
                                 ),
                               ),
                               Expanded(
-                                flex: 1,
+                                flex: fatsInt,
                                 child: Container(
-                                  width: 100.0,
-                                  height: 100.0,
                                   decoration: const BoxDecoration(
                                     color: Color(0xFFFF6B78),
                                     borderRadius: BorderRadius.only(
@@ -371,10 +411,8 @@ class _FoodKbzuSummaryViewWidgetState extends State<FoodKbzuSummaryViewWidget> {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: carbsInt,
                                 child: Container(
-                                  width: 100.0,
-                                  height: 100.0,
                                   decoration: const BoxDecoration(
                                     color: Color(0xFFFFD166),
                                     borderRadius: BorderRadius.only(

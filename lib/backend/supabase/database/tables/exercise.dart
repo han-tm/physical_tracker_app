@@ -47,4 +47,6 @@ class ExerciseRow extends SupabaseDataRow {
   dynamic get alternateExercise => getField<dynamic>('alternateExercise');
   set alternateExercise(dynamic value) =>
       setField<dynamic>('alternateExercise', value);
+
+  List? get difficulty => getField<List>('difficulty');
 }

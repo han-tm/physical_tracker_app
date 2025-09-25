@@ -57,8 +57,7 @@ class AppStateNotifier extends ChangeNotifier {
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
   void update(BaseAuthUser newUser) {
-    final shouldUpdate =
-        user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
+    final shouldUpdate = user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
     initialUser ??= newUser;
     user = newUser;
     // Refresh the app on auth change unless explicitly marked otherwise.
@@ -82,8 +81,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const StartPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn ? const NavBarPage() : const StartPageWidget(),
       routes: [
         // FFRoute(
         //   name: '_initialize',
@@ -217,16 +215,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: LearnPageWidget.routeName,
           path: LearnPageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'LearnPage')
-              : const LearnPageWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'LearnPage') : const LearnPageWidget(),
         ),
         FFRoute(
           name: ProfilePageWidget.routeName,
           path: ProfilePageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ProfilePage')
-              : const ProfilePageWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'ProfilePage') : const ProfilePageWidget(),
         ),
         FFRoute(
           name: ProfilePersonalDataPageWidget.routeName,
@@ -280,9 +276,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: FoodPageWidget.routeName,
           path: FoodPageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'FoodPage')
-              : const FoodPageWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'FoodPage') : const FoodPageWidget(),
         ),
         FFRoute(
           name: FoodPlanPageWidget.routeName,
@@ -292,9 +287,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: JournalPageWidget.routeName,
           path: JournalPageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'JournalPage')
-              : const JournalPageWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'JournalPage') : const JournalPageWidget(),
         ),
         FFRoute(
           name: JournalExercisePageWidget.routeName,
@@ -309,21 +303,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: WorkoutsPageWidget.routeName,
           path: WorkoutsPageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'WorkoutsPage')
-              : const WorkoutsPageWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'WorkoutsPage') : const WorkoutsPageWidget(),
         ),
         FFRoute(
           name: WorkoutsIndividualProgramPromoPageWidget.routeName,
           path: WorkoutsIndividualProgramPromoPageWidget.routePath,
-          builder: (context, params) =>
-              const WorkoutsIndividualProgramPromoPageWidget(),
+          builder: (context, params) => const WorkoutsIndividualProgramPromoPageWidget(),
         ),
         FFRoute(
           name: WorkoutsIndividualProdramUnderPreparePageWidget.routeName,
           path: WorkoutsIndividualProdramUnderPreparePageWidget.routePath,
-          builder: (context, params) =>
-              const WorkoutsIndividualProdramUnderPreparePageWidget(),
+          builder: (context, params) => const WorkoutsIndividualProdramUnderPreparePageWidget(),
         ),
         FFRoute(
           name: WorkoutChoosePlacePageWidget.routeName,
@@ -338,17 +329,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: WorkoutsExerciseProcessPageWidget.routeName,
           path: WorkoutsExerciseProcessPageWidget.routePath,
-          builder: (context, params) => WorkoutsExerciseProcessPageWidget(
-            exercises: params.getParam<ExerciseRow>(
+          builder: (context, params) {
+            final exercises = params.getParam<ExerciseRow>(
               'exercises',
               ParamType.SupabaseRow,
               isList: true,
-            ),
-            program: params.getParam<TrainingProgramRow>(
+            );
+
+            final program = params.getParam<TrainingProgramRow>(
               'program',
               ParamType.SupabaseRow,
-            ),
-          ),
+            );
+            final day = params.getParam<String>(
+              'day',
+              ParamType.String,
+            );
+
+            return WorkoutsExerciseProcessPageWidget(exercises: exercises, program: program, day: day);
+          },
         ),
         FFRoute(
           name: WorkoutsSurveryListPageWidget.routeName,
@@ -358,8 +356,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: WorkoutsSurveyBodyMeasurementsPageWidget.routeName,
           path: WorkoutsSurveyBodyMeasurementsPageWidget.routePath,
-          builder: (context, params) =>
-              const WorkoutsSurveyBodyMeasurementsPageWidget(),
+          builder: (context, params) => const WorkoutsSurveyBodyMeasurementsPageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyStep01PageWidget.routeName,
@@ -422,9 +419,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
 
 extension NavParamExtensions on Map<String, String?> {
   Map<String, String> get withoutNulls => Map.fromEntries(
-        entries
-            .where((e) => e.value != null)
-            .map((e) => MapEntry(e.key, e.value!)),
+        entries.where((e) => e.value != null).map((e) => MapEntry(e.key, e.value!)),
       );
 }
 
@@ -477,19 +472,14 @@ extension NavigationExtensions on BuildContext {
 extension GoRouterExtensions on GoRouter {
   AppStateNotifier get appState => AppStateNotifier.instance;
   void prepareAuthEvent([bool ignoreRedirect = false]) =>
-      appState.hasRedirect() && !ignoreRedirect
-          ? null
-          : appState.updateNotifyOnAuthChange(false);
-  bool shouldRedirect(bool ignoreRedirect) =>
-      !ignoreRedirect && appState.hasRedirect();
+      appState.hasRedirect() && !ignoreRedirect ? null : appState.updateNotifyOnAuthChange(false);
+  bool shouldRedirect(bool ignoreRedirect) => !ignoreRedirect && appState.hasRedirect();
   void clearRedirectLocation() => appState.clearRedirectLocation();
-  void setRedirectLocationIfUnset(String location) =>
-      appState.updateNotifyOnAuthChange(false);
+  void setRedirectLocationIfUnset(String location) => appState.updateNotifyOnAuthChange(false);
 }
 
 extension _GoRouterStateExtensions on GoRouterState {
-  Map<String, dynamic> get extraMap =>
-      extra != null ? extra as Map<String, dynamic> : {};
+  Map<String, dynamic> get extraMap => extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
     ..addAll(uri.queryParameters)
@@ -510,17 +500,13 @@ class FFParameters {
   // Parameters are empty if the params map is empty or if the only parameter
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
-      state.allParams.isEmpty ||
-      (state.allParams.length == 1 &&
-          state.extraMap.containsKey(kTransitionInfoKey));
-  bool isAsyncParam(MapEntry<String, dynamic> param) =>
-      asyncParams.containsKey(param.key) && param.value is String;
+      state.allParams.isEmpty || (state.allParams.length == 1 && state.extraMap.containsKey(kTransitionInfoKey));
+  bool isAsyncParam(MapEntry<String, dynamic> param) => asyncParams.containsKey(param.key) && param.value is String;
   bool get hasFutures => state.allParams.entries.any(isAsyncParam);
   Future<bool> completeFutures() => Future.wait(
         state.allParams.entries.where(isAsyncParam).map(
           (param) async {
-            final doc = await asyncParams[param.key]!(param.value)
-                .onError((_, __) => null);
+            final doc = await asyncParams[param.key]!(param.value).onError((_, __) => null);
             if (doc != null) {
               futureParamValues[param.key] = doc;
               return true;
@@ -621,9 +607,7 @@ class FFRoute {
                   key: state.pageKey,
                   child: child,
                   transitionDuration: transitionInfo.duration,
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) =>
-                          PageTransition(
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) => PageTransition(
                     type: transitionInfo.transitionType,
                     duration: transitionInfo.duration,
                     reverseDuration: transitionInfo.duration,
@@ -667,9 +651,7 @@ class RootPageContext {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
     final location = GoRouterState.of(context).uri.toString();
-    return isRootPage &&
-        location != '/' &&
-        location != rootPageContext?.errorRoute;
+    return isRootPage && location != '/' && location != rootPageContext?.errorRoute;
   }
 
   static Widget wrap(Widget child, {String? errorRoute}) => Provider.value(
@@ -681,9 +663,8 @@ class RootPageContext {
 extension GoRouterLocationExtension on GoRouter {
   String getCurrentLocation() {
     final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
-    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
-        ? lastMatch.matches
-        : routerDelegate.currentConfiguration;
+    final RouteMatchList matchList =
+        lastMatch is ImperativeRouteMatch ? lastMatch.matches : routerDelegate.currentConfiguration;
     return matchList.uri.toString();
   }
 }

@@ -53,6 +53,7 @@ class _JournalPageWidgetState extends State<JournalPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              const SizedBox(height: 20),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,

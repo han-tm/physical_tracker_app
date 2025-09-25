@@ -5,8 +5,7 @@ class TrainingProgramTable extends SupabaseTable<TrainingProgramRow> {
   String get tableName => 'TrainingProgram';
 
   @override
-  TrainingProgramRow createRow(Map<String, dynamic> data) =>
-      TrainingProgramRow(data);
+  TrainingProgramRow createRow(Map<String, dynamic> data) => TrainingProgramRow(data);
 }
 
 class TrainingProgramRow extends SupabaseDataRow {
@@ -32,4 +31,10 @@ class TrainingProgramRow extends SupabaseDataRow {
 
   bool? get isPermanent => getField<bool>('isPermanent');
   set isPermanent(bool? value) => setField<bool>('isPermanent', value);
+
+  List<Map<String, dynamic>> get weeks => getListField<Map<String, dynamic>>('weeks');
+  set includedIngredients(List<Map<String, dynamic>>? value) => setListField<Map<String, dynamic>>('weeks', value);
+
+  bool? get isTrial => getField<bool>('isTrial');
+  set isTrial(bool? value) => setField<bool>('isTrial', value);
 }

@@ -714,7 +714,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 // MARK: Данные по текущему дню
-                                                if (!_model.showIndividualPlanPromo && _model.todayKbzu != null)
+                                                if (_model.todayKbzu != null)
                                                   Builder(
                                                     builder: (context) {
                                                       print("todayKbzu_____${_model.todayKbzu}");
@@ -724,6 +724,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                       final carbs = '${kbzu['carbs_consumed'] ?? 0} / ${kbzu['carbs_target'] ?? 0}';
                                                       final fats = '${kbzu['fats_consumed'] ?? 0} / ${kbzu['fats_target'] ?? 0}';
                                                       final proteins = '${kbzu['proteins_consumed'] ?? 0} / ${kbzu['proteins_target'] ?? 0}';
+                                                      
                                                       return Column(
                                                         children: [
                                                           Padding(
@@ -753,7 +754,7 @@ class _FoodPageWidgetState extends State<FoodPageWidget> {
                                                                   onTap: () async {
                                                                     await showModalBottomSheet(
                                                                       isScrollControlled: true,
-                                                                      backgroundColor: Colors.transparent,
+                                                                      backgroundColor: const Color(0xFF1A191D),
                                                                       barrierColor: const Color(0x35000000),
                                                                       enableDrag: false,
                                                                       context: context,

@@ -282,84 +282,85 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                     }
                                     List<LessonRow> rowLessonRowList = snapshot.data!;
 
-                                    return Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: List.generate(rowLessonRowList.length, (rowIndex) {
-                                        final rowLessonRow = rowLessonRowList[rowIndex];
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              LearnLessonPageWidget.routeName,
-                                              queryParameters: {
-                                                'lesson': serializeParam(
-                                                  rowLessonRow,
-                                                  ParamType.SupabaseRow,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Container(
-                                            width: 264.0,
-                                            height: 287.0,
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFF242328),
-                                              borderRadius: BorderRadius.circular(16.0),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    decoration: const BoxDecoration(),
-                                                    child: Stack(
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius: BorderRadius.circular(12.0),
-                                                          child: Image.network(
-                                                            rowLessonRow.cover!,
-                                                            width: double.infinity,
-                                                            height: double.infinity,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment: const AlignmentDirectional(0.0, 0.0),
-                                                          child: ClipRRect(
-                                                            borderRadius: BorderRadius.circular(8.0),
-                                                            child: SvgPicture.asset(
-                                                              'assets/images/play_video.svg',
-                                                              width: 48.0,
-                                                              height: 48.0,
-                                                              fit: BoxFit.contain,
+                                    return SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: List.generate(rowLessonRowList.length, (rowIndex) {
+                                          final rowLessonRow = rowLessonRowList[rowIndex];
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                LearnLessonPageWidget.routeName,
+                                                queryParameters: {
+                                                  'lesson': serializeParam(
+                                                    rowLessonRow,
+                                                    ParamType.SupabaseRow,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Container(
+                                              width: 264.0,
+                                              height: 287.0,
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xFF242328),
+                                                borderRadius: BorderRadius.circular(16.0),
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: Container(
+                                                      decoration: const BoxDecoration(),
+                                                      child: Stack(
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius: BorderRadius.circular(12.0),
+                                                            child: Image.network(
+                                                              rowLessonRow.cover!,
+                                                              width: double.infinity,
+                                                              height: double.infinity,
+                                                              fit: BoxFit.cover,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                          Align(
+                                                            alignment: const AlignmentDirectional(0.0, 0.0),
+                                                            child: ClipRRect(
+                                                              borderRadius: BorderRadius.circular(8.0),
+                                                              child: SvgPicture.asset(
+                                                                'assets/images/play_video.svg',
+                                                                width: 48.0,
+                                                                height: 48.0,
+                                                                fit: BoxFit.contain,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: const BoxDecoration(),
-                                                    child: Column(
-                                                      mainAxisSize: MainAxisSize.max,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Padding(
-                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                                          child: Container(
-                                                            decoration: BoxDecoration(
-                                                              color: const Color(0x20E27B00),
-                                                              borderRadius: BorderRadius.circular(50.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration: const BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize: MainAxisSize.max,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Padding(
+                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 8.0),
+                                                            child: Container(
+                                                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                                              decoration: BoxDecoration(
+                                                                color: const Color(0x20E27B00),
+                                                                borderRadius: BorderRadius.circular(50.0),
+                                                              ),
                                                               child: Text(
                                                                 'Новое',
                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -376,162 +377,163 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<String>(
-                                                            rowLessonRow.name,
-                                                            '-',
-                                                          ),
-                                                          maxLines: 1,
-                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                font: GoogleFonts.unbounded(
-                                                                  fontWeight: FontWeight.w600,
+                                                          Text(
+                                                            valueOrDefault<String>(
+                                                              rowLessonRow.name,
+                                                              '-',
+                                                            ),
+                                                            maxLines: 1,
+                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                  font: GoogleFonts.unbounded(
+                                                                    fontWeight: FontWeight.w500,
+                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                  ),
+                                                                  fontSize: 13.0,
+                                                                  letterSpacing: 0.0,
+                                                                  fontWeight: FontWeight.w500,
                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                 ),
-                                                                fontSize: 13.0,
-                                                                letterSpacing: 0.0,
-                                                                fontWeight: FontWeight.w600,
-                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                              ),
-                                                        ),
-                                                        Container(
-                                                          height: 42.0,
-                                                          decoration: const BoxDecoration(),
-                                                          child: Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                                            child: Text(
-                                                              valueOrDefault<String>(
-                                                                rowLessonRow.description,
-                                                                '-',
-                                                              ),
-                                                              maxLines: 2,
-                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                    font: GoogleFonts.inter(
+                                                          ),
+                                                          Container(
+                                                            height: 42.0,
+                                                            decoration: const BoxDecoration(),
+                                                            child: Padding(
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                              child: Text(
+                                                                valueOrDefault<String>(
+                                                                  rowLessonRow.description,
+                                                                  '-',
+                                                                ),
+                                                                maxLines: 2,
+                                                                overflow: TextOverflow.ellipsis,
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                      ),
+                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                      letterSpacing: 0.0,
                                                                       fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                     ),
-                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                    letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                  ),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize: MainAxisSize.max,
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                          children: [
-                                                            FutureBuilder<List<LessonGroupRow>>(
-                                                              future: LessonGroupTable().querySingleRow(
-                                                                queryFn: (q) => q.eqOrNull(
-                                                                  'id',
-                                                                  rowLessonRow.lessonGroup,
+                                                          Row(
+                                                            mainAxisSize: MainAxisSize.max,
+                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                            children: [
+                                                              FutureBuilder<List<LessonGroupRow>>(
+                                                                future: LessonGroupTable().querySingleRow(
+                                                                  queryFn: (q) => q.eqOrNull(
+                                                                    'id',
+                                                                    rowLessonRow.lessonGroup,
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              builder: (context, snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot.hasData) {
-                                                                  return Center(
-                                                                    child: SizedBox(
-                                                                      width: 50.0,
-                                                                      height: 50.0,
-                                                                      child: CircularProgressIndicator(
-                                                                        valueColor: AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context).primary,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                }
-                                                                List<LessonGroupRow> containerLessonGroupRowList = snapshot.data!;
-
-                                                                final containerLessonGroupRow = containerLessonGroupRowList.isNotEmpty ? containerLessonGroupRowList.first : null;
-
-                                                                return Container(
-                                                                  decoration: const BoxDecoration(),
-                                                                  child: Row(
-                                                                    mainAxisSize: MainAxisSize.max,
-                                                                    children: [
-                                                                      ClipRRect(
-                                                                        borderRadius: BorderRadius.circular(0.0),
-                                                                        child: Image.network(
-                                                                          containerLessonGroupRow!.icon!,
-                                                                          width: 12.0,
-                                                                          height: 12.0,
-                                                                          fit: BoxFit.cover,
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                        child: Text(
-                                                                          valueOrDefault<String>(
-                                                                            rowLessonRow.lessonGroupName,
-                                                                            '-',
+                                                                builder: (context, snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot.hasData) {
+                                                                    return Center(
+                                                                      child: SizedBox(
+                                                                        width: 50.0,
+                                                                        height: 50.0,
+                                                                        child: CircularProgressIndicator(
+                                                                          valueColor: AlwaysStoppedAnimation<Color>(
+                                                                            FlutterFlowTheme.of(context).primary,
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                font: GoogleFonts.inter(
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  List<LessonGroupRow> containerLessonGroupRowList = snapshot.data!;
+                                      
+                                                                  final containerLessonGroupRow = containerLessonGroupRowList.isNotEmpty ? containerLessonGroupRowList.first : null;
+                                      
+                                                                  return Container(
+                                                                    decoration: const BoxDecoration(),
+                                                                    child: Row(
+                                                                      mainAxisSize: MainAxisSize.max,
+                                                                      children: [
+                                                                        ClipRRect(
+                                                                          borderRadius: BorderRadius.circular(0.0),
+                                                                          child: Image.network(
+                                                                            containerLessonGroupRow!.icon!,
+                                                                            width: 12.0,
+                                                                            height: 12.0,
+                                                                            fit: BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                          child: Text(
+                                                                            valueOrDefault<String>(
+                                                                              rowLessonRow.lessonGroupName,
+                                                                              '-',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  font: GoogleFonts.inter(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  fontSize: 12.0,
+                                                                                  letterSpacing: 0.0,
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
-                                                                                color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                fontSize: 12.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize: MainAxisSize.max,
-                                                              children: [
-                                                                ClipRRect(
-                                                                  borderRadius: BorderRadius.circular(0.0),
-                                                                  child: SvgPicture.asset(
-                                                                    'assets/images/Calendar01.svg',
-                                                                    width: 12.0,
-                                                                    height: 12.0,
-                                                                    fit: BoxFit.cover,
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                  child: Text(
-                                                                    valueOrDefault<String>(
-                                                                      functions.formatDuration(rowLessonRow.duration ?? 0),
-                                                                      '-',
+                                                                      ],
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                          font: GoogleFonts.inter(
+                                                                  );
+                                                                },
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize: MainAxisSize.max,
+                                                                children: [
+                                                                  ClipRRect(
+                                                                    borderRadius: BorderRadius.circular(0.0),
+                                                                    child: SvgPicture.asset(
+                                                                      'assets/images/Calendar01.svg',
+                                                                      width: 12.0,
+                                                                      height: 12.0,
+                                                                      fit: BoxFit.cover,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                    child: Text(
+                                                                      valueOrDefault<String>(
+                                                                        functions.formatDuration(rowLessonRow.duration ?? 0),
+                                                                        '-',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                            font: GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                            color: FlutterFlowTheme.of(context).secondaryText,
+                                                                            fontSize: 12.0,
+                                                                            letterSpacing: 0.0,
                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
-                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                          fontSize: 12.0,
-                                                                          letterSpacing: 0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                        ),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      }).divide(const SizedBox(width: 8.0)).addToStart(const SizedBox(width: 16.0)).addToEnd(const SizedBox(width: 16.0)),
+                                          );
+                                        }).divide(const SizedBox(width: 8.0)).addToStart(const SizedBox(width: 16.0)).addToEnd(const SizedBox(width: 16.0)),
+                                      ),
                                     );
                                   },
                                 ),
@@ -584,7 +586,7 @@ class _LearnPageWidgetState extends State<LearnPageWidget> {
                                           crossAxisCount: 2,
                                           crossAxisSpacing: 9.0,
                                           mainAxisSpacing: 9.0,
-                                          childAspectRatio: 0.74,
+                                          childAspectRatio: 0.75,
                                         ),
                                         shrinkWrap: true,
                                         physics: const NeverScrollableScrollPhysics(),

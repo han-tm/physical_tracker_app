@@ -1,3 +1,4 @@
+import '../../backend/supabase/supabase.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'profile_measure_statistics_page_widget.dart'
@@ -10,6 +11,9 @@ class ProfileMeasureStatisticsPageModel
 
   // Model for generalNavBar01 component.
   late GeneralNavBar01Model generalNavBar01Model;
+
+  List<UserBodyMeasureRow> measureRows = [];
+  bool isLoading = true;
 
   @override
   void initState(BuildContext context) {

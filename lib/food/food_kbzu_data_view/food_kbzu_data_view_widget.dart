@@ -1192,7 +1192,7 @@ class _FoodKbzuDataViewWidgetState extends State<FoodKbzuDataViewWidget> {
 
                         await showModalBottomSheet(
                           isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
+                          backgroundColor: const Color(0xFF242328),
                           barrierColor: const Color(0x3C000000),
                           enableDrag: false,
                           isDismissible: false,

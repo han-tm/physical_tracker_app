@@ -62,8 +62,8 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
         );
       },
       child: Container(
-        width: 264.0,
-        height: 287.0,
+        // width: 264.0,
+        // height: 287.0,
         decoration: BoxDecoration(
           color: const Color(0xFF242328),
           borderRadius: BorderRadius.circular(16.0),
@@ -72,6 +72,7 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Expanded(
+              flex: 6,
               child: Container(
                 decoration: const BoxDecoration(),
                 child: Stack(
@@ -101,137 +102,141 @@ class _LessonCellWidgetState extends State<LessonCellWidget> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
-              child: Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      valueOrDefault<String>(
-                        widget.lesson?.name,
-                        '-',
-                      ),
-                      maxLines: 2,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            font: GoogleFonts.unbounded(
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: const BoxDecoration(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        valueOrDefault<String>(
+                          widget.lesson?.name,
+                          '-',
+                        ),
+                        maxLines: 2,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.unbounded(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              ),
+                              fontSize: 13.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                             ),
-                            fontSize: 13.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                          ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        FutureBuilder<List<LessonGroupRow>>(
-                          future: LessonGroupTable().querySingleRow(
-                            queryFn: (q) => q.eqOrNull(
-                              'id',
-                              widget.lesson?.lessonGroup,
+                      ),
+                      const SizedBox(height: 8.0),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          FutureBuilder<List<LessonGroupRow>>(
+                            future: LessonGroupTable().querySingleRow(
+                              queryFn: (q) => q.eqOrNull(
+                                'id',
+                                widget.lesson?.lessonGroup,
+                              ),
                             ),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            List<LessonGroupRow> containerLessonGroupRowList = snapshot.data!;
-
-                            final containerLessonGroupRow = containerLessonGroupRowList.isNotEmpty ? containerLessonGroupRowList.first : null;
-
-                            return Container(
-                              decoration: const BoxDecoration(),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(0.0),
-                                    child: Image.network(
-                                      containerLessonGroupRow!.icon!,
-                                      width: 12.0,
-                                      height: 12.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        containerLessonGroupRow.name,
-                                        '-',
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 20.0,
+                                    height: 20.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
                                       ),
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.inter(
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<LessonGroupRow> containerLessonGroupRowList = snapshot.data!;
+              
+                              final containerLessonGroupRow = containerLessonGroupRowList.isNotEmpty ? containerLessonGroupRowList.first : null;
+              
+                              return Container(
+                                decoration: const BoxDecoration(),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.network(
+                                        containerLessonGroupRow!.icon!,
+                                        width: 12.0,
+                                        height: 12.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          containerLessonGroupRow.name,
+                                          '-',
+                                        ),
+                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                              ),
+                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                              fontSize: 12.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context).secondaryText,
-                                            fontSize: 12.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Calendar01.svg',
-                                width: 12.0,
-                                height: 12.0,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                valueOrDefault<String>(
-                                  functions.formatDuration(widget.lesson?.duration ?? 0),
-                                  '-',
+                                  ],
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                      font: GoogleFonts.inter(
+                              );
+                            },
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: SvgPicture.asset(
+                                  'assets/images/Calendar01.svg',
+                                  width: 12.0,
+                                  height: 12.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    functions.formatDuration(widget.lesson?.duration ?? 0),
+                                    '-',
+                                  ),
+                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                        fontSize: 12.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context).secondaryText,
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                    ),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ].divide(const SizedBox(height: 4.0)),
-                    ),
-                  ],
+                            ],
+                          ),
+                        ].divide(const SizedBox(height: 4.0)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

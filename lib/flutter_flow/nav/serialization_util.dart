@@ -2,8 +2,10 @@
 
 import 'dart:convert';
 
+import 'package:boom_client/backend/supabase/database/tables/training_program.dart';
 import 'package:flutter/material.dart';
 
+import '../../backend/supabase/database/tables/exercise.dart';
 import '/backend/backend.dart';
 
 import '/backend/supabase/supabase.dart';
@@ -264,6 +266,10 @@ dynamic deserializeParam<T>(
             return BodyMeasureRow(data);
           case LessonRow:
             return LessonRow(data);
+          case TrainingProgramRow:
+            return TrainingProgramRow(data);
+          case ExerciseRow:
+            return ExerciseRow(data);
           default:
             return null;
         }

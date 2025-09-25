@@ -115,7 +115,7 @@ class _ProfileMeasurementSuccessfullyAddedPageWidgetState
                   title: 'Продолжить',
                   isActive: true,
                   onTap: () async {
-                    Navigator.pop(context);
+                    Navigator.pop(context, true);
                     context.safePop();
                   },
                 ),

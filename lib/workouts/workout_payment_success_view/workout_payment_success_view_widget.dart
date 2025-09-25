@@ -8,17 +8,15 @@ import 'workout_payment_success_view_model.dart';
 export 'workout_payment_success_view_model.dart';
 
 class WorkoutPaymentSuccessViewWidget extends StatefulWidget {
-  const WorkoutPaymentSuccessViewWidget({super.key,required this.onTap});
+  const WorkoutPaymentSuccessViewWidget({super.key, required this.onTap});
 
   final Function() onTap;
 
   @override
-  State<WorkoutPaymentSuccessViewWidget> createState() =>
-      _WorkoutPaymentSuccessViewWidgetState();
+  State<WorkoutPaymentSuccessViewWidget> createState() => _WorkoutPaymentSuccessViewWidgetState();
 }
 
-class _WorkoutPaymentSuccessViewWidgetState
-    extends State<WorkoutPaymentSuccessViewWidget> {
+class _WorkoutPaymentSuccessViewWidgetState extends State<WorkoutPaymentSuccessViewWidget> {
   late WorkoutPaymentSuccessViewModel _model;
 
   @override
@@ -77,54 +75,38 @@ class _WorkoutPaymentSuccessViewWidgetState
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'Оплата прошла успешно!',
+                        'Оплата прошла\nуспешно!',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.unbounded(
                                 fontWeight: FontWeight.bold,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                             ),
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: Text(
                           'Пройдите подробный опрос для составления индивидуальной программы и мы начнем ее готовить',
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
+                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                 font: GoogleFonts.inter(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
+                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                 ),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: FlutterFlowTheme.of(context).secondaryText,
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                               ),
                         ),
                       ),
@@ -140,17 +122,13 @@ class _WorkoutPaymentSuccessViewWidgetState
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(
-                        fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                       color: FlutterFlowTheme.of(context).secondaryText,
                       letterSpacing: 0.0,
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
               ),
             ),
@@ -165,9 +143,7 @@ class _WorkoutPaymentSuccessViewWidgetState
                   onTap: () async {
                     // widget.onTap();
 
-                    Navigator.of(context).pop({
-                      "asd":"asd"
-                    });
+                    Navigator.of(context).pop();
                   },
                 ),
               ),

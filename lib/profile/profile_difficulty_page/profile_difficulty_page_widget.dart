@@ -614,7 +614,7 @@ class _ProfileDifficultyPageWidgetState extends State<ProfileDifficultyPageWidge
                                       child: GridView.builder(
                                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
-                                          childAspectRatio: 1.85,
+                                          childAspectRatio: 1.76,
                                           mainAxisSpacing: 8,
                                           crossAxisSpacing: 8
                                         ),

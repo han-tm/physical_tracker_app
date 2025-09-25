@@ -93,6 +93,8 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           safeSetState(() => _model.isDataUploading_uploadDataCamera = true);
                           var selectedUploadedFiles = <FFUploadedFile>[];
 
+                        
+
                           try {
                             selectedUploadedFiles = selectedMedia
                                 .map((m) => FFUploadedFile(
@@ -179,6 +181,8 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                           safeSetState(() => _model.isDataUploading_uploadDataGallery = true);
                           var selectedUploadedFiles = <FFUploadedFile>[];
 
+                            
+
                           try {
                             selectedUploadedFiles = selectedMedia
                                 .map((m) => FFUploadedFile(
@@ -187,6 +191,7 @@ class _MediaSelectViewWidgetState extends State<MediaSelectViewWidget> {
                                       height: m.dimensions?.height,
                                       width: m.dimensions?.width,
                                       blurHash: m.blurHash,
+                                      path: m.filePath,
                                     ))
                                 .toList();
                           } finally {

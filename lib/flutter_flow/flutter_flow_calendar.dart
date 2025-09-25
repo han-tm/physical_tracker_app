@@ -69,7 +69,8 @@ class _FlutterFlowCalendarState extends State<FlutterFlowCalendar> {
 
   CalendarFormat get calendarFormat => widget.weekFormat ? CalendarFormat.week : CalendarFormat.month;
 
-  StartingDayOfWeek get startingDayOfWeek => widget.weekStartsMonday ? StartingDayOfWeek.monday : StartingDayOfWeek.sunday;
+  StartingDayOfWeek get startingDayOfWeek =>
+      widget.weekStartsMonday ? StartingDayOfWeek.monday : StartingDayOfWeek.sunday;
 
   Color get color => widget.color;
 
@@ -129,7 +130,8 @@ class _FlutterFlowCalendarState extends State<FlutterFlowCalendar> {
               defaultTextStyle: widget.dateStyle ?? const TextStyle(color: Color(0xFF5A5A5A)),
               weekendTextStyle: widget.dateStyle ?? const TextStyle(color: Color(0xFF5A5A5A)),
               holidayTextStyle: widget.dateStyle ?? const TextStyle(color: Color(0xFF5C6BC0)),
-              selectedTextStyle: const TextStyle(color: Color(0xFFFAFAFA), fontSize: 16.0).merge(widget.selectedDateStyle),
+              selectedTextStyle:
+                  const TextStyle(color: Color(0xFFFAFAFA), fontSize: 16.0).merge(widget.selectedDateStyle),
               todayTextStyle: const TextStyle(color: Color(0xFFFAFAFA), fontSize: 16.0).merge(widget.selectedDateStyle),
               outsideTextStyle: const TextStyle(color: Color(0xFF9E9E9E)).merge(widget.inactiveDateStyle),
               selectedDecoration: BoxDecoration(
@@ -139,13 +141,13 @@ class _FlutterFlowCalendarState extends State<FlutterFlowCalendar> {
               ),
               todayDecoration: BoxDecoration(
                 color: lighterColor,
-                  shape: BoxShape.rectangle,
-                  // borderRadius: BorderRadius.circular(4)
+                shape: BoxShape.rectangle,
+                // borderRadius: BorderRadius.circular(4)
               ),
               markerDecoration: BoxDecoration(
                 color: lightColor,
-                  shape: BoxShape.rectangle,
-                  // borderRadius: BorderRadius.circular(4)
+                shape: BoxShape.rectangle,
+                // borderRadius: BorderRadius.circular(4)
               ),
               markersMaxCount: 3,
               canMarkersOverflow: true,
@@ -232,24 +234,54 @@ class CalendarHeader extends StatelessWidget {
 
   Widget _buildDateWidget() => Expanded(
         child: Text(
-          DateFormat.yMMMM(locale).format(focusedDay),
+          DateFormat('MMM yyyy', locale).format(focusedDay),
           style: const TextStyle(fontSize: 17).merge(titleStyle),
         ),
       );
 
   List<Widget> _buildCustomIconButtons() => <Widget>[
-        CustomIconButton(
-          icon: Icon(Icons.calendar_today, color: iconColor),
-          onTap: onTodayButtonTap,
-        ),
-        CustomIconButton(
-          icon: Icon(Icons.chevron_left, color: iconColor),
+        // CustomIconButton(
+        //   icon: Icon(Icons.calendar_today, color: iconColor),
+        //   onTap: onTodayButtonTap,
+        // ),
+        GestureDetector(
           onTap: onLeftChevronTap,
+          child: Container(
+            width: 34,
+            height: 34,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFF302E36)),
+            ),
+            child: Center(
+              child: Icon(Icons.chevron_left, color: iconColor),
+            ),
+          ),
         ),
-        CustomIconButton(
-          icon: Icon(Icons.chevron_right, color: iconColor),
+        const SizedBox(width: 8),
+        GestureDetector(
           onTap: onRightChevronTap,
+          child: Container(
+            width: 34,
+            height: 34,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFF302E36)),
+            ),
+            child: Center(
+              child: Icon(Icons.chevron_right, color: iconColor),
+            ),
+          ),
         ),
+        const SizedBox(width: 8),
+        // CustomIconButton(
+        //   icon: Icon(Icons.chevron_left, color: iconColor),
+        //   onTap: onLeftChevronTap,
+        // ),
+        // CustomIconButton(
+        //   icon: Icon(Icons.chevron_right, color: iconColor),
+        //   onTap: onRightChevronTap,
+        // ),
       ];
 }
 

@@ -77,6 +77,7 @@ class FFUploadedFile {
     this.height,
     this.width,
     this.blurHash,
+    this.path,
   });
 
   final String? name;
@@ -85,6 +86,7 @@ class FFUploadedFile {
   final double? height;
   final double? width;
   final String? blurHash;
+  final String? path;
 
   @override
   String toString() => 'FFUploadedFile(name: $name, '
@@ -95,40 +97,41 @@ class FFUploadedFile {
       'blurHash: $blurHash)';
 
   String serialize() => jsonEncode({
-    'name': name,
-    'bytes': bytes?.toList(),
-    'url': url,
-    'height': height,
-    'width': width,
-    'blurHash': blurHash,
-  });
+        'name': name,
+        'bytes': bytes?.toList(),
+        'url': url,
+        'height': height,
+        'width': width,
+        'blurHash': blurHash,
+        'path': path
+      });
 
   static FFUploadedFile deserialize(String val) {
     final data = jsonDecode(val) as Map<String, dynamic>;
     return FFUploadedFile(
       name: data['name'] as String?,
-      bytes: data['bytes'] != null
-          ? Uint8List.fromList(List<int>.from(data['bytes']))
-          : null,
+      bytes: data['bytes'] != null ? Uint8List.fromList(List<int>.from(data['bytes'])) : null,
       url: data['url'] as String?,
       height: data['height'] as double?,
       width: data['width'] as double?,
       blurHash: data['blurHash'] as String?,
+      path: data['path'] as String?,
     );
   }
 
   @override
-  int get hashCode => Object.hash(name, bytes, url, height, width, blurHash);
+  int get hashCode => Object.hash(name, bytes, url, height, width, blurHash, path);
 
   @override
   bool operator ==(Object other) =>
       other is FFUploadedFile &&
-          other.name == name &&
-          _listEquals(other.bytes, bytes) &&
-          other.url == url &&
-          other.height == height &&
-          other.width == width &&
-          other.blurHash == blurHash;
+      other.name == name &&
+      _listEquals(other.bytes, bytes) &&
+      other.url == url &&
+      other.height == height &&
+      other.width == width &&
+      other.path == path &&
+      other.blurHash == blurHash;
 
   bool _listEquals(List<int>? a, List<int>? b) {
     if (a == null || b == null) return a == b;

@@ -1,14 +1,12 @@
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'workout_choose_place_page_widget.dart'
-    show WorkoutChoosePlacePageWidget;
+import 'workout_choose_place_page_widget.dart' show WorkoutChoosePlacePageWidget;
 import 'package:flutter/material.dart';
 
-class WorkoutChoosePlacePageModel
-    extends FlutterFlowModel<WorkoutChoosePlacePageWidget> {
+class WorkoutChoosePlacePageModel extends FlutterFlowModel<WorkoutChoosePlacePageWidget> {
   ///  Local state fields for this page.
-
-  int? variantSelected;
+  int? variantSelectedIndex;
+  String? variantSelected;
 
   ///  State fields for stateful widgets in this page.
 
