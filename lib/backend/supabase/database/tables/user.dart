@@ -58,4 +58,7 @@ class UserRow extends SupabaseDataRow {
 
   String? get programStartDate => getField<String?>('programStartDate');
   set programStartDate(String? value) => setField<String?>('programStartDate', value);
+
+  int? get individualProgramId => getField<int>('individualProgramId');
+  set individualProgramId(int? value) => setField<int>('individualProgramId', value);
 }

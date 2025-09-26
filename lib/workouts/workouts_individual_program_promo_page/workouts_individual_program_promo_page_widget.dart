@@ -2,6 +2,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../auth/firebase_auth/auth_util.dart';
 import '../../backend/supabase/supabase.dart';
+import '../../profile/subscription/individual_purchase_confirm.dart';
 import '../workout_choose_place_page/workout_choose_place_page_widget.dart';
 import '../workout_payment_success_view/workout_payment_success_view_widget.dart';
 import '/components/general_button_widget.dart';
@@ -41,6 +42,88 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
             loaded = true;
           }));
     });
+  }
+
+  Future<void> onTapPurchase() async {
+    if (_model.individualPlan == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Не удалось найти тариф')));
+      return;
+    }
+    final confirm = await showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: const Color(0x2B000000),
+      enableDrag: false,
+      context: context,
+      builder: (context) {
+        return GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Padding(
+            padding: MediaQuery.viewInsetsOf(context),
+            child: IndividualProgramPurchaseConfirmViewWidget(plan: _model.individualPlan),
+          ),
+        );
+      },
+    );
+
+    if (confirm != true) return;
+    // if purchased
+
+    final program = {
+      "user_id": currentUserUid,
+      "isFilled": false,
+      "ready": false,
+    };
+
+    final newProgram = await Supabase.instance.client.from('IndividualProgram').insert(program).select();
+
+    final int? id = newProgram.isNotEmpty ? newProgram.first['id'] : null;
+
+    print(newProgram);
+
+    await UserTable().update(
+      data: {'individualProgramUnderPrepare': true, 'individualProgramId': id},
+      matchingRows: (rows) => rows.eqOrNull('fb_id', currentUserUid),
+    );
+
+    await SubscriptionTable().insert({
+      'user_id': currentUserUid,
+      'plan_id': _model.individualPlan!.id,
+      'isTrial': false,
+      'isIndividual': true,
+    });
+
+    if (mounted) {
+      await showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        barrierColor: const Color(0x2B000000),
+        enableDrag: false,
+        context: context,
+        builder: (context) {
+          return GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: Padding(
+              padding: MediaQuery.viewInsetsOf(context),
+              child: WorkoutPaymentSuccessViewWidget(
+                onTap: () {
+                  // context.goNamed(RouterPageWidget.routeName);
+                },
+              ),
+            ),
+          );
+        },
+      );
+      if (mounted) {
+        context.pushNamed(WorkoutChoosePlacePageWidget.routeName);
+      }
+    }
   }
 
   @override
@@ -238,125 +321,138 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                         ),
                                       ),
                                     ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context).secondary,
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          opacity: 0.2,
-                                          image: Image.asset(
-                                            'assets/images/1a2c950ebdd006be009161fbb6c5138b58253580.jpg',
-                                          ).image,
+                                  if (_model.individualPlan != null && _model.individualProgram == null)
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context).secondary,
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            opacity: 0.2,
+                                            image: Image.asset(
+                                              'assets/images/1a2c950ebdd006be009161fbb6c5138b58253580.jpg',
+                                            ).image,
+                                          ),
+                                          borderRadius: BorderRadius.circular(12.0),
                                         ),
-                                        borderRadius: BorderRadius.circular(12.0),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                                                  child: ClipRRect(
-                                                    borderRadius: BorderRadius.circular(0.0),
-                                                    child: SvgPicture.asset(
-                                                      'assets/images/Star_Shine.svg',
-                                                      width: 16.0,
-                                                      height: 16.0,
-                                                      fit: BoxFit.cover,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                    child: ClipRRect(
+                                                      borderRadius: BorderRadius.circular(0.0),
+                                                      child: SvgPicture.asset(
+                                                        'assets/images/Star_Shine.svg',
+                                                        width: 16.0,
+                                                        height: 16.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                Expanded(
-                                                  child: Text(
-                                                    'Индивидуальная',
+                                                  Expanded(
+                                                    child: Text(
+                                                      _model.individualPlan!.title ?? '-',
+                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                            font: GoogleFonts.unbounded(
+                                                              fontWeight: FontWeight.w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                            ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight: FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '${_model.individualPlan!.price?.floor()} ₽',
                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                           font: GoogleFonts.unbounded(
                                                             fontWeight: FontWeight.w600,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                           ),
+                                                          color: FlutterFlowTheme.of(context).primary,
                                                           letterSpacing: 0.0,
                                                           fontWeight: FontWeight.w600,
                                                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                         ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  '4 990 ₽',
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Программа, составленная специально под ваши цели и возможности',
                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                        font: GoogleFonts.unbounded(
-                                                          fontWeight: FontWeight.w600,
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                         ),
-                                                        color: FlutterFlowTheme.of(context).primary,
+                                                        color: FlutterFlowTheme.of(context).secondaryText,
                                                         letterSpacing: 0.0,
-                                                        fontWeight: FontWeight.w600,
-                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                              child: Text(
-                                                'Программа, составленная специально под ваши цели и возможности',
-                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                      font: GoogleFonts.inter(
                                                         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                       ),
-                                                      color: FlutterFlowTheme.of(context).secondaryText,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0x1EE27B00),
+                                                    borderRadius: BorderRadius.circular(12.0),
+                                                    border: Border.all(
+                                                      color: FlutterFlowTheme.of(context).primary,
                                                     ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                              child: Container(
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: const Color(0x1EE27B00),
-                                                  borderRadius: BorderRadius.circular(12.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(context).primary,
                                                   ),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(12.0),
-                                                  child: Column(
-                                                    mainAxisSize: MainAxisSize.max,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                0.0, 0.0, 8.0, 0.0),
-                                                            child: ClipRRect(
-                                                              borderRadius: BorderRadius.circular(0.0),
-                                                              child: SvgPicture.asset(
-                                                                'assets/images/Check_Circle.svg',
-                                                                width: 14.0,
-                                                                height: 14.0,
-                                                                fit: BoxFit.cover,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(12.0),
+                                                    child: Column(
+                                                      mainAxisSize: MainAxisSize.max,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize: MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                  0.0, 0.0, 8.0, 0.0),
+                                                              child: ClipRRect(
+                                                                borderRadius: BorderRadius.circular(0.0),
+                                                                child: SvgPicture.asset(
+                                                                  'assets/images/Check_Circle.svg',
+                                                                  width: 14.0,
+                                                                  height: 14.0,
+                                                                  fit: BoxFit.cover,
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              'Индивидуальный план тренировок \nна 12 недель',
-                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                    font: GoogleFonts.inter(
+                                                            Expanded(
+                                                              child: Text(
+                                                                'Индивидуальный план тренировок \nна 12 недель',
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      fontSize: 13.0,
+                                                                      letterSpacing: 0.0,
                                                                       fontWeight: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontWeight,
@@ -364,40 +460,40 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    fontSize: 13.0,
-                                                                    letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                0.0, 0.0, 8.0, 0.0),
-                                                            child: ClipRRect(
-                                                              borderRadius: BorderRadius.circular(0.0),
-                                                              child: SvgPicture.asset(
-                                                                'assets/images/Check_Circle.svg',
-                                                                width: 14.0,
-                                                                height: 14.0,
-                                                                fit: BoxFit.cover,
                                                               ),
                                                             ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              'Учёт ваших целей, возможностей и ограничений',
-                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                    font: GoogleFonts.inter(
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize: MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                  0.0, 0.0, 8.0, 0.0),
+                                                              child: ClipRRect(
+                                                                borderRadius: BorderRadius.circular(0.0),
+                                                                child: SvgPicture.asset(
+                                                                  'assets/images/Check_Circle.svg',
+                                                                  width: 14.0,
+                                                                  height: 14.0,
+                                                                  fit: BoxFit.cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              child: Text(
+                                                                'Учёт ваших целей, возможностей и ограничений',
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      fontSize: 13.0,
+                                                                      letterSpacing: 0.0,
                                                                       fontWeight: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontWeight,
@@ -405,40 +501,40 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    fontSize: 13.0,
-                                                                    letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                0.0, 0.0, 8.0, 0.0),
-                                                            child: ClipRRect(
-                                                              borderRadius: BorderRadius.circular(0.0),
-                                                              child: SvgPicture.asset(
-                                                                'assets/images/Check_Circle.svg',
-                                                                width: 14.0,
-                                                                height: 14.0,
-                                                                fit: BoxFit.cover,
                                                               ),
                                                             ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              'Поддержка и консультации от куратора',
-                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                    font: GoogleFonts.inter(
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize: MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                  0.0, 0.0, 8.0, 0.0),
+                                                              child: ClipRRect(
+                                                                borderRadius: BorderRadius.circular(0.0),
+                                                                child: SvgPicture.asset(
+                                                                  'assets/images/Check_Circle.svg',
+                                                                  width: 14.0,
+                                                                  height: 14.0,
+                                                                  fit: BoxFit.cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              child: Text(
+                                                                'Поддержка и консультации от куратора',
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      fontSize: 13.0,
+                                                                      letterSpacing: 0.0,
                                                                       fontWeight: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontWeight,
@@ -446,40 +542,40 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    fontSize: 13.0,
-                                                                    letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                0.0, 0.0, 8.0, 0.0),
-                                                            child: ClipRRect(
-                                                              borderRadius: BorderRadius.circular(0.0),
-                                                              child: SvgPicture.asset(
-                                                                'assets/images/Check_Circle.svg',
-                                                                width: 14.0,
-                                                                height: 14.0,
-                                                                fit: BoxFit.cover,
                                                               ),
                                                             ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              'Возможность корректировки программы',
-                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                    font: GoogleFonts.inter(
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize: MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                  0.0, 0.0, 8.0, 0.0),
+                                                              child: ClipRRect(
+                                                                borderRadius: BorderRadius.circular(0.0),
+                                                                child: SvgPicture.asset(
+                                                                  'assets/images/Check_Circle.svg',
+                                                                  width: 14.0,
+                                                                  height: 14.0,
+                                                                  fit: BoxFit.cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              child: Text(
+                                                                'Возможность корректировки программы',
+                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                      font: GoogleFonts.inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      fontSize: 13.0,
+                                                                      letterSpacing: 0.0,
                                                                       fontWeight: FlutterFlowTheme.of(context)
                                                                           .bodyMedium
                                                                           .fontWeight,
@@ -487,31 +583,22 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    fontSize: 13.0,
-                                                                    letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                                     child: Text(
                                       'Как это работает',
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1045,85 +1132,41 @@ class _WorkoutsIndividualProgramPromoPageWidgetState extends State<WorkoutsIndiv
                                   ),
                                 ],
                               ),
+                              if (_model.individualProgram == null)
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                                  child: wrapWithModel(
+                                    model: _model.generalButtonModel2,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: GeneralButtonWidget(
+                                      title: 'Приобрести',
+                                      isActive: true,
+                                      onTap: () async {
+                                        await onTapPurchase();
+                                      },
+                                    ),
+                                  ),
+                                )
+                              else if (_model.individualProgram!['isFilled'] == false)
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                                  child: wrapWithModel(
+                                    model: _model.generalButtonModel2,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: GeneralButtonWidget(
+                                      title: 'Пройти опрос',
+                                      isActive: true,
+                                      onTap: () async {
+                                        context.pushNamed(WorkoutChoosePlacePageWidget.routeName);
+                                      },
+                                    ),
+                                  ),
+                                )
                             ],
                           ),
                         ),
                       ),
               ),
-              if (_model.user != null && _model.user!["individualProgramUnderPrepare"] != true)
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
-                  child: wrapWithModel(
-                    model: _model.generalButtonModel2,
-                    updateCallback: () => safeSetState(() {}),
-                    child: GeneralButtonWidget(
-                      title: 'Приобрести',
-                      isActive: true,
-                      onTap: () async {
-                        var confirmDialogResponse = await showDialog<bool>(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: const Text('Нет платежного шлюза'),
-                                  content: const Text('Оплата произойдет мнгновенно'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                                      child: const Text('Отмена'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                                      child: const Text('Продолжить'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ) ??
-                            false;
-                        if (confirmDialogResponse) {
-                          // await UserTable().update(
-                          //   data: {
-                          //     'individualProgramUnderPrepare': true,
-                          //   },
-                          //   matchingRows: (rows) => rows.eqOrNull(
-                          //     'fb_id',
-                          //     currentUserUid,
-                          //   ),
-                          // );
-
-                          // await _model.loadUserData();
-
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            barrierColor: const Color(0x2B000000),
-                            enableDrag: false,
-                            context: context,
-                            builder: (context) {
-                              return GestureDetector(
-                                onTap: () {
-                                  FocusScope.of(context).unfocus();
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: WorkoutPaymentSuccessViewWidget(
-                                    onTap: () {
-                                      // context.goNamed(RouterPageWidget.routeName);
-                                    },
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                          if (context.mounted) {
-                            context.pushNamed(WorkoutChoosePlacePageWidget.routeName);
-                          }
-                        }
-                      },
-                    ),
-                  ),
-                ),
             ],
           ),
         ),

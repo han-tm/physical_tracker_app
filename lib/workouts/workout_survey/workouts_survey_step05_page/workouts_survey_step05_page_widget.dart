@@ -2,6 +2,7 @@ import 'package:boom_client/components/general_button_widget.dart';
 import 'package:boom_client/components/radio_button_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -42,7 +43,7 @@ class _WorkoutsSurveyStep05PageWidgetState
 
  @override
   Widget build(BuildContext context) {
-    final state = FFAppState();
+    final state = context.watch<FFAppState>();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();

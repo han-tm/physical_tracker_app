@@ -1,6 +1,7 @@
 import 'package:boom_client/flutter_flow/flutter_flow_calendar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../components/general_button_widget.dart';
@@ -58,7 +59,7 @@ class _WorkoutsSurveyStep03PageWidgetState extends State<WorkoutsSurveyStep03Pag
 
   @override
   Widget build(BuildContext context) {
-    final state = FFAppState();
+     final state = context.watch<FFAppState>();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();

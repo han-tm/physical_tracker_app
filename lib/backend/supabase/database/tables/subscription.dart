@@ -32,4 +32,7 @@ class SubscriptionRow extends SupabaseDataRow {
 
   bool? get isTrial => getField<bool>('isTrial');
   set isTrial(bool? value) => setField<bool>('isTrial', value);
+
+  bool? get isIndividual => getField<bool>('isIndividual');
+  set isIndividual(bool? value) => setField<bool>('isIndividual', value);
 }

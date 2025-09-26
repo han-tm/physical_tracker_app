@@ -412,7 +412,7 @@ class _CompleteRegistration01PageWidgetState extends State<CompleteRegistration0
                                       final plans = await supabase
                                           .from('SubscriptionPlan')
                                           .select()
-                                          .order('type', ascending: true)
+                                          .eq('isTrial', true)
                                           .limit(1)
                                           .maybeSingle();
 

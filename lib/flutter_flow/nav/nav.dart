@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../backend/supabase/database/tables/exercise.dart';
 import '../../backend/supabase/database/tables/training_program.dart';
+import '../../workouts/workout_survey/workouts_survery_list_page/workout_survey_success.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
@@ -352,6 +353,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: WorkoutsSurveryListPageWidget.routeName,
           path: WorkoutsSurveryListPageWidget.routePath,
           builder: (context, params) => const WorkoutsSurveryListPageWidget(),
+        ),
+          FFRoute(
+          name: WorkoutSurveySuccessPageWidget.routeName,
+          path: WorkoutSurveySuccessPageWidget.routePath,
+          builder: (context, params) => const WorkoutSurveySuccessPageWidget(),
         ),
         FFRoute(
           name: WorkoutsSurveyBodyMeasurementsPageWidget.routeName,

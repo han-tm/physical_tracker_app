@@ -1,11 +1,12 @@
 import 'package:boom_client/components/general_button_widget.dart';
 import 'package:boom_client/components/radio_button_widget.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../workouts_survey_step02_page/workouts_survey_step02_page_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/survery/skip_personalization/skip_personalization_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'workouts_survey_step01_page_model.dart';
@@ -41,7 +42,7 @@ class _WorkoutsSurveyStep01PageWidgetState extends State<WorkoutsSurveyStep01Pag
 
   @override
   Widget build(BuildContext context) {
-    final state = FFAppState();
+    final state = context.watch<FFAppState>();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -251,7 +252,6 @@ class _WorkoutsSurveyStep01PageWidgetState extends State<WorkoutsSurveyStep01Pag
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             state.goal = 'Набор мышечной массы';
-                                            safeSetState(() {});
                                           },
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,

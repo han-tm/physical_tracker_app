@@ -1,5 +1,7 @@
 import 'package:boom_client/flutter_flow/custom_functions.dart';
+import 'package:collection/collection.dart';
 
+import '../../auth/firebase_auth/auth_util.dart';
 import '../../backend/supabase/database/tables/exercise.dart';
 import '../../backend/supabase/database/tables/training_program.dart';
 import '../workouts_exercise/workouts_exercise_process_page/workouts_exercise_process_page_widget.dart';
@@ -26,33 +28,66 @@ class WorkoutsPageWidget extends StatefulWidget {
 
 class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
   late WorkoutsPageModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  bool loaded = false;
+  final repo = TrainingRepository();
+  List<TrainingProgramDTO> programs = [];
+  TrainingProgramDTO? selectedProgram;
+  bool isLoading = true;
+  int selectedWeek = 1;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => WorkoutsPageModel());
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await _model.loadProgram();
-      safeSetState(() => {});
+    // WidgetsBinding.instance.addPostFrameCallback((_) async {
+    //   await _model.loadProgram();
+    //   safeSetState(() => {});
 
-      // _model.loadUserData();
-      // _model.loadUserData().then((_) => setState(() {
-      //   int currentWeekday = DateTime.now().weekday;
-      //   _model.daySelected = currentWeekday;
-      //       loaded = true;
-      //     }));
+    //   // _model.loadUserData();
+    //   // _model.loadUserData().then((_) => setState(() {
+    //   //   int currentWeekday = DateTime.now().weekday;
+    //   //   _model.daySelected = currentWeekday;
+    //   //       loaded = true;
+    //   //     }));
+    // });
+    init();
+  }
+
+  void init() async {
+    final result = await repo.getAvailablePrograms(currentUserUid);
+    setState(() {
+      programs = result;
+      if (programs.isNotEmpty) {
+        selectedProgram = programs.first;
+        selectedWeek = selectedProgram!.currentWeek;
+      }
+      isLoading = false;
     });
   }
 
-  @override
-  void dispose() {
-    _model.dispose();
-
-    super.dispose();
+  Widget _buildProgramView(TrainingProgramDTO program) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('${program.name}', style: Theme.of(context).textTheme.headlineSmall),
+        const SizedBox(height: 8),
+        Text('Неделя ${program.currentWeek} из ${program.totalWeeks}'),
+        const SizedBox(height: 16),
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: program.weeks.length,
+          itemBuilder: (context, index) {
+            final week = program.weeks[index];
+            return Card(
+              child: ListTile(
+                title: Text('Неделя ${index + 1}'),
+                subtitle: Text(week.toString()), // тут можешь отрисовать красиво
+              ),
+            );
+          },
+        ),
+      ],
+    );
   }
 
   @override
@@ -100,7 +135,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                 ),
               ),
               Expanded(
-                  child: _model.loading
+                  child: isLoading
                       ? Center(
                           child: SizedBox(
                             width: 50.0,
@@ -170,7 +205,10 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                               ),
                                             ),
                                             Text(
-                                              '4 990 ₽',
+                                              (selectedProgram != null &&
+                                                      selectedProgram!.user.individualProgramId != null)
+                                                  ? 'Активна'
+                                                  : '4 990 ₽',
                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                     font: GoogleFonts.unbounded(
                                                       fontWeight: FontWeight.w600,
@@ -205,17 +243,13 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                           child: Container(
                                             height: 37.0,
                                             decoration: const BoxDecoration(),
-                                            child: wrapWithModel(
-                                              model: _model.generalButtonModel1,
-                                              updateCallback: () => safeSetState(() {}),
-                                              child: GeneralButtonWidget(
-                                                title: 'Подробнее',
-                                                isActive: true,
-                                                onTap: () async {
-                                                  await context
-                                                      .pushNamed(WorkoutsIndividualProgramPromoPageWidget.routeName);
-                                                },
-                                              ),
+                                            child: GeneralButtonWidget(
+                                              title: 'Подробнее',
+                                              isActive: true,
+                                              onTap: () async {
+                                                await context
+                                                    .pushNamed(WorkoutsIndividualProgramPromoPageWidget.routeName);
+                                              },
                                             ),
                                           ),
                                         ),
@@ -224,6 +258,48 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                   ),
                                 ),
                               ),
+                              if (programs.length > 1)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: ToggleButtons(
+                                    fillColor: FlutterFlowTheme.of(context).primary,
+                                    color: FlutterFlowTheme.of(context).primaryText,
+                                    // disabledColor: Color(0xFF242328),
+                                    disabledColor: Colors.amber,
+                                    borderColor: FlutterFlowTheme.of(context).primary,
+                                    selectedBorderColor: FlutterFlowTheme.of(context).primary,
+                                    borderWidth: 2,
+
+                                    selectedColor: FlutterFlowTheme.of(context).primaryText,
+                                    borderRadius: BorderRadius.circular(16),
+
+                                    isSelected: programs.map((p) => p == selectedProgram).toList(),
+                                    onPressed: (index) {
+                                      setState(() {
+                                        selectedProgram = programs[index];
+                                      });
+                                    },
+                                    children: programs
+                                        .map((p) => Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+                                              child: Text(
+                                                getTypeName(p.type),
+                                                // p.type.toUpperCase(),
+                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                      font: GoogleFonts.unbounded(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                    ),
+                                              ),
+                                            ))
+                                        .toList(),
+                                  ),
+                                ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
                                 child: Row(
@@ -250,47 +326,47 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                               // MARK: Текущая неделя
                               Builder(builder: (context) {
                                 // if (_model.loading) return const CircularProgressIndicator();
-                                if (_model.error != null) {
+                                // if (_model.error != null) {
+                                //   return Padding(
+                                //     padding: const EdgeInsets.all(24.0),
+                                //     child: Text(
+                                //       _model.error!,
+                                //       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                //             font: GoogleFonts.unbounded(
+                                //               fontWeight: FontWeight.w400,
+                                //               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                //             ),
+                                //             fontSize: 13.0,
+                                //             letterSpacing: 0.0,
+                                //             fontWeight: FontWeight.w400,
+                                //             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                //           ),
+                                //     ),
+                                //   );
+                                // }
+                                // if (_model.isEndOfProgram) {
+                                //   return Padding(
+                                //     padding: const EdgeInsets.all(24.0),
+                                //     child: Text(
+                                //       'Конец программы',
+                                //       style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                //             font: GoogleFonts.unbounded(
+                                //               fontWeight: FontWeight.w400,
+                                //               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                //             ),
+                                //             fontSize: 13.0,
+                                //             letterSpacing: 0.0,
+                                //             fontWeight: FontWeight.w400,
+                                //             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                //           ),
+                                //     ),
+                                //   );
+                                // }
+                                if (programs.isEmpty) {
                                   return Padding(
                                     padding: const EdgeInsets.all(24.0),
                                     child: Text(
-                                      _model.error!,
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.unbounded(
-                                              fontWeight: FontWeight.w400,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            fontSize: 13.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                  );
-                                }
-                                if (_model.isEndOfProgram) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(24.0),
-                                    child: Text(
-                                      'Конец программы',
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.unbounded(
-                                              fontWeight: FontWeight.w400,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            fontSize: 13.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                  );
-                                }
-                                if (_model.trainingProgram == null || _model.currentProgramWeek == null) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(24.0),
-                                    child: Text(
-                                      'Программа не найдена',
+                                      'Нет доступных программ',
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                             font: GoogleFonts.unbounded(
                                               fontWeight: FontWeight.w400,
@@ -312,20 +388,20 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(_model.trainingProgram!.weeks.length, (weekIndex) {
-                                          final week = _model.trainingProgram!.weeks[weekIndex];
-                                          bool selected = week == _model.weekSelected;
+                                        children: List.generate(selectedProgram!.weeks.length, (weekIndex) {
+                                          final week = selectedProgram!.weeks[weekIndex];
+                                          bool selected = week['week_number'] == selectedWeek;
                                           return InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              if ((_model.currentProgramWeek ?? 0) < week['week_number']) {
+                                              if ((selectedWeek) < week['week_number']) {
                                                 print('нельзя выбрать будущую неделю');
                                                 return;
                                               }
-                                              _model.weekSelected = week;
+                                              selectedWeek = week['week_number'];
                                               safeSetState(() {});
                                             },
                                             child: Container(
@@ -371,9 +447,9 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                     ),
 
                                     Builder(builder: (context) {
-                                      final days = (_model.weekSelected!['days'] as List)
-                                          .where((day) => day['exercises'].length > 0)
-                                          .toList();
+                                      final week = selectedProgram!.weeks[selectedWeek - 1];
+                                      final days =
+                                          (week['days'] as List).where((day) => day['exercises'].length > 0).toList();
                                       return ListView.builder(
                                         physics: const NeverScrollableScrollPhysics(),
                                         padding: const EdgeInsets.all(16),
@@ -381,7 +457,7 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
                                         itemCount: days.length,
                                         itemBuilder: (context, index) {
                                           final day = days[index];
-                                          return _ExerciseCard(day: day, program: _model.trainingProgram!);
+                                          return _ExerciseCard(day: day, program: selectedProgram!.program);
                                         },
                                       );
                                     }),
@@ -1639,406 +1715,6 @@ class _WorkoutsPageWidgetState extends State<WorkoutsPageWidget> {
       ),
     );
   }
-
-  // MARK: Ячейка с упражнением
-  Widget renderExercise(dynamic exercise, int index) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Container(
-            width: 32.0,
-            height: 32.0,
-            decoration: BoxDecoration(
-              color: const Color(0xFF1A191D),
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
-              child: Text(
-                '$index',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.unbounded(
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      ),
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      fontSize: 11.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  exercise["name"] ?? "-",
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        font: GoogleFonts.unbounded(
-                          fontWeight: FontWeight.w600,
-                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
-                        fontSize: 12.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      ),
-                ),
-                Text(
-                  // '3×12 - 35 кг',
-                  '${exercise['approach']}×${exercise['repetitions']} - ${exercise['weight']} кг',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        font: GoogleFonts.inter(
-                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        fontSize: 13.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget renderProgram(dynamic programMap, List<Map<String, dynamic>> programExercises) {
-    final List<ExerciseRow> programExerciseObjects = programExercises
-        .map((entry) {
-          final exercise = _model.exercises.firstWhere(
-            (e) => e['id'] == entry['exercise'],
-            orElse: () => <String, dynamic>{}, // заменили null на пустую Map
-          );
-          if (exercise.isEmpty) return null; // проверка, что не пустая
-          return ExerciseRow(exercise);
-        })
-        .whereType<ExerciseRow>() // удаляет null
-        .toList();
-
-    return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondary,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              programMap['name'] ?? 'Программа',
-                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.unbounded(
-                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
-                          child: Wrap(
-                            spacing: 4.0,
-                            runSpacing: 4.0,
-                            alignment: WrapAlignment.start,
-                            crossAxisAlignment: WrapCrossAlignment.start,
-                            direction: Axis.horizontal,
-                            runAlignment: WrapAlignment.start,
-                            verticalDirection: VerticalDirection.down,
-                            clipBehavior: Clip.none,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Dumbbells.svg',
-                                        width: 14.0,
-                                        height: 14.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    getExperienceString(
-                                        programExercises.length, "упражнение", "упражнения", "упражнений", false),
-                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                          fontSize: 13.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                              // Row(
-                              //   mainAxisSize: MainAxisSize.min,
-                              //   children: [
-                              //     Padding(
-                              //       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                              //       child: ClipRRect(
-                              //         borderRadius: BorderRadius.circular(0.0),
-                              //         child: SvgPicture.asset(
-                              //           'assets/images/Calendar01.svg',
-                              //           width: 14.0,
-                              //           height: 14.0,
-                              //           fit: BoxFit.cover,
-                              //         ),
-                              //       ),
-                              //     ),
-                              //     Text(
-                              //       '45 мин',
-                              //       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              //             font: GoogleFonts.inter(
-                              //               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                              //               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                              //             ),
-                              //             color: FlutterFlowTheme.of(context).secondaryText,
-                              //             fontSize: 13.0,
-                              //             letterSpacing: 0.0,
-                              //             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                              //             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                              //           ),
-                              //     ),
-                              //   ],
-                              // ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 1.0,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF302E36),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ...programExercises.asMap().entries.map((entry) {
-                      final index = entry.key;
-                      final exerciseEntry = entry.value;
-                      final exercise = _model.exercises.firstWhere(
-                        (e) => e['id'] == exerciseEntry['exercise'],
-                        orElse: () => <String, dynamic>{},
-                      );
-                      if (exercise.isEmpty) return const SizedBox.shrink();
-
-                      return Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: 32.0,
-                              height: 32.0,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF1A191D),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: Text(
-                                  '${index + 1}',
-                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                        font: GoogleFonts.unbounded(
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context).secondaryText,
-                                        fontSize: 11.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      exercise['name'] ?? "-",
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.unbounded(
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            fontSize: 12.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                    Text(
-                                      '${exercise['approach']} × ${exercise['repetitions']}',
-                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context).secondaryText,
-                                            fontSize: 13.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }),
-                  ].divide(const SizedBox(height: 8.0)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    // List<ExerciseRow> programExercisesBuf = [];
-                    // for (var i in programExerciseObjects) {
-                    //   programExercisesBuf.add(ExerciseRow(i));
-                    // }
-                    // var asd = TrainingProgramRow(programMap);
-
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WorkoutsExerciseProcessPageWidget(
-                            exercises: programExerciseObjects, program: TrainingProgramRow(programMap)),
-                        // fullscreenDialog: true
-                      ),
-                    );
-                    // context.pushNamed(
-                    //   WorkoutsExerciseProcessPageWidget.routeName,
-                    //   queryParameters: {
-                    //     'exercises': serializeParam(
-                    //       programExerciseObjects,
-                    //       ParamType.SupabaseRow,
-                    //       isList: true,
-                    //     ),
-                    //     'program': serializeParam(
-                    //       TrainingProgramRow(programMap),
-                    //       ParamType.SupabaseRow,
-                    //     ),
-                    //   }.withoutNulls,
-                    // );
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 42.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primary,
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(12.0),
-                        bottomRight: Radius.circular(12.0),
-                        topLeft: Radius.circular(0.0),
-                        topRight: Radius.circular(0.0),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Dumbbell.svg',
-                              width: 16.0,
-                              height: 16.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'Начать',
-                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                font: GoogleFonts.unbounded(
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                ),
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                              ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class _ExerciseCard extends StatelessWidget {
@@ -2080,6 +1756,7 @@ class _ExerciseCard extends StatelessWidget {
                 ],
               );
             }
+
             final exercisesRows = asyncSnapshot.data ?? [];
 
             return Column(
@@ -2152,7 +1829,8 @@ class _ExerciseCard extends StatelessWidget {
                     children: [
                       ...exercises.map((ex) {
                         final index = exercises.indexOf(ex);
-                        final exerciseRow = exercisesRows.firstWhere((e) => e.id == ex['exercise_id']);
+                        final exerciseRow = exercisesRows.firstWhereOrNull((e) => e.id == ex['exercise_id']);
+
                         return Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                           child: Row(
@@ -2191,7 +1869,7 @@ class _ExerciseCard extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        exerciseRow.name ?? '-',
+                                        exerciseRow?.name ?? '...',
                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                               font: GoogleFonts.unbounded(
                                                 fontWeight: FontWeight.w600,
@@ -2235,21 +1913,6 @@ class _ExerciseCard extends StatelessWidget {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    // List<ExerciseRow> programExercisesBuf = [];
-                    // for (var i in programExerciseObjects) {
-                    //   programExercisesBuf.add(ExerciseRow(i));
-                    // }
-
-                    // await Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => WorkoutsExerciseProcessPageWidget(
-                    //       exercises: programExerciseObjects,
-                    //       program: TrainingProgramRow(programMap),
-                    //     ),
-                    //     // fullscreenDialog: true
-                    //   ),
-                    // );
                     final sortedRows =
                         exercises.map((ex) => exercisesRows.firstWhere((e) => e.id == ex['exercise_id'])).toList();
                     context.pushNamed(

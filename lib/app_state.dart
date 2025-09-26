@@ -161,84 +161,98 @@ class FFAppState extends ChangeNotifier {
   String? get traininPlace => _traininPlace;
   set traininPlace(String? value) {
     _traininPlace = value;
+    notifyListeners();
   }
 
   String? _inventory;
   String? get inventory => _inventory;
   set inventory(String? value) {
     _inventory = value;
+    notifyListeners();
   }
 
   String? _goal;
   String? get goal => _goal;
   set goal(String? value) {
     _goal = value;
+    notifyListeners();
   }
 
   String? _restrictions;
   String? get restrictions => _restrictions;
   set restrictions(String? value) {
     _restrictions = value;
+    notifyListeners();
   }
 
   DateTime? _nextCycle;
   DateTime? get nextCycle => _nextCycle;
   set nextCycle(DateTime? value) {
     _nextCycle = value;
+    notifyListeners();
   }
 
   String? _trainDuration;
   String? get trainDuration => _trainDuration;
   set trainDuration(String? value) {
     _trainDuration = value;
+    notifyListeners();
   }
 
   String? _trainExercise;
   String? get trainExercise => _trainExercise;
   set trainExercise(String? value) {
     _trainExercise = value;
+    notifyListeners();
   }
 
   String? _trainWeight;
   String? get trainWeight => _trainWeight;
   set trainWeight(String? value) {
     _trainWeight = value;
+    notifyListeners();
   }
 
   String? _bodyAccent;
   String? get bodyAccent => _bodyAccent;
   set bodyAccent(String? value) {
     _bodyAccent = value;
+    notifyListeners();
   }
 
   String? _bodyNotDo;
   String? get bodyNotDo => _bodyNotDo;
   set bodyNotDo(String? value) {
     _bodyNotDo = value;
+    notifyListeners();
   }
 
   String? _canCountKBZU;
   String? get canCountKBZU => _canCountKBZU;
   set canCountKBZU(String? value) {
     _canCountKBZU = value;
+    notifyListeners();
   }
 
   String? _photoSide;
   String? get photoSide => _photoSide;
   set photoSide(String? value) {
     _photoSide = value;
+    notifyListeners();
   }
 
   String? _photoFront;
   String? get photoFront => _photoFront;
   set photoFront(String? value) {
     _photoFront = value;
+    notifyListeners();
   }
 
   String? _photoBack;
   String? get photoBack => _photoBack;
   set photoBack(String? value) {
     _photoBack = value;
+    notifyListeners();
   }
 
   clearIndividualBodyMeasures() {

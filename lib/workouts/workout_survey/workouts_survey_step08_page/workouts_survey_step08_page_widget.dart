@@ -1,6 +1,7 @@
 import 'package:boom_client/components/general_button_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/radio_button_widget.dart';
 import '../../../index.dart';
@@ -40,7 +41,7 @@ class _WorkoutsSurveyStep08PageWidgetState extends State<WorkoutsSurveyStep08Pag
 
   @override
   Widget build(BuildContext context) {
-    final state = FFAppState();
+     final state = context.watch<FFAppState>();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -322,47 +323,7 @@ class _WorkoutsSurveyStep08PageWidgetState extends State<WorkoutsSurveyStep08Pag
                                           ),
                                         ),
                                       ),
-                                      Divider(height: 0, thickness: 1, color: FlutterFlowTheme.of(context).secondary),
-                                      Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            state.canCountKBZU = 'Руки';
-                                            safeSetState(() {});
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              RadioButtonWidget(checked: state.canCountKBZU == 'Руки'),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Руки',
-                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                          font: GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontSize: 15,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
+                                     
                                     ],
                                   ),
                                 ),

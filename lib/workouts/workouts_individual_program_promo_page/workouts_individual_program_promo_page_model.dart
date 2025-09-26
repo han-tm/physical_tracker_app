@@ -3,12 +3,10 @@ import '../../backend/supabase/supabase.dart';
 import '/components/general_button_widget.dart';
 import '/components/general_nav_bar01_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'workouts_individual_program_promo_page_widget.dart'
-    show WorkoutsIndividualProgramPromoPageWidget;
+import 'workouts_individual_program_promo_page_widget.dart' show WorkoutsIndividualProgramPromoPageWidget;
 import 'package:flutter/material.dart';
 
-class WorkoutsIndividualProgramPromoPageModel
-    extends FlutterFlowModel<WorkoutsIndividualProgramPromoPageWidget> {
+class WorkoutsIndividualProgramPromoPageModel extends FlutterFlowModel<WorkoutsIndividualProgramPromoPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Model for generalNavBar01 component.
@@ -19,6 +17,10 @@ class WorkoutsIndividualProgramPromoPageModel
   late GeneralButtonModel generalButtonModel2;
 
   Map<String, dynamic>? user;
+
+  Map<String, dynamic>? individualProgram;
+
+  SubscriptionPlanRow? individualPlan;
 
   @override
   void initState(BuildContext context) {
@@ -35,15 +37,20 @@ class WorkoutsIndividualProgramPromoPageModel
   }
 
   Future<void> loadUserData() async {
+    final plans = await SubscriptionPlanTable().querySingleRow(queryFn: (q) => q.eq('isIndividual', true));
+    individualPlan = plans.firstOrNull;
 
-
-    final userSnapshot = await AppSupabase.instance.client
-        .from('User')
-        .select()
-        .eq('fb_id', currentUserUid)
-        .single();
-
+    final userSnapshot = await AppSupabase.instance.client.from('User').select().eq('fb_id', currentUserUid).single();
 
     user = userSnapshot;
+
+    final int? indId = user?['individualProgramId'];
+
+    if (indId != null) {
+      final programSnapshot =
+          await AppSupabase.instance.client.from('IndividualProgram').select().eq('id', indId).single();
+
+      individualProgram = programSnapshot;
+    }
   }
 }

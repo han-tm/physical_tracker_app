@@ -60,17 +60,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: StreamBuilder<List<UserRow>>(
-            stream: _model.containerSupabaseStream1 ??= AppSupabase.instance.client
-                .from("User")
-                .stream(primaryKey: ['id'])
-                .eqOrNull(
-                  'fb_id',
-                  currentUserUid,
-                )
-                .map((list) => list.map((item) => UserRow(item)).toList()),
+          child: FutureBuilder(
+            future: UserTable().querySingleRow(queryFn: (q) => q.eq('fb_id', currentUserUid)),
             builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
+              // print('stream error: ${snapshot.connectionState}');
+              // Customize what your widget looks lik;e when it's loading.
               if (!snapshot.hasData) {
                 return Center(
                   child: SizedBox(
@@ -100,18 +94,23 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
 
               return Container(
                 decoration: const BoxDecoration(),
-                child: StreamBuilder<List<SubscriptionRow>>(
-                  stream: _model.containerSupabaseStream2 ??= AppSupabase.instance.client
-                      .from("Subscription")
-                      .stream(primaryKey: ['id'])
-                      .eqOrNull(
-                        'user_id',
-                        currentUserUid,
-                      )
-                      .order('created_at')
-                      .map((list) => list.map((item) => SubscriptionRow(item)).toList()),
+                child: FutureBuilder<List<SubscriptionRow>>(
+                  future: SubscriptionTable()
+                      .queryRows(queryFn: (q) => q.eqOrNull('user_id', currentUserUid).order('created_at')),
+                  //  _model.containerSupabaseStream2 ??= AppSupabase.instance.client
+                  //     .from("Subscription")
+                  //     .select()
+                  //     .eqOrNull(
+                  //       'user_id',
+                  //       currentUserUid,
+                  //     )
+                  //     .order('created_at')
+                  //     .then((v) => v.map((e) => SubscriptionRow(e)).toList())
+
+                  // .map((list) => list.map((item) => SubscriptionRow(item)).toList()),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
+
                     if (!snapshot.hasData) {
                       return Center(
                         child: SizedBox(
@@ -235,7 +234,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                   ),
                                             ),
-
                                             Container(
                                               margin: const EdgeInsets.only(top: 10),
                                               height: 32,

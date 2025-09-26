@@ -4,8 +4,10 @@ import 'package:boom_client/components/checkbox_widget.dart';
 import 'package:boom_client/components/media_select_view_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/general_button_widget.dart';
+import '../../../index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +44,7 @@ class _WorkoutsSurveyStep09PageWidgetState extends State<WorkoutsSurveyStep09Pag
 
   @override
   Widget build(BuildContext context) {
-    final state = FFAppState();
+      final state = context.watch<FFAppState>();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -851,7 +853,7 @@ class _WorkoutsSurveyStep09PageWidgetState extends State<WorkoutsSurveyStep09Pag
                   isActive: (state.photoBack != null && state.photoFront != null && state.photoSide != null) &&
                       _model.isAgree,
                   onTap: () async {
-                    context.pop();
+                        context.pushNamed(WorkoutsSurveryListPageWidget.routeName);
                   },
                 ),
               ),
